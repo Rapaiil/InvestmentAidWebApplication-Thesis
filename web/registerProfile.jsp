@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<s:action name="generategenderlist" executeResult="true"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,78 +63,81 @@
 			<div class="card my-auto">
 				<div class="form-register">
 					<div class="card-body pl-5 pr-5">
-					<s:form action="#" method="post" class="registration-profile-form">
+					<s:form action="registerprofile" method="post" class="registration-profile-form">
 							<h4 class="card-title text-center mb-5 text-uppercase">register</h4>
 							<div class="form-row mb-3">
 								<div class="col-xl col-lg col-md-12 col-12 form-group">
 							    	<label>First Name: <span class="required">*</span></label>
-									<s:textfield cssClass="form-control" required="true"/>
+									<s:textfield name="user_firstname" cssClass="form-control" required="true"/>
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
 									<label>Middle Name: <span class="required">*</span></label>
-									<s:textfield  cssClass="form-control" required="true"/>
+									<s:textfield name="user_middlename" cssClass="form-control" required="true"/>
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
 									<label>Last Name: <span class="required">*</span></label>
-									<s:textfield  cssClass="form-control" required="true"/>
+									<s:textfield name="user_lastname" cssClass="form-control" required="true"/>
 								</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-lg col-md-12 col-12">
 										<label>Gender: <span class="required">*</span></label>
 										<div class="custom-control custom-radio custom-control-inline">
-										  <input type="radio" id="radioMale" name="customRadioInline1" class="custom-control-input">
+										  
+										  <s:radio ccsClass="custom-control-input" name="user_gender" list="genders" value="defaultValue"/>
+										  <!-- <input type="radio" id="radioMale" name="customRadioInline1" class="custom-control-input">
 										  <label class="custom-control-label" for="radioMale">Male</label>
 										</div>
 										<div class="custom-control custom-radio custom-control-inline">
 										  <input type="radio" id="radioFemale" name="customRadioInline1" class="custom-control-input">
-										  <label class="custom-control-label" for="radioFemale">Female</label>
+										  <label class="custom-control-label" for="radioFemale">Female</label> -->
 										</div>
 									</div>
 									<div class="col-lg col-md-12 col-12">
 										<label>Citizenship: <span class="required">*</span></label>
-										<input type="text" name="citizenship" class="form-control" required />
+										<s:textfield name="user_citizenship" cssClass="form-control" required="true" />
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-lg-6 col-md-12 col-12">
 										<label>Cellphone Number: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control"  required="true"/>
+										<s:textfield name="user_cellphonenumber" cssClass="form-control"  required="true"/>
 									</div>
 									<div class="col-lg-6 col-md-12 col-12">
 										<label>Telephone Number: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control" required="true"/>
+										<s:textfield name="user_telephonenumber" cssClass="form-control" required="true"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-md-12 col-12">
 										<label>Present Address: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control"  required="true"/>
+										<s:textfield name="user_primaryaddress" cssClass="form-control"  required="true"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-md-12 col-12">
 										<label>Permanent Address: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control"  required="true"/>
+										<s:textfield name="user_permanentaddress" cssClass="form-control"  required="true"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-md-3 col-12">
 										<label>Postal Code: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control"  required="true"/>
+										<s:textfield name="user_postalcode" cssClass="form-control"  required="true"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-xl col-md-12 col-12">
 										<label>Occupation: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control" required="true"/>
+										<s:textfield name="user_occupation" cssClass="form-control" required="true"/>
 									</div>
 									<div class="col-xl col-md-12 col-12">
 										<label>Company Name: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control" required="true"/>
+										<s:textfield name="user_company" cssClass="form-control" required="true"/>
 									</div>
 								</div>
-								<button id="regProfile_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto">Next</button>
+								<s:submit label="Next" value="submit" ccsClass="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto"/>
+								<!-- <button id="regProfile_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto">Next</button> -->
 						 </s:form>
 					</div>
 				</div>
