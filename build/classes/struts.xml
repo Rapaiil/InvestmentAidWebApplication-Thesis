@@ -8,13 +8,13 @@
 	<constant name="struts.ui.templateDir" value="template"></constant>
 	
 	<package name="default" extends="struts-default">
-		<action name="generategenderlist" class="invaid.users.action.GendersAction">
-			<interceptor-ref name="execAndWait"></interceptor-ref>
-			<result name="success">registerProfile.jsp</result>
-		</action>
 		<action name="registerprofile" class="invaid.users.action.RegisterProfileAction">
 			<result name="success">registerAccount.jsp</result>
 			<result name="input">registerProfile.jsp</result>
+		</action>
+		<action name="registeraccount" class="invaid.users.action.RegisterAccountAction">
+			<result name="success">accountVerify.jsp</result>
+			<result name="input">registerAccount.jsp</result>
 		</action>
 	</package>
 </struts>
