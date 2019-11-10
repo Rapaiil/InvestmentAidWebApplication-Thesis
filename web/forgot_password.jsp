@@ -65,20 +65,20 @@
                     <div class="form-password-reset my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-3">forgot your password?</h4>
-                            <form action="#" method="post">
+                            <s:form action="forgotpassword.action" method="post">
                                 <p class="text-center pb-2">
                                     Please provide the email address that you used when you signed up for your account.
                                     We will send you an email that will allow you to reset your password.
                                 </p>
                                 <div class="form-group">
                                     <div class="w-75 mx-auto">
-                                        <s:textfield cssClass="form-control" name="forgot_password" placeholder="Email Address" required="true"/>
+                                        <s:textfield cssClass="form-control" name="user_email" placeholder="Email Address" required="true"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button id="otp_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-75 mx-auto">submit</button>
+                                    <s:submit id="otp_button" type="submit" value="Submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-75 mx-auto"/>
                                 </div>
-                            </form>
+                            </s:form>
                         </div>
                     </div>
                 </div>   
