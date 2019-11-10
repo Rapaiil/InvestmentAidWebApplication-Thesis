@@ -69,6 +69,6 @@ public class RenewPasswordAction extends ActionSupport {
 			
 		}
 		public 	boolean			checkToken() {
-			
+			return false;
 		}
 }
