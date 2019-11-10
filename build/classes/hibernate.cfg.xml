@@ -20,8 +20,9 @@
 			p@ssword
 		</property>
 		<property name="hbm2ddl.auto">
-			alter
+			create
 		</property>
-		<mapping class="users.model.UserBean" />
+		
+		<mapping class="invaid.users.model.UserBean" />
 	</session-factory>
 </hibernate-configuration>

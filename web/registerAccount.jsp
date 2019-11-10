@@ -92,6 +92,7 @@
 				</div>
 			</div>
 		</div>
+		<s:property value="temp_user" />
 		
 	
 	<!-- Optional JavaScript -->

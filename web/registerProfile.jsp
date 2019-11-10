@@ -88,11 +88,11 @@
 										<div class="custom-control custom-radio custom-control-inline">
 										  
 										  <%-- <s:radio ccsClass="custom-control-input" name="user_gender" list="genders" value="defaultValue"/> --%>
-										  <input type="radio" id="radioMale" name="customRadioInline1" class="custom-control-input" checked="checked">
+										  <input type="radio" id="radioMale" name="user_gender" class="custom-control-input" checked="checked">
 										  <label class="custom-control-label" for="radioMale" >Male</label>
 										</div>
 										<div class="custom-control custom-radio custom-control-inline">
-										  <input type="radio" id="radioFemale" name="customRadioInline1" class="custom-control-input">
+										  <input type="radio" id="radioFemale" name="user_gender" class="custom-control-input">
 										  <label class="custom-control-label" for="radioFemale">Female</label>
 										</div>
 									</div>

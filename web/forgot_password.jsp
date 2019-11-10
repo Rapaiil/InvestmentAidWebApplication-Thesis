@@ -65,7 +65,7 @@
                     <div class="form-password-reset my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-3">forgot your password?</h4>
-                            <s:form action="forgotpassword.action" method="post">
+                            <s:form action="forgotpassword" method="post">
                                 <p class="text-center pb-2">
                                     Please provide the email address that you used when you signed up for your account.
                                     We will send you an email that will allow you to reset your password.
