@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<s:action name="generategenderlist" executeResult="true"/>
+<%-- <s:action name="generategenderlist" executeResult="true"/> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,13 +84,13 @@
 										<label>Gender: <span class="required">*</span></label>
 										<div class="custom-control custom-radio custom-control-inline">
 										  
-										  <s:radio ccsClass="custom-control-input" name="user_gender" list="genders" value="defaultValue"/>
-										  <!-- <input type="radio" id="radioMale" name="customRadioInline1" class="custom-control-input">
-										  <label class="custom-control-label" for="radioMale">Male</label>
+										  <%-- <s:radio ccsClass="custom-control-input" name="user_gender" list="genders" value="defaultValue"/> --%>
+										  <input type="radio" id="radioMale" name="customRadioInline1" class="custom-control-input" checked="checked">
+										  <label class="custom-control-label" for="radioMale" >Male</label>
 										</div>
 										<div class="custom-control custom-radio custom-control-inline">
 										  <input type="radio" id="radioFemale" name="customRadioInline1" class="custom-control-input">
-										  <label class="custom-control-label" for="radioFemale">Female</label> -->
+										  <label class="custom-control-label" for="radioFemale">Female</label>
 										</div>
 									</div>
 									<div class="col-lg col-md-12 col-12">
@@ -136,7 +136,7 @@
 										<s:textfield name="user_company" cssClass="form-control" required="true"/>
 									</div>
 								</div>
-								<s:submit label="Next" value="submit" ccsClass="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto"/>
+								<s:submit value="Next" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto"/>
 								<!-- <button id="regProfile_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto">Next</button> -->
 						 </s:form>
 					</div>
