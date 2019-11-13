@@ -77,14 +77,18 @@ body, html {
     color: #FBF5F3;
 }
 
-/* .navbar-fixed-top.scrolled {
-    background-color: #2D3047 !important;
-    transition: background-color 200ms linear;
+.sticky.is-sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
-.navbar-fixed-top.scrolled .nav-link {
-    color: #FBF5F3;
-} */
+.navbar-fixed-top.scrolled {
+    background-color: #2D3047 !important;
+}
 
 .header .header-content {
     display: -webkit-box;
