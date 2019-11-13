@@ -16,13 +16,14 @@ public class UserBean {
 	@Column
 	private String user_lastname;
 	@Column
-	private String user_gender;
+	private boolean user_gender;
 	@Column
 	private String user_citizenship;
 	@Column
 	private String user_cellphonenumber;
 	@Column
 	private String user_telephonenumber;
+	//has-a relationship
 	@Column
 	private String user_primaryaddress;
 	@Column
@@ -41,7 +42,7 @@ public class UserBean {
 	public UserBean(String user_firstname,
 					String user_middlename,
 					String user_lastname,
-					String user_gender,
+					boolean user_gender,
 					String user_citizenship,
 					String user_cellphonenumber,
 					String user_telephonenumber,
@@ -93,11 +94,11 @@ public class UserBean {
 		this.user_lastname = user_lastname;
 	}
 
-	public String getUser_gender() {
+	public boolean getUser_gender() {
 		return user_gender;
 	}
 
-	public void setUser_gender(String user_gender) {
+	public void setUser_gender(boolean user_gender) {
 		this.user_gender = user_gender;
 	}
 

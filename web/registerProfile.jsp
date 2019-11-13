@@ -74,8 +74,8 @@
 									<s:textfield name="user_firstname" cssClass="form-control" required="true"/>
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
-									<label>Middle Name: <span class="required">*</span></label>
-									<s:textfield name="user_middlename" cssClass="form-control" required="true"/>
+									<label>Middle Name:</label>
+									<s:textfield name="user_middlename" cssClass="form-control"/>
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
 									<label>Last Name: <span class="required">*</span></label>

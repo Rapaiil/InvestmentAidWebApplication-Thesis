@@ -11,12 +11,11 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.model.UserBean;
 
-@SuppressWarnings("serial")
-public class RegisterProfileAction extends ActionSupport implements ModelDriven<UserBean> {
-	private UserBean temp_user;
+@SuppressWarnings({"serial", "rawtypes"})
+public class RegisterProfileAction extends ActionSupport implements ModelDriven {
+	private UserBean temp_user = new UserBean();
 	
-	private boolean addUser() {
-		temp_user = new UserBean();
+	private void addUser() {
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		
 		Session session = sf.openSession();
@@ -25,11 +24,10 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 		Transaction t = session.getTransaction();
 		try {
 			session.save(temp_user);
-			return true;
+			t.commit();
 		} catch(HibernateException he) {
 			t.rollback();
 		}
-		return false;
 	}
 
 	public UserBean getTemp_user() {
@@ -41,15 +39,13 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 	}
 
 	@Override
-	public UserBean getModel() {
+	public Object getModel() {
 		// TODO Auto-generated method stub
 		return temp_user;
 	}
 	
 	public String execute() {
-		if(addUser()) {
-			return SUCCESS;
-		}
-		return ERROR;
+		addUser();
+		return SUCCESS;
 	}
 }

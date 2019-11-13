@@ -11,8 +11,8 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.model.UserBean;
 
-@SuppressWarnings("serial")
-public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserBean>{
+@SuppressWarnings({"serial", "rawtypes"})
+public class RegisterAccountAction extends ActionSupport implements ModelDriven {
 	private UserBean temp_user;
 
 	private boolean addUser() {
@@ -42,7 +42,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 	}
 	
 	@Override
-	public UserBean getModel() {
+	public Object getModel() {
 		// TODO Auto-generated method stub
 		return temp_user;
 	}

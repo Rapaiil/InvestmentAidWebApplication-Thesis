@@ -20,7 +20,7 @@
 			p@ssword
 		</property>
 		<property name="hbm2ddl.auto">
-			create
+			update
 		</property>
 		
 		<mapping class="invaid.users.model.UserBean" />

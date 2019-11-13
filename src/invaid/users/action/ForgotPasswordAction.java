@@ -48,6 +48,7 @@ public class ForgotPasswordAction extends ActionSupport {
 	
 	
 	//Email Sending Related
+	//Use Properties (java.util)
 	public boolean sendMail() {
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
