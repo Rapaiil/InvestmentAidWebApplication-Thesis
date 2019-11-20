@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="registered_users")
-public class UserBean {
+public class UserProfileBean {
 	
 	@Id
 	@Column
@@ -37,9 +37,9 @@ public class UserBean {
 	@Column
 	private String user_password;
 	
-	public UserBean() {}
+	public UserProfileBean() {}
 	
-	public UserBean(String user_firstname,
+	public UserProfileBean(String user_firstname,
 					String user_middlename,
 					String user_lastname,
 					boolean user_gender,
@@ -65,7 +65,7 @@ public class UserBean {
 		this.user_company = user_company;
 	}
 	
-	public UserBean(String user_email, String user_password) {
+	public UserProfileBean(String user_email, String user_password) {
 		this.user_email = user_email;
 		this.user_password = user_password;
 	}

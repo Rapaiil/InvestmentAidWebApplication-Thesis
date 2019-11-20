@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import invaid.users.model.UserBean;
+import invaid.users.model.UserProfileBean;
 
 @SuppressWarnings("serial")
 public class RenewPasswordAction extends ActionSupport {
@@ -30,7 +30,7 @@ public class RenewPasswordAction extends ActionSupport {
 		
 	}
 	//Database Related
-		private List<UserBean> 	getDataFromDatabase() {
+		private List<UserProfileBean> 	getDataFromDatabase() {
 			//**********DONT REMOVE COMMENTS PLEASE THANKS**********//
 			
 			//Retrieve Data in Database to check if input user_email matches a existing account
@@ -50,7 +50,7 @@ public class RenewPasswordAction extends ActionSupport {
 			String queryString = "from tablename";
 			
 			Configuration config = new Configuration();
-			config.addAnnotatedClass(UserBean.class);
+			config.addAnnotatedClass(UserProfileBean.class);
 			
 			SessionFactory 	sessionFactory 	= config.configure().buildSessionFactory();
 			Session 		session 		= sessionFactory.openSession();
@@ -58,14 +58,14 @@ public class RenewPasswordAction extends ActionSupport {
 			session.beginTransaction();
 			
 			Query 	queryResult = session.createQuery(queryString);
-			List<UserBean>	listResult	= (List<UserBean>) queryResult.list();	
+			List<UserProfileBean>	listResult	= (List<UserProfileBean>) queryResult.list();	
 			
 			session.close();
 			return listResult;
 		}
 		public 	void			changePassword() {
-			List<UserBean> 	listResult	= getDataFromDatabase();
-			UserBean 		user		= new UserBean();
+			List<UserProfileBean> 	listResult	= getDataFromDatabase();
+			UserProfileBean 		user		= new UserProfileBean();
 			
 		}
 		public 	boolean			checkToken() {

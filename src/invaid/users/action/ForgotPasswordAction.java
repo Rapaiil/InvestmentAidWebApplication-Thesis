@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMessage;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import invaid.users.model.UserBean;
+import invaid.users.model.UserProfileBean;
 
 @SuppressWarnings("serial")
 public class ForgotPasswordAction extends ActionSupport {
@@ -89,7 +89,7 @@ public class ForgotPasswordAction extends ActionSupport {
 	
 	
 	//Database Related
-	private List<UserBean> 	getDataFromDatabase() {
+	private List<UserProfileBean> 	getDataFromDatabase() {
 		//**********DONT REMOVE COMMENTS PLEASE THANKS**********//
 		
 		//Retrieve Data in Database to check if input user_email matches a existing account
@@ -109,7 +109,7 @@ public class ForgotPasswordAction extends ActionSupport {
 		String queryString = "from tablename";
 		
 		Configuration config = new Configuration();
-		config.addAnnotatedClass(UserBean.class);
+		config.addAnnotatedClass(UserProfileBean.class);
 		
 		SessionFactory 	sessionFactory 	= config.configure().buildSessionFactory();
 		Session 		session 		= sessionFactory.openSession();
@@ -117,18 +117,18 @@ public class ForgotPasswordAction extends ActionSupport {
 		session.beginTransaction();
 		
 		Query 	queryResult = session.createQuery(queryString);
-		List<UserBean>	listResult	= (List<UserBean>) queryResult.list();	
+		List<UserProfileBean>	listResult	= (List<UserProfileBean>) queryResult.list();	
 		
 		session.close();
 		return listResult;
 	}
 	public 	boolean			checkDataFromDatabase() {
 		boolean 		userExist 	= false;
-		List<UserBean> 	listResult	= getDataFromDatabase();
-		UserBean 		user		= new UserBean();
+		List<UserProfileBean> 	listResult	= getDataFromDatabase();
+		UserProfileBean 		user		= new UserProfileBean();
 		
 		for(int i = 0; i < listResult.size(); i++) {
-			user = (UserBean) listResult.get(i);
+			user = (UserProfileBean) listResult.get(i);
 			if(user.getUser_email().equalsIgnoreCase(this.user_email)) {
 				userExist = true;
 			}

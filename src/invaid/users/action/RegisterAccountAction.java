@@ -9,14 +9,14 @@ import org.hibernate.cfg.Configuration;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import invaid.users.model.UserBean;
+import invaid.users.model.UserProfileBean;
 
 @SuppressWarnings({"serial", "rawtypes"})
 public class RegisterAccountAction extends ActionSupport implements ModelDriven {
-	private UserBean temp_user;
+	private UserProfileBean temp_user;
 
 	private boolean addUser() {
-		temp_user = new UserBean();
+		temp_user = new UserProfileBean();
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		
 		Session session = sf.openSession();
@@ -33,11 +33,11 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven 
 		return false;
 	}
 	
-	public UserBean getTemp_user() {
+	public UserProfileBean getTemp_user() {
 		return temp_user;
 	}
 	
-	public void setTemp_user(UserBean temp_user) {
+	public void setTemp_user(UserProfileBean temp_user) {
 		this.temp_user = temp_user;
 	}
 	
