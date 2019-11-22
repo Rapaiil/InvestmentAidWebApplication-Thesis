@@ -24,7 +24,7 @@
       <!-- Navbar -->
       <section class="header">
       <!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
-        <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fixed-top" data-toggle="sticky-onscroll" data-menu-underline-from-center>
+        <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -36,10 +36,13 @@
                         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#aboutSection">About</a>
+                        <a class="nav-link" href="index.jsp#aboutSection">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Investment Guide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
@@ -77,6 +80,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Investment Guide</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
