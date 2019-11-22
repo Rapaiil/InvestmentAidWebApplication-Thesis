@@ -18,27 +18,7 @@ import invaid.users.model.UserProfileBean;
 public class RegisterProfileAction extends ActionSupport implements ModelDriven, SessionAware {
 	private UserProfileBean temp_user = new UserProfileBean();
 	private Map<String, Object> sessionMap;
-	
-	private void addUser() {
-		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-		
-		Session session = sf.openSession();
-		session.beginTransaction();
-		
-		Transaction t = session.getTransaction();
-		try {
-			session.save(temp_user);
-			t.commit();
-		} catch(HibernateException he) {
-			t.rollback();
-		}
-	}
 
-	/*
-	 * public UserBean getTemp_user() { return temp_user; }
-	 * 
-	 * public void setTemp_user(UserBean temp_user) { this.temp_user = temp_user; }
-	 */
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub
@@ -46,6 +26,7 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 	}
 	
 	public String addProfile() {
+		//validation here
 		sessionMap.put("sessionUser", temp_user);
 		return SUCCESS;
 	}

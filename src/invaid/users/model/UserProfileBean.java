@@ -7,68 +7,29 @@ import javax.persistence.*;
 public class UserProfileBean {
 	
 	@Id
-	@Column
-	private String user_email;
-	@Column
+	@Column(nullable=false)
+	private String user_profileId;
+	@Column(nullable=false)
 	private String user_firstname;
 	@Column
 	private String user_middlename;
-	@Column
+	@Column(nullable=false)
 	private String user_lastname;
-	@Column
+	@Column(nullable=false)
 	private boolean user_gender;
-	@Column
+	@Column(nullable=false)
 	private String user_citizenship;
-	@Column
+	@Column(nullable=false)
 	private String user_cellphonenumber;
-	@Column
+	@Column(nullable=false)
 	private String user_telephonenumber;
 	//has-a relationship
-	@Column
-	private String user_primaryaddress;
-	@Column
-	private String user_permanentaddress;
-	@Column
-	private int user_postalcode;
-	@Column
+	@Column(nullable=false)
+	private AddressBean user_address;
+	@Column(nullable=false)
 	private String user_occupation;
-	@Column
+	@Column(nullable=false)
 	private String user_company;
-	@Column
-	private String user_password;
-	
-	public UserProfileBean() {}
-	
-	public UserProfileBean(String user_firstname,
-					String user_middlename,
-					String user_lastname,
-					boolean user_gender,
-					String user_citizenship,
-					String user_cellphonenumber,
-					String user_telephonenumber,
-					String user_primaryaddress,
-					String user_permanentaddress,
-					int user_postalcode,
-					String user_occupation,
-					String user_company) {
-		this.user_firstname = user_firstname;
-		this.user_middlename = user_middlename;
-		this.user_lastname = user_lastname;
-		this.user_gender = user_gender;
-		this.user_citizenship = user_citizenship;
-		this.user_cellphonenumber = user_cellphonenumber;
-		this.user_telephonenumber = user_telephonenumber;
-		this.user_primaryaddress = user_primaryaddress;
-		this.user_permanentaddress = user_permanentaddress;
-		this.user_postalcode = user_postalcode;
-		this.user_occupation = user_occupation;
-		this.user_company = user_company;
-	}
-	
-	public UserProfileBean(String user_email, String user_password) {
-		this.user_email = user_email;
-		this.user_password = user_password;
-	}
 
 	public String getUser_firstname() {
 		return user_firstname;
@@ -125,29 +86,13 @@ public class UserProfileBean {
 	public void setUser_telephonenumber(String user_telephonenumber) {
 		this.user_telephonenumber = user_telephonenumber;
 	}
-
-	public String getUser_primaryaddress() {
-		return user_primaryaddress;
+	
+	public AddressBean getUser_address() {
+		return user_address;
 	}
 
-	public void setUser_primaryaddress(String user_primaryaddress) {
-		this.user_primaryaddress = user_primaryaddress;
-	}
-
-	public String getUser_permanentaddress() {
-		return user_permanentaddress;
-	}
-
-	public void setUser_permanentaddress(String user_permanentaddress) {
-		this.user_permanentaddress = user_permanentaddress;
-	}
-
-	public int getUser_postalcode() {
-		return user_postalcode;
-	}
-
-	public void setUser_postalcode(int user_postalcode) {
-		this.user_postalcode = user_postalcode;
+	public void setUser_address(AddressBean user_address) {
+		this.user_address = user_address;
 	}
 
 	public String getUser_occupation() {
@@ -166,21 +111,14 @@ public class UserProfileBean {
 		this.user_company = user_company;
 	}
 
-	public String getUser_email() {
-		return user_email;
+	public String getUser_profileId() {
+		return user_profileId;
 	}
 
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUser_profileId(String user_profileId) {
+		this.user_profileId = user_profileId;
 	}
-
-	public String getUser_password() {
-		return user_password;
-	}
-
-	public void setUser_password(String user_password) {
-		this.user_password = user_password;
-	}
+	
 	
 	
 }
