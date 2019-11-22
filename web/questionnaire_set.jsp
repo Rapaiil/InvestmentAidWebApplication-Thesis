@@ -113,16 +113,27 @@
 		<!-- QUESTIONNAIRE -->
         <div class="h-75 d-flex justify-content-center">
             <div class="card my-auto">
-                <div class="questionnaire-set my-auto">
+            	<div class="card-title">
+            		<h4 class="text-center mt-4" style="color: #19a375;">Risk Profile Questionnaire</h4>
+            	</div>
+                <div class="questionnaire-set">
                     <div class="card-body quiz-container">
-                    	<div id="result"></div>
-					  	<div id="quiz"></div>
-					</div>
-					<div class="text-center">
-						<button class="quiz-button" id="previous">Previous</button>
-						<button class="quiz-button" id="next">Next</button>
-						<button class="quiz-button" id="submit">Submit</button>
-					</div>
+                    	<s:form>
+                    		<label>1. </label>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+							</div>
+							
+							<div class="text-center mt-5">
+                    			<s:submit label="Submit" value="submit" class="btn btn-primary shadow-none text-uppercase"/>
+                    		</div>
+                    	</s:form>
+                    </div>	
                 </div>
             </div>   
         </div>

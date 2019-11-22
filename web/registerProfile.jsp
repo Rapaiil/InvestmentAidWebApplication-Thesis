@@ -303,7 +303,7 @@
 									</div>
 									<div class="col-md-5">
 										<s:textfield name="user_addressLine1" cssClass="form-control" required="true"/>
-										<small class="form-text">Street</small>
+										<small class="form-text">Street<span class="required">*</span></small>
 									</div>
 								</div>
 								<div class="form-row mb-3">
@@ -319,7 +319,7 @@
 									</div>
 									<div class="col-md-5">
 										<s:textfield name="user_city" cssClass="form-control" required="True"/>
-										<small class="form-text">City</small>
+										<small class="form-text">City<span class="required">*</span></small>
 									</div>
 								</div>
 								<div class="form-row mb-3">
@@ -327,7 +327,7 @@
 									</div>
 									<div class="col-md-5">
 										<s:textfield name="user_state" cssClass="form-control" required="True"/>
-										<small class="form-text">State/Province/Region</small>
+										<small class="form-text">State/Province/Region<span class="required">*</span></small>
 									</div>
 								</div>
 								<div class="form-row mb-3">
@@ -335,7 +335,7 @@
 									</div>
 									<div class="col-md-5">
 										<s:textfield name="user_zipcode" cssClass="form-control" required="True"/>
-										<small class="form-text">Zip/Postal Code</small>
+										<small class="form-text">Zip/Postal Code<span class="required">*</span></small>
 									</div>
 								</div>
 								
