@@ -3,7 +3,7 @@ package invaid.users.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="registered_users")
+@Table(name="registered_userprofiles")
 public class UserProfileBean {
 	
 	@Id

@@ -22,7 +22,7 @@
 		<property name="hbm2ddl.auto">
 			update
 		</property>
-		
-		<mapping class="invaid.users.model.UserBean" />
+		<mapping class="invaid.users.model.UserAccountBean" />
+		<mapping class="invaid.users.model.UserProfileBean" />
 	</session-factory>
 </hibernate-configuration>

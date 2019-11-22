@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="registered_accounts")
+@Table(name="registered_useraccounts")
 public class UserAccountBean {
 	@Id
 	@Column
