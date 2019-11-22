@@ -43,6 +43,9 @@
                         <a class="nav-link" href="#">Investment Guide</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
                     </li>
                     <li class="nav-item">
@@ -59,7 +62,6 @@
                 </ul>
             </div>
         </nav>
-        
         <!-- Register Form - Profile -->
 		<div class="h-75 d-flex justify-content-center">
 			<div class="card pr-5 pl-5 my-auto mx-auto">
