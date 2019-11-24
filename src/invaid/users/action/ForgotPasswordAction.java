@@ -1,52 +1,32 @@
 package invaid.users.action;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
+<<<<<<< Updated upstream
 import invaid.users.model.UserBean;
 
+=======
+import invaid.users.model.UserAccountBean;
+import invaid.users.action.MailAction;
+>>>>>>> Stashed changes
 @SuppressWarnings("serial")
-public class ForgotPasswordAction extends ActionSupport {
-	//Not sure but if ever, will be needed to change the name in the forgot_password.jsp
-	//To match this variable and the variable in UserBean
-	private String token;
-	private String user_email;
-	private String mailTo = user_email;
-	private String mailFrom = "raphaelfeliciano7@gmail.com";
-	private String password = "KuyaRFF7!";
-
-	public String execute() {
-		if(checkDataFromDatabase()) {
-			//Call send email function
-			if(sendMail()) {
-				return "success";
-			}
-			else {
-				return "emailerror";
-			}
-			
-		}
-		else {
-			return "inputerror";	
-		}
-	}
+public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
+	//Variables
+	private UserAccountBean user = new UserAccountBean();
+	private MailAction mail;
+	static 	Session 		session;
+	static 	SessionFactory 	sessionFactory = new Configuration().configure().buildSessionFactory();
 	
 	
+<<<<<<< Updated upstream
 	//Email Sending Related
 	public boolean sendMail() {
 		Properties properties = new Properties();
@@ -130,10 +110,73 @@ public class ForgotPasswordAction extends ActionSupport {
 			user = (UserBean) listResult.get(i);
 			if(user.getUser_email().equalsIgnoreCase(this.user_email)) {
 				userExist = true;
+=======
+	//Execute
+	public String execute() {
+		boolean accountExist = checkRecords();
+		if(accountExist) {
+			mail.sendPasswordResetEmail(user);
+			return SUCCESS;
+		}
+		return ERROR;
+	}
+	
+	//Functions
+	public boolean checkRecords() {
+		boolean recordsExist = false;
+		
+		List recordsList = getRecords();
+		
+		if(recordsList != null) {
+			UserAccountBean temp;
+			for(int i = 0; i < recordsList.size(); i++) {
+				temp = (UserAccountBean) recordsList.get(i);
+				if(user.getUser_email().equalsIgnoreCase(temp.getUser_email())) {
+					System.out.println("Valid Email");
+					user = temp;
+					recordsExist = true;
+				}
 			}
 		}
+		return recordsExist;
+	}
+	private List getRecords() {
+		List recordsList = new ArrayList();
 		
-		return userExist;
+		try {
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			
+			recordsList = session.createQuery("FROM UserAccountBean").list();
+		}
+		catch(Exception sqle) {
+			if(null != session.getTransaction()) {
+				session.getTransaction().rollback();
+>>>>>>> Stashed changes
+			}
+			sqle.printStackTrace();
+		}
+		finally{
+			if(session != null) {
+				session.close();
+			}
+		}
+		return recordsList;
 	}
 
+
+	//Getters and Setters
+	public UserAccountBean getUser() {
+		return user;
+	}
+
+	public void setUser(UserAccountBean user) {
+		this.user = user;
+	}
+	
+	//Implemented Functions
+	@Override
+	public Object getModel() {
+		return user;
+	}
 }
