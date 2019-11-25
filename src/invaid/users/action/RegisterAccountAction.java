@@ -1,57 +1,50 @@
 package invaid.users.action;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.model.UserAccountBean;
 import invaid.users.model.UserProfileBean;
+import invaid.users.util.HibernateUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class RegisterAccountAction extends ActionSupport implements ModelDriven {
-	private UserProfileBean temp_user;
+public class RegisterAccountAction extends ActionSupport implements ModelDriven, SessionAware {
+	private UserAccountBean userAccount = new UserAccountBean();
+	private UserProfileBean userProfile;
+	private Map<String, Object> sessionMap;
 
-	private boolean addUser() {
-		temp_user = new UserProfileBean();
-		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+	public String execute() {
+		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
+		userAccount.setUserProfile(userProfile);
 		
-		Session session = sf.openSession();
-		session.beginTransaction();
+		Session session = HibernateUtil.getSession();
+		Transaction t = session.beginTransaction();
 		
-		Transaction t = session.getTransaction();
 		try {
-			session.save(temp_user);
+			session.save(userAccount);
 			t.commit();
-			return true;
+			return SUCCESS;
 		} catch(HibernateException he) {
 			t.rollback();
-		}
-		return false;
-	}
-	
-	public UserProfileBean getTemp_user() {
-		return temp_user;
-	}
-	
-	public void setTemp_user(UserProfileBean temp_user) {
-		this.temp_user = temp_user;
+			return ERROR;
+		}		
 	}
 	
 	@Override
 	public Object getModel() {
-		// TODO Auto-generated method stub
-		return temp_user;
+		return userAccount;
 	}
 	
-	public String execute() {
-		if(addUser()) {
-			return SUCCESS;
-		}
-		return ERROR;
+	@Override
+	public void setSession(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
 	}
 
 }

@@ -22,6 +22,9 @@
 		<property name="hbm2ddl.auto">
 			update
 		</property>
+		<property name="show_sql">
+			true
+		</property>
 		<mapping class="invaid.users.model.UserAccountBean" />
 		<mapping class="invaid.users.model.UserProfileBean" />
 	</session-factory>

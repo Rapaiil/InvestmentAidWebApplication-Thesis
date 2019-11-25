@@ -1,40 +1,63 @@
 package invaid.users.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class AddressBean {
-	private String street;
-	private String house_number;
-	private String city;
-	private String state;
-	private int postalcode;
-	public String getStreet() {
-		return street;
+	private String user_street;
+	private String user_apt;
+	private String user_city;
+	private String user_state;
+	private int user_zip;
+	
+	public AddressBean() {}
+	
+	public AddressBean(String user_street, String user_apt, String user_city, String user_state, int user_zip) {
+		this.user_street = user_street;
+		this.user_apt = user_apt;
+		this.user_city = user_city;
+		this.user_state = user_state;
+		this.user_zip = user_zip;
 	}
-	public void setStreet(String street) {
-		this.street = street;
+	
+	public String getUser_street() {
+		return user_street;
 	}
-	public String getHouse_number() {
-		return house_number;
+	
+	public void setUser_street(String user_street) {
+		this.user_street = user_street;
 	}
-	public void setHouse_number(String house_number) {
-		this.house_number = house_number;
+	
+	public String getUser_apt() {
+		return user_apt;
 	}
-	public String getCity() {
-		return city;
+	
+	public void setUser_apt(String user_apt) {
+		this.user_apt = user_apt;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	
+	public String getUser_city() {
+		return user_city;
 	}
-	public String getState() {
-		return state;
+	
+	public void setUser_city(String user_city) {
+		this.user_city = user_city;
 	}
-	public void setState(String state) {
-		this.state = state;
+	
+	public String getUser_state() {
+		return user_state;
 	}
-	public int getPostalcode() {
-		return postalcode;
+	
+	public void setUser_state(String user_state) {
+		this.user_state = user_state;
 	}
-	public void setPostalcode(int postalcode) {
-		this.postalcode = postalcode;
+	
+	public int getUser_zip() {
+		return user_zip;
 	}
+	
+	public void setUser_zip(int user_zip) {
+		this.user_zip = user_zip;
+	}	
 	
 }

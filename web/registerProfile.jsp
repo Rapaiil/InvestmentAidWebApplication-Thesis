@@ -89,17 +89,17 @@
 										<label>Gender: <span class="required">*</span></label>
 									  	<br/>
 										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="radioMale" name="customRadioInline1" class="custom-control-input">
+											<input type="radio" id="radioMale" name="user_gender" value="male" class="custom-control-input">
 										  	<label class="custom-control-label" for="radioMale">Male</label>
 										</div>
 										<div class="custom-control custom-radio custom-control-inline">
-										  <input type="radio" id="radioFemale" name="customRadioInline1" class="custom-control-input">
+										  <input type="radio" id="radioFemale" name="user_gender" value="female" class="custom-control-input">
 										  <label class="custom-control-label" for="radioFemale">Female</label>
 										</div>
 									</div>
 									<div class="col-lg col-md-12 col-12">
 										<label>Citizenship: </label>
-										<select class="form-control text-uppercase" name="nationality">
+										<select class="form-control text-uppercase" name="user_nationality">
 										  <option value="">-- select one --</option>
 										  <option value="afghan">Afghan</option>
 										  <option value="albanian">Albanian</option>
@@ -301,15 +301,16 @@
 										<label>Address:</label>
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_addressLine1" cssClass="form-control" required="true"/>
+										<s:textfield name="user_street" cssClass="form-control" required="true"/>
 										<small class="form-text">Street<span class="required">*</span></small>
+
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_addressLine2" cssClass="form-control"/>
+										<s:textfield name="user_apt" cssClass="form-control"/>
 										<small class="form-text">Apt/Suite/Other</small>
 									</div>
 								</div>
@@ -333,8 +334,9 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_zipcode" cssClass="form-control" required="True"/>
+										<s:textfield name="user_zip" cssClass="form-control" required="True"/>
 										<small class="form-text">Zip/Postal Code<span class="required">*</span></small>
+
 									</div>
 								</div>
 								
@@ -359,7 +361,6 @@
 									</div>
 								</div>
 								<s:submit value="Next" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto"/>
-								<!-- <button id="regProfile_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto">Next</button> -->
 						 </s:form>
 					</div>
 				</div>

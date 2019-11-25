@@ -15,22 +15,25 @@ public class UserProfileBean {
 	private String user_middlename;
 	@Column(nullable=false)
 	private String user_lastname;
-	@Column(nullable=false)
+	@Column(nullable=false, columnDefinition="TINYINT(1)")
 	private boolean user_gender;
 	@Column(nullable=false)
-	private String user_citizenship;
+	private String user_nationality;
 	@Column(nullable=false)
 	private String user_cellphonenumber;
 	@Column(nullable=false)
 	private String user_telephonenumber;
-	//has-a relationship
-	@Column(nullable=false)
-	private AddressBean user_address;
 	@Column(nullable=false)
 	private String user_occupation;
 	@Column(nullable=false)
 	private String user_company;
 
+	@Embedded
+	@AttributeOverrides(value = {
+			@AttributeOverride(name="user_zip", column=@Column(columnDefinition="INT(4) ZEROFILL"))
+	})
+	private AddressBean user_address;
+	
 	public String getUser_firstname() {
 		return user_firstname;
 	}
@@ -59,16 +62,18 @@ public class UserProfileBean {
 		return user_gender;
 	}
 
-	public void setUser_gender(boolean user_gender) {
-		this.user_gender = user_gender;
+	public void setUser_gender(String user_gender) {
+		if(user_gender.equals("male"))
+			this.user_gender = true;
+		this.user_gender = false;
 	}
 
-	public String getUser_citizenship() {
-		return user_citizenship;
+	public String getUser_nationality() {
+		return user_nationality;
 	}
 
-	public void setUser_citizenship(String user_citizenship) {
-		this.user_citizenship = user_citizenship;
+	public void setUser_nationality(String user_citizenship) {
+		this.user_nationality = user_citizenship;
 	}
 
 	public String getUser_cellphonenumber() {

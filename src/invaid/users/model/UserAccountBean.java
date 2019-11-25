@@ -23,6 +23,8 @@ public class UserAccountBean {
 	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="profile_id", nullable=false)
 	private UserProfileBean userProfile;
+	@Column
+	private String reset_token;
 
 	public String getUser_email() {
 		return user_email;
@@ -54,6 +56,14 @@ public class UserAccountBean {
 
 	public void setUserProfile(UserProfileBean userProfile) {
 		this.userProfile = userProfile;
+	}
+
+	public String getReset_token() {
+		return reset_token;
+	}
+
+	public void setReset_token(String reset_token) {
+		this.reset_token = reset_token;
 	}
 	
 }
