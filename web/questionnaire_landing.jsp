@@ -114,18 +114,7 @@
                 <div class="questionnaire my-auto">
                     <div class="card-body mx-auto">
                         <h4 class="card-title text-uppercase pb-3">Risk Profile Questionnaire</h4>
-                        <p class="text-center pb-2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Mauris egestas mi sit amet malesuada interdum. 
-                            Ut in nisl maximus, facilisis neque id, mollis purus. 
-                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc a tincidunt ante. 
-                            Duis imperdiet sapien quis urna tristique, a bibendum dui sollicitudin. 
-                            Nulla sed velit erat. Nullam vitae semper lacus, varius iaculis quam. 
-                            Duis posuere nibh sit amet lorem vestibulum tempus. 
-                            Proin a tellus pellentesque, interdum tortor id, cursus nisl. 
-                            Aliquam magna nunc, aliquam a augue euismod, dapibus consectetur nunc. 
-                            Sed eros elit, euismod et libero a, congue pellentesque mi. Sed efficitur dictum lacus, sed elementum tellus aliquet in.
-                        </p>
+                        <p>This questionnaire is based on the <b>Grable-Lytton Scale</b> to help in evaluating the person's willingness to take financial risks.</p>
                         <div class="text-center">
                         	<button id="questionnaire_button" class="btn btn-primary shadow-none text-uppercase">Take Questionnaire</button>
                         </div>

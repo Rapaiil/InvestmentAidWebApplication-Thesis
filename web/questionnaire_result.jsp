@@ -12,18 +12,17 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="css/monitoring.css" type="text/css">
+	<link rel="stylesheet" href="css/questionnaire_result.css" type="text/css">
 	<title>InvAid - Risk Profile Questionnaire</title> 
 	
 	 <!-- Font Awesome CSS-->
-   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
 </head>
 <body>
 	<!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
-        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -61,6 +60,7 @@
                 </ul>
             </div>
         </nav>
+        
         <!-- LOGGED IN/REGISTERED USER NAVBAR -->
         <!-- 
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
@@ -79,6 +79,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Investment Guide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
@@ -106,97 +109,20 @@
         </nav>
 		 -->
 	
-		<!-- MONITORING CONTENT-->
-        <div class="container-fluid p-5">
-        	<div class="row">
-        		<!-- MONITORING TABLE -->
-        		<div class="col-md-8 table-responsive-lg mt-5 justify-content-center">
-        			<!-- TAB -->
-        			<ul class="nav nav-pills pills-dark nav-justified" id="pills-tab" role="tablist">
-					  <li class="nav-item">
-						 <a class="nav-link active" id="pills-mf-tab" data-toggle="pill" href="#pills-mf" role="tab" aria-controls="pills-mf" aria-selected="true">Mutual Funds</a>
-					  </li>
-					  <li class="nav-item  disabled">
-						 <a class="nav-link" id="pills-uitf-tab" data-toggle="pill" href="#pills-uitf" role="tab" aria-controls="pills-uitf" aria-selected="false">Unit Investment Trust Funds</a>
-					  </li>
-					  
-					</ul>
-					
-					<!-- MONITORING -->
-					<div class="tab-content" id="pills-tabContent">
-					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
-							<table class="table">
-							  <thead>
-							    <tr>
-							      <th scope="col">Name</th>
-							      <th scope="col">Type</th>
-							      <th scope="col">Affiliation</th>
-							      <th scope="col"></th>
-							    </tr>
-							  </thead>
-							  <tbody>
-							    <tr>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>@mdo</td>
-							      <td><a href="#">See details >></a></td>
-							    </tr>
-							    <tr>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>@mdo</td>
-							      <td><a href="#">See details >></a></td>
-							    </tr>
-							    <tr>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>@mdo</td>
-							      <td><a href="#">See details >></a></td>
-							    </tr>
-							  </tbody>
-							</table>
-						
-						</div>
-					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<table class="table">
-								  <thead>
-								    <tr>
-								      <th scope="col">Name</th>
-								      <th scope="col">Type</th>
-								      <th scope="col">Affiliation</th>
-								      <th scope="col"></th>
-								    </tr>
-								  </thead>
-								  <tbody>
-								    <tr>
-								      <td>Mark</td>
-								      <td>Otto</td>
-								      <td>@mdo</td>
-								      <td><a href="#">See details >></a></td>
-								    </tr>
-								    <tr>
-								      <td>Mark</td>
-								      <td>Otto</td>
-								      <td>@mdo</td>
-								      <td><a href="#">See details >></a></td>
-								    </tr>
-								    <tr>
-								      <td>Mark</td>
-								      <td>Otto</td>
-								      <td>@mdo</td>
-								      <td><a href="#">See details >></a></td>
-								    </tr>
-								  </tbody>
-								</table>
-						</div>
-					  </div>
-        		</div>
-        		<!-- CURRENCY CONVERTER -->
-        		<div class="col-md-4 mt-5">
-        			<h3 class="text-muted text-center mb-3">Currency Converter</h3>
-        		</div>
-        	</div>
-       	</div>
+        <div class="h-75 d-flex justify-content-center">
+            <div class="card my-auto">
+                <div class="questionnaire my-auto">
+                    <div class="card-body mx-auto">
+                        <h4 class="card-title text-uppercase pb-3">Risk Profile Questionnaire</h4>
+                        <h5>You are a/an <b>[Risk Appetite]</b> Investor</h5>
+                        <br/>
+                        <p><b>Investment Objective:</b></p>
+                        <p><b>Investment Horizon:</b></p>
+                        <p><b>Characteristics:</b></p>
+                    </div>
+                </div>
+            </div>   
+        </div>
     
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
