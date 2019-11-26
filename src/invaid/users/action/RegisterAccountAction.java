@@ -22,12 +22,12 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 
 	public String execute() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
-		userAccount.setUserProfile(userProfile);
 		
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
 		
 		try {
+			userAccount.setUserProfile(userProfile);
 			session.save(userAccount);
 			t.commit();
 			return SUCCESS;

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -14,14 +15,16 @@ import javax.persistence.Transient;
 @Table(name="registered_useraccounts")
 public class UserAccountBean {
 	@Id
-	@Column
+	private String user_accountId;
+	@Column(nullable=false)
 	private String user_email;
 	@Column(nullable=false)
 	private String user_password;
 	@Transient
 	private String user_confirmpassword;
 	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="profile_id", nullable=false)
+	@JoinColumn(name="userId", nullable=false)
+	@MapsId
 	private UserProfileBean userProfile;
 	@Column
 	private String reset_token;
@@ -64,6 +67,14 @@ public class UserAccountBean {
 
 	public void setReset_token(String reset_token) {
 		this.reset_token = reset_token;
+	}
+
+	public String getUser_accountId() {
+		return user_accountId;
+	}
+
+	public void setUser_accountId(String user_accountId) {
+		this.user_accountId = user_accountId;
 	}
 	
 }

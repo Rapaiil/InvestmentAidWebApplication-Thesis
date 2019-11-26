@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.model.AddressBean;
 import invaid.users.model.UserProfileBean;
+import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
 public class RegisterProfileAction extends ActionSupport implements ModelDriven, SessionAware {
@@ -26,6 +27,7 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 	
 	public String execute() {
 		userAddress = new AddressBean(user_street, user_apt, user_city, user_state, user_zip);
+		userProfile.setUser_profileId(new TokenUtil().getIdentifier());
 		userProfile.setUser_address(userAddress);
 		userProfile.genderConvert();
 		

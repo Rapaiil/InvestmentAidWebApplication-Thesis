@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class UserProfileBean {
 	
 	@Id
-	@Column(nullable=false)
+	@Column(name="userId",nullable=false)
 	private String user_profileId;
 	@Column(nullable=false)
 	private String user_firstname;
