@@ -15,6 +15,8 @@ public class UserProfileBean {
 	private String user_middlename;
 	@Column(nullable=false)
 	private String user_lastname;
+	@Transient
+	private String gender;
 	@Column(nullable=false, columnDefinition="TINYINT(1)")
 	private boolean user_gender;
 	@Column(nullable=false)
@@ -56,16 +58,6 @@ public class UserProfileBean {
 
 	public void setUser_lastname(String user_lastname) {
 		this.user_lastname = user_lastname;
-	}
-
-	public boolean getUser_gender() {
-		return user_gender;
-	}
-
-	public void setUser_gender(String user_gender) {
-		if(user_gender.equals("male"))
-			this.user_gender = true;
-		this.user_gender = false;
 	}
 
 	public String getUser_nationality() {
@@ -123,7 +115,28 @@ public class UserProfileBean {
 	public void setUser_profileId(String user_profileId) {
 		this.user_profileId = user_profileId;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setUser_gender(boolean user_gender) {
+		this.user_gender = user_gender;
+	}
+
+	public boolean isUser_gender() {
+		return user_gender;
+	}
 	
-	
+	public void genderConvert() {
+		if(getGender().equals("male"))
+			setUser_gender(true);
+		else
+			setUser_gender(false);
+	}
 	
 }

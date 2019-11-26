@@ -89,11 +89,11 @@
 										<label>Gender: <span class="required">*</span></label>
 									  	<br/>
 										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="radioMale" name="user_gender" value="male" class="custom-control-input">
+											<input type="radio" id="radioMale" name="gender" value="male" class="custom-control-input">
 										  	<label class="custom-control-label" for="radioMale">Male</label>
 										</div>
 										<div class="custom-control custom-radio custom-control-inline">
-										  <input type="radio" id="radioFemale" name="user_gender" value="female" class="custom-control-input">
+										  <input type="radio" id="radioFemale" name="gender" value="female" class="custom-control-input">
 										  <label class="custom-control-label" for="radioFemale">Female</label>
 										</div>
 									</div>

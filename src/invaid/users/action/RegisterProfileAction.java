@@ -27,11 +27,12 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 	public String execute() {
 		userAddress = new AddressBean(user_street, user_apt, user_city, user_state, user_zip);
 		userProfile.setUser_address(userAddress);
+		userProfile.genderConvert();
 		
 		System.out.println(userProfile.getUser_firstname());
 		System.out.println(userProfile.getUser_middlename());
 		System.out.println(userProfile.getUser_lastname());
-		System.out.println(userProfile.getUser_gender());
+		System.out.println(userProfile.isUser_gender());
 		System.out.println(userProfile.getUser_nationality());
 		System.out.println(userProfile.getUser_address().getUser_street());
 		System.out.println(userProfile.getUser_address().getUser_apt());
