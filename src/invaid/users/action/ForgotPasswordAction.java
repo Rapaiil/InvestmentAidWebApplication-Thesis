@@ -4,20 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+<<<<<<< Updated upstream
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+=======
+>>>>>>> Stashed changes
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import invaid.users.model.UserBean;
+=======
+import invaid.users.model.UserAccountBean;
+import invaid.users.util.HibernateUtil;
+import invaid.users.util.MailUtil;
+>>>>>>> Stashed changes
 
 =======
 import invaid.users.model.UserAccountBean;
 import invaid.users.action.MailAction;
 >>>>>>> Stashed changes
 @SuppressWarnings("serial")
+<<<<<<< Updated upstream
 public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 	//Variables
 	private UserAccountBean user = new UserAccountBean();
@@ -97,10 +107,44 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 		
 		Query 	queryResult = session.createQuery(queryString);
 		List<UserBean>	listResult	= (List<UserBean>) queryResult.list();	
-		
-		session.close();
-		return listResult;
+=======
+public class ForgotPasswordAction extends ActionSupport implements ModelDriven {
+	private UserAccountBean user = new UserAccountBean();
+	Session session = HibernateUtil.getSession();
+	
+	//Execute
+	public String execute() {
+		if(checkRecords()) {
+			MailUtil mail = new MailUtil();
+			mail.sendPasswordResetEmail(user);
+			return SUCCESS;
+		}
+		return ERROR;
 	}
+	
+	//Functions
+	public boolean checkRecords() {
+		boolean recordsExist = false;
+		List recordsList = getRecords();
+		
+		if(recordsList != null) {
+			System.out.println("No. of Records:" + recordsList.size());
+			UserAccountBean temp;
+			for(int i = 0; i < recordsList.size(); i++) {
+				temp = (UserAccountBean) recordsList.get(i);
+				if(user.getUser_email().equals(temp.getUser_email())) {
+					System.out.println("Records Exist");
+					//Token should be set here from temp to user
+					//temp.setUser_accountId(user.getUser_accountId());
+					recordsExist = true;
+				}
+			}
+		}
+>>>>>>> Stashed changes
+		
+		return recordsExist;
+	}
+<<<<<<< Updated upstream
 	public 	boolean			checkDataFromDatabase() {
 		boolean 		userExist 	= false;
 		List<UserBean> 	listResult	= getDataFromDatabase();
@@ -136,8 +180,25 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 					user = temp;
 					recordsExist = true;
 				}
-			}
+=======
+	
+	private List getRecords() {
+		List recordsList = new ArrayList();
+		
+		try {
+			session.beginTransaction();
+			
+			recordsList = session.createQuery("FROM UserAccountBean").list();
 		}
+		catch(Exception sqle) {
+			if(null != session.getTransaction()) {
+				session.getTransaction().rollback();
+>>>>>>> Stashed changes
+			}
+			System.out.println("Stack trace here");
+			sqle.printStackTrace();
+		}
+<<<<<<< Updated upstream
 		return recordsExist;
 	}
 	private List getRecords() {
@@ -157,12 +218,16 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 			sqle.printStackTrace();
 		}
 		finally{
+=======
+		finally {
+>>>>>>> Stashed changes
 			if(session != null) {
 				session.close();
 			}
 		}
 		return recordsList;
 	}
+<<<<<<< Updated upstream
 
 
 	//Getters and Setters
@@ -179,4 +244,20 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 	public Object getModel() {
 		return user;
 	}
+=======
+	
+	//Getters and Setters
+	public UserAccountBean getUser() {
+		return user;
+	}
+	public void setUser(UserAccountBean user) {
+		this.user = user;
+	}
+	
+	//Implemented Methods
+	@Override
+	public Object getModel() {
+		return user;
+	}
+>>>>>>> Stashed changes
 }
