@@ -1,140 +1,87 @@
 package invaid.users.action;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-import invaid.users.model.UserProfileBean;
+import invaid.users.model.UserAccountBean;
+import invaid.users.util.HibernateUtil;
+import invaid.users.util.MailUtil;
+
 
 @SuppressWarnings("serial")
-public class ForgotPasswordAction extends ActionSupport {
-	//Not sure but if ever, will be needed to change the name in the forgot_password.jsp
-	//To match this variable and the variable in UserBean
-	private String token;
-	private String user_email;
-	private String mailTo = user_email;
-	private String mailFrom = "raphaelfeliciano7@gmail.com";
-	private String password = "KuyaRFF7!";
-
+public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
+	private UserAccountBean user = new UserAccountBean();
+	Session session = HibernateUtil.getSession();
+	
+	//Execute
 	public String execute() {
-		if(checkDataFromDatabase()) {
-			//Call send email function
-			if(sendMail()) {
-				return "success";
-			}
-			else {
-				return "emailerror";
-			}
-			
+		if(checkRecords()) {
+			MailUtil mail = new MailUtil();
+			mail.sendPasswordResetEmail(user);
+			return SUCCESS;
 		}
-		else {
-			return "inputerror";	
-		}
-	}
-	
-	
-	//Email Sending Related
-	//Use Properties (java.util)
-	public boolean sendMail() {
-		Properties properties = new Properties();
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.socketFactory.port", "465");
-		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		properties.put("mail.smtp.port", "465");
-	    
-	    //create Authenticator object to pass in Session.getInstance argument
-	  	Authenticator auth = new Authenticator() {
-	  	
-	  		//override the getPasswordAuthentication method
-	  		protected PasswordAuthentication getPasswordAuthentication() {
-	  			return new PasswordAuthentication(mailFrom, password);
-	  		}
-	  	};
-	  		javax.mail.Session session = javax.mail.Session.getInstance(properties, auth);
-	    
-	    try {  
-	         MimeMessage message = new MimeMessage(session);  
-	         message.setFrom(new InternetAddress(mailFrom));  
-	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(mailTo));  
-	         message.setSubject("Received sample mail");  
-	         message.setText("Hello, this is example of sending email. Click the link below to proceed:\n\n"
-	         		+ "http://www.facebook.com/");  
-	  
-	         // Send message  
-	         Transport.send(message);  
-	         System.out.println("Mail was sent successfully....");
-	         return true;
-	         
-	      } catch (MessagingException mex) {
-	    	  mex.printStackTrace();
-	      }
-	    return false;
-	}
-	
-	
-	
-	//Database Related
-	private List<UserProfileBean> 	getDataFromDatabase() {
-		//**********DONT REMOVE COMMENTS PLEASE THANKS**********//
-		
-		//Retrieve Data in Database to check if input user_email matches a existing account
-		//in the database
-		//UserBean user = new UserBean();
-		//user = null;
-		//SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-		//Session session = sessionFactory.openSession();
-		//
-		//session.beginTransaction();
-		//
-		////First Param User Class, Second Param Primary Key(@Id in UserBean)
-		//user = (UserBean) session.get(UserBean.class, 1);
-		
-		///////////////////////////////////////////////////////////////////
-		//String queryString = "from tablename where user_email = : user_email";
-		String queryString = "from tablename";
-		
-		Configuration config = new Configuration();
-		config.addAnnotatedClass(UserProfileBean.class);
-		
-		SessionFactory 	sessionFactory 	= config.configure().buildSessionFactory();
-		Session 		session 		= sessionFactory.openSession();
-		
-		session.beginTransaction();
-		
-		Query 	queryResult = session.createQuery(queryString);
-		List<UserProfileBean>	listResult	= (List<UserProfileBean>) queryResult.list();	
-		
-		session.close();
-		return listResult;
-	}
-	public 	boolean			checkDataFromDatabase() {
-		boolean 		userExist 	= false;
-		List<UserProfileBean> 	listResult	= getDataFromDatabase();
-		UserProfileBean 		user		= new UserProfileBean();
-		
-		for(int i = 0; i < listResult.size(); i++) {
-			user = (UserProfileBean) listResult.get(i);
-			if(user.getUser_email().equalsIgnoreCase(this.user_email)) {
-				userExist = true;
-			}
-		}
-		
-		return userExist;
+		return ERROR;
 	}
 
+	//Functions
+	public boolean checkRecords() {
+		boolean recordsExist = false;
+		List recordsList = getRecords();
+		
+		if(recordsList != null) {
+			System.out.println("No. of Records:" + recordsList.size());
+			UserAccountBean temp;
+			for(int i = 0; i < recordsList.size(); i++) {
+				temp = (UserAccountBean) recordsList.get(i);
+				if(user.getUser_email().equals(temp.getUser_email())) {
+					System.out.println("Records Exist");
+					//Token should be set here from temp to user
+					//temp.setUser_accountId(user.getUser_accountId());
+					recordsExist = true;
+				}
+			}
+		}
+		return recordsExist;
+	}
+	private List getRecords() {
+		List recordsList = new ArrayList();
+		
+		try {
+			session.beginTransaction();
+			
+			recordsList = session.createQuery("FROM UserAccountBean").list();
+		}
+		catch(Exception sqle) {
+			if(null != session.getTransaction()) {
+				session.getTransaction().rollback();
+			}
+			System.out.println("Stack trace here");
+			sqle.printStackTrace();
+		}
+		finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+		return recordsList;
+	}
+	
+	//Getters and Setters
+	public UserAccountBean getUser() {
+		return user;
+	}
+	public void setUser(UserAccountBean user) {
+		this.user = user;
+	}
+	
+	//Implemented Methods
+	@Override
+	public Object getModel() {
+		return user;
+	}
 }
