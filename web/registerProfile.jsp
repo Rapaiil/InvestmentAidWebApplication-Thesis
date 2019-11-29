@@ -44,10 +44,10 @@
                         <a class="nav-link" href="#">Investment Guide</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
+                        <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Monitoring</a>
+                        <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Feedback</a>
