@@ -11,7 +11,7 @@
 			com.mysql.cj.jdbc.Driver
 		</property>
 		<property name="connection.url">
-			jdbc:mysql://localhost:3306/invaidsystem
+			jdbc:mysql://localhost:3306/invaidsystem?autoReconnect=true&amp;serverTimezone=UTC&amp;useSSL=False&amp;allowPublicKeyRetrieval=true
 		</property>
 		<property name="connection.username">
 			root
@@ -19,8 +19,12 @@
 		<property name="connection.password">
 		</property>
 		<property name="hbm2ddl.auto">
-			alter
+			update
 		</property>
-		<mapping class="users.model.UserBean" />
+		<property name="show_sql">
+			true
+		</property>
+		<mapping class="invaid.users.model.UserAccountBean" />
+		<mapping class="invaid.users.model.UserProfileBean" />
 	</session-factory>
 </hibernate-configuration>

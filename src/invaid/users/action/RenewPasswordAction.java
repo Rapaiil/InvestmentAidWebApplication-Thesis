@@ -1,87 +1,36 @@
 package invaid.users.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
-<<<<<<< Updated upstream
-import invaid.users.model.UserBean;
-=======
-import invaid.users.model.UserAccountBean;
->>>>>>> Stashed changes
+import invaid.users.model.UserProfileBean;
 
-
-
-@SuppressWarnings({ "serial", "rawtypes" })
-public class RenewPasswordAction extends ActionSupport implements ModelDriven{
-	//Variables
-	private String 			token;
-	private String 			password;
-	private String 			confirmPassword;
-	static 	Session 		session;
-	static 	SessionFactory 	sessionFactory = new Configuration().configure().buildSessionFactory();
+@SuppressWarnings("serial")
+public class RenewPasswordAction extends ActionSupport {
 	
-	//Execute
+	private String password;
+	private String confirm_password;
+	
 	public String execute() {
-		if(verifyPasswords()) {
-			if(checkRecords()) {
-				//Update Password
-				boolean passwordChanged = updatePassword();
-				if(passwordChanged) {
-					return SUCCESS;
-				}
-			}
-		}
-		return ERROR;
+		return SUCCESS;
 	}	
-	
-	//Functions
-	private boolean updatePassword() {
-		boolean updateSuccess = false;
-		try {
-			sessionFactory 	= new Configuration().configure().buildSessionFactory();
-			session 		= sessionFactory.openSession();
-			
-			session.beginTransaction();
-			
-			UserAccountBean updateUser = (UserAccountBean) session.get(UserAccountBean.class, token);
-			updateUser.setUser_password(password);
-			
-			session.getTransaction().commit();
-			updateSuccess = true;
-		}
-		catch(Exception sqle) {
-			 if(null != session.getTransaction()) {
-				 session.getTransaction().rollback();
-	            }
-			 sqle.printStackTrace();
-		}
-		finally {
-            if(session != null) {
-            	session.close();
-            }
+	public boolean verifyPassword() {
+		boolean passwords_match = false;
+		if(this.password == this.confirm_password) {
+			passwords_match = true;
 		}
 		
-		return updateSuccess;
+		return passwords_match;
+		
 	}
-	private boolean verifyPasswords() {
-		boolean passwordsMatch = false;
-		
-		if(password.equals(confirmPassword)) {
-			passwordsMatch = true;
-		}
-		
-		return passwordsMatch;
-	}
-<<<<<<< Updated upstream
 	//Database Related
-		private List<UserBean> 	getDataFromDatabase() {
+		private List<UserProfileBean> 	getDataFromDatabase() {
 			//**********DONT REMOVE COMMENTS PLEASE THANKS**********//
 			
 			//Retrieve Data in Database to check if input user_email matches a existing account
@@ -101,7 +50,7 @@ public class RenewPasswordAction extends ActionSupport implements ModelDriven{
 			String queryString = "from tablename";
 			
 			Configuration config = new Configuration();
-			config.addAnnotatedClass(UserBean.class);
+			config.addAnnotatedClass(UserProfileBean.class);
 			
 			SessionFactory 	sessionFactory 	= config.configure().buildSessionFactory();
 			Session 		session 		= sessionFactory.openSession();
@@ -109,86 +58,17 @@ public class RenewPasswordAction extends ActionSupport implements ModelDriven{
 			session.beginTransaction();
 			
 			Query 	queryResult = session.createQuery(queryString);
-			List<UserBean>	listResult	= (List<UserBean>) queryResult.list();	
+			List<UserProfileBean>	listResult	= (List<UserProfileBean>) queryResult.list();	
 			
 			session.close();
 			return listResult;
 		}
 		public 	void			changePassword() {
-			List<UserBean> 	listResult	= getDataFromDatabase();
-			UserBean 		user		= new UserBean();
+			List<UserProfileBean> 	listResult	= getDataFromDatabase();
+			UserProfileBean 		user		= new UserProfileBean();
 			
 		}
 		public 	boolean			checkToken() {
-			
-=======
-	public boolean checkRecords() {
-		boolean recordsExist = false;
-		
-		List recordsList = getRecords();
-		
-		if(recordsList != null) {
-			UserAccountBean temp;
-			for(int i = 0; i < recordsList.size(); i++) {
-				temp = (UserAccountBean) recordsList.get(i);
-				if(temp.getUserProfile().equals(token)) {
-					System.out.println("Token Match Email");
-					recordsExist = true;
-				}
-			}
+			return false;
 		}
-		return recordsExist;
-	}
-	
-	//DB Related Functions
-	private List getRecords() {
-		List recordsList = new ArrayList();
-		
-		try {
-			session = sessionFactory.openSession();
-			session.beginTransaction();
-			
-			recordsList = session.createQuery("FROM UserAccountBean").list();
-		}
-		catch(Exception sqle) {
-			if(null != session.getTransaction()) {
-				session.getTransaction().rollback();
-			}
-			sqle.printStackTrace();
-		}
-		finally{
-			if(session != null) {
-				session.close();
-			}
->>>>>>> Stashed changes
-		}
-		return recordsList;
-	}
-	
-	//Getters and Setters
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-	
-	//Implemented Methods
-	@Override
-	public Object getModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

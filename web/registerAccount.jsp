@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	
+	<!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="css/registerAccount.css" type="text/css">
 	<title>InvAid - Register</title> <!-- The index.jsp of this is the Registration landing. -->
@@ -40,6 +43,9 @@
                         <a class="nav-link" href="#">Investment Guide</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
                     </li>
                     <li class="nav-item">
@@ -56,7 +62,6 @@
                 </ul>
             </div>
         </nav>
-        
         <!-- Register Form - Profile -->
 		<div class="h-75 d-flex justify-content-center">
 			<div class="card pr-5 pl-5 my-auto mx-auto">
@@ -89,6 +94,7 @@
 				</div>
 			</div>
 		</div>
+		<s:property value="temp_user" />
 		
 	
 	<!-- Optional JavaScript -->

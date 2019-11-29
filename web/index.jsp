@@ -42,6 +42,9 @@
                         <a class="nav-link" href="#">Investment Guide</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
                     </li>
                     <li class="nav-item">
@@ -77,6 +80,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Investment Guide</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Monitoring</a>
@@ -215,5 +221,6 @@
     
     <!-- JS -->
     <script src="js/navbar.js"></script>
+	<script src="js/sticky-navbar.js"></script>
     </body>
 </html>
