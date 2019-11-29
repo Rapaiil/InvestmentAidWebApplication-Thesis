@@ -125,40 +125,8 @@
 					<!-- MONITORING -->
 					<div class="tab-content" id="pills-tabContent">
 					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
-							<table class="table">
-							  <thead>
-							    <tr>
-							      <th scope="col">Name</th>
-							      <th scope="col">Type</th>
-							      <th scope="col">Affiliation</th>
-							      <th scope="col"></th>
-							    </tr>
-							  </thead>
-							  <tbody>
-							    <tr>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>@mdo</td>
-							      <td><a href="#">See details >></a></td>
-							    </tr>
-							    <tr>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>@mdo</td>
-							      <td><a href="#">See details >></a></td>
-							    </tr>
-							    <tr>
-							      <td>Mark</td>
-							      <td>Otto</td>
-							      <td>@mdo</td>
-							      <td><a href="#">See details >></a></td>
-							    </tr>
-							  </tbody>
-							</table>
-						
-						</div>
-					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<table class="table">
+							<s:iterator value="">
+								<table class="table">
 								  <thead>
 								    <tr>
 								      <th scope="col">Name</th>
@@ -188,6 +156,41 @@
 								    </tr>
 								  </tbody>
 								</table>
+							</s:iterator>
+						</div>
+					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
+							<s:iterator value="">
+								<table class="table">
+									  <thead>
+									    <tr>
+									      <th scope="col">Name</th>
+									      <th scope="col">Type</th>
+									      <th scope="col">Affiliation</th>
+									      <th scope="col"></th>
+									    </tr>
+									  </thead>
+									  <tbody>
+									    <tr>
+									      <td>Mark</td>
+									      <td>Otto</td>
+									      <td>@mdo</td>
+									      <td><a href="#">See details >></a></td>
+									    </tr>
+									    <tr>
+									      <td>Mark</td>
+									      <td>Otto</td>
+									      <td>@mdo</td>
+									      <td><a href="#">See details >></a></td>
+									    </tr>
+									    <tr>
+									      <td>Mark</td>
+									      <td>Otto</td>
+									      <td>@mdo</td>
+									      <td><a href="#">See details >></a></td>
+									    </tr>
+									  </tbody>
+								</table>
+							</s:iterator>
 						</div>
 					  </div>
         		</div>
