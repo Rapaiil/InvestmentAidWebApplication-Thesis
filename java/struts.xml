@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<constant name="struts.ui.theme" value="css_xhtml"></constant>
+	<constant name="struts.ui.templateDir" value="template"></constant>
+	
+	<package name="default" extends="struts-default">
+		<action name="registerprofile" class="invaid.users.action.RegisterProfileAction">
+			<result name="success">registerAccount.jsp</result>
+			<!-- <result name="input">registerProfile.jsp</result> -->
+			<result name="error">registerProfile.jsp</result>
+		</action>
+		<action name="registeraccount" class="invaid.users.action.RegisterAccountAction">
+			<result name="success">accountVerify.jsp</result>
+			<!-- <result name="input">registerAccount.jsp</result> -->
+			<result name="error">registerAccount.jsp</result>
+		</action>
+	</package>
+	
+	<package name="forgotpassword" extends="struts-default">
+		<action name="forgotpassword" class="invaid.users.action.ForgotPasswordAction">
+			<result name="success">/forgot_password_email_sent.jsp</result>
+			<result name="error">/</result>
+		</action>
+	</package>
+</struts>
