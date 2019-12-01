@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.model.Mail;
 import invaid.users.model.UserAccountBean;
 import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
@@ -29,6 +30,8 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 		try {
 			userAccount.setUserProfile(userProfile);
 			session.save(userAccount);
+			
+			Mail.sendVerificationMail(userAccount);
 			t.commit();
 			return SUCCESS;
 		} catch(HibernateException he) {

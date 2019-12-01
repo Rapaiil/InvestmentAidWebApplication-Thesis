@@ -23,12 +23,14 @@
 	<package name="forgotpassword" extends="struts-default">
 		<action name="forgotpassword" class="invaid.users.action.ForgotPasswordAction">
 			<result name="success">/forgot_password_email_sent.jsp</result>
-			<result name="error">/</result>		</action>
+			<result name="error">/</result>
+		</action>
 	</package>
 	
 	<package name="renewpassword" extends="struts-default">
 		<action name="renewpassword" class="invaid.users.action.RenewPasswordAction">
 			<result name="success">/renew_password_success.jsp</result>
-			<result name="error">/</result>		</action>
+			<result name="error">/</result>
+		</action>
 	</package>
 </struts>

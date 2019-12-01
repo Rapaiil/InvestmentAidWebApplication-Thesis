@@ -6,18 +6,15 @@ import java.util.List;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.model.UserAccountBean;
-import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "rawtypes"})
 public class RenewPasswordAction extends ActionSupport implements ModelDriven{
 	private UserAccountBean user = new UserAccountBean();
 	private String password;

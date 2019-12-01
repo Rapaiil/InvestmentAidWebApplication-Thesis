@@ -3,24 +3,19 @@ package invaid.users.util;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.Session;
 
-import invaid.users.model.UserAccountBean;
+import config.Configurations;
 
 public class MailUtil {
-	//
-	private String systemEmail = "raphaelfeliciano7@gmail.com";
-	private String systemPassword = "KuyaRFF7!";
+	private static Properties properties = new Properties();
+	private static Authenticator auth;
 	
-	//Functions
-	//Forgot Password
-	public boolean sendPasswordResetEmail(UserAccountBean user) {
-		Properties properties = new Properties();
+	/*
+	 * configures properties for mail sending
+	 */
+	static {
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.socketFactory.port", "465");
 		properties.put("mail.smtp.auth", "true");
@@ -28,31 +23,18 @@ public class MailUtil {
 		properties.put("mail.smtp.port", "465");
 	    
 	    //create Authenticator object to pass in Session.getInstance argument
-	  	Authenticator auth = new Authenticator() {
+	  	auth = new Authenticator() {
 	  		//override the getPasswordAuthentication method
 	  		protected PasswordAuthentication getPasswordAuthentication() {
-	  			return new PasswordAuthentication(systemEmail, systemPassword);
+	  			return new PasswordAuthentication(Configurations.getAppEmail(), Configurations.getAppPass());
 	  		}
 	  	};
-	  		javax.mail.Session session = javax.mail.Session.getInstance(properties, auth);
-	    
-	    try {  
-	         MimeMessage message = new MimeMessage(session);  
-	         message.setFrom(new InternetAddress(systemEmail));  
-	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(user.getUser_email()));  
-	         message.setSubject("Reset Password");  
-	         message.setText("Please click the link to reset your password " + "http://localhost:8080/www.invaid.com/renew_password.jsp?token=" + user.getReset_token());  
-	  
-	         // Send message  
-	         Transport.send(message);  
-	         System.out.println("Mail was sent successfully....");
-	         return true;
-	         
-	      } catch (MessagingException mex) {
-	    	  mex.printStackTrace();
-	      }
-	    return false;
 	}
-
-	//Email Verification
+	
+	/*
+	 * returns the Session mail
+	 */
+	public static Session getSession() {
+		return Session.getInstance(properties, auth);
+	}
 }

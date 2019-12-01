@@ -8,12 +8,11 @@ import org.hibernate.Session;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.model.Mail;
 import invaid.users.model.UserAccountBean;
 import invaid.users.util.HibernateUtil;
-import invaid.users.util.MailUtil;
 
-
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "rawtypes"})
 public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 	private UserAccountBean user = new UserAccountBean();
 	Session session = HibernateUtil.getSession();
@@ -21,8 +20,7 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 	//Execute
 	public String execute() {
 		if(checkRecords()) {
-			MailUtil mail = new MailUtil();
-			mail.sendPasswordResetEmail(user);
+			Mail.sendPasswordResetMail(user);
 			return SUCCESS;
 		}
 		return ERROR;
@@ -75,6 +73,7 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven{
 	public UserAccountBean getUser() {
 		return user;
 	}
+	
 	public void setUser(UserAccountBean user) {
 		this.user = user;
 	}
