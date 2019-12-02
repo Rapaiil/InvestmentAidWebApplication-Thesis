@@ -72,19 +72,19 @@
 								<div class="form-row mb-3">
 									<div class="col-md-12 col-12">
 										<label>Email Address: <span class="required">*</span></label>
-										<s:textfield  cssClass="form-control"  required="true"/>
+										<s:textfield  cssClass="form-control" />
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-md-12 col-12">
 										<label>Password: <span class="required">*</span></label>
-										<s:password  cssClass="form-control"  required="true"/>
+										<s:password  cssClass="form-control" />
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-xl col-md-12 col-12">
 										<label>Confirm Password: <span class="required">*</span></label>
-										<s:password  cssClass="form-control" required="true"/>
+										<s:password  cssClass="form-control"/>
 									</div>
 								</div>
 								<button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25">Register</button>

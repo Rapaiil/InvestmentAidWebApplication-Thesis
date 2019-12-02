@@ -71,11 +71,11 @@
                             <form action="#" method="post">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <s:password  cssClass="form-control" name="password" placeholder="Password" required="true"/>
+                                    <s:password  cssClass="form-control" name="password" placeholder="Password"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password</label>
-                                    <s:password  cssClass="form-control" name="password" placeholder="Confirm Password" required="true"/>
+                                    <s:password  cssClass="form-control" name="password" placeholder="Confirm Password"/>
                                 </div>
                                 <div class="form-group">
                                     <button id="renew_password_btn" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">submit</button>

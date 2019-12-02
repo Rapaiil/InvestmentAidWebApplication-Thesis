@@ -74,7 +74,7 @@
 							<div class="form-row mb-3">
 								<div class="col-xl col-lg col-md-12 col-12 form-group">
 							    	<label>First Name: <span class="required">*</span></label>
-									<s:textfield name="user_firstname" cssClass="form-control" required="true"/>
+									<s:textfield name="user_firstname" cssClass="form-control"/>
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
 									<label>Middle Name:</label>
@@ -82,7 +82,7 @@
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
 									<label>Last Name: <span class="required">*</span></label>
-									<s:textfield name="user_lastname" cssClass="form-control" required="true"/>
+									<s:textfield name="user_lastname" cssClass="form-control"/>
 								</div>
 								</div>
 								<div class="form-row mb-3">
@@ -302,7 +302,7 @@
 										<label>Address:</label>
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_addressLine1" cssClass="form-control" required="true"/>
+										<s:textfield name="user_addressLine1" cssClass="form-control"/>
 										<small class="form-text">Street<span class="required">*</span></small>
 									</div>
 								</div>
@@ -318,7 +318,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_city" cssClass="form-control" required="True"/>
+										<s:textfield name="user_city" cssClass="form-control"/>
 										<small class="form-text">City<span class="required">*</span></small>
 									</div>
 								</div>
@@ -326,7 +326,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_state" cssClass="form-control" required="True"/>
+										<s:textfield name="user_state" cssClass="form-control"/>
 										<small class="form-text">State/Province/Region<span class="required">*</span></small>
 									</div>
 								</div>
@@ -334,7 +334,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_zipcode" cssClass="form-control" required="True"/>
+										<s:textfield name="user_zipcode" cssClass="form-control"/>
 										<small class="form-text">Zip/Postal Code<span class="required">*</span></small>
 									</div>
 								</div>
@@ -342,21 +342,21 @@
 								<div class="form-row mb-3">
 									<div class="col-lg-6 col-md-12 col-12">
 										<label>Cellphone Number: <span class="required">*</span></label>
-										<s:textfield name="user_cellphonenumber" cssClass="form-control"  required="true"/>
+										<s:textfield name="user_cellphonenumber" cssClass="form-control"/>
 									</div>
 									<div class="col-lg-6 col-md-12 col-12">
 										<label>Telephone Number: <span class="required">*</span></label>
-										<s:textfield name="user_telephonenumber" cssClass="form-control" required="true"/>
+										<s:textfield name="user_telephonenumber" cssClass="form-control"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-xl col-md-12 col-12">
 										<label>Occupation: <span class="required">*</span></label>
-										<s:textfield name="user_occupation" cssClass="form-control" required="true"/>
+										<s:textfield name="user_occupation" cssClass="form-control"/>
 									</div>
 									<div class="col-xl col-md-12 col-12">
 										<label>Company Name: <span class="required">*</span></label>
-										<s:textfield name="user_company" cssClass="form-control" required="true"/>
+										<s:textfield name="user_company" cssClass="form-control"/>
 									</div>
 								</div>
 								<s:submit label="Next" value="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase w-25 mx-auto"/>

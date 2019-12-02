@@ -119,16 +119,169 @@
                 <div class="questionnaire-set">
                     <div class="card-body quiz-container">
                     	<s:form>
-                    		<label>1. </label>
+                    		<h5 class="text-uppercase">time horizon</h5>
+                    		<label class="pt-3">1. I plan to begin withdrawing money from my investments in:</label>
                     		<div class="custom-control custom-radio pl-5">
-							  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-							  <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+							  <input type="radio" id="timehorizon_1_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_1_1">Less than 3 years</label>
 							</div>
 							<div class="custom-control custom-radio pl-5">
-							  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-							  <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+							  <input type="radio" id="timehorizon_1_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_1_2">3 - 5 years</label>
 							</div>
-							
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="timehorizon_1_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_1_3">6 - 10 years</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="timehorizon_1_4" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_1_4">11 years or more</label>
+							</div>
+							<label class="pt-3">2. Once I begin withdrawing funds from my investments, I plan to spend all of the funds in:</label>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="timehorizon_2_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_2_1">Less than 2 years</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="timehorizon_2_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_2_2">2 - 5 years</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="timehorizon_2_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_2_3">6 - 10 years</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="timehorizon_2_4" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="timehorizon_2_4">11 years or more</label>
+							</div>
+							<hr/>
+							<h5 class="text-uppercase">risk tolerance</h5>
+							<label class="pt-3">3. I would describe my knowledge of investments as:</label>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_3_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_3_1">None</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_3_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_3_2">Limited</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_3_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_3_3">Good</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_3_4" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_3_4">Extensive</label>
+							</div>
+							<label class="pt-3">4. When I invest my money, I am:</label>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_5_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_5_1">Most concerned about my investment losing value</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_5_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_5_2">Equally concerned about my investment losing or gaining value</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_4_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_4_3">Most concerned about my investment gaining value</label>
+							</div>
+							<label class="pt-3">5. Select the investments you currently own:</label>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_5_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_5_1">Bonds and/or bond funds</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_5_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_5_2">Stocks and/or stock funds</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_5_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_5_3">International securities and/or international funds</label>
+							</div>
+							<label class="pt-3">6. Consider this scenario: Imagine that in the past three months, the overall stock market lost 25% of its value. 
+									An individual value. An individual stock investment you own also lost 25% of its value. What would you do?</label>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_6_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_6_1">Sell all of my shares</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_6_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_6_2">Sell some of my shares</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_6_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_6_3">Do nothing</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_6_4" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_6_4">Buy more shares</label>
+							</div>
+							<label class="pt-3">7. Review the chart below. We've outlined the most likely best-case and worst-case annual returns of five hypothetical investment plans. 
+							Which range of possible outcomes is most acceptable to you? 
+							The figures are hypothetical and do not represent the performance of any particular investment.</label>
+							<table class="table">
+							  <thead class="thead-dark">
+							    <tr>
+							      <th scope="col">Plan</th>
+							      <th scope="col">Average Annual Return</th>
+							      <th scope="col">Best Case</th>
+							      <th scope="col">Worse Case</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <th scope="row">A</th>
+							      <td>7.2%</td>
+							      <td>16.3%</td>
+							      <td>-5.6%</td>
+							    </tr>
+							    <tr>
+							      <th scope="row">B</th>
+							      <td>9.0%</td>
+							      <td>25.0%</td>
+							      <td>-12.1%</td>
+							    </tr>
+							    <tr>
+							      <th scope="row">C</th>
+							      <td>10.4%</td>
+							      <td>33.6%</td>
+							      <td>18.2%</td>
+							    </tr>
+							    <tr>
+							      <th scope="row">D</th>
+							      <td>11.7%</td>
+							      <td>42.8%</td>
+							      <td>24.0%</td>
+							    </tr>
+							    <tr>
+							      <th scope="row">D</th>
+							      <td>12.5%</td>
+							      <td>50.0%</td>
+							      <td>-28.2%</td>
+							    </tr>
+							  </tbody>
+							</table>
+                    		<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_7_1" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_7_1">Plan A</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_7_2" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_7_2">Plan B</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_7_3" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_7_3">Plan C</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_7_4" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_7_4">Plan D</label>
+							</div>
+							<div class="custom-control custom-radio pl-5">
+							  <input type="radio" id="risktolerance_7_5" name="customRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="risktolerance_7_5">Plan E</label>
+							</div>
 							<div class="text-center mt-5">
                     			<s:submit label="Submit" value="submit" class="btn btn-primary shadow-none text-uppercase"/>
                     		</div>

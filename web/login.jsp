@@ -71,11 +71,11 @@
                             <s:form action="#" method="post">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <s:textfield  cssClass="form-control" name="emailAddress" placeholder="Email Address" required="true"/>
+                                    <s:textfield  cssClass="form-control" name="emailAddress" placeholder="Email Address"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <s:password  cssClass="form-control" name="password" placeholder="Password" required="true"/>
+                                    <s:password  cssClass="form-control" name="password" placeholder="Password" />
                                 </div>
                                 <div class="form-group">
                                     <button id="login_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">Login</button>
