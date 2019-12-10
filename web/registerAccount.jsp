@@ -67,7 +67,7 @@
 			<div class="card pr-5 pl-5 my-auto mx-auto">
 				<div class="form-register">
 					<div class="card-body">
-					<s:form action="#" method="post" class="registration-account-form">
+					<s:form action="registeraccount" method="post" class="registration-account-form">
 							<h4 class="card-title text-center mb-4 text-uppercase">register</h4>
 								<div class="form-row mb-3">
 									<div class="col-md-12 col-12">
@@ -78,21 +78,23 @@
 								<div class="form-row mb-3">
 									<div class="col-md-12 col-12">
 										<label>Password: <span class="required">*</span></label>
-										<s:password  cssClass="form-control" />
+										<s:password name="user_password" cssClass="form-control" />
 									</div>
 								</div>
 								<div class="form-row mb-3">
 									<div class="col-xl col-md-12 col-12">
 										<label>Confirm Password: <span class="required">*</span></label>
-										<s:password  cssClass="form-control"/>
+										<s:password name="user_repassword" cssClass="form-control"/>
 									</div>
 								</div>
-								<button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25">Register</button>
+								<s:submit value="Register" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25"></s:submit>
+								<!-- <button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25">Register</button> -->
 						 </s:form>
 					</div>
 				</div>
 			</div>
 		</div>
+		<s:property value="temp_user" />
 		
 	
 	<!-- Optional JavaScript -->
