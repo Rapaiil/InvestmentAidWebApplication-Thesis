@@ -49,7 +49,7 @@
                         <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
