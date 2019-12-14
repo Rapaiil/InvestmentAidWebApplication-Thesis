@@ -23,7 +23,7 @@
 	<package name="forgotpassword" extends="struts-default">
 		<action name="forgotpassword" class="invaid.users.action.ForgotPasswordAction">
 			<result name="success">/forgot_password_email_sent.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/forgot_password.jsp</result>
 		</action>
 	</package>
 	
