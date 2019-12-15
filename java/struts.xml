@@ -15,8 +15,8 @@
 		</action>
 		<action name="registeraccount" class="invaid.users.action.RegisterAccountAction">
 			<result name="success">accountVerify.jsp</result>
-			<!-- <result name="input">registerAccount.jsp</result> -->
-			<result name="error">registerAccount.jsp</result>
+			<result name="input">registerAccount.jsp</result>
+			<!-- <result name="error">registerAccount.jsp</result> -->
 		</action>
 	</package>
 	

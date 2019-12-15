@@ -21,7 +21,7 @@ public class UserAccountBean {
 	@Column(nullable=false)
 	private String user_password;
 	@Transient
-	private String user_confirmpassword;
+	private String user_repassword;
 	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="userId", nullable=false)
 	@MapsId
@@ -45,12 +45,12 @@ public class UserAccountBean {
 		this.user_password = user_password;
 	}
 
-	public String getUser_confirmpassword() {
-		return user_confirmpassword;
+	public String getUser_repassword() {
+		return user_repassword;
 	}
 
-	public void setUser_confirmpassword(String user_confirmpassword) {
-		this.user_confirmpassword = user_confirmpassword;
+	public void setUser_repassword(String user_confirmpassword) {
+		this.user_repassword = user_confirmpassword;
 	}
 
 	public UserProfileBean getUserProfile() {
