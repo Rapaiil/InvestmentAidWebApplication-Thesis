@@ -66,21 +66,21 @@
         
             <!-- RENEW PASSWORD -->
             <div class="h-75 d-flex justify-content-center">
-                <div class="card h-75 my-auto">
+                <div class="card my-auto">
                     <div class="form-login my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-5">Password Reset</h4>
                             <s:form action="renewpassword" method="post">
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label>Password <span class="required" style="color:red;">*</span></label>
                                     <s:password  cssClass="form-control" name="password" placeholder="Password"/>
                                 </div>
                                 <div class="form-group">
-                                    <label>Confirm Password</label>
+                                    <label>Confirm Password <span class="required" style="color:red;">*</span></label>
                                     <s:password  cssClass="form-control" name="confirm_password" placeholder="Confirm Password"/>
                                 </div>
                                 
-                                <div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+                                <div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
                                 
                                 <div class="form-group">
                                     <s:submit value="submit" id="renew_password_btn" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase"/>
