@@ -11,11 +11,15 @@ import org.hibernate.Transaction;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
 import invaid.users.util.HibernateUtil;
 
+/*
+ * fix this please
+ */
 @SuppressWarnings({"serial", "rawtypes"})
-public class RenewPasswordAction extends ActionSupport implements ModelDriven{
+public class RenewPasswordAction extends ActionSupport implements ModelDriven, DBCommands{
 	private UserAccountBean user = new UserAccountBean();
 	private String password;
 	private String confirm_password;
@@ -83,9 +87,7 @@ public class RenewPasswordAction extends ActionSupport implements ModelDriven{
 					//temp.setUser_accountId(user.getUser_accountId());
 					
 			Transaction transaction = session.beginTransaction();
-		  	String hql = "UPDATE UserAccountBean set user_password = :pass "  + 
-	             "WHERE reset_token = :tok";
-			Query query = session.createQuery(hql);
+			Query query = session.createQuery(DBCommands.UPDATE_PASSWORD);
 			query.setParameter("pass", password);
 			System.out.println(password + token + confirm_password);
 			query.setParameter("tok", token);
@@ -149,5 +151,23 @@ public class RenewPasswordAction extends ActionSupport implements ModelDriven{
 	public Object getModel() {
 		// TODO Auto-generated method stub
 		return user;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<UserAccountBean> getRecords() {
+		try {
+			session.beginTransaction();
+			return (ArrayList) session.createQuery(DBCommands.GET_ALL_ACCOUNT_RECORDS).list();
+		} catch(Exception sqle) {
+			if(null != session.getTransaction())
+				session.getTransaction().rollback();
+			System.err.println(sqle.getMessage());
+		} finally {
+			if(session != null) {
+				HibernateUtil.shutdown();
+			}
+		}
+		return null;
 	}
 }

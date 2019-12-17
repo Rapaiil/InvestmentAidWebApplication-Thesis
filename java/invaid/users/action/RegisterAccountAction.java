@@ -10,10 +10,11 @@ import org.hibernate.Transaction;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import invaid.users.model.Mail;
 import invaid.users.model.UserAccountBean;
 import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
+import invaid.users.util.Mail;
+import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
 public class RegisterAccountAction extends ActionSupport implements ModelDriven, SessionAware {
@@ -28,16 +29,19 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 		Transaction t = session.beginTransaction();
 		
 		try {
-			userAccount.setUserProfile(userProfile);
+			userAccount.setUser_profileId(userProfile.getUser_profileId());
+			userAccount.setUser_status(00);
+			userAccount.setUser_token(TokenUtil.generateUnverifiedToken(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
 			session.save(userAccount);
+			session.save(userProfile);
 			
 			Mail.sendVerificationMail(userAccount);
 			t.commit();
 			return SUCCESS;
 		} catch(HibernateException he) {
 			t.rollback();
-			return ERROR;
-		}		
+		}
+		return ERROR;
 	}
 	
 	@Override

@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.model.AddressBean;
 import invaid.users.model.UserProfileBean;
-import invaid.users.util.TokenUtil;
+import invaid.users.util.IdGeneratorUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
 public class RegisterProfileAction extends ActionSupport implements ModelDriven, SessionAware {
@@ -19,35 +19,27 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 	private int user_zip;
 	private Map<String, Object> sessionMap;
 
+	public String execute() {
+		try {
+			userProfile.setUser_profileId(IdGeneratorUtil.generateId(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
+			
+			userAddress = new AddressBean(user_street, user_apt, user_city, user_state, user_zip);
+			userProfile.setUser_address(userAddress);
+			
+			userProfile.genderConvert();
+		} catch(Exception e) {
+			 e.getMessage();
+		}
+		
+		//validation here
+		sessionMap.put("sessionUser", userProfile);
+		return SUCCESS;
+	}
+	
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub
 		return userProfile;
-	}
-	
-	public String execute() {
-		userAddress = new AddressBean(user_street, user_apt, user_city, user_state, user_zip);
-		userProfile.setUser_profileId(new TokenUtil().getIdentifier());
-		userProfile.setUser_address(userAddress);
-		userProfile.genderConvert();
-		
-		System.out.println(userProfile.getUser_firstname());
-		System.out.println(userProfile.getUser_middlename());
-		System.out.println(userProfile.getUser_lastname());
-		System.out.println(userProfile.isUser_gender());
-		System.out.println(userProfile.getUser_nationality());
-		System.out.println(userProfile.getUser_address().getUser_street());
-		System.out.println(userProfile.getUser_address().getUser_apt());
-		System.out.println(userProfile.getUser_address().getUser_city());
-		System.out.println(userProfile.getUser_address().getUser_state());
-		System.out.println(userProfile.getUser_address().getUser_zip());
-		System.out.println(userProfile.getUser_cellphonenumber());
-		System.out.println(userProfile.getUser_telephonenumber());
-		System.out.println(userProfile.getUser_occupation());
-		System.out.println(userProfile.getUser_company());
-		//validation here
-		sessionMap.put("sessionUser", userProfile);
-		return SUCCESS;
 	}
 
 	@Override
