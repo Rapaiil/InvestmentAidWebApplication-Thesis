@@ -21,6 +21,8 @@
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
+
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
 	<!-- Navbar -->
@@ -87,6 +89,9 @@
 										<s:password name="user_repassword" cssClass="form-control" required="true"/>
 									</div>
 								</div>
+								
+								<div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+								
 								<s:submit value="Register" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25"></s:submit>
 								<!-- <button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25">Register</button> -->
 						 </s:form>

@@ -20,6 +20,8 @@
 
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Titillium+Web&display=swap" rel="stylesheet">
+    	
+    	<script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
 
@@ -77,6 +79,9 @@
                                     <label>Password</label>
                                     <s:password  cssClass="form-control" name="login_password" placeholder="Password" required="true"/>
                                 </div>
+                                
+                                <div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+                                
                                 <div class="form-group">
                                     <button id="login_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">Login</button>
                                 </div>
