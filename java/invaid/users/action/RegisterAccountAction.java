@@ -36,6 +36,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 			session.save(userProfile);
 			
 			Mail.sendVerificationMail(userAccount);
+			
 			t.commit();
 			return SUCCESS;
 		} catch(HibernateException he) {
