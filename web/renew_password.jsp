@@ -50,7 +50,7 @@
                         <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
@@ -66,21 +66,21 @@
         
             <!-- RENEW PASSWORD -->
             <div class="h-75 d-flex justify-content-center">
-                <div class="card h-75 my-auto">
+                <div class="card my-auto">
                     <div class="form-login my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-5">Password Reset</h4>
                             <s:form action="resetpassword" method="post">
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <s:password  cssClass="form-control" name="reset_password" placeholder="Password" required="true"/>
+                                    <label>Password <span class="required" style="color:red;">*</span></label>
+                                    <s:password  cssClass="form-control" name="reset_password" placeholder="Password"/>
                                 </div>
                                 <div class="form-group">
-                                    <label>Confirm Password</label>
-                                    <s:password  cssClass="form-control" name="reset_confirmpassword" placeholder="Confirm Password" required="true"/>
+                                    <label>Confirm Password <span class="required" style="color:red;">*</span></label>
+                                    <s:password  cssClass="form-control" name="reset_confirmpassword" placeholder="Confirm Password"/>
                                 </div>
                                 
-                                <div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+                                <div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
                                 
                                 <div class="form-group">
                                     <s:submit value="submit" id="renew_password_btn" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase"/>

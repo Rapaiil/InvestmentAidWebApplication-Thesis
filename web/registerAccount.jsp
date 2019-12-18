@@ -16,12 +16,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="css/registerAccount.css" type="text/css">
+	<link rel="stylesheet" href="css/login.css" type="text/css">
 	<title>InvAid - Register</title> <!-- The index.jsp of this is the Registration landing. -->
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
-
+	
+	<!-- reCAPTCHA -->
 	<script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
@@ -51,7 +52,7 @@
                         <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
@@ -66,41 +67,35 @@
         </nav>
         <!-- Register Form - Profile -->
 		<div class="h-75 d-flex justify-content-center">
-			<div class="card pr-5 pl-5 my-auto mx-auto">
-				<div class="form-register">
+			<div class="card my-auto">
+				<div class="form-login my-auto">
 					<div class="card-body">
-					<s:form action="registeraccount" method="post" class="registration-account-form">
-							<h4 class="card-title text-center mb-4 text-uppercase">register</h4>
-								<div class="form-row mb-3">
-									<div class="col-md-12 col-12">
-										<label>Email Address: <span class="required">*</span></label>
-										<s:textfield name="user_email" cssClass="form-control"  required="true"/>
-									</div>
-								</div>
-								<div class="form-row mb-3">
-									<div class="col-md-12 col-12">
-										<label>Password: <span class="required">*</span></label>
-										<s:password name="user_password" cssClass="form-control"  required="true"/>
-									</div>
-								</div>
-								<div class="form-row mb-3">
-									<div class="col-xl col-md-12 col-12">
-										<label>Confirm Password: <span class="required">*</span></label>
-										<s:password name="user_repassword" cssClass="form-control" required="true"/>
-									</div>
-								</div>
-								
-								<div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
-								
-								<s:submit value="Register" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25"></s:submit>
-								<!-- <button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none mt-5 text-uppercase mx-auto w-25">Register</button> -->
+						<h4 class="card-title text-uppercase">register</h4>
+						<s:form action="registeraccount" method="post" class="registration-account-form">
+							<div class="form-group">
+								<label>Email Address: <span class="required" style="color:red;">*</span></label>
+								<s:textfield  cssClass="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Password: <span class="required" style="color:red;">*</span></label>
+								<s:password  cssClass="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
+								<s:password  cssClass="form-control"/>
+							</div>
+							
+							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+							
+							<div class="form-group">
+								<button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mx-auto w-25">Register</button>
+							</div>
 						 </s:form>
 					</div>
 				</div>
 			</div>
 		</div>
 		<s:property value="temp_user" />
-		
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

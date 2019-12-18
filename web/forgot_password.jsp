@@ -48,7 +48,7 @@
                         <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
@@ -75,7 +75,7 @@
                                 </p>
                                 <div class="form-group">
                                     <div class="w-75 mx-auto">
-                                        <s:textfield cssClass="form-control" name="user_email" placeholder="Email Address" required="true"/>
+                                        <s:textfield cssClass="form-control" name="forgot_password" placeholder="Email Address"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
