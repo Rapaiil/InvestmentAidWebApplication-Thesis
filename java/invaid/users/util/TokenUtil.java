@@ -14,33 +14,15 @@ public class TokenUtil {
 	private static String TOKEN_IDENTIFIER;
 	
 	/**
-	 * Generates unverified unique token for user in specified time with 1 hour expiry date
+	 * Generates unique token for user in specified time with 1 hour expiry date
 	 */
-	public static String generateUnverifiedToken(String value1, String value2) {
+	public static String generateToken(String value1, String value2) {
 		Date created = new Date(System.currentTimeMillis());
 		Date expired = new Date(System.currentTimeMillis() + (60 * 60 * 1000));
 		Algorithm algo = Algorithm.HMAC256(Configurations.getAppSecret());
 		TOKEN_IDENTIFIER = JWT.create()
 				.withIssuer("invaid.com")
 				.withSubject(value1 + " " + value2)
-				.withClaim("isVerified", false)
-				.withIssuedAt(created)
-				.withExpiresAt(expired)
-				.sign(algo);
-		return TOKEN_IDENTIFIER;
-	}
-	
-	/**
-	 * Generates verified unique token for user in specified time with 1 hour expiry date
-	 */
-	public static String generateVerifiedToken(String value1, String value2) {
-		Date created = new Date(System.currentTimeMillis());
-		Date expired = new Date(System.currentTimeMillis() + (60 * 60 * 1000));
-		Algorithm algo = Algorithm.HMAC256(Configurations.getAppSecret());
-		TOKEN_IDENTIFIER = JWT.create()
-				.withIssuer("invaid.com")
-				.withSubject(value1 + " " + value2)
-				.withClaim("isVerified", true)
 				.withIssuedAt(created)
 				.withExpiresAt(expired)
 				.sign(algo);
@@ -74,20 +56,10 @@ public class TokenUtil {
 		return verifier;
 	}
 	
-	public static JWTVerifier verifyUserVerifiedToken() {
+	public static JWTVerifier verifyUserToken() {
 		Algorithm algo = Algorithm.HMAC256(Configurations.getAppSecret());
 		JWTVerifier verifier = JWT.require(algo)
 				.withIssuer("invaid.com")
-				.withClaim("isVerified", true)
-				.build();
-		return verifier;
-	}
-	
-	public static JWTVerifier verifyUserUnverifiedToken() {
-		Algorithm algo = Algorithm.HMAC256(Configurations.getAppSecret());
-		JWTVerifier verifier = JWT.require(algo)
-				.withIssuer("invaid.com")
-				.withClaim("isVerified", false)
 				.build();
 		return verifier;
 	}

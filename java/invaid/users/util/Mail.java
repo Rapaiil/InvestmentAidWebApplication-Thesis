@@ -12,17 +12,17 @@ import invaid.users.model.UserAccountBean;
 
 public class Mail {
 	
-	public static boolean sendPasswordResetMail(UserAccountBean userAccount) {
+	public static boolean sendPasswordResetMail(String user_email, String user_token) {
 		Session session = MailUtil.getSession();
 		
 		try {
 			MimeMessage message = new MimeMessage(session);
 			 message.setFrom(new InternetAddress(Configurations.getAppEmail()));  
-	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(userAccount.getUser_email()));  
+	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(user_email));  
 	         message.setSubject("Reset Password");  
 	         message.setText("Please click the link to reset your password " 
-	        		 + "http://localhost:8080/www.invaid.com/renew_password.jsp?token=" 
-	        		 + userAccount.getUser_token());  
+	        		 + "http://localhost:8080/www.invaid.com/renewpassword.action?token=" 
+	        		 + user_token);  
 	         
 	         Transport.send(message);
 	         System.out.println("Mail was sent successfully!");

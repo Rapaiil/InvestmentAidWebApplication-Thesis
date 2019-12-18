@@ -31,7 +31,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 		try {
 			userAccount.setUser_profileId(userProfile.getUser_profileId());
 			userAccount.setUser_status(00);
-			userAccount.setUser_token(TokenUtil.generateUnverifiedToken(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
+			userAccount.setUser_token(TokenUtil.generateToken(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
 			session.save(userAccount);
 			session.save(userProfile);
 			

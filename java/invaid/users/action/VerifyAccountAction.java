@@ -41,7 +41,7 @@ public class VerifyAccountAction extends ActionSupport implements DBCommands {
 		 *  4) Check for expiration (TokenExpiredException)
 		 */
 		try {
-			TokenUtil.verifyUserUnverifiedToken().verify(token);
+			TokenUtil.verifyUserToken().verify(token);
 		} catch(JWTDecodeException | AlgorithmMismatchException | SignatureVerificationException jwtve) {
 			System.err.println("Invalid token! Access is denied.");
 		} catch(InvalidClaimException jwtve) {

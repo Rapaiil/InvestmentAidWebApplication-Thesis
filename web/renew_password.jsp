@@ -70,14 +70,14 @@
                     <div class="form-login my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-5">Password Reset</h4>
-                            <s:form action="renewpassword" method="post">
+                            <s:form action="resetpassword" method="post">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <s:password  cssClass="form-control" name="password" placeholder="Password" required="true"/>
+                                    <s:password  cssClass="form-control" name="reset_password" placeholder="Password" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password</label>
-                                    <s:password  cssClass="form-control" name="confirm_password" placeholder="Confirm Password" required="true"/>
+                                    <s:password  cssClass="form-control" name="reset_confirmpassword" placeholder="Confirm Password" required="true"/>
                                 </div>
                                 
                                 <div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
