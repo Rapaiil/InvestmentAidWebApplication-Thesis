@@ -44,7 +44,6 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven, 
 								break;
 						case 3: return ERROR;
 					}
-					
 					return SUCCESS;
 				}
 			}

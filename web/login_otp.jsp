@@ -68,11 +68,11 @@
                     <div class="form-login-otp my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-5">login</h4>
-                            <s:form action="#" method="post">
+                            <s:form action="loginaccount" method="post">
                                 <p class="text-center">Enter the OTP sent to</p>
-                                <h5 class="text-center font-weight-bold">a*****12@gmail.com</h5>
+                                <h5 class="text-center font-weight-bold"><s:property value="#session.loginEmail"/></h5>
                                 <div class="form-group">
-                                    <s:textfield cssClass="form-control" name="otp"/>
+                                    <s:textfield cssClass="form-control" name="otp_login"/>
                                 </div>
                                 <div class="form-group">
                                     <button id="otp_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">submit</button>

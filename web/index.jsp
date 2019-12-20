@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,6 +24,7 @@
   <body>
       <!-- Navbar -->
       <section class="header">
+      <s:if test="%{#session.loginToken==null}">
       <!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
@@ -61,9 +63,10 @@
                 </ul>
             </div>
         </nav>
-        
+        </s:if>
+        <s:else>
         <!-- LOGGED IN/REGISTERED USER NAVBAR -->
-        <!-- 
+        
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -94,7 +97,7 @@
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
-							Hi, [User]
+							Hi, <s:property value="#session.loginFirstName"/>
 						</a>
 	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
 	                    	<a class="dropdown-item" href="#">Account Settings</a>
@@ -108,7 +111,7 @@
                 </ul>
             </div>
         </nav>
-		 -->
+		</s:else>
         <!-- HEADER Content -->
         <div class="header-content">
             <h1>Investment Aid</h1>
@@ -229,7 +232,9 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
-		        <button type="button" class="btn btn-primary btnLogout">Logout</button>
+		        <s:form action="logoutuser" method="get">
+		        	<s:submit value="Logout" class="btn btn-primary btnLogout"/>
+		        </s:form>
 		      </div>
 		    </div>
 		  </div>

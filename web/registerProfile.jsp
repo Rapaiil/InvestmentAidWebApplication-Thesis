@@ -99,7 +99,7 @@
 									</div>
 									<div class="col-lg col-md-12 col-12">
 										<label>Birthday: <span class="required">*</span></label>
-									 	<input type="date" class="form-control text-uppercase" name="birthday">
+									 	<input type="date" class="form-control text-uppercase" name="user_birthday">
 									</div>
 									<div class="col-lg col-md-12 col-12">
 										<label>Citizenship: </label>
