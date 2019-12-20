@@ -1,1 +1,5 @@
+/config.properties
+/config/
+/hibernate.cfg.xml
 /invaid/
+/struts.xml
