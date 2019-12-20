@@ -48,7 +48,7 @@
                         <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
@@ -72,7 +72,7 @@
                                 <p class="text-center">Enter the OTP sent to</p>
                                 <h5 class="text-center font-weight-bold">a*****12@gmail.com</h5>
                                 <div class="form-group">
-                                    <s:textfield cssClass="form-control" name="otp" required="true"/>
+                                    <s:textfield cssClass="form-control" name="otp"/>
                                 </div>
                                 <div class="form-group">
                                     <button id="otp_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">submit</button>

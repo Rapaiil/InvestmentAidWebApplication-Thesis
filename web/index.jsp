@@ -48,7 +48,7 @@
                         <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
@@ -81,14 +81,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Investment Guide</a>
                     </li>
-					<li class="nav-item">
-                        <a class="nav-link" href="#">Risk Profile Questionnaire</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Monitoring</a>
+                        <a class="nav-link" href="monitoring.jsp">Monitoring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
+                        <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -102,7 +102,7 @@
 	                    	<a class="dropdown-item" href="#">Risk Profile</a>
 	                    	<a class="dropdown-item" href="#">Reset Password</a>
 	                    	<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Logout</a>
+							<a class="dropdown-item" href="#logoutModal" data-toggle="modal">Logout</a>
 						</div>
 					</li>
                 </ul>
@@ -212,6 +212,28 @@
               </div>
             </div>
           </footer>
+		  
+	  <!-- LOGOUT MODAL -->
+		<!-- Modal -->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title text-uppercase">Logout</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <p>Would you like to logout?</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="btn btn-primary btnLogout">Logout</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
         
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

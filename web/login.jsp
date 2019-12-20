@@ -21,7 +21,8 @@
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Titillium+Web&display=swap" rel="stylesheet">
     	
-    	<script src="https://www.google.com/recaptcha/api.js"></script>
+		<!-- reCAPTCHA -->
+		<script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
 
@@ -66,21 +67,21 @@
         
             <!-- LOGIN -->
             <div class="h-75 d-flex justify-content-center">
-                <div class="card h-75 my-auto">
+                <div class="card my-auto">
                     <div class="form-login my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase">login</h4>
-                            <s:form action="#" method="post">
+                            <s:form action="loginaccount" method="post">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <s:textfield  cssClass="form-control" name="emailAddress" placeholder="Email Address" required="true"/>
+                                    <s:textfield  cssClass="form-control" name="login_email" placeholder="Email Address"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <s:password  cssClass="form-control" name="password" placeholder="Password" required="true"/>
+                                    <s:password  cssClass="form-control" name="login_password" placeholder="Password" />
                                 </div>
                                 
-                                <div class="g-recaptcha" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+                                <div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
                                 
                                 <div class="form-group">
                                     <button id="login_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">Login</button>

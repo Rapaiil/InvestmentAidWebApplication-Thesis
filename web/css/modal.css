@@ -1,0 +1,29 @@
+.modal-title {
+	color: #19aa8d;
+}
+
+.modal-footer .btnCancel{
+	color: white;
+}
+
+.modal-footer .btnCancel:active{
+	outline: none;
+}
+
+.modal-footer .btnLogout {
+	background-color: #19aa8d;
+	border-radius: 3px;
+    border: none;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.modal-footer .btnLogout:hover, .modal-footer .btnLogout:focus {
+	background: #19A375;
+    outline: none;
+}
+
+.modal-footer .btnLogout:active {
+    background-color: #19A375 !important;
+    outline: none;
+}

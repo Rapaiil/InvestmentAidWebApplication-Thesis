@@ -1,153 +1,155 @@
 package invaid.users.action;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.struts2.ServletActionContext;
-import org.hibernate.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.apache.struts2.interceptor.SessionAware;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.InvalidClaimException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
 import invaid.users.util.HibernateUtil;
+import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class RenewPasswordAction extends ActionSupport implements ModelDriven{
-	private UserAccountBean user = new UserAccountBean();
-	private String password;
-	private String confirm_password;
-	private String keyword = "token=";
-	private String url = ServletActionContext.getRequest().getHeader("Referer");
-	private int result;
+public class RenewPasswordAction extends ActionSupport implements DBCommands, SessionAware {
 	private String token;
+	private String reset_password;
+	private String reset_confirmpassword;
+	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
 	
 	public String execute() {
-		result = isSubstring(keyword,url);
-		System.out.println("password:" + password);
-		if(result == -1) {
+		token = (String) sessionMap.get("token");
+		List<Object[]> list = null;
+		session.getTransaction().begin();
+		
+		switch(givePermission()) {
+			case "denied": return ERROR;
+		}
+		
+		if(!arePasswordsMatch()) {
 			return ERROR;
 		}
-		else {
-			System.out.println(result);
-			token = url.substring(result+6);
-			boolean UpdateSuccess = updateRecord();
-			
-			if(UpdateSuccess) {
-				return SUCCESS;
-			}
-			else {
-				return ERROR;
+		
+		list = getRecords();
+		
+		if(list != null) {
+			for(Object[] record: list) {
+				if(record[0].toString().equals(token)) {
+					if(updateUserPassword(record[1].toString(), record[2].toString()))
+						return SUCCESS;
+				}
 			}
 		}
-		//System.out.println(url);
-		//Update database
-		
-		
-	}	
-	
-	//Functions
-	public int isSubstring(String s1, String s2) 
-    { 
-        int M = s1.length(); 
-        int N = s2.length(); 
-      
-        /* A loop to slide pat[] one by one */
-        for (int i = 0; i <= N - M; i++) { 
-            int j; 
-      
-            /* For current index i, check for 
-            pattern match */
-            for (j = 0; j < M; j++) 
-                if (s2.charAt(i + j) != s1.charAt(j)) 
-                    break; 
-      
-            if (j == M) 
-                return i; 
-        } 
-      
-        return -1; 
-    } 
-	
-	public boolean updateRecord() {
-		boolean updateComplete = false;
-		List recordsList = getRecords();
-		
-		if(recordsList != null) {
-			System.out.println("No. of Records:" + recordsList.size());
-					System.out.println("Updating Records");
-					//Token should be set here from temp to user
-					//temp.setUser_accountId(user.getUser_accountId());
-					
-			Transaction transaction = session.beginTransaction();
-		  	String hql = "UPDATE UserAccountBean set user_password = :pass "  + 
-	             "WHERE reset_token = :tok";
-			Query query = session.createQuery(hql);
-			query.setParameter("pass", password);
-			System.out.println(password + token + confirm_password);
-			query.setParameter("tok", token);
-			int result = query.executeUpdate();
-			System.out.println("Rows affected: " + result);
-			transaction.commit();
-			updateComplete = true;
-			session.close();
-		}
-		return updateComplete;
+		return ERROR;
+	}
+
+	public String getReset_password() {
+		return reset_password;
+	}
+
+	public void setReset_password(String reset_password) {
+		this.reset_password = reset_password;
+	}
+
+	public String getReset_confirmpassword() {
+		return reset_confirmpassword;
+	}
+
+	public void setReset_confirmpassword(String reset_confirmpassword) {
+		this.reset_confirmpassword = reset_confirmpassword;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	private boolean arePasswordsMatch() {
+		return reset_password.equals(reset_confirmpassword);
 	}
 	
-	private List getRecords() {
-		List recordsList = new ArrayList();
+	private boolean updateUserPassword(String id, String stats) {
+		int stat = getConvertedStatus(stats);
 		
 		try {
-			session.beginTransaction();
+			Query query = session.createQuery(UPDATE_PASSWORD);
+			query.setParameter("pass", reset_password);
+			query.setParameter("tok", null);
+			query.setParameter("status", stat);
+			query.setParameter("id", id);
 			
-			recordsList = session.createQuery("FROM UserAccountBean").list();
-		}
-		catch(Exception sqle) {
-			if(null != session.getTransaction()) {
-				session.getTransaction().rollback();
+			if(query.executeUpdate() > 0) {
+				session.getTransaction().commit();
+				return true;
 			}
-			System.out.println("Stack trace here");
-			sqle.printStackTrace();
+		} catch(HibernateException he) {
+			session.getTransaction().rollback();
 		}
-		finally {
-			if(session != null) {
-				
-			}
-		}
-		return recordsList;
+		return false;
 	}
 	
-	public boolean verifyPassword() {
-		boolean passwords_match = false;
-		if(this.password == this.confirm_password) {
-			passwords_match = true;
+	private int getConvertedStatus(String status) {
+		int n = Integer.parseInt(status);
+		n /= 10; n *= 10;
+		return n;
+	}
+	
+	public String givePermission() {
+		try {
+			TokenUtil.verifyUserToken().verify(token);
+			if(sessionMap.isEmpty())
+				sessionMap.put("token", token);
+			return "granted";
+		} catch(JWTDecodeException | AlgorithmMismatchException | SignatureVerificationException jwtve) {
+			System.err.println("Invalid token! Access is denied.");
+		} catch(InvalidClaimException jwtve) {
+			System.err.println("Access is denied.");
+		} catch(TokenExpiredException jwtve) {
+			System.err.println("Session has expired!");
+		} catch(JWTVerificationException jwtve) {
+			System.err.println(jwtve.getMessage());
 		}
-		
-		return passwords_match;
+		return "denied";
 	}
 	
-	//Getters and Setters
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getConfirm_password() {
-		return confirm_password;
-	}
-	public void setConfirm_password(String confirm_password) {
-		this.confirm_password = confirm_password;
-	}
-	
-	//Implemented Methods
 	@Override
-	public Object getModel() {
-		// TODO Auto-generated method stub
-		return user;
+	public List<Object[]> getRecords() {
+		try {
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
+			Root<UserAccountBean> root = cq.from(UserAccountBean.class);
+			cq.multiselect(root.get("user_token"), root.get("user_profileId"), root.get("user_status"));
+			
+			Query<Object[]> query = session.createQuery(cq);
+			return query.getResultList();
+		} catch(HibernateException he) {
+			session.getTransaction().rollback();
+		}
+		return null;
 	}
+	
+	@Override
+	public void setSession(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+
 }

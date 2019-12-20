@@ -1,13 +1,8 @@
 package invaid.users.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -15,19 +10,27 @@ import javax.persistence.Transient;
 @Table(name="registered_useraccounts")
 public class UserAccountBean {
 	@Id
-	private String user_accountId;
 	@Column(nullable=false)
 	private String user_email;
 	@Column(nullable=false)
 	private String user_password;
 	@Transient
 	private String user_repassword;
-	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="userId", nullable=false)
-	@MapsId
-	private UserProfileBean userProfile;
+	@Column(nullable=false)
+	private String user_profileId;
 	@Column
-	private String reset_token;
+	private String user_token;
+	
+	/*
+	 * To be read as a tuple
+	 * (x,y)
+	 * 
+	 * x - defines the account if verified (1) or not verified (0)
+	 * y - defines if the user is currently finishing an event/function (1) i.e. resetting password event
+	 * 		else, neutral state (0)
+	 */
+	@Column(columnDefinition="TINYINT(2) ZEROFILL")
+	private int user_status;
 
 	public String getUser_email() {
 		return user_email;
@@ -53,28 +56,29 @@ public class UserAccountBean {
 		this.user_repassword = user_confirmpassword;
 	}
 
-	public UserProfileBean getUserProfile() {
-		return userProfile;
+	public String getUser_profileId() {
+		return user_profileId;
 	}
 
-	public void setUserProfile(UserProfileBean userProfile) {
-		this.userProfile = userProfile;
+	public void setUser_profileId(String user_profileId) {
+		this.user_profileId = user_profileId;
 	}
 
-	public String getReset_token() {
-		return reset_token;
+	public String getUser_token() {
+		return user_token;
 	}
 
-	public void setReset_token(String reset_token) {
-		this.reset_token = reset_token;
+	public void setUser_token(String user_token) {
+		this.user_token = user_token;
 	}
 
-	public String getUser_accountId() {
-		return user_accountId;
+	public int getUser_status() {
+		return user_status;
 	}
 
-	public void setUser_accountId(String user_accountId) {
-		this.user_accountId = user_accountId;
+	public void setUser_status(int user_status) {
+		this.user_status = user_status;
 	}
+	
 	
 }
