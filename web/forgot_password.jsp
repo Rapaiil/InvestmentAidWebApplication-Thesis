@@ -75,7 +75,7 @@
                                 </p>
                                 <div class="form-group">
                                     <div class="w-75 mx-auto">
-                                        <s:textfield cssClass="form-control" name="forgot_password" placeholder="Email Address"/>
+                                        <s:textfield cssClass="form-control" name="user_email" placeholder="Email Address"/>
                                     </div>
                                 </div>
                                 <div class="form-group">

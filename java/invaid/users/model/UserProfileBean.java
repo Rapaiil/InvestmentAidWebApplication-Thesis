@@ -138,5 +138,4 @@ public class UserProfileBean {
 		else
 			setUser_gender(false);
 	}
-	
 }

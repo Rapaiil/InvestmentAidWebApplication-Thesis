@@ -22,60 +22,55 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
-import invaid.users.util.Encrypt;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class RenewPasswordAction extends ActionSupport implements DBCommands, SessionAware {
-	private String token;
-	private String reset_password;
-	private String reset_confirmpassword;
+public class VerifyLoginAction extends ActionSupport implements SessionAware, DBCommands {
 	private Map<String, Object> sessionMap;
+	private String otp_login, token;
 	Session session = HibernateUtil.getSession();
 	
 	public String execute() {
-		token = (String) sessionMap.get("token");
+		token = (String) sessionMap.get("loginToken");
+		String loginId;
 		List<Object[]> list = null;
-		session.getTransaction().begin();
 		
 		switch(givePermission()) {
 			case "denied": return ERROR;
 		}
 		
-		if(!arePasswordsMatch()) {
-			return ERROR;
-		}
+		loginId = (String) sessionMap.get("loginId");
+		session.getTransaction().begin();
 		
 		list = getRecords();
 		
 		if(list != null) {
 			for(Object[] record: list) {
-				if(record[0].toString().equals(token)) {
-					if(updateUserPassword(record[1].toString(), (int) record[2]))
+				if(record[1].toString().equals(token)
+					&& (record[2].toString().length() < 6 ? String.format("%02d", Integer.parseInt(record[2].toString())) : record[2].toString())
+					.equals((otp_login.length() < 6 ? String.format("%02d", Integer.parseInt(otp_login)) : otp_login))) {
+					
+					token = TokenUtil.generateToken((String)sessionMap.get("loginFirstName"), (String)sessionMap.get("loginLastName"));
+					
+					if(updateUserToken(token, loginId, (int)record[3])) {
+						sessionMap.replace("loginToken", token);
 						return SUCCESS;
+					}
 				}
 			}
 		}
 		return ERROR;
 	}
-
-	public String getReset_password() {
-		return reset_password;
+	
+	public String getOtp_login() {
+		return otp_login;
 	}
 
-	public void setReset_password(String reset_password) {
-		this.reset_password = reset_password;
+	public void setOtp_login(String otp_login) {
+		this.otp_login = otp_login;
 	}
-
-	public String getReset_confirmpassword() {
-		return reset_confirmpassword;
-	}
-
-	public void setReset_confirmpassword(String reset_confirmpassword) {
-		this.reset_confirmpassword = reset_confirmpassword;
-	}
-
+	
 	public String getToken() {
 		return token;
 	}
@@ -84,46 +79,16 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 		this.token = token;
 	}
 
-	private boolean arePasswordsMatch() {
-		return reset_password.equals(reset_confirmpassword);
-	}
-	
 	@Override
 	public void setSession(Map<String, Object> sessionMap) {
 		this.sessionMap = sessionMap;
 	}
 	
-	private boolean updateUserPassword(String id, int stats) {
-		int stat = getConvertedStatus(stats);
-		
+	private String givePermission() {
 		try {
-			Query query = session.createQuery(UPDATE_PASSWORD);
-			query.setParameter("pass", String.valueOf(Encrypt.bcrypt(reset_password.toCharArray())));
-			query.setParameter("tok", null);
-			query.setParameter("status", stat);
-			query.setParameter("id", id);
-			
-			if(query.executeUpdate() > 0) {
-				session.getTransaction().commit();
-				return true;
-			}
-		} catch(HibernateException he) {
-			session.getTransaction().rollback();
-		}
-		return false;
-	}
-	
-	private int getConvertedStatus(int status) {
-		status /= 10;
-		status *= 10;
-		return status;
-	}
-	
-	public String givePermission() {
-		try {
+			if(token == null)
+				throw new NullPointerException("Token is empty!");
 			TokenUtil.verifyUserToken().verify(token);
-			if(sessionMap.isEmpty())
-				sessionMap.put("token", token);
 			return "granted";
 		} catch(JWTDecodeException | AlgorithmMismatchException | SignatureVerificationException jwtve) {
 			System.err.println("Invalid token! Access is denied.");
@@ -133,8 +98,26 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 			System.err.println("Session has expired!");
 		} catch(JWTVerificationException jwtve) {
 			System.err.println(jwtve.getMessage());
-		}
+		} 
 		return "denied";
+	}
+	
+	private boolean updateUserToken(String token, String id, int status) {
+		try {
+			Query query = session.createQuery(UPDATE_OTP_TOKEN);
+			query.setParameter("tok", token);
+			query.setParameter("status", status);
+			query.setParameter("otp", null);
+			query.setParameter("id", id);
+			
+			if(query.executeUpdate() > 0) { 
+				session.getTransaction().commit();
+				return true;
+			}
+		} catch(HibernateException he) {
+			session.getTransaction().rollback();
+		}
+		return false;
 	}
 	
 	@Override
@@ -143,13 +126,15 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 			CriteriaBuilder cb = session.getCriteriaBuilder();
 			CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
 			Root<UserAccountBean> root = cq.from(UserAccountBean.class);
-			cq.multiselect(root.get("user_token"), root.get("user_profileId"), root.get("user_status"));
+			cq.multiselect(root.get("user_profileId"), root.get("user_token"),
+					root.get("user_otp"), root.get("user_status"));
 			
 			Query<Object[]> query = session.createQuery(cq);
 			return query.getResultList();
 		} catch(HibernateException he) {
 			session.getTransaction().rollback();
 		}
+		
 		return null;
 	}
 }

@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import invaid.users.util.Encrypt;
+
 @Entity
 @Table(name="registered_useraccounts")
 public class UserAccountBean {
@@ -20,6 +22,8 @@ public class UserAccountBean {
 	private String user_profileId;
 	@Column
 	private String user_token;
+	@Column
+	private int user_otp;
 	
 	/*
 	 * To be read as a tuple
@@ -29,7 +33,7 @@ public class UserAccountBean {
 	 * y - defines if the user is currently finishing an event/function (1) i.e. resetting password event
 	 * 		else, neutral state (0)
 	 */
-	@Column(columnDefinition="TINYINT(2) ZEROFILL")
+	@Column(columnDefinition="SMALLINT(2) ZEROFILL")
 	private int user_status;
 
 	public String getUser_email() {
@@ -78,6 +82,18 @@ public class UserAccountBean {
 
 	public void setUser_status(int user_status) {
 		this.user_status = user_status;
+	}
+
+	public int getUser_otp() {
+		return user_otp;
+	}
+
+	public void setUser_otp(int user_otp) {
+		this.user_otp = user_otp;
+	}
+
+	public void encryptPassword() {
+		setUser_password(String.valueOf(Encrypt.bcrypt(getUser_password().toCharArray())));
 	}
 	
 	
