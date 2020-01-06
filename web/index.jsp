@@ -112,6 +112,13 @@
             </div>
         </nav>
 		</s:else>
+		<!-- STATUS ALERT -->
+		<s:if test="%{#session.userStatus == unverified}">
+			<div class="alert alert-warning mx-auto" role="alert" style="width: 1100px;">
+			  You have not verified your account yet. Please check your email for the verification link.
+			</div>
+		</s:if>
+		
         <!-- HEADER Content -->
         <div class="header-content">
             <h1>Investment Aid</h1>

@@ -78,6 +78,9 @@
                                     <button id="otp_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">submit</button>
                                 </div>
                             </s:form>
+							<div>
+                      			<h4 id="time" class="text-center">01:00</h4>
+                      		</div>
                         </div>
                     </div>
                 </div>   
@@ -92,5 +95,6 @@
             
         <!-- JS -->
         <script src="js/navbar.js"></script>
+		<script src="js/timer.js"></script>
     </body>
 </html>
