@@ -72,7 +72,7 @@
                                 <p class="text-center">Enter the OTP sent to</p>
                                 <p class="text-center font-weight-bold"><s:property value="#session.loginEmail"/></p>
                                 <div class="form-group">
-                                    <s:textfield cssClass="form-control" name="otp_login"/>
+                                    <s:textfield cssClass="form-control" name="otp_login" required="required"/>
                                 </div>
                                 <div class="form-group">
                                     <button id="otp_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">submit</button>

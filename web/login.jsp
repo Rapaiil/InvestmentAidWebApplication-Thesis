@@ -82,11 +82,11 @@
 						<s:form action="loginotp" method="post">
 							<div class="form-group">
 								<label>Email Address</label>
-								<s:textfield  cssClass="form-control" name="login_email" placeholder="Email Address"/>
+								<s:textfield  cssClass="form-control" name="login_email" placeholder="Email Address" required="required"/>
 							</div>
 							<div class="form-group">
 								<label>Password</label>
-								<s:password  cssClass="form-control" name="login_password" placeholder="Password" />
+								<s:password  cssClass="form-control" name="login_password" placeholder="Password" required="required"/>
 							</div>
 							
 							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>

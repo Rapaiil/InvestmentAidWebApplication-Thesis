@@ -74,15 +74,15 @@
 						<s:form action="registeraccount" method="post" class="registration-account-form">
 							<div class="form-group">
 								<label>Email Address: <span class="required" style="color:red;">*</span></label>
-								<s:textfield name="user_email" cssClass="form-control" />
+								<s:textfield name="user_email" cssClass="form-control" required="required"/>
 							</div>
 							<div class="form-group">
 								<label>Password: <span class="required" style="color:red;">*</span></label>
-								<s:password name="user_password" cssClass="form-control" />
+								<s:password name="user_password" cssClass="form-control" required="required"/>
 							</div>
 							<div class="form-group">
 								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
-								<s:password name="user_repassword" cssClass="form-control"/>
+								<s:password name="user_repassword" cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
