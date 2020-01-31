@@ -68,7 +68,7 @@
 		<!-- STATUS ALERT -->
         
         <s:if test="%{#session.userStatus == on-going}">
-		 	<div class="alert alert-danger mx-auto" role="alert" style="width: 1100px;">
+		 	<div class="alert alert-danger mx-auto" role="alert">
 			  You have not yet completed in renewing your password.
 			</div>
 		</s:if>
