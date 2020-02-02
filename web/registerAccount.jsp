@@ -24,6 +24,12 @@
 	
 	<!-- reCAPTCHA -->
 	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
+	<!-- JQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<!-- JS File -->
+	<script src="js/validations.js"></script>
 </head>
 <body>
 	<!-- Navbar -->
@@ -72,17 +78,19 @@
 					<div class="card-body">
 						<h4 class="card-title text-uppercase">register</h4>
 						<s:form action="registeraccount" method="post" class="registration-account-form">
+							<label class="em" id="lea" for="ea">Error Goes Here</label>
 							<div class="form-group">
 								<label>Email Address: <span class="required" style="color:red;">*</span></label>
-								<s:textfield name="user_email" cssClass="form-control" required="required"/>
+								<s:textfield id="ea" name="user_email" cssClass="form-control" />
 							</div>
+							<label class="em" id="lp" for="p">Error Goes Here</label>
 							<div class="form-group">
 								<label>Password: <span class="required" style="color:red;">*</span></label>
-								<s:password name="user_password" cssClass="form-control" required="required"/>
+								<s:password id="p" name="user_password" cssClass="form-control" />
 							</div>
 							<div class="form-group">
 								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
-								<s:password name="user_repassword" cssClass="form-control" required="required"/>
+								<s:password id="cp" name="user_repassword" cssClass="form-control"/>
 							</div>
 							
 							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>

@@ -163,6 +163,11 @@ body {
     text-decoration: underline;
 }
 
+.registration-account-form .em {
+	visibility: hidden;
+}
+
+
 /* ALERT */
 .alert {
 	width: 1100px;
