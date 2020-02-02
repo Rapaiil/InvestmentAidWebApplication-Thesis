@@ -132,7 +132,7 @@
 					<!-- MONITORING -->
 					<div class="tab-content" id="pills-tabContent">
 					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
-							<s:iterator value="">
+							<s:iterator value="data">
 								<table class="table">
 								  <thead>
 								    <tr>
@@ -166,7 +166,7 @@
 							</s:iterator>
 						</div>
 					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<s:iterator value="">
+							<s:iterator value="data">
 								<table class="table">
 									  <thead>
 									    <tr>
