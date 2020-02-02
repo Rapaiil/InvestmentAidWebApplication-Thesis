@@ -10,13 +10,12 @@
 	<package name="default" extends="struts-default">
 		<action name="registerprofile" class="invaid.users.action.RegisterProfileAction">
 			<result name="success">registerAccount.jsp</result>
-			<!-- <result name="input">registerProfile.jsp</result> -->
 			<result name="error">registerProfile.jsp</result>
 		</action>
 		<action name="registeraccount" class="invaid.users.action.RegisterAccountAction">
 			<result name="success">accountVerify.jsp</result>
 			<result name="input">registerAccount.jsp</result>
-			<!-- <result name="error">registerAccount.jsp</result> -->
+			<result name="error">error/default_error.jsp</result>
 		</action>
 	</package>
 	

@@ -24,11 +24,22 @@ import invaid.users.util.HibernateUtil;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class VerifyAccountAction extends ActionSupport implements DBCommands {
+public class VerifyAccountAction extends ActionSupport implements DBCommands, Runnable {
 	private String token;
 	Session session = HibernateUtil.getSession();
+	private boolean isSuccess = false;
 	
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+
+	@Override
+	public void run() {
 		List<Object[]> list = null;
 		session.getTransaction().begin();
 		
@@ -57,14 +68,15 @@ public class VerifyAccountAction extends ActionSupport implements DBCommands {
 		if(list != null) {
 			for(Object[] record: list) {
 				if(record[0].toString().equals(token)) {
-					if(updateUserStatus(token))
-						return SUCCESS;
+					if(updateUserStatus(token)) {
+						isSuccess = !isSuccess;
+						return;
+					}
 				}
 			}
 		}
-		return ERROR;
 	}
-
+	
 	public String getToken() {
 		return token;
 	}

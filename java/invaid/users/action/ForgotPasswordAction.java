@@ -16,11 +16,22 @@ import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class ForgotPasswordAction extends ActionSupport implements ModelDriven, DBCommands {
+public class ForgotPasswordAction extends ActionSupport implements ModelDriven, DBCommands, Runnable {
 	private UserAccountBean userAccount = new UserAccountBean();
 	Session session = HibernateUtil.getSession();
+	private boolean isSuccess = false;
 	
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		session.getTransaction().begin();
 		List<Object[]> list = getRecords();
 		String token = null;
@@ -33,22 +44,21 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven, 
 						case 1: stats = 0;
 								token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
 								if(!updateUserToken(record[0].toString(), token, stats))
-									return ERROR;
+									return;
 								Mail.sendPasswordResetMail(userAccount.getUser_email(), token);
 								break;
 						case 2: stats = 1;
 								token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
 								if(!updateUserToken(record[0].toString(), token, stats))
-									return ERROR;
+									return;
 								Mail.sendPasswordResetMail(userAccount.getUser_email(), token);
 								break;
-						case 3: return ERROR;
+						case 3: return;
 					}
-					return SUCCESS;
+					isSuccess = !isSuccess;
 				}
 			}
-		}
-		return ERROR;
+		}		
 	}
 	
 	@Override

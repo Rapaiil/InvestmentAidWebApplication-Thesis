@@ -17,17 +17,27 @@ import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class RegisterAccountAction extends ActionSupport implements ModelDriven, SessionAware {
+public class RegisterAccountAction extends ActionSupport implements ModelDriven, SessionAware, Runnable {
 	private UserAccountBean userAccount = new UserAccountBean();
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
+	private boolean isSuccess = false;
 
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
 		
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
-		
 		try {
 			userAccount.setUser_profileId(userProfile.getUser_profileId());
 			userAccount.setUser_status(00);
@@ -37,13 +47,11 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 			session.save(userProfile);
 			
 			Mail.sendVerificationMail(userAccount);
-			
 			t.commit();
-			return SUCCESS;
+			isSuccess = !isSuccess;
 		} catch(HibernateException he) {
 			t.rollback();
 		}
-		return ERROR;
 	}
 	
 	@Override

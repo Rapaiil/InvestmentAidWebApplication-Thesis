@@ -26,18 +26,29 @@ import invaid.users.util.HibernateUtil;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class VerifyLoginAction extends ActionSupport implements SessionAware, DBCommands {
+public class VerifyLoginAction extends ActionSupport implements SessionAware, DBCommands, Runnable {
 	private Map<String, Object> sessionMap;
 	private String otp_login, token;
 	Session session = HibernateUtil.getSession();
+	private boolean isSuccess = false;
 	
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		token = (String) sessionMap.get("loginToken");
 		String loginId;
 		List<Object[]> list = null;
 		
 		switch(givePermission()) {
-			case "denied": return ERROR;
+			case "denied": return;
 		}
 		
 		loginId = (String) sessionMap.get("loginId");
@@ -55,12 +66,13 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 					
 					if(updateUserToken(token, loginId, (int)record[3])) {
 						sessionMap.replace("loginToken", token);
-						return SUCCESS;
+						isSuccess = !isSuccess;
+						return;
 					}
 				}
 			}
 		}
-		return ERROR;
+		return;
 	}
 	
 	public String getOtp_login() {

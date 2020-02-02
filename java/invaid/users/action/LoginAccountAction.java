@@ -20,13 +20,28 @@ import invaid.users.util.OTPUtil;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class LoginAccountAction extends ActionSupport implements ModelDriven, SessionAware, DBCommands {
+public class LoginAccountAction extends ActionSupport implements ModelDriven, SessionAware, DBCommands, Runnable {
 	private LoginAccountModel loginAccount = new LoginAccountModel();
 	private Map<String, Object> sessionMap;
 	private String token;
 	Session session = HibernateUtil.getSession();
+	private boolean isSuccess = false, isDenied = false, isInvalid = false;
 	
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else if(isDenied)
+			return "denied";
+		else if(isInvalid)
+			return "invalid";
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		session.getTransaction().begin();
 
 		List<Object[]> list = getRecords();
@@ -47,19 +62,21 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven, Se
 							sessionMap.put("loginLastName", record[2].toString());
 							sessionMap.put("loginEmail", loginAccount.getLogin_email());
 							sessionMap.put("userStatus", getSessionStatus((int) record[6]));
-							return SUCCESS;
+							isSuccess = !isSuccess;
+							return;
 						}
-						return ERROR;
+						return;
 					}
-					return "denied";
+					isDenied = !isDenied;
+					return;
 				}
 				System.err.println("Email or password is not equal");
-				return "invalid";
+				isInvalid = !isInvalid;
+				return;
 			}
 		}
-		return ERROR;
+		return;
 	}
-	
 	
 	@Override
 	public Object getModel() {

@@ -25,6 +25,7 @@
 <body>
 	<!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
         <!-- NAVBAR -->
+        <s:if test="%{#session.loginToken==null}">
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -62,8 +63,9 @@
                 </ul>
             </div>
         </nav>
+        </s:if>
         <!-- LOGGED IN/REGISTERED USER NAVBAR -->
-         <!-- 
+        <s:else>
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -94,7 +96,7 @@
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
-							Hi, [User]
+							Hi, <s:property value="#session.loginFirstName"/>
 						</a>
 	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
 	                    	<a class="dropdown-item" href="#">Account Settings</a>
@@ -108,7 +110,7 @@
                 </ul>
             </div>
         </nav>
-		 -->
+		</s:else>
 	
 		<!-- MONITORING CONTENT-->
         <div class="container-fluid p-5">

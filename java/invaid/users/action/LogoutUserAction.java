@@ -13,13 +13,24 @@ import invaid.users.db.DBCommands;
 import invaid.users.util.HibernateUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class LogoutUserAction extends ActionSupport implements SessionAware {
+public class LogoutUserAction extends ActionSupport implements SessionAware, Runnable {
 	private String token, id;
 	private int status;
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
+	private boolean isSuccess = false;
 	
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		token = (String) sessionMap.get("loginToken");
 		id = (String) sessionMap.get("loginId");
 		status = getStatus((String) sessionMap.get("userStatus"));
@@ -37,11 +48,12 @@ public class LogoutUserAction extends ActionSupport implements SessionAware {
 			sessionMap.remove("loginEmail");
 			sessionMap.remove("userStatus");
 			sessionMap.clear();
-			if(sessionMap.isEmpty())
-				return SUCCESS;
+			if(sessionMap.isEmpty()) {
+				isSuccess = !isSuccess;
+				return;
+			}
 		}
-		
-		return ERROR;
+		return;
 	}
 	
 	public String getToken() {

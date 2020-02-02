@@ -12,14 +12,25 @@ import invaid.users.model.UserProfileBean;
 import invaid.users.util.IdGeneratorUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class RegisterProfileAction extends ActionSupport implements ModelDriven, SessionAware {
+public class RegisterProfileAction extends ActionSupport implements ModelDriven, SessionAware, Runnable {
 	private UserProfileBean userProfile = new UserProfileBean();
 	private AddressBean userAddress;
 	private String user_street, user_apt, user_city, user_state;
 	private int user_zip;
 	private Map<String, Object> sessionMap;
+	private boolean isSuccess = false;
 
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		try {
 			userProfile.setUser_profileId(IdGeneratorUtil.generateId(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
 			
@@ -33,7 +44,7 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 		
 		//validation here
 		sessionMap.put("sessionUser", userProfile);
-		return SUCCESS;
+		isSuccess = !isSuccess;	
 	}
 	
 	@Override
@@ -86,7 +97,6 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 
 	public void setUser_zip(int user_zip) {
 		this.user_zip = user_zip;
-	}
-	
+	}	
 	
 }

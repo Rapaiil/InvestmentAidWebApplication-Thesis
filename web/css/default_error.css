@@ -1,0 +1,52 @@
+/* --- GENERAL ---*/
+h1, h2, h3, h4 {
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-weight: 500 !important;
+}
+  
+p, span, a {
+    font-family: "Titillium Web", sans-serif !important; 
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth !important; 
+    height: 100vh;
+}
+
+/* --- CONTENT --- */
+
+body {
+    background: #F9F9F9;
+}
+
+.card {
+    margin: 0 auto; 
+    float: none;
+    width: 700px;
+}
+
+.account-verified  {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.account-verified  .form-group {
+    margin-bottom: 20px;
+}
+
+.account-verified h4 {
+    color: #19aa8d;
+    text-align: center;
+    font-size: 26px;
+    margin-top: 0;
+}
+
+
+@media (max-width: 991px) {
+    .card {
+        margin: 5px;
+    }
+}

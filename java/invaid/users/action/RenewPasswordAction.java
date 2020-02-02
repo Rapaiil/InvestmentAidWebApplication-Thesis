@@ -27,24 +27,35 @@ import invaid.users.util.HibernateUtil;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class RenewPasswordAction extends ActionSupport implements DBCommands, SessionAware {
+public class RenewPasswordAction extends ActionSupport implements DBCommands, SessionAware, Runnable {
 	private String token;
 	private String reset_password;
 	private String reset_confirmpassword;
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
+	private boolean isSuccess = false;
 	
 	public String execute() {
+		Thread t = new Thread(this);
+		t.start();
+		if(isSuccess)
+			return SUCCESS;
+		else
+			return ERROR;
+	}
+	
+	@Override
+	public void run() {
 		token = (String) sessionMap.get("token");
 		List<Object[]> list = null;
 		session.getTransaction().begin();
 		
 		switch(givePermission()) {
-			case "denied": return ERROR;
+			case "denied": return;
 		}
 		
 		if(!arePasswordsMatch()) {
-			return ERROR;
+			return;
 		}
 		
 		list = getRecords();
@@ -52,12 +63,14 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 		if(list != null) {
 			for(Object[] record: list) {
 				if(record[0].toString().equals(token)) {
-					if(updateUserPassword(record[1].toString(), (int) record[2]))
-						return SUCCESS;
+					if(updateUserPassword(record[1].toString(), (int) record[2])) {
+						isSuccess = !isSuccess;
+						return;
+					}
 				}
 			}
 		}
-		return ERROR;
+		return;
 	}
 
 	public String getReset_password() {
