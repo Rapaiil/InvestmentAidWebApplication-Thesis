@@ -81,7 +81,7 @@ body {
 }
 
 .form-login, .card {
-    width: 350px;
+    width: auto;
 }
 .form-login {
     padding: 20px;
@@ -161,4 +161,22 @@ body {
 }	
 .form-login a:hover {
     text-decoration: underline;
+}
+
+.registration-account-form .em {
+	visibility: hidden;
+}
+
+
+/* ALERT */
+.alert {
+	width: 1100px;
+}
+
+/* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 991px) {
+    /* alert */
+    .alert {
+    	max-width: 100%;
+    }
 }

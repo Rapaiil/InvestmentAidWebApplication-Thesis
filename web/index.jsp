@@ -112,10 +112,23 @@
             </div>
         </nav>
 		</s:else>
+		<!-- STATUS ALERT -->
+		<s:if test="%{#session.userStatus == unverified}">
+			<div class="alert alert-warning mx-auto" role="alert">
+			  You have not verified your account yet. Please check your email for the verification link.
+			</div>
+		</s:if>
+		
         <!-- HEADER Content -->
         <div class="header-content">
-            <h1>Investment Aid</h1>
-            <h4>A Philippine Mutual Fund and Unit Investment Monitoring and Tracking System</h4>
+            <div class="row">
+            	<div class="col-md-6 tagline">
+            		<h1>Invest in your future. Invest now.</h1>
+            	</div>
+            	<div class="col-md-6">
+            		<img src="assets/invest_landing.svg" style="width: 700px;">
+            	</div>
+            </div>
         </div>
         
     </section>
