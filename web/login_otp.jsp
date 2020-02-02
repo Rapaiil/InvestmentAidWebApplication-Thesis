@@ -70,14 +70,17 @@
                             <h4 class="card-title text-uppercase pb-5">login</h4>
                             <s:form action="loginaccount" method="post">
                                 <p class="text-center">Enter the OTP sent to</p>
-                                <h5 class="text-center font-weight-bold"><s:property value="#session.loginEmail"/></h5>
+                                <p class="text-center font-weight-bold"><s:property value="#session.loginEmail"/></p>
                                 <div class="form-group">
-                                    <s:textfield cssClass="form-control" name="otp_login"/>
+                                    <s:textfield cssClass="form-control" name="otp_login" required="required"/>
                                 </div>
                                 <div class="form-group">
                                     <button id="otp_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">submit</button>
                                 </div>
                             </s:form>
+							<div>
+                      			<h4 id="time" class="text-center">01:00</h4>
+                      		</div>
                         </div>
                     </div>
                 </div>   
@@ -92,5 +95,6 @@
             
         <!-- JS -->
         <script src="js/navbar.js"></script>
+		<script src="js/timer.js"></script>
     </body>
 </html>

@@ -65,33 +65,41 @@
             </div>
         </nav>
         
-            <!-- LOGIN -->
-            <div class="h-75 d-flex justify-content-center">
-                <div class="card my-auto">
-                    <div class="form-login my-auto">
-                        <div class="card-body">
-                            <h4 class="card-title text-uppercase">login</h4>
-                            <s:form action="loginotp" method="post">
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <s:textfield  cssClass="form-control" name="login_email" placeholder="Email Address"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <s:password  cssClass="form-control" name="login_password" placeholder="Password" />
-                                </div>
-                                
-                                <div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
-                                
-                                <div class="form-group">
-                                    <button id="login_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">Login</button>
-                                </div>
-                                <p class="hint-text"><a href="forgot_password.jsp">Forgot Password?</a></p>
-                            </s:form>
-                        </div>
-                    </div>
-                </div>   
-            </div>
+		<!-- STATUS ALERT -->
+        
+        <s:if test="%{#session.userStatus == on-going}">
+		 	<div class="alert alert-danger mx-auto" role="alert">
+			  You have not yet completed in renewing your password.
+			</div>
+		</s:if>
+		
+		<!-- LOGIN -->
+		<div class="h-75 d-flex justify-content-center">
+			<div class="card my-auto">
+				<div class="form-login my-auto">
+					<div class="card-body">
+						<h4 class="card-title text-uppercase">login</h4>
+						<s:form action="loginotp" method="post">
+							<div class="form-group">
+								<label>Email Address</label>
+								<s:textfield  cssClass="form-control" name="login_email" placeholder="Email Address" required="required"/>
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<s:password  cssClass="form-control" name="login_password" placeholder="Password" required="required"/>
+							</div>
+							
+							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+							
+							<div class="form-group">
+								<button id="login_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">Login</button>
+							</div>
+							<p class="hint-text"><a href="forgot_password.jsp">Forgot Password?</a></p>
+						</s:form>
+					</div>
+				</div>
+			</div>   
+		</div>
             
             
         <!-- Optional JavaScript -->
