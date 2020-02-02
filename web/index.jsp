@@ -113,11 +113,11 @@
         </nav>
 		</s:else>
 		<!-- STATUS ALERT -->
-		<s:if test="%{#session.userStatus == unverified}">
+		<%-- <s:if test="%{#session.userStatus == unverified}">
 			<div class="alert alert-warning mx-auto" role="alert">
 			  You have not verified your account yet. Please check your email for the verification link.
 			</div>
-		</s:if>
+		</s:if> --%>
 		
         <!-- HEADER Content -->
         <div class="header-content">
