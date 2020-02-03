@@ -51,14 +51,15 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 			Elements texts = null;
 			try {
 				document = Jsoup.connect(SOURCE_URL).get();
-				texts = document.select("*");
+				texts = document.getElementsByTag("table");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			String title = document.title();
 			System.out.println("Title is " + title);
 			for(Element text: texts) {
-				data.add(text.data());
+				System.out.println(text);
+				data.add(text.text());
 			}
 		}
 		isSuccess = !isSuccess;

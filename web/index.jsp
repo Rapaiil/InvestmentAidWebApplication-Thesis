@@ -21,6 +21,16 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Titillium+Web&display=swap" rel="stylesheet">
+  	
+  	<style>
+  		.header .header-content .tagline {
+		 	margin: auto;
+		    padding: 10px;
+		}
+		.header .header-content .tagline h3 {
+			color: #2D3047;
+		}
+  	</style>
   </head>
   <body>
       <!-- Navbar -->
@@ -125,7 +135,7 @@
             <div class="row">
             	<div class="col-md-6 tagline">
             		<h1>Invest in your future. Invest now.</h1>
-					<h3 style="color: #2D3047; text-align: center;">Investment Aid</h3>
+					<h3 style="text-align: center;">Investment Aid</h3>
             	</div>
             	<div class="col-md-6">
             		<img src="assets/invest_landing.svg" style="width: 700px;">
