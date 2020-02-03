@@ -20,7 +20,7 @@ import invaid.users.util.OTPUtil;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class LoginAccountAction extends ActionSupport implements ModelDriven, SessionAware, DBCommands, Runnable {
+public class LoginAccountAction extends ActionSupport implements ModelDriven<LoginAccountModel>, SessionAware, DBCommands, Runnable {
 	private LoginAccountModel loginAccount = new LoginAccountModel();
 	private Map<String, Object> sessionMap;
 	private String token;
@@ -79,7 +79,7 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven, Se
 	}
 	
 	@Override
-	public Object getModel() {
+	public LoginAccountModel getModel() {
 		return loginAccount;
 	}
 	

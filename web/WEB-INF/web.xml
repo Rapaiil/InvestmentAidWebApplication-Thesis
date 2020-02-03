@@ -19,4 +19,8 @@
   	<filter-name>Struts2-5-17</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <session-config>
+  	<session-timeout>5</session-timeout>
+  </session-config>
 </web-app>

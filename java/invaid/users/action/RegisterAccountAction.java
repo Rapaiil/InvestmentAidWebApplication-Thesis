@@ -16,8 +16,8 @@ import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 
-@SuppressWarnings({"serial", "rawtypes"})
-public class RegisterAccountAction extends ActionSupport implements ModelDriven, SessionAware, Runnable {
+@SuppressWarnings({"serial"})
+public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable {
 	private UserAccountBean userAccount = new UserAccountBean();
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
@@ -55,7 +55,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven,
 	}
 	
 	@Override
-	public Object getModel() {
+	public UserAccountBean getModel() {
 		return userAccount;
 	}
 	

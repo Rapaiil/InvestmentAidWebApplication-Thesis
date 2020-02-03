@@ -1,4 +1,4 @@
-package mdh.util;
+package invaid.users.util;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

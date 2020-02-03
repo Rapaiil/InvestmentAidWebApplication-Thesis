@@ -16,7 +16,7 @@ import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial", "rawtypes"})
-public class ForgotPasswordAction extends ActionSupport implements ModelDriven, DBCommands, Runnable {
+public class ForgotPasswordAction extends ActionSupport implements ModelDriven<UserAccountBean>, DBCommands, Runnable {
 	private UserAccountBean userAccount = new UserAccountBean();
 	Session session = HibernateUtil.getSession();
 	private boolean isSuccess = false;
@@ -62,7 +62,7 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven, 
 	}
 	
 	@Override
-	public Object getModel() {
+	public UserAccountBean getModel() {
 		return userAccount;
 	}
 	
