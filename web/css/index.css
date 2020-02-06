@@ -18,7 +18,7 @@ body, html {
 /* --- NAVBAR & HEADER ---*/
 .header {
     height: 100vh;
-    /* background-color: #19A375; */
+    background-color: #19A375;
 }
 
 /* navbar custom */
@@ -112,13 +112,18 @@ body, html {
     width: 80%;
     margin: 0 auto; 
     color: #FBF5F3;
+    background-color: #19A375;
 }
 
 .header .header-content h1{
     text-align: center;
-    color: #2D3047;
+    color: white;
 }
 
+.header .header-content .tagline h3 {
+	text-align: center;
+    color: white;
+}
 .header .header-content img {
 	max-width: 100%;
   	height: auto;

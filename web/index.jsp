@@ -124,7 +124,7 @@
         </nav>
 		</s:else>
 		<!-- STATUS ALERT -->
-		<%-- <s:if test="%{#session.userStatus == unverified}">
+		<s:if test="%{#session.userStatus != null & #session.userStatus==unverified}">
 			<div class="alert alert-warning mx-auto" role="alert">
 			  You have not verified your account yet. Please check your email for the verification link.
 			</div>
@@ -135,7 +135,7 @@
             <div class="row">
             	<div class="col-md-6 tagline">
             		<h1>Invest in your future. Invest now.</h1>
-					<h3 style="text-align: center;">Investment Aid</h3>
+            		<h3>Investment Aid</h3>
             	</div>
             	<div class="col-md-6">
             		<img src="assets/invest_landing.svg" style="width: 700px;">
