@@ -66,4 +66,11 @@
 			<result name="error">/</result>
 		</action>
 	</package>
+	
+	<package name="webcrawler" extends="struts-default">
+		<action name="webcrawl" class="invaid.users.action.WebCrawlAction">
+			<result name="success">monitoring.jsp</result>
+			<result name="error">/</result>
+		</action>
+	</package>
 </struts>

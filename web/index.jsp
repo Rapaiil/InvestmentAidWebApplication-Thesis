@@ -21,6 +21,16 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Titillium+Web&display=swap" rel="stylesheet">
+  	
+  	<style>
+  		.header .header-content .tagline {
+		 	margin: auto;
+		    padding: 10px;
+		}
+		.header .header-content .tagline h3 {
+			color: #2D3047;
+		}
+  	</style>
   </head>
   <body>
       <!-- Navbar -->
@@ -118,7 +128,7 @@
 			<div class="alert alert-warning mx-auto" role="alert">
 			  You have not verified your account yet. Please check your email for the verification link.
 			</div>
-		</s:if>
+		</s:if> --%>
 		
         <!-- HEADER Content -->
         <div class="header-content">

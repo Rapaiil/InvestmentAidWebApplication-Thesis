@@ -11,8 +11,8 @@ import invaid.users.model.AddressBean;
 import invaid.users.model.UserProfileBean;
 import invaid.users.util.IdGeneratorUtil;
 
-@SuppressWarnings({"serial", "rawtypes"})
-public class RegisterProfileAction extends ActionSupport implements ModelDriven, SessionAware, Runnable {
+@SuppressWarnings({"serial"})
+public class RegisterProfileAction extends ActionSupport implements ModelDriven<UserProfileBean>, SessionAware, Runnable {
 	private UserProfileBean userProfile = new UserProfileBean();
 	private AddressBean userAddress;
 	private String user_street, user_apt, user_city, user_state;
@@ -48,7 +48,7 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven,
 	}
 	
 	@Override
-	public Object getModel() {
+	public UserProfileBean getModel() {
 		// TODO Auto-generated method stub
 		return userProfile;
 	}
