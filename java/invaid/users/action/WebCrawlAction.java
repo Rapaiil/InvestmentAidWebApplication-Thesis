@@ -19,12 +19,14 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.util.TokenUtil;
+import config.Configurations;
 
 @SuppressWarnings("serial")
 public class WebCrawlAction extends ActionSupport implements SessionAware, Runnable {
 	private Map<String, Object> sessionMap;
 	private ArrayList<String> data;
 	private String token;
+	final static int NO_OF_FUNDS = 383;
 	private boolean isSuccess = false;
 	
 	public String execute() {
@@ -44,8 +46,8 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 			case "denied": return;
 		}
 		
-		for(int i = 1; i < 382; i++) {
-			String SOURCE_URL = "http://www.uitf.com.ph/daily_navpu_details.php?fund_id="+i+"#gsc.tab=0";
+		for(int i = 1; i < NO_OF_FUNDS; i++) {
+			String SOURCE_URL = Configurations.getAppUitf()+i+"#gsc.tab=0";
 			
 			Document document = null;
 			Elements texts = null;
