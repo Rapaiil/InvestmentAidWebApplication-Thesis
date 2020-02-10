@@ -4,7 +4,7 @@ h1, h2, h3, h4 {
     font-weight: 500 !important;
 }
   
-p, span, a {
+p, span, a, label {
     font-family: "Titillium Web", sans-serif !important; 
 }
 
@@ -15,9 +15,8 @@ body, html {
     height: 100vh;
 }
 
-/* --- NAVBAR & HEADER ---*/
+/* --- NAVBAR ---*/
 
-/* navbar custom */
 .navbar-custom {
     background-color: #2D3047;
 }
@@ -65,10 +64,9 @@ body, html {
     padding-right: 20px;
 }
 
-.navbar .navbar-toggler i {
+.navbar i {
     color: #FBF5F3;
 }
-
 
 /* --- CONTENT --- */
 
@@ -76,18 +74,22 @@ body {
     background: #F9F9F9;
 }
 
-.container {
-	background-color: white;
-	margin-top: 75px;
-	margin-bottom: 75px;
+.card {
+    width: 600px;
 }
 
-.container h2, .container h5 {
-	color: #19A375;
+.card h1{
+    color: #19A375;
 }
 
-.container .questionnaire-btn {
-	background-color: #19A375;
-	font-family: "Roboto Condensed", sans-serif;
-	border-color: #19A375; 
+.card .btn{
+    background-color: #19A375;
+    border-color: #19A375;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 425px) {
+    .card {
+        width: 100%;
+    }
 }

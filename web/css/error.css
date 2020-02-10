@@ -15,9 +15,13 @@ body, html {
     height: 100vh;
 }
 
-/* --- NAVBAR & HEADER ---*/
+.header {
+    height: 100vh;
+    background-color: #F9F9F9;
+}
 
-/* navbar custom */
+/* --- NAVBAR ---*/
+
 .navbar-custom {
     background-color: #2D3047;
 }
@@ -65,10 +69,9 @@ body, html {
     padding-right: 20px;
 }
 
-.navbar .navbar-toggler i {
+.navbar i {
     color: #FBF5F3;
 }
-
 
 /* --- CONTENT --- */
 
@@ -76,18 +79,44 @@ body {
     background: #F9F9F9;
 }
 
-.container {
-	background-color: white;
-	margin-top: 75px;
-	margin-bottom: 75px;
+.header .header-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
 }
 
-.container h2, .container h5 {
-	color: #19A375;
+.header .header-content h1 {
+    font-size: 200px;
+    color: #19A375;
 }
 
-.container .questionnaire-btn {
-	background-color: #19A375;
-	font-family: "Roboto Condensed", sans-serif;
-	border-color: #19A375; 
+.header .header-content h3 {
+    color: #2D3047;
+}
+
+.header .header-content a {
+    color: #19A375;
+}
+
+.header .header-content .button-return-to-home {
+    background-color: #2D3047;
+    border-color: #2D3047;
+    font-family: "Titillium Web", sans-serif !important;
 }
