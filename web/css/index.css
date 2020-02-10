@@ -23,7 +23,7 @@ body, html {
 
 /* navbar custom */
 .navbar-custom {
-    background-color: #19A375;
+    background-color: transparent !important;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -67,10 +67,6 @@ body, html {
 .navbar {
     padding-left: 20px;
     padding-right: 20px;
-}
-
-.header .navbar {
-    background-color: #2D3047; 
 }
 
 .navbar i {
