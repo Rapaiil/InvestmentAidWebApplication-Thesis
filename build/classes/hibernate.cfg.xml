@@ -17,9 +17,10 @@
 			root
 		</property>
 		<property name="connection.password">
+			p@ssword
 		</property>
 		<property name="hbm2ddl.auto">
-			update
+			create
 		</property>
 		<property name="show_sql">
 			true

@@ -36,26 +36,16 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 	private boolean isSuccess = false;
 	
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		token = (String) sessionMap.get("token");
 		List<Object[]> list = null;
 		session.getTransaction().begin();
 		
 		switch(givePermission()) {
-			case "denied": return;
+			case "denied": return ERROR;
 		}
 		
 		if(!arePasswordsMatch()) {
-			return;
+			return ERROR;
 		}
 		
 		list = getRecords();
@@ -64,13 +54,24 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 			for(Object[] record: list) {
 				if(record[0].toString().equals(token)) {
 					if(updateUserPassword(record[1].toString(), (int) record[2])) {
-						isSuccess = !isSuccess;
-						return;
+						//isSuccess = !isSuccess;
+						return SUCCESS;
 					}
 				}
 			}
 		}
-		return;
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		
 	}
 
 	public String getReset_password() {

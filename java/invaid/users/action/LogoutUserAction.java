@@ -21,16 +21,6 @@ public class LogoutUserAction extends ActionSupport implements SessionAware, Run
 	private boolean isSuccess = false;
 	
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		token = (String) sessionMap.get("loginToken");
 		id = (String) sessionMap.get("loginId");
 		status = getStatus((String) sessionMap.get("userStatus"));
@@ -49,11 +39,22 @@ public class LogoutUserAction extends ActionSupport implements SessionAware, Run
 			sessionMap.remove("userStatus");
 			sessionMap.clear();
 			if(sessionMap.isEmpty()) {
-				isSuccess = !isSuccess;
-				return;
+				//isSuccess = !isSuccess;
+				return SUCCESS;
 			}
 		}
-		return;
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		
 	}
 	
 	public String getToken() {

@@ -22,16 +22,6 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven<U
 	private boolean isSuccess = false;
 	
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		session.getTransaction().begin();
 		List<Object[]> list = getRecords();
 		String token = null;
@@ -44,21 +34,34 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven<U
 						case 1: stats = 0;
 								token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
 								if(!updateUserToken(record[0].toString(), token, stats))
-									return;
+									return ERROR;
 								Mail.sendPasswordResetMail(userAccount.getUser_email(), token);
 								break;
 						case 2: stats = 1;
 								token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
 								if(!updateUserToken(record[0].toString(), token, stats))
-									return;
+									return ERROR;
 								Mail.sendPasswordResetMail(userAccount.getUser_email(), token);
 								break;
-						case 3: return;
+						case 3: return ERROR;
 					}
-					isSuccess = !isSuccess;
+					//isSuccess = !isSuccess;
+					return SUCCESS;
 				}
 			}
-		}		
+		}
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		
 	}
 	
 	@Override

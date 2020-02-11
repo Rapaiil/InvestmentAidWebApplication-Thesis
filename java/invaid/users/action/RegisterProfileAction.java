@@ -21,16 +21,6 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 	private boolean isSuccess = false;
 
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		try {
 			userProfile.setUser_profileId(IdGeneratorUtil.generateId(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
 			
@@ -40,11 +30,24 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 			userProfile.genderConvert();
 		} catch(Exception e) {
 			 e.getMessage();
+			 return ERROR;
 		}
 		
 		//validation here
 		sessionMap.put("sessionUser", userProfile);
-		isSuccess = !isSuccess;	
+		return SUCCESS;
+		//isSuccess = !isSuccess;	
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		//
 	}
 	
 	@Override

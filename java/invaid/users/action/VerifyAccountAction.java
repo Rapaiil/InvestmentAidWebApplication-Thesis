@@ -30,16 +30,6 @@ public class VerifyAccountAction extends ActionSupport implements DBCommands, Ru
 	private boolean isSuccess = false;
 	
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-
-	@Override
-	public void run() {
 		List<Object[]> list = null;
 		session.getTransaction().begin();
 		
@@ -69,12 +59,24 @@ public class VerifyAccountAction extends ActionSupport implements DBCommands, Ru
 			for(Object[] record: list) {
 				if(record[0].toString().equals(token)) {
 					if(updateUserStatus(token)) {
-						isSuccess = !isSuccess;
-						return;
+						//isSuccess = !isSuccess;
+						return SUCCESS;
 					}
 				}
 			}
 		}
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+
+	@Override
+	public void run() {
+		//
 	}
 	
 	public String getToken() {

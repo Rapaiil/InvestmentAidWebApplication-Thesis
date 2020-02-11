@@ -28,20 +28,6 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 	private boolean isSuccess = false, isDenied = false, isInvalid = false;
 	
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else if(isDenied)
-			return "denied";
-		else if(isInvalid)
-			return "invalid";
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		session.getTransaction().begin();
 
 		List<Object[]> list = getRecords();
@@ -62,20 +48,35 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 							sessionMap.put("loginLastName", record[2].toString());
 							sessionMap.put("loginEmail", loginAccount.getLogin_email());
 							sessionMap.put("userStatus", getSessionStatus((int) record[6]));
-							isSuccess = !isSuccess;
-							return;
+							//isSuccess = !isSuccess;
+							return SUCCESS;
 						}
-						return;
+						return ERROR;
 					}
-					isDenied = !isDenied;
-					return;
+					//isDenied = !isDenied;
+					return "denied";
 				}
 				System.err.println("Email or password is not equal");
-				isInvalid = !isInvalid;
-				return;
+				//isInvalid = !isInvalid;
+				return "invalid";
 			}
 		}
-		return;
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else if(isDenied)
+//			return "denied";
+//		else if(isInvalid)
+//			return "invalid";
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		
 	}
 	
 	@Override

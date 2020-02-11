@@ -24,16 +24,6 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 	private boolean isSuccess = false;
 
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
 		
 		Session session = HibernateUtil.getSession();
@@ -48,10 +38,23 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			
 			Mail.sendVerificationMail(userAccount);
 			t.commit();
-			isSuccess = !isSuccess;
+			return SUCCESS;
+			//isSuccess = !isSuccess;
 		} catch(HibernateException he) {
 			t.rollback();
 		}
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		
 	}
 	
 	@Override

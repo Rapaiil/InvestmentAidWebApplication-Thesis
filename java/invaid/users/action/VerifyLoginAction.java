@@ -33,22 +33,12 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 	private boolean isSuccess = false;
 	
 	public String execute() {
-		Thread t = new Thread(this);
-		t.start();
-		if(isSuccess)
-			return SUCCESS;
-		else
-			return ERROR;
-	}
-	
-	@Override
-	public void run() {
 		token = (String) sessionMap.get("loginToken");
 		String loginId;
 		List<Object[]> list = null;
 		
 		switch(givePermission()) {
-			case "denied": return;
+			case "denied": return ERROR;
 		}
 		
 		loginId = (String) sessionMap.get("loginId");
@@ -67,12 +57,23 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 					if(updateUserToken(token, loginId, (int)record[3])) {
 						sessionMap.replace("loginToken", token);
 						isSuccess = !isSuccess;
-						return;
+						return SUCCESS;
 					}
 				}
 			}
 		}
-		return;
+		return ERROR;
+//		Thread t = new Thread(this);
+//		t.start();
+//		if(isSuccess)
+//			return SUCCESS;
+//		else
+//			return ERROR;
+	}
+	
+	@Override
+	public void run() {
+		
 	}
 	
 	public String getOtp_login() {

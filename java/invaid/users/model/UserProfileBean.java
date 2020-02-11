@@ -1,5 +1,8 @@
 package invaid.users.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +22,8 @@ public class UserProfileBean {
 	private String gender;
 	@Column(nullable=false, columnDefinition="TINYINT(1)")
 	private boolean user_gender;
+	@Column(nullable=false)
+	private String user_birthday;
 	@Column(nullable=false)
 	private String user_nationality;
 	@Column(nullable=false)
@@ -137,5 +142,13 @@ public class UserProfileBean {
 			setUser_gender(true);
 		else
 			setUser_gender(false);
+	}
+
+	public String getUser_birthday() {
+		return user_birthday;
+	}
+
+	public void setUser_birthday(Date user_birthday) {
+		this.user_birthday = new SimpleDateFormat("MM/dd/yyyy").format(user_birthday);
 	}
 }

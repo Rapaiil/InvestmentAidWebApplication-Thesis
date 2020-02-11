@@ -314,7 +314,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_apt" cssClass="form-control" required="required"/>
+										<s:textfield name="user_apt" cssClass="form-control"/>
 										<small class="form-text">Apt/Suite/Other</small>
 									</div>
 								</div>

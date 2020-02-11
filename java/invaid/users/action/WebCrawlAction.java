@@ -2,6 +2,8 @@ package invaid.users.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -24,6 +26,8 @@ import config.Configurations;
 @SuppressWarnings("serial")
 public class WebCrawlAction extends ActionSupport implements SessionAware, Runnable {
 	private Map<String, Object> sessionMap;
+	private Map<String, String> table = new HashMap<String, String>();
+	private List<String> fundNames = new ArrayList<String>();
 	private ArrayList<String> data;
 	private String token;
 	final static int NO_OF_FUNDS = 383;
@@ -50,18 +54,27 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 			String SOURCE_URL = Configurations.getAppUitf()+i+"#gsc.tab=0";
 			
 			Document document = null;
-			Elements texts = null;
+			Elements labels = null;
+			Elements contents = null;
+			String header = null;
+
 			try {
 				document = Jsoup.connect(SOURCE_URL).get();
-				texts = document.getElementsByTag("table");
+				header = document.select("#inside-fundprofile h3").text();
+				labels = document.select("[data-title='Label']");
+				contents = document.select("[data-title='Data']");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			String title = document.title();
-			System.out.println("Title is " + title);
-			for(Element text: texts) {
-				System.out.println(text);
-				data.add(text.text());
+			
+			if(!contents.get(1).text().equals("PHP"))
+				continue;
+			
+			System.out.println("Fund name: " + header);
+			
+			fundNames.add(header);
+			for(int j=0; j<labels.size(); j++) {
+				table.put(labels.get(j).text(), contents.get(j).text());
 			}
 		}
 		isSuccess = !isSuccess;
