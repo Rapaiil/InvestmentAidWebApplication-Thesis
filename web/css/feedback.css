@@ -125,3 +125,17 @@ h3 {
     background-color: #19A375 !important;
     outline: none;
 }
+
+
+/* ALERT */
+.alert {
+	width: 1100px;
+}
+
+/* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 991px) {
+    /* alert */
+    .alert {
+    	max-width: 100%;
+    }
+}
