@@ -24,6 +24,7 @@
 	
 	<!-- reCAPTCHA -->
 	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js" type="text/javascript"></script>
 	
 	<!-- JQuery CDN -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -87,6 +88,9 @@
 							<div class="form-group">
 								<label>Password: <span class="required" style="color:red;">*</span></label>
 								<s:password id="p" name="user_password" cssClass="form-control" />
+								<div class="progress mt-1">
+        							<div class="progress-bar"></div>
+   								</div>
 							</div>
 							<div class="form-group">
 								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
@@ -113,5 +117,6 @@
     
     <!-- JS -->
     <script src="js/navbar.js"></script>
+	<script src="js/password-meter.js"></script>
 </body>
 </html>
