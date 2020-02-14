@@ -115,6 +115,16 @@
 	
 		<!-- MONITORING CONTENT-->
         <div class="container-fluid p-5">
+			<div class="row">
+        		<div class="col-md-8">
+        			<div class="input-group float-right search-bar">
+					  <input type="text" class="form-control" placeholder="Search fund" aria-describedby="basic-addon2">
+					  <div class="input-group-append">
+					    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+					  </div>
+					</div>
+        		</div>
+        	</div>
         	<div class="row">
         		<!-- MONITORING TABLE -->
         		<div class="col-md-8 table-responsive-lg mt-5 justify-content-center">
@@ -132,12 +142,13 @@
 					<!-- MONITORING -->
 					<div class="tab-content" id="pills-tabContent">
 					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
-							<s:iterator value="data">
+							<%-- <s:iterator value="data"> --%>
 								<table class="table">
 								  <thead>
 								    <tr>
 								      <th scope="col">Name</th>
-								      <th scope="col">Type</th>
+								      <th scope="col">Risk Classification</th>
+								      <th scope="col">Fund Classification</th>
 								      <th scope="col">Affiliation</th>
 								      <th scope="col"></th>
 								    </tr>
@@ -147,31 +158,35 @@
 								      <td>Mark</td>
 								      <td>Otto</td>
 								      <td>@mdo</td>
-								      <td><a href="#">See details >></a></td>
+								      <td>@mdo</td>
+								      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 								    </tr>
 								    <tr>
 								      <td>Mark</td>
 								      <td>Otto</td>
 								      <td>@mdo</td>
-								      <td><a href="#">See details >></a></td>
+								      <td>@mdo</td>
+								      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 								    </tr>
 								    <tr>
 								      <td>Mark</td>
 								      <td>Otto</td>
 								      <td>@mdo</td>
-								      <td><a href="#">See details >></a></td>
+								      <td>@mdo</td>
+								      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 								    </tr>
 								  </tbody>
 								</table>
-							</s:iterator>
+							<%-- </s:iterator> --%>
 						</div>
 					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<s:iterator value="data">
+							<%-- <s:iterator value="data"> --%>
 								<table class="table">
 									  <thead>
 									    <tr>
 									      <th scope="col">Name</th>
-									      <th scope="col">Type</th>
+									      <th scope="col">Risk Classification</th>
+									      <th scope="col">Fund Classification</th>
 									      <th scope="col">Affiliation</th>
 									      <th scope="col"></th>
 									    </tr>
@@ -181,29 +196,63 @@
 									      <td>Mark</td>
 									      <td>Otto</td>
 									      <td>@mdo</td>
-									      <td><a href="#">See details >></a></td>
+									      <td>@mdo</td>
+									      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 									    </tr>
 									    <tr>
 									      <td>Mark</td>
 									      <td>Otto</td>
 									      <td>@mdo</td>
-									      <td><a href="#">See details >></a></td>
+									      <td>@mdo</td>
+									      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 									    </tr>
 									    <tr>
 									      <td>Mark</td>
 									      <td>Otto</td>
 									      <td>@mdo</td>
-									      <td><a href="#">See details >></a></td>
+									      <td>@mdo</td>
+									      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 									    </tr>
 									  </tbody>
 								</table>
-							</s:iterator>
+							<%-- </s:iterator> --%>
 						</div>
 					  </div>
         		</div>
         		<!-- CURRENCY CONVERTER -->
         		<div class="col-md-4 mt-5">
         			<h3 class="text-muted text-center mb-3">Currency Converter</h3>
+					<div class="form-inline d-flex justify-content-center">
+	        			<div class="input-group currency-converter pr-3">
+							  <input type="text" class="form-control">
+							  <div class="input-group-append">
+							    <span class="input-group-text">0.00</span>
+							  </div>
+						</div>
+						<select class="custom-select currencies-select" id="inputGroupSelect01">
+						    <option selected>PHP</option>
+						    <option value="1">USD</option>
+						    <option value="2">JPY</option>
+						    <option value="3">EUR</option>
+					  	</select>
+					</div>
+					<div class="d-flex justify-content-center m-3">
+						<button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button>
+					</div>
+					<div class="form-inline d-flex justify-content-center">
+	        			<div class="input-group currency-converter pr-3">
+							  <input type="text" class="form-control" disabled>
+							  <div class="input-group-append">
+							    <span class="input-group-text">0.00</span>
+							  </div>
+						</div>
+						<select class="custom-select currencies-select" id="inputGroupSelect01">
+						    <option selected>PHP</option>
+						    <option value="1">USD</option>
+						    <option value="2">JPY</option>
+						    <option value="3">EUR</option>
+					  	</select>
+					</div>
         		</div>
         	</div>
        	</div>
