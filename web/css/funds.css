@@ -15,9 +15,8 @@ body, html {
     height: 100vh;
 }
 
-/* --- NAVBAR & HEADER ---*/
+/* --- NAVBAR ---*/
 
-/* navbar custom */
 .navbar-custom {
     background-color: #2D3047;
 }
@@ -65,10 +64,9 @@ body, html {
     padding-right: 20px;
 }
 
-.navbar .navbar-toggler i {
+.navbar i {
     color: #FBF5F3;
 }
-
 
 /* --- CONTENT --- */
 
@@ -76,18 +74,69 @@ body {
     background: #F9F9F9;
 }
 
-.container {
-	background-color: white;
-	margin-top: 75px;
-	margin-bottom: 75px;
+
+.wrapper {
+    width: 1400px;
+    margin: 0 auto;
 }
 
-.container h2, .container h5 {
-	color: #19A375;
+.content h1 {
+    color: #19A375;
+    font-size: 50px;
 }
 
-.container .questionnaire-btn {
-	background-color: #19A375;
-	font-family: "Roboto Condensed", sans-serif;
-	border-color: #19A375; 
+.sidebar {
+    background-color: #2D3047;
+    color: white;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+hr {
+    border-color: white;
+}
+
+.content small a{
+    color: #2D3047;
+}
+
+.sidebar a{
+    color: white;
+}
+
+.sidebar a:hover{
+    color: #FFFD82;
+}
+
+.portfolio .funds-table thead {
+    background-color: #19A375;
+    color: white;
+}
+
+.portfolio .funds-table a {
+    color: #19A375;
+}
+
+.fa-caret-up {
+    color: #19A375;
+}
+
+.fa-caret-down {
+    color: #a31947;
+}
+
+.modal h5 {
+    color: #19A375;
+}
+
+.modal .btn-confirm {
+    background-color: #19A375;
+    border-color: #19A375;
+    color: white;
+}
+
+@media only screen and (max-width: 425px) {
+    .wrapper {
+        max-width: 100%;
+    }
 }
