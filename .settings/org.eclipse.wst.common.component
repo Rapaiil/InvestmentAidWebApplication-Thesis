@@ -2,11 +2,9 @@
             
     
     <wb-module deploy-name="Thesis-InvAid">
-                        
-        
-        <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <wb-resource deploy-path="/" source-path="/web"/>
                         
         
         <property name="context-root" value="www.invaid.com"/>
