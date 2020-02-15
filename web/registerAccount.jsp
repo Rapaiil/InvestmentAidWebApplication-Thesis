@@ -79,12 +79,12 @@
 					<div class="card-body">
 						<h4 class="card-title text-uppercase">register</h4>
 						<s:form action="registeraccount" method="post" class="registration-account-form">
-							<label class="em" id="lea" for="ea">Error Goes Here</label>
+							<p class="em" id="lea" for="ea"><small>Error Goes Here</small></p>
 							<div class="form-group">
 								<label>Email Address: <span class="required" style="color:red;">*</span></label>
 								<s:textfield id="ea" name="user_email" cssClass="form-control" />
 							</div>
-							<label class="em" id="lp" for="p">Error Goes Here</label>
+							<p class="em" id="lp" for="p"><small>Error Goes Here</small></p>
 							<div class="form-group">
 								<label>Password: <span class="required" style="color:red;">*</span></label>
 								<s:password id="p" name="user_password" cssClass="form-control" />

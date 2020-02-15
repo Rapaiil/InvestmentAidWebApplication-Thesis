@@ -15,6 +15,7 @@ $(function(){
 			errmsg.html("Please enter a valid email");
 			errmsg.css("color", "red");
 			errmsg.css("display","block");
+			errmsg.css("font-size","12px");
 		}
 	});
 	
@@ -43,9 +44,10 @@ $(function(){
 			//errmsg.css("display","none");
 		}
 		else{
-			errmsg.html("Please make sure your password contains a mix of at least 1 uppercase, 1 lowercase and 1 numerical characters");
+			errmsg.html("Password must contain a mix of at least <br/> 1 uppercase, 1 lowercase and 1 numerical characters");
 			errmsg.css("color", "red");
 			errmsg.css("display","block");
+			errmsg.css("font-size","12px");
 		}
 	});
 	
