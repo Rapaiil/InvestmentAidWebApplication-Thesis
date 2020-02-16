@@ -21,16 +21,6 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Titillium+Web&display=swap" rel="stylesheet">
-  	
-  	<style>
-  		.header .header-content .tagline {
-		 	margin: auto;
-		    padding: 10px;
-		}
-		.header .header-content .tagline h3 {
-			color: #2D3047;
-		}
-  	</style>
   </head>
   <body>
       <!-- Navbar -->
@@ -112,7 +102,7 @@
 						</a>
 	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
 	                    	<a class="dropdown-item" href="#">Account Settings</a>
-	                    	<a class="dropdown-item" href="#">My Investment Portfolio</a>
+	                    	<a class="dropdown-item" href="portfolio.jsp">My Investment Portfolio</a>
 	                    	<a class="dropdown-item" href="#">Risk Profile</a>
 	                    	<a class="dropdown-item" href="#">Reset Password</a>
 	                    	<div class="dropdown-divider"></div>

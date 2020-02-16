@@ -13,19 +13,26 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="css/monitoring.css" type="text/css">
+	<link rel="stylesheet" href="css/questionnaire_result.css" type="text/css">
 	<link rel="stylesheet" href="css/modal.css" type="text/css">
-	<title>InvAid - Risk Profile Questionnaire</title> 
 	
-	 <!-- Font Awesome CSS-->
-   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="css/recommendations.css">
+
+    <!-- Chart JS -->
+    <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+	<title>InvAid - Risk Profile</title> 
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
 </head>
 <body>
 	<!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
-        <!-- NAVBAR -->
         <s:if test="%{#session.loginToken==null}">
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
@@ -101,7 +108,7 @@
 						</a>
 	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
 	                    	<a class="dropdown-item" href="#">Account Settings</a>
-	                    	<a class="dropdown-item" href="#">My Investment Portfolio</a>
+	                    	<a class="dropdown-item" href="portfolio.jsp">My Investment Portfolio</a>
 	                    	<a class="dropdown-item" href="#">Risk Profile</a>
 	                    	<a class="dropdown-item" href="#">Reset Password</a>
 	                    	<div class="dropdown-divider"></div>
@@ -113,149 +120,117 @@
         </nav>
 		</s:else>
 	
-		<!-- MONITORING CONTENT-->
-        <div class="container-fluid p-5">
-			<div class="row">
-        		<div class="col-md-8">
-        			<div class="input-group float-right search-bar">
-					  <input type="text" class="form-control" placeholder="Search fund" aria-describedby="basic-addon2">
-					  <div class="input-group-append">
-					    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					  </div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<!-- MONITORING TABLE -->
-        		<div class="col-md-8 table-responsive-lg mt-5 justify-content-center">
-        			<!-- TAB -->
-        			<ul class="nav nav-pills pills-dark nav-justified" id="pills-tab" role="tablist">
-					  <li class="nav-item">
-						 <a class="nav-link active" id="pills-mf-tab" data-toggle="pill" href="#pills-mf" role="tab" aria-controls="pills-mf" aria-selected="true">Mutual Funds</a>
-					  </li>
-					  <li class="nav-item  disabled">
-						 <a class="nav-link" id="pills-uitf-tab" data-toggle="pill" href="#pills-uitf" role="tab" aria-controls="pills-uitf" aria-selected="false">Unit Investment Trust Funds</a>
-					  </li>
-					  
-					</ul>
-					
-					<!-- MONITORING -->
-					<div class="tab-content" id="pills-tabContent">
-					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
-							<%-- <s:iterator value="data"> --%>
-								<table class="table">
-								  <thead>
-								    <tr>
-								      <th scope="col">Name</th>
-								      <th scope="col">Risk Classification</th>
-								      <th scope="col">Fund Classification</th>
-								      <th scope="col">Affiliation</th>
-								      <th scope="col"></th>
-								    </tr>
-								  </thead>
-								  <tbody>
-								    <tr>
-								      <td>Mark</td>
-								      <td>Otto</td>
-								      <td>@mdo</td>
-								      <td>@mdo</td>
-								      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-								    </tr>
-								    <tr>
-								      <td>Mark</td>
-								      <td>Otto</td>
-								      <td>@mdo</td>
-								      <td>@mdo</td>
-								      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-								    </tr>
-								    <tr>
-								      <td>Mark</td>
-								      <td>Otto</td>
-								      <td>@mdo</td>
-								      <td>@mdo</td>
-								      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-								    </tr>
-								  </tbody>
-								</table>
-							<%-- </s:iterator> --%>
-						</div>
-					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<%-- <s:iterator value="data"> --%>
-								<table class="table">
-									  <thead>
-									    <tr>
-									      <th scope="col">Name</th>
-									      <th scope="col">Risk Classification</th>
-									      <th scope="col">Fund Classification</th>
-									      <th scope="col">Affiliation</th>
-									      <th scope="col"></th>
-									    </tr>
-									  </thead>
-									  <tbody>
-									    <tr>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									      <td>@mdo</td>
-									      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-									    </tr>
-									    <tr>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									      <td>@mdo</td>
-									      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-									    </tr>
-									    <tr>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									      <td>@mdo</td>
-									      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-									    </tr>
-									  </tbody>
-								</table>
-							<%-- </s:iterator> --%>
-						</div>
-					  </div>
-        		</div>
-        		<!-- CURRENCY CONVERTER -->
-        		<div class="col-md-4 mt-5">
-        			<h3 class="text-muted text-center mb-3">Currency Converter</h3>
-					<div class="form-inline d-flex justify-content-center">
-	        			<div class="input-group currency-converter pr-3">
-							  <input type="text" class="form-control">
-							  <div class="input-group-append">
-							    <span class="input-group-text">0.00</span>
-							  </div>
-						</div>
-						<select class="custom-select currencies-select" id="inputGroupSelect01">
-						    <option selected>PHP</option>
-						    <option value="1">USD</option>
-						    <option value="2">JPY</option>
-						    <option value="3">EUR</option>
-					  	</select>
-					</div>
-					<div class="d-flex justify-content-center m-3">
-						<button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button>
-					</div>
-					<div class="form-inline d-flex justify-content-center">
-	        			<div class="input-group currency-converter pr-3">
-							  <input type="text" class="form-control" disabled>
-							  <div class="input-group-append">
-							    <span class="input-group-text">0.00</span>
-							  </div>
-						</div>
-						<select class="custom-select currencies-select" id="inputGroupSelect01">
-						    <option selected>PHP</option>
-						    <option value="1">USD</option>
-						    <option value="2">JPY</option>
-						    <option value="3">EUR</option>
-					  	</select>
-					</div>
-        		</div>
-        	</div>
-       	</div>
+        <section class="mt-5">
+        <div class="container">
+            <h1>Fund Recommendations</h1>
+            <p>Here are some fund recommendations based on your Risk Profile result. 
+                You may view more into each fund's details and see the necessary steps in investing with the bank/institution.</p>
+            <table class="table table-hover recommendations-table table-responsive-md">
+                <thead>
+                    <tr>
+                        <th scope="col">Fund Name</th>
+                        <th scope="col">Fund Type</th>
+                        <th scope="col">Fund Affiliation</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ALFM Growth Fund</td>
+                        <td>Mutual Fund</td>
+                        <td>ALFM</td>
+                        <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See Details >></a></td>
+                    </tr>
+                    <tr>
+                        <td>Sun Life Prosperity Money Market Fund, Inc</td>
+                        <td>Mutual Fund</td>
+                        <td>Sun Life Financial</td>
+                        <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See Details >></a></td>
+                    </tr>
+                    <tr>
+                        <td>Maybank Tiger Peso Money Market Feeder Fund</td>
+                        <td>UITF</td>
+                        <td>Maybank Philippines Inc.</td>
+                        <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See Details >></a></td>
+                    </tr>
+                    <tr>
+                        <td>BDO Equity Fund</td>
+                        <td>UITF</td>
+                        <td>BDO Unibank, Inc.</td>
+                        <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See Details >></a></td>
+                    </tr>
+                    <tr>
+                        <td>BPI Balanced Fund</td>
+                        <td>UITF</td>
+                        <td>BPI Asset Management and Trust Corporation</td>
+                        <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See Details >></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- DETAILS MODAL -->
+    <div class="modal fade" id="fundDetailModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">[Investment Fund]</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h1>[Investment Fund]</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><b>Fund Type: </b></p>
+                        <p><b>Affiliation: </b></p>
+                        <p><b>NAVPU/NAVPS (as of MM/DD/YYYY): </b></p>
+                        <hr/>
+                        <h3>Investment Application</h3>
+                        <p>1.</p>
+                        <p>2.</p>
+                        <p>3.</p>
+                        <p>4.</p>
+                        <p>5.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav nav-pills pb-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Today</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Week</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Month</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">1Y</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">3Y</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">5Y</a>
+                            </li>
+                        </ul>
+                        <canvas id="lineGraphPerformance" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        
+            </div>
+        </div>
+    </div>
     
 	<!-- LOGOUT MODAL -->
 		<!-- Modal -->
@@ -278,6 +253,37 @@
 		    </div>
 		  </div>
 		</div>
+		
+	<!-- LINE GRAPH -->
+    <script>     
+        var ctx = document.getElementById('lineGraphPerformance').getContext('2d');
+        var lineGraphPerformance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'ALFM',
+                    data: [250, 200, 350, 550],
+                    borderColor: ['#A2C7E5'],
+                    fill: false
+                }],
+                labels: ['2015', '2016', '2017', '2018']
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            suggestedMin: 100,
+                            suggestedMax: 600
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+    </script>
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

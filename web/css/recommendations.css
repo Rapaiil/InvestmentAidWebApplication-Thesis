@@ -4,7 +4,7 @@ h1, h2, h3, h4 {
     font-weight: 500 !important;
 }
   
-p, span, a {
+p, span, a, small {
     font-family: "Titillium Web", sans-serif !important; 
 }
 
@@ -76,18 +76,29 @@ body {
     background: #F9F9F9;
 }
 
+/* RECOMMENDATIONS CONTENT */
 .container {
-	background-color: white;
-	margin-top: 75px;
-	margin-bottom: 75px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 3px;
 }
 
-.container h2, .container h5 {
-	color: #19A375;
+.container h1 {
+    color: #19A375;
 }
 
-.container .questionnaire-btn {
-	background-color: #19A375;
-	font-family: "Roboto Condensed", sans-serif;
-	border-color: #19A375; 
+.container .recommendations-table thead {
+    background-color: #19A375;
+}
+
+.container .recommendations-table th {
+    color: white;
+}
+
+.container .recommendations-table a {
+    color: #19A375;
+}
+
+.modal .modal-header .modal-title, .modal .modal-body h1, .modal .modal-body h3 {
+    color: #19A375;
 }
