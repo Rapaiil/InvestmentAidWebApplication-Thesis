@@ -19,7 +19,8 @@ $(function(){
 		else{
 			errmsg.html("Please enter a valid email");
 			errmsg.css("color", "red");
-			errmsg.css("visibility","visible");
+			errmsg.css("display","block");
+			errmsg.css("font-size","12px");
 		}
 	});
 	
@@ -65,12 +66,10 @@ $(function(){
 			//errmsg.css("display","none");
 		}
 		else{
-			errmsg.html("Passowrd must contain at least 1 uppercase, 1 lowercase and 1 numerical characters");
+			errmsg.html("Password must contain a mix of at least <br/> 1 uppercase, 1 lowercase and 1 numerical characters");
 			errmsg.css("color", "red");
-			errmsg.css("visibility","visible");
-			errmsg1.html("");
-			errmsg1.css("color", "green");
-			errmsg1.css("visibility","hidden");
+			errmsg.css("display","block");
+			errmsg.css("font-size","12px");
 		}
 	});
 });
