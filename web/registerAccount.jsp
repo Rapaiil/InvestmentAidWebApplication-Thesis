@@ -28,9 +28,7 @@
 	
 	<!-- JQuery CDN -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	
-	<!-- JS File -->
-	<script src="js/validations.js"></script>
+
 </head>
 <body>
 	<!-- Navbar -->
@@ -79,12 +77,12 @@
 					<div class="card-body">
 						<h4 class="card-title text-uppercase">register</h4>
 						<s:form action="registeraccount" method="post" class="registration-account-form">
-							<label class="em" id="lea" for="ea">Error Goes Here</label>
+							<small class="em" id="lea" for="ea">Error Goes Here</small>
 							<div class="form-group">
 								<label>Email Address: <span class="required" style="color:red;">*</span></label>
 								<s:textfield id="ea" name="user_email" cssClass="form-control" />
 							</div>
-							<label class="em" id="lp" for="p">Error Goes Here</label>
+							<small class="em" id="lp" for="p">Error Goes Here</small>
 							<div class="form-group">
 								<label>Password: <span class="required" style="color:red;">*</span></label>
 								<s:password id="p" name="user_password" cssClass="form-control" />
@@ -92,16 +90,18 @@
         							<div class="progress-bar"></div>
    								</div>
 							</div>
+							<small class="em" id="lcp" for="cp">Error Goes Here</small>
 							<div class="form-group">
 								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
 								<s:password id="cp" name="user_repassword" cssClass="form-control"/>
 							</div>
 							
 							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
-							
 							<div class="form-group">
 								<button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mx-auto w-25">Register</button>
 							</div>
+							
+							
 						 </s:form>
 					</div>
 				</div>
@@ -117,6 +117,7 @@
     
     <!-- JS -->
     <script src="js/navbar.js"></script>
-	<script src="js/password-meter.js"></script>
+    <script src="js/password-meter.js"></script>
+	  <script src="js/validations.js"></script>
 </body>
 </html>
