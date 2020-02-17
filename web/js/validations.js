@@ -1,7 +1,7 @@
 $(function(){
 	//Email
 	$("#ea").change(function(){
-		alert("Triggered #ea on change");
+		//alert("Triggered #ea on change");
 		var email 			= $.trim($("#ea").val());
 		var isEmailValid 	= ValidateEmail.validate(email);
 		var errmsg			= $("#lea");
@@ -26,7 +26,7 @@ $(function(){
 	
 	//Password
 	$("#p,#cp").change(function(){
-		alert("Triggered #p and #cp on change");
+		//alert("Triggered #p and #cp on change");
 		var password 			= $.trim($("#p").val());
 		var confirmPassword		= $.trim($("#cp").val());
 		var isPasswordValid 	= ValidatePassword.validate(password);

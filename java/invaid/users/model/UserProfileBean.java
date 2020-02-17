@@ -27,7 +27,7 @@ public class UserProfileBean {
 	@Column(nullable=false)
 	private String user_nationality;
 	@Column(nullable=false)
-	private String user_cellphonenumber;
+	private int user_cellphonenumber;
 	@Column(nullable=false)
 	private String user_telephonenumber;
 	@Column(nullable=false)
@@ -73,11 +73,11 @@ public class UserProfileBean {
 		this.user_nationality = user_citizenship;
 	}
 
-	public String getUser_cellphonenumber() {
+	public int getUser_cellphonenumber() {
 		return user_cellphonenumber;
 	}
 
-	public void setUser_cellphonenumber(String user_cellphonenumber) {
+	public void setUser_cellphonenumber(int user_cellphonenumber) {
 		this.user_cellphonenumber = user_cellphonenumber;
 	}
 
