@@ -73,15 +73,11 @@
 							<div class="form-row mb-3">
 								<div class="col-xl col-lg col-md-12 col-12 form-group">
 							    	<label>First Name: <span class="required">*</span></label>
-									<s:textfield name="user_firstname" cssClass="form-control" required="required"/>
-								</div>
-								<div class="col-xl col-lg col-md-12 col-12">
-									<label>Middle Name:</label>
-									<s:textfield name="user_middlename" cssClass="form-control"/>
+									<s:textfield name="user_firstname" cssClass="form-control" placeholder="ex. Juan" required="required"/>
 								</div>
 								<div class="col-xl col-lg col-md-12 col-12">
 									<label>Last Name: <span class="required">*</span></label>
-									<s:textfield name="user_lastname" cssClass="form-control" required="required"/>
+									<s:textfield name="user_lastname" cssClass="form-control" placeholder="ex. dela Cruz" required="required"/>
 								</div>
 								</div>
 								<div class="form-row mb-3">
@@ -347,11 +343,11 @@
 								<div class="form-row mb-3">
 									<div class="col-lg-6 col-md-12 col-12">
 										<label>Cellphone Number: <span class="required">*</span></label>
-										<s:textfield name="user_cellphonenumber" cssClass="form-control" required="required"/>
+										<s:textfield name="user_cellphonenumber" cssClass="form-control" placeholder="ex. 0977 823892" required="required"/>
 									</div>
 									<div class="col-lg-6 col-md-12 col-12">
 										<label>Telephone Number: <span class="required">*</span></label>
-										<s:textfield name="user_telephonenumber" cssClass="form-control" required="required"/>
+										<s:textfield name="user_telephonenumber" cssClass="form-control" placeholder="ex: 046 4897700, 8123 4567" required="required"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
