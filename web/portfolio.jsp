@@ -80,7 +80,7 @@
 	            <div class="container-fluid">
 	                <div class="row">
 	                    <!-- SIDEBAR -->
-	                    <div class="col-md-3">
+	                    <div class="col-lg-3">
 	                        <div class="sidebar">
 	                            <div class="net">
 	                                <h1>&#8369;1M &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h1>
@@ -100,7 +100,7 @@
 	                        </div>
 	                    </div>
 	                    
-	                    <div class="col-md-9 content">
+	                    <div class="col-lg-9 content">
 	                        <!-- CONTENT PORTFOLIO-->
 	                        <div class="portfolio-content">
 	                            <h1>My Portfolio</h1>
