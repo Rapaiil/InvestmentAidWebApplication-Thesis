@@ -301,7 +301,7 @@
 										<label>Address:</label>
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_addressLine1" cssClass="form-control" required="required"/>
+										<s:textfield name="user_street" cssClass="form-control" required="required"/>
 										<small class="form-text">Street<span class="required">*</span></small>
 
 									</div>
@@ -334,7 +334,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_zipcode" cssClass="form-control" required="required"/>
+										<s:textfield name="user_zip" cssClass="form-control" required="required"/>
 										<small class="form-text">Zip/Postal Code<span class="required">*</span></small>
 
 									</div>

@@ -5,7 +5,7 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="dialect">
-			org.hibernate.dialect.MySQLDialect
+			org.hibernate.dialect.MySQL8Dialect
 		</property>
 		<property name="connection.driver_class">
 			com.mysql.cj.jdbc.Driver
@@ -20,7 +20,7 @@
 			p@ssword
 		</property>
 		<property name="hbm2ddl.auto">
-			create
+			update
 		</property>
 		<property name="show_sql">
 			true

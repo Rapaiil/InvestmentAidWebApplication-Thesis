@@ -52,11 +52,11 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 //			return ERROR;
 	}
 	
-	public void validate() {
-		if(userAccount.getUser_password()!="Aaron") {
-			addFieldError("user_password", "The password must be Aaron");
-		}
-	}
+//	public void validate() {
+//		if(userAccount.getUser_password()!="Aaron") {
+//			addFieldError("user_password", "The password must be Aaron");
+//		}
+//	}
 	
 	@Override
 	public void run() {
