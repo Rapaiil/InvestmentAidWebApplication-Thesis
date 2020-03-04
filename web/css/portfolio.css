@@ -1,10 +1,10 @@
 /* --- GENERAL ---*/
-h1, h2, h3, h4 {
+h1, h2, h3, h4, th {
     font-family: "Roboto Condensed", sans-serif !important;
     font-weight: 500 !important;
 }
   
-p, span, a {
+p, span, a, td {
     font-family: "Titillium Web", sans-serif !important; 
 }
 
@@ -121,6 +121,26 @@ hr {
 
 .fa-caret-down {
     color: #a31947;
+}
+
+/* UITF & MF CSS */
+.portfolio .funds-table thead {
+    background-color: #19A375;
+    color: white;
+}
+
+.portfolio .funds-table a {
+    color: #19A375;
+}
+
+.modal h5 {
+    color: #19A375;
+}
+
+.modal .btn-confirm {
+    background-color: #19A375;
+    border-color: #19A375;
+    color: white;
 }
 
 @media only screen and (max-width: 1372px) {
