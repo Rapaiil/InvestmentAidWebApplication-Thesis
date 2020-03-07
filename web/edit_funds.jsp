@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,26 +13,23 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	
 	<!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="css/login.css" type="text/css">
-	<title>InvAid - Register</title> <!-- The index.jsp of this is the Registration landing. -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="css/edit_funds.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+
+    <!-- Chart JS -->
+    <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    
+	<title>InvAid</title> 
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
-	
-	<!-- reCAPTCHA -->
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js" type="text/javascript"></script>
-	
-	<!-- JQuery CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 </head>
 <body>
-	<!-- Navbar -->
-      
+        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -60,55 +57,51 @@
                         <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="registerProfile.jsp">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.jsp">Login</a>
-                    </li>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
+							Hi, <s:property value="#session.loginFirstName"/>
+						</a>
+	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
+	                    	<a class="dropdown-item" href="#">Account Settings</a>
+	                    	<a class="dropdown-item" href="portfolio.jsp">My Investment Portfolio</a>
+	                    	<a class="dropdown-item" href="#">Risk Profile</a>
+	                    	<a class="dropdown-item" href="#">Reset Password</a>
+	                    	<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#logoutModal" data-toggle="modal">Logout</a>
+						</div>
+					</li>
                 </ul>
             </div>
         </nav>
-        <!-- Register Form - Profile -->
-		<div class="h-75 d-flex justify-content-center">
-			<div class="card my-auto">
-				<div class="form-login my-auto">
-					<div class="card-body">
-						<h4 class="card-title text-uppercase">register</h4>
-						<s:form action="registeraccount" method="post" class="registration-account-form">
-							<small class="em" id="lea" for="ea">Error Goes Here</small>
-							<div class="form-group">
-								<label>Email Address: <span class="required" style="color:red;">*</span></label>
-								<s:textfield id="ea" name="user_email" cssClass="form-control" />
-							</div>
-							<small class="em" id="lp" for="p">Error Goes Here</small>
-							<div class="form-group">
-								<label>Password: <span class="required" style="color:red;">*</span></label>
-								<s:password id="p" name="user_password" cssClass="form-control" />
-								<div class="progress mt-1">
-        							<div class="progress-bar"></div>
-   								</div>
-							</div>
-							<small class="em" id="lcp" for="cp">Error Goes Here</small>
-							<div class="form-group">
-								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
-								<s:password id="cp" name="user_repassword" cssClass="form-control"/>
-							</div>
-							
-							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
-							<div class="form-group">
-								<button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mx-auto w-25">Register</button>
-							</div>
-							
-							
-						 </s:form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<s:property value="temp_user" />
-	
+        
+        <section class="mt-5">
+        	<div class="container">
+	            <div class="card mx-auto">
+	                <div class="card-body">
+	                    <s:form>
+	                    	<h1>Edit Investment</h1>
+	                        <p>Fund Name:</p>
+	                        <div class="form-group">
+	                            <label for="units-bought">Number of Units bought: *</label>
+	                            <select class="custom-select" id="units-bought" required>
+	                                <option>...</option>
+	                            </select>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="horizon">Investment Horizon: *</label>
+	                            <select class="custom-select" id="horizon" required>
+	                                <option>...</option>
+	                            </select>
+	                        </div>
+	                        <div class="text-center">
+	                            <button type="submit" class="btn btn-primary text-uppercase btn-lg">Submit</button>
+	                        </div>
+                    	</s:form>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -117,7 +110,5 @@
     
     <!-- JS -->
     <script src="js/navbar.js"></script>
-    <script src="js/password-meter.js"></script>
-	  <script src="js/validations.js"></script>
 </body>
 </html>

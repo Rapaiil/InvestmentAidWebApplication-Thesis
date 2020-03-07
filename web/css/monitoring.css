@@ -84,3 +84,31 @@ body, html {
 .nav-pills.pills-dark .nav-link:not(.active):hover {
 	color: #1d1e22;
 }
+
+.search-bar {
+	width: 250px;
+}
+
+.currency-converter {
+	width: 250px;
+}
+
+.currencies-select {
+	width: 100px;
+}
+
+/* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+    .search-bar {
+    	max-width: 100%;
+    }
+    
+    .currency-converter {
+    	max-width: 100%;
+    }
+    
+    .currencies-select {
+    	max-width: 100px;
+    	margin-top: 10px;
+   	}
+}
