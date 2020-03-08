@@ -42,7 +42,8 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 	FundDetails fundList = new FundDetails();
 	private ArrayList<String> data;
 	private String token;
-	final static int NO_OF_FUNDS = 383;
+	final static int NO_OF_BANKS = 42;
+	final static int NO_OF_FUNDS = 386;
 	private boolean isSuccess = false;
 	
 	public String execute() {
@@ -57,7 +58,7 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 		int bankNum = 0;
 		int fundCount = 0;
 		
-		for(int ctr=1; ctr<42; ctr++) {
+		for(int ctr=1; ctr<NO_OF_BANKS; ctr++) {
 			if(ctr == 27)
 				continue;
 			String BANKSOURCE_URL = Configurations.getAppBankUitf()+ctr+Configurations.getAppUitfExt();
@@ -119,7 +120,7 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 		fundList.setList(new ArrayList<FundDetail>());
 		boolean found = false;
 		
-		for(int ctr=1; ctr<151; ctr++) {
+		for(int ctr=1; ctr<NO_OF_FUNDS; ctr++) {
 			if((ctr > 4 && ctr < 8) ||
 			   (ctr > 10 && ctr < 34) ||
 			   (ctr > 42 && ctr < 46) ||
