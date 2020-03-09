@@ -1,17 +1,24 @@
 package invaid.users.action;
 
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
 import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
@@ -19,11 +26,13 @@ import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 
 @SuppressWarnings({"serial"})
-public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable {
+public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {
 	private UserAccountBean userAccount = new UserAccountBean();
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
 	private boolean isSuccess = false;
+	//Database Related
+	Session session = HibernateUtil.getSession();
 
 	public String execute() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
@@ -55,6 +64,10 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 	}
 	
 	public void validate() {
+		//Database Related
+		List<Object[]> list = null;
+		
+		
 		//Email Validation
 		if(userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
 			addFieldError("user_email", "This field is required");
@@ -69,6 +82,15 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			}
 			else {
 				//Compare the email to the database if it already exist
+				list = getRecords();
+				if(list != null) {
+					for(Object[] record: list) {
+						String sRecord = record.toString();
+						if(sRecord == userAccount.getUser_email().trim()) {
+							addFieldError("user_email", "Email already used");
+						}
+					}
+				}
 			}
 		}
 		
@@ -109,6 +131,23 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		 * 
 		 * //Password Validation
 		 */	}
+	
+	//Database Related
+	public List<Object[]> getRecords() {
+		try {
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
+			Root<UserAccountBean> root = cq.from(UserAccountBean.class);
+			cq.multiselect(root.get("user_email"));
+			
+			Query<Object[]> query = session.createQuery(cq);
+			return query.getResultList();
+		} catch(HibernateException he) {
+			session.getTransaction().rollback();
+		}
+		
+		return null;
+	}
 	
 	@Override
 	public void run() {
