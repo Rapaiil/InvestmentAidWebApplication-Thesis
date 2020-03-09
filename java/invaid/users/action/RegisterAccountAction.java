@@ -63,74 +63,74 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 //			return ERROR;
 	}
 	
-	public void validate() {
-		//Database Related
-		List<Object[]> list = null;
-		
-		
-		//Email Validation
-		if(userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
-			addFieldError("user_email", "This field is required");
-		}
-		else {
-			//Will be moved to configurations
-			String 	emailRegex 		= "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
-			Pattern emailPattern 	= Pattern.compile(emailRegex); 
-			Matcher emailMatcher 	= emailPattern.matcher(userAccount.getUser_email().trim());
-			if(!emailMatcher.matches()) {
-				addFieldError("user_email","Please enter a valid email");
-			}
-			else {
-				//Compare the email to the database if it already exist
-				list = getRecords();
-				if(list != null) {
-					for(Object[] record: list) {
-						String sRecord = record.toString();
-						if(sRecord == userAccount.getUser_email().trim()) {
-							addFieldError("user_email", "Email already used");
-						}
-					}
-				}
-			}
-		}
-		
-		//Password Validation
-		if(userAccount.getUser_password().trim() == null || userAccount.getUser_password().trim() == "") {
-			addFieldError("user_password", "This field is required");
-			if(userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
-				addFieldError("user_repassword", "This field is required");
-			}
-		}
-		else {
-			if(userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
-				addFieldError("user_repassword", "This field is required");
-			}
-			else {
-				String 	passwordRegex 	= "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$";
-				Pattern passwordPattern = Pattern.compile(passwordRegex);
-				Matcher passwordMatcher = passwordPattern.matcher(userAccount.getUser_password().trim());
-				if(!passwordMatcher.matches()) {
-					addFieldError("user_password", "Password should contain at least 1 capital, 1 small and 1 numeric characters");
-				}
-				else {
-					if(userAccount.getUser_password().trim() != userAccount.getUser_repassword().trim()) {
-						addFieldError("user_password", "Passwords do not match");
-					}
-				}
-			}
-		}
-		
-		/*
-		 * //Email Validation String emailRegex =
-		 * "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"; Pattern pattern =
-		 * Pattern.compile(emailRegex); Matcher matcher =
-		 * pattern.matcher(userAccount.getUser_email());
-		 * 
-		 * if(!matcher.matches()) { System.out.println("result:" + matcher.matches());
-		 * addFieldError("user_email", "Please enter a valid email"); }
-		 * 
-		 * //Password Validation
-		 */	}
+//	public void validate() {
+//		//Database Related
+//		List<Object[]> list = null;
+//		
+//		
+//		//Email Validation
+//		if(userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
+//			addFieldError("user_email", "This field is required");
+//		}
+//		else {
+//			//Will be moved to configurations
+//			String 	emailRegex 		= "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+//			Pattern emailPattern 	= Pattern.compile(emailRegex); 
+//			Matcher emailMatcher 	= emailPattern.matcher(userAccount.getUser_email().trim());
+//			if(!emailMatcher.matches()) {
+//				addFieldError("user_email","Please enter a valid email");
+//			}
+//			else {
+//				//Compare the email to the database if it already exist
+//				list = getRecords();
+//				if(list != null) {
+//					for(Object[] record: list) {
+//						String sRecord = record.toString();
+//						if(sRecord == userAccount.getUser_email().trim()) {
+//							addFieldError("user_email", "Email already used");
+//						}
+//					}
+//				}
+//			}
+//		}
+//		
+//		//Password Validation
+//		if(userAccount.getUser_password().trim() == null || userAccount.getUser_password().trim() == "") {
+//			addFieldError("user_password", "This field is required");
+//			if(userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
+//				addFieldError("user_repassword", "This field is required");
+//			}
+//		}
+//		else {
+//			if(userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
+//				addFieldError("user_repassword", "This field is required");
+//			}
+//			else {
+//				String 	passwordRegex 	= "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$";
+//				Pattern passwordPattern = Pattern.compile(passwordRegex);
+//				Matcher passwordMatcher = passwordPattern.matcher(userAccount.getUser_password().trim());
+//				if(!passwordMatcher.matches()) {
+//					addFieldError("user_password", "Password should contain at least 1 uppercase, 1 lowercase and 1 numeric character");
+//				}
+//				else {
+//					if(userAccount.getUser_password().trim() != userAccount.getUser_repassword().trim()) {
+//						addFieldError("user_password", "Passwords do not match");
+//					}
+//				}
+//			}
+//		}
+//		
+//		/*
+//		 * //Email Validation String emailRegex =
+//		 * "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"; Pattern pattern =
+//		 * Pattern.compile(emailRegex); Matcher matcher =
+//		 * pattern.matcher(userAccount.getUser_email());
+//		 * 
+//		 * if(!matcher.matches()) { System.out.println("result:" + matcher.matches());
+//		 * addFieldError("user_email", "Please enter a valid email"); }
+//		 * 
+//		 * //Password Validation
+//		 */	}
 	
 	//Database Related
 	public List<Object[]> getRecords() {
