@@ -1,6 +1,5 @@
 package invaid.users.util;
 
-import com.itextpdf.text.Image;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
