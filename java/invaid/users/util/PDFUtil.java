@@ -1,126 +1,163 @@
 package invaid.users.util;
 
-import java.io.FileOutputStream;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.element.Cell; 
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TextAlignment;
 
 public class PDFUtil {
-	private static String file = "Invaid_Risk_Profile_Recommendation.pdf";
-	private static Font headers_titles = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-            Font.BOLD);
-    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
-            Font.BOLD);
-    private static Font sectionTitle = new Font(Font.FontFamily.TIMES_ROMAN, 14,
-            Font.BOLD);
+	private static String file = "/Downloads/Invaid_Risk_Profile_Recommendation.pdf";
+	
 	
 	public void exportPDF() {
 		try {
-            Document document = new Document();
-
-            PdfWriter.getInstance(document, new FileOutputStream(file));
+			PdfFont headers_titles = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
+		    PdfFont subFont = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
+		    
+			PdfWriter writer = new PdfWriter(file);
+			
+            PdfDocument document = new PdfDocument(writer);
             
-            document.open();
+            document.addNewPage();
+            
+            Document doc = new Document(document);
             
             //LOGO            
-            Image logo = Image.getInstance("/assets/logo.png");
-            logo.setAbsolutePosition(100f, 550f);
-            logo.scaleAbsolute(200, 200);
+            ImageData logo = ImageDataFactory.create("/assets/logo.png");
             
-            document.add(logo);
+            Image invAidLogo = new Image(logo);
+            invAidLogo.setFixedPosition(200, 200);
+            
+            doc.add(invAidLogo);
             
             //COMPANY HEADING
-            Paragraph invAidTitle = new Paragraph("InvAid - Investment Aid", headers_titles);
-            Paragraph invAidSubtitle = new Paragraph("Philippine Mutual Fund and Unit Investment Trust Fund Monitoring and Tracking App", subFont);
-            invAidTitle.setAlignment(Element.ALIGN_CENTER);
-            invAidSubtitle.setAlignment(Element.ALIGN_CENTER);
+            Text invAidTitle = new Text("InvAid - Investment Aid");
+            Text invAidSubtitle = new Text("Philippine Mutual Fund and Unit Investment Trust Fund Monitoring and Tracking App");
+
+            invAidTitle.setFont(headers_titles);
+            invAidTitle.setTextAlignment(TextAlignment.CENTER);
             
-            document.add(invAidTitle);
-            document.add(invAidSubtitle);
+            invAidSubtitle.setFont(subFont);
+            invAidSubtitle.setTextAlignment(TextAlignment.CENTER);
+            
+            Paragraph title = new Paragraph(invAidTitle);
+            Paragraph subtitle = new Paragraph(invAidSubtitle);
+            doc.add(title);
+            doc.add(subtitle);
             
             //RISK PROFILE RESULTS
-            Paragraph riskProfileTitle = new Paragraph("RISK PROFILE", sectionTitle);
-
-            document.add(riskProfileTitle);
+            Text riskProfileTitle = new Text("RISK PROFILE");
+            
+            riskProfileTitle.setFont(subFont);
+            riskProfileTitle.setTextAlignment(TextAlignment.CENTER);
+            
+            Paragraph riskProfile = new Paragraph(riskProfileTitle);
+            doc.add(riskProfile);
             
             //INVESTOR TYPE
-            PdfPTable investorTypeTable = new PdfPTable(1);
-            investorTypeTable.setWidthPercentage(100);
+            PdfFont italic = PdfFontFactory.createFont(StandardFonts.TIMES_ITALIC);
+            Text investorType = new Text("You are a/an [Risk Appetite] Investor");
+            investorType.setFont(italic);
             
-            PdfPCell investorType = new PdfPCell();
-            investorType.setHorizontalAlignment(Element.ALIGN_CENTER);
-            investorType.setBorder(0);
+            Paragraph investorProfile = new Paragraph(investorType);
             
-            investorTypeTable.addCell("You are a/an [Risk Appetite] Investor");
-            
-            document.add(investorTypeTable);
+            doc.add(investorProfile);
             
             //INVESTENT OBJECTIVE
-            PdfPTable investmentObjectiveTable = new PdfPTable(2);
-            investorTypeTable.setWidthPercentage(100);
+            PdfFont bold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
+            Table investmentObjectiveTable = new Table(2);
             
-            PdfPCell investorObjective = new PdfPCell();
-            investorObjective.setBorder(0);
+            Cell investorObjective = new Cell();
+            investorObjective.add(new Paragraph("Investor Objective:"));
+            investorObjective.setBorder(Border.NO_BORDER);
+            investorObjective.setFont(bold);
+            Cell investor = new Cell();
+            investor.add(new Paragraph("[Investor Objective]"));
+            investor.setBorder(Border.NO_BORDER);
             
-            investmentObjectiveTable.addCell("Investment Objective");
-            investmentObjectiveTable.addCell("[Investment Objective]");
+            investmentObjectiveTable.addCell(investorObjective);
+            investmentObjectiveTable.addCell(investor);
             
-            document.add(investmentObjectiveTable);
+            doc.add(investmentObjectiveTable);
             
             //HORIZON
-            PdfPTable investmentHorizonTable = new PdfPTable(2);
-            investorTypeTable.setWidthPercentage(100);
+            Table investmentHorizonTable = new Table(2);
             
-            PdfPCell investmentHorizon = new PdfPCell();
-            investmentHorizon.setBorder(0);
+            Cell investmentHorizon = new Cell();
+            investmentHorizon.add(new Paragraph("Investor Horizon:"));
+            investmentHorizon.setBorder(Border.NO_BORDER);
+            investmentHorizon.setFont(bold);
+            Cell horizon = new Cell();
+            horizon.add(new Paragraph("[Investor Horizon]"));
+            horizon.setBorder(Border.NO_BORDER);
             
-            investmentHorizonTable.addCell("Investment Horizon");
-            investmentHorizonTable.addCell("[Investment Horizon]");
+            investmentHorizonTable.addCell(investmentHorizon);
+            investmentHorizonTable.addCell(horizon);
             
-            document.add(investmentHorizonTable);
+            doc.add(investmentHorizonTable);
             
             //CHARACTERISTICS
-            PdfPTable investmentCharacteristicsTable = new PdfPTable(2);
-            investmentCharacteristicsTable.setWidthPercentage(100);
+            Table investmentCharacteristicsTable = new Table(2);
             
-            PdfPCell investmentCharacteristics = new PdfPCell();
-            investmentCharacteristics.setBorder(0);
+            Cell investmentCharacteristics = new Cell();
+            investmentCharacteristics.add(new Paragraph("Investor Characteristics:"));
+            investmentCharacteristics.setBorder(Border.NO_BORDER);
+            investmentCharacteristics.setFont(bold);
+            Cell characteristics = new Cell();
+            characteristics.add(new Paragraph("[Investor Characteristics]"));
+            characteristics.setBorder(Border.NO_BORDER);
             
-            investmentCharacteristicsTable.addCell("Characteristics");
-            investmentCharacteristicsTable.addCell("[Characteristics]");
+            investmentCharacteristicsTable.addCell(investmentCharacteristics);
+            investmentCharacteristicsTable.addCell(characteristics);
             
-            document.add(investmentCharacteristicsTable);
+            doc.add(investmentCharacteristicsTable);
             
             //FUND RECOMMENDATIONS
-            Paragraph fundRecTitle = new Paragraph("FUND RECOMMENDATIONS", sectionTitle);
-            Paragraph fundRecSubtitle = new Paragraph("Here are the Top 5 fund recommendations based on your Risk Profile result.");
+            Text fundRec = new Text("FUND RECOMMENDATIONS");
+            fundRec.setFont(subFont);
+            Text fundRecSub = new Text("Here are the Top 5 fund recommendations based on your Risk Profile result.");
             
-            document.add(fundRecTitle);
-            document.add(fundRecSubtitle);
+            Paragraph fundRecTitle = new Paragraph(fundRec);
+            Paragraph fundRecSubtitle = new Paragraph(fundRecSub);
+            
+            doc.add(fundRecTitle);
+            doc.add(fundRecSubtitle);
             
             //TABLE
-            PdfPTable recommendationTable = new PdfPTable(3);
+            Table recommendationTable = new Table(3);
             
-            PdfPCell recommendationCell = new PdfPCell(new Phrase("FUND NAME"));
-            recommendationCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            recommendationTable.addCell(recommendationCell);
-
-            recommendationCell = new PdfPCell(new Phrase("FUND TYPE"));
-            recommendationCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            recommendationTable.addCell(recommendationCell);
-
-            recommendationCell = new PdfPCell(new Phrase("FUND AFFILIATION"));
-            recommendationCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            recommendationTable.addCell(recommendationCell);
+            Cell fundNameCell = new Cell();
+            fundNameCell.add(new Paragraph("FUND NAME"));
+            fundNameCell.setTextAlignment(TextAlignment.CENTER);
+            fundNameCell.setFont(bold);
             
-            document.close();
+            Cell fundTypeCell = new Cell();
+            fundNameCell.add(new Paragraph("FUND TYPE"));
+            fundNameCell.setTextAlignment(TextAlignment.CENTER);
+            fundNameCell.setFont(bold);
+            
+            Cell fundTypeAffiliation = new Cell();
+            fundNameCell.add(new Paragraph("FUND AFFILIATION"));
+            fundNameCell.setTextAlignment(TextAlignment.CENTER);
+            fundNameCell.setFont(bold);
+            
+            recommendationTable.addCell(fundNameCell);
+            recommendationTable.addCell(fundTypeCell);
+            recommendationTable.addCell(fundTypeAffiliation);
+            
+            doc.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
