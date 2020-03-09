@@ -1,1 +1,531 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mf>
+    <fund>
+        <fundNumber>1</fundNumber>
+        <fundName>ALFM Growth Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>BPI Investment Management Inc.</companyName>
+        <navps>223.43</navps>
+        <returnY1>-13.03%</returnY1>
+        <returnY3>-3.97%</returnY3>
+        <returnY5>-4.68%</returnY5>
+        <returnYtd>-11.30%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>2</fundNumber>
+        <fundName>ALFM Money Market Fund</fundName>
+        <fundClassification>Money Market</fundClassification>
+        <companyName>BPI Investment Management Inc.</companyName>
+        <navps>126.66</navps>
+        <returnY1>3.86%</returnY1>
+        <returnY3>2.99%</returnY3>
+        <returnY5>2.26%</returnY5>
+        <returnYtd>0.70%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>3</fundNumber>
+        <fundName>ALFM Peso Bond Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>BPI Investment Management Inc.</companyName>
+        <navps>360.14</navps>
+        <returnY1>4.12%</returnY1>
+        <returnY3>2.81%</returnY3>
+        <returnY5>2.33%</returnY5>
+        <returnYtd>0.65%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>4</fundNumber>
+        <fundName>ATRAM Alpha Opportunity Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>ATR Asset Management Inc.</companyName>
+        <navps>1.1108</navps>
+        <returnY1>-29.58%</returnY1>
+        <returnY3>-7.16%</returnY3>
+        <returnY5>-7.26%</returnY5>
+        <returnYtd>-19.62%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>5</fundNumber>
+        <fundName>ATRAM Corporate Bond Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>ATR Asset Management Inc.</companyName>
+        <navps>1.9115</navps>
+        <returnY1>2.45%</returnY1>
+        <returnY3>0.45%</returnY3>
+        <returnY5>-0.50%</returnY5>
+        <returnYtd>0.50%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>6</fundNumber>
+        <fundName>ATRAM Dynamic Allocation Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>ATR Asset Management Inc.</companyName>
+        <navps>1.4973</navps>
+        <returnY1>-11.50%</returnY1>
+        <returnY3>-4.39%</returnY3>
+        <returnY5>-5.27%</returnY5>
+        <returnYtd>-4.19%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>7</fundNumber>
+        <fundName>ATRAM Philippine Balanced Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>ATR Asset Management Inc.</companyName>
+        <navps>2.0544</navps>
+        <returnY1>-9.27%</returnY1>
+        <returnY3>-3.27%</returnY3>
+        <returnY5>-3.03%</returnY5>
+        <returnYtd>-5.81%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>8</fundNumber>
+        <fundName>ATRAM Philippine Equity Opportunity Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>ATR Asset Management Inc.</companyName>
+        <navps>3.1161</navps>
+        <returnY1>-22.21%</returnY1>
+        <returnY3>-8.07%</returnY3>
+        <returnY5>-7.12%</returnY5>
+        <returnYtd>-15.28%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>9</fundNumber>
+        <fundName>Climbs Share Capital Equity Investment Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>CLIMBS Investment Management and Advisory Corp.</companyName>
+        <navps>0.776</navps>
+        <returnY1>-15.24%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-13.50%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>10</fundNumber>
+        <fundName>Cocolife Fixed Income Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>Cocolife Asset Management Company, Inc.</companyName>
+        <navps>3.1454</navps>
+        <returnY1>4.99%</returnY1>
+        <returnY3>5.20%</returnY3>
+        <returnY5>5.17%</returnY5>
+        <returnYtd>0.93%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>11</fundNumber>
+        <fundName>Ekklesia Mutual Fund Inc.</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>BPI Investment Management Inc.</companyName>
+        <navps>2.2479</navps>
+        <returnY1>4.51%</returnY1>
+        <returnY3>2.39%</returnY3>
+        <returnY5>1.96%</returnY5>
+        <returnYtd>1.03%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>12</fundNumber>
+        <fundName>First Metro Consumer Fund on MSCI Philippines</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>0.7613</navps>
+        <returnY1>-9%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-10.36%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>13</fundNumber>
+        <fundName>First Metro Philippine Equity Exchange Traded Fund</fundName>
+        <fundClassification>ETF</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>103.0528</navps>
+        <returnY1>-9.43%</returnY1>
+        <returnY3>-0.77%</returnY3>
+        <returnY5>-1.57%</returnY5>
+        <returnYtd>-11.89%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>14</fundNumber>
+        <fundName>First Metro Save And Fixed Income Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>2.3767</navps>
+        <returnY1>6.54%</returnY1>
+        <returnY3>2.38%</returnY3>
+        <returnY5>1.51%</returnY5>
+        <returnYtd>0.75%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>15</fundNumber>
+        <fundName>First Metro Save And Learn Balanced Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>2.4814</navps>
+        <returnY1>-4.08%</returnY1>
+        <returnY3>-0.21%</returnY3>
+        <returnY5>-3.39%</returnY5>
+        <returnYtd>-5.70%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>16</fundNumber>
+        <fundName>First Metro Save And Learn Equity Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>4.7441</navps>
+        <returnY1>-11.54%</returnY1>
+        <returnY3>-2.62%</returnY3>
+        <returnY5>-4.41%</returnY5>
+        <returnYtd>-10.96%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>17</fundNumber>
+        <fundName>First Metro Save and Learn F.O.C.C.U.S. Dynamic Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>0.2052</navps>
+        <returnY1>n.a.</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-10.20%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>18</fundNumber>
+        <fundName>First Metro Save and Learn Money Market Fund</fundName>
+        <fundClassification>Money Market</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>1.0327</navps>
+        <returnY1>2.89%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>0.62%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>19</fundNumber>
+        <fundName>First Metro Save and Learn Philippine Index Fund</fundName>
+        <fundClassification>Equity (Index Fund)</fundClassification>
+        <companyName>First Metro Asset Management Inc.</companyName>
+        <navps>0.7481</navps>
+        <returnY1>-11.95%</returnY1>
+        <returnY3>-6.52%</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-12.36%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>20</fundNumber>
+        <fundName>MBG Equity Investment Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>MBG Equity Investment Fund, Inc.</companyName>
+        <navps>90.47</navps>
+        <returnY1>-27.16%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-12.45%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>21</fundNumber>
+        <fundName>NCM Mutual Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Banco de Oro Trust Group</companyName>
+        <navps>1.8851</navps>
+        <returnY1>-0.07%</returnY1>
+        <returnY3>1.02%</returnY3>
+        <returnY5>-0.70%</returnY5>
+        <returnYtd>-3.97%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>22</fundNumber>
+        <fundName>PAMI Equity Index Fund</fundName>
+        <fundClassification>Equity (Index Fund)</fundClassification>
+        <companyName>Philam Asset Management, Inc</companyName>
+        <navps>45.1102</navps>
+        <returnY1>-10.55%</returnY1>
+        <returnY3>-2.03%</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-12.03%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>23</fundNumber>
+        <fundName>PAMI Horizon Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Philam Asset Management, Inc</companyName>
+        <navps>3.5758</navps>
+        <returnY1>-0.23%</returnY1>
+        <returnY3>-0.27%</returnY3>
+        <returnY5>-1.86%</returnY5>
+        <returnYtd>-5.63%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>24</fundNumber>
+        <fundName>Philam Bond Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>Philam Asset Management, Inc</companyName>
+        <navps>4.4307</navps>
+        <returnY1>12.66%</returnY1>
+        <returnY3>2.87%</returnY3>
+        <returnY5>1.78%</returnY5>
+        <returnYtd>1.32%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>25</fundNumber>
+        <fundName>Philam Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Philam Asset Management, Inc</companyName>
+        <navps>15.9867</navps>
+        <returnY1>-1.32%</returnY1>
+        <returnY3>-0.43%</returnY3>
+        <returnY5>-1.95%</returnY5>
+        <returnYtd>-5.74%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>26</fundNumber>
+        <fundName>Philam Managed Income Fund</fundName>
+        <fundClassification>Money Market</fundClassification>
+        <companyName>Philam Asset Management, Inc</companyName>
+        <navps>1.2646</navps>
+        <returnY1>6.39%</returnY1>
+        <returnY3>3.27%</returnY3>
+        <returnY5>1.79%</returnY5>
+        <returnYtd>0.63%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>27</fundNumber>
+        <fundName>Philam Strategic Growth Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Philam Asset Management, Inc</companyName>
+        <navps>474.53</navps>
+        <returnY1>-10.37%</returnY1>
+        <returnY3>-2.60%</returnY3>
+        <returnY5>-3.94%</returnY5>
+        <returnYtd>-10.93%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>28</fundNumber>
+        <fundName>Philequity Alpha One Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Philequity Management, Inc.</companyName>
+        <navps>0.9545</navps>
+        <returnY1>n.a.</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-7.34%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>29</fundNumber>
+        <fundName>Philequity Dividend Yield Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Philequity Management, Inc.</companyName>
+        <navps>1.1449</navps>
+        <returnY1>-10.41%</returnY1>
+        <returnY3>-2.15%</returnY3>
+        <returnY5>-3.06%</returnY5>
+        <returnYtd>-11.03%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>30</fundNumber>
+        <fundName>Philequity Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Philequity Management, Inc.</companyName>
+        <navps>33.6301</navps>
+        <returnY1>-10.65%</returnY1>
+        <returnY3>-1.20%</returnY3>
+        <returnY5>-2.90%</returnY5>
+        <returnYtd>-11.26%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>31</fundNumber>
+        <fundName>Philequity MSCI Philippine Index Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Philequity Management, Inc.</companyName>
+        <navps>0.9076</navps>
+        <returnY1>-9.34%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-10.85%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>32</fundNumber>
+        <fundName>Philequity Peso Bond Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>Philequity Management, Inc.</companyName>
+        <navps>3.8118</navps>
+        <returnY1>6.56%</returnY1>
+        <returnY3>3.13%</returnY3>
+        <returnY5>1.51%</returnY5>
+        <returnYtd>0.62%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>33</fundNumber>
+        <fundName>Philequity PSE Index Fund</fundName>
+        <fundClassification>Equity (Index Fund)</fundClassification>
+        <companyName>Philequity Management, Inc.</companyName>
+        <navps>4.5991</navps>
+        <returnY1>-9.78%</returnY1>
+        <returnY3>-1.38%</returnY3>
+        <returnY5>-2.31%</returnY5>
+        <returnYtd>-11.95%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>34</fundNumber>
+        <fundName>Philippine Stock Index Fund</fundName>
+        <fundClassification>Equity (Index Fund)</fundClassification>
+        <companyName>BPI Investment Management Inc.</companyName>
+        <navps>767.86</navps>
+        <returnY1>-9.74%</returnY1>
+        <returnY3>-1.42%</returnY3>
+        <returnY5>-2.48%</returnY5>
+        <returnYtd>-11.95%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>35</fundNumber>
+        <fundName>Soldivo Bond Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>Rampver Financials</companyName>
+        <navps>0.9837</navps>
+        <returnY1>8.06%</returnY1>
+        <returnY3>2.04%</returnY3>
+        <returnY5>0.54%</returnY5>
+        <returnYtd>2.01%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>36</fundNumber>
+        <fundName>Soldivo Strategic Growth Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Rampver Financials</companyName>
+        <navps>0.723</navps>
+        <returnY1>-19.18%</returnY1>
+        <returnY3>-5.23%</returnY3>
+        <returnY5>-6.33%</returnY5>
+        <returnYtd>-15.08%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>37</fundNumber>
+        <fundName>Solidaritas Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>BPI Investment Management Inc.</companyName>
+        <navps>2.0012</navps>
+        <returnY1>-5.01%</returnY1>
+        <returnY3>-0.89%</returnY3>
+        <returnY5>-1.44%</returnY5>
+        <returnYtd>-5.86%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>38</fundNumber>
+        <fundName>Sun Life of Canada Prosperity Balanced Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>3.5633</navps>
+        <returnY1>-5.25%</returnY1>
+        <returnY3>-0.35%</returnY3>
+        <returnY5>-1.83%</returnY5>
+        <returnYtd>-7.78%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>39</fundNumber>
+        <fundName>Sun Life of Canada Prosperity Bond Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>3.1148</navps>
+        <returnY1>9.76%</returnY1>
+        <returnY3>4.60%</returnY3>
+        <returnY5>2.71%</returnY5>
+        <returnYtd>1.26%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>40</fundNumber>
+        <fundName>Sun Life Prosperity Achiever Fund 2028</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>0.9602</navps>
+        <returnY1>-1.13%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-5.46%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>41</fundNumber>
+        <fundName>Sun Life Prosperity Achiever Fund 2038</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>0.9068</navps>
+        <returnY1>-5.79%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-8.99%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>42</fundNumber>
+        <fundName>Sun Life Prosperity Achiever Fund 2048</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>0.8962</navps>
+        <returnY1>-6.73%</returnY1>
+        <returnY3>n.a.</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-9.77%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>43</fundNumber>
+        <fundName>Sun Life Prosperity Dynamic Fund</fundName>
+        <fundClassification>Balanced</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>0.8823</navps>
+        <returnY1>-7.31%</returnY1>
+        <returnY3>-1.54%</returnY3>
+        <returnY5>-3.40%</returnY5>
+        <returnYtd>-9.49%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>44</fundNumber>
+        <fundName>Sun Life Prosperity GS Fund</fundName>
+        <fundClassification>Bond</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>1.7151</navps>
+        <returnY1>8.86%</returnY1>
+        <returnY3>3.98%</returnY3>
+        <returnY5>2.17%</returnY5>
+        <returnYtd>0.82%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>45</fundNumber>
+        <fundName>Sun Life Prosperity Money Market Fund</fundName>
+        <fundClassification>Money Market</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>1.2717</navps>
+        <returnY1>3.60%</returnY1>
+        <returnY3>2.96%</returnY3>
+        <returnY5>2.46%</returnY5>
+        <returnYtd>0.56%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>46</fundNumber>
+        <fundName>Sun Life Prosperity Philippine Equity Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>3.6794</navps>
+        <returnY1>-12.16%</returnY1>
+        <returnY3>-2.02%</returnY3>
+        <returnY5>-3.18%</returnY5>
+        <returnYtd>-12.58%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>47</fundNumber>
+        <fundName>Sun Life Prosperity Philippine Stock Index Fund</fundName>
+        <fundClassification>Equity (Index Fund)</fundClassification>
+        <companyName>Sun Life Asset Management Company, Inc.</companyName>
+        <navps>0.8811</navps>
+        <returnY1>-9.99%</returnY1>
+        <returnY3>-1.60%</returnY3>
+        <returnY5>n.a.</returnY5>
+        <returnYtd>-11.96%</returnYtd>
+    </fund>
+    <fund>
+        <fundNumber>48</fundNumber>
+        <fundName>United Fund</fundName>
+        <fundClassification>Equity</fundClassification>
+        <companyName>Cocolife Asset Management Company, Inc.</companyName>
+        <navps>3.2688</navps>
+        <returnY1>-8.93%</returnY1>
+        <returnY3>0.38%</returnY3>
+        <returnY5>-1.35%</returnY5>
+        <returnYtd>-10.52%</returnYtd>
+    </fund>
+</mf>

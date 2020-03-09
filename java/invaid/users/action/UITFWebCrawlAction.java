@@ -19,7 +19,6 @@ import javax.xml.bind.Marshaller;
 import org.apache.struts2.interceptor.SessionAware;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
@@ -31,16 +30,15 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.model.Bank;
-import invaid.users.model.FundDetail;
-import invaid.users.model.FundDetails;
+import invaid.users.model.UitfFundDetail;
+import invaid.users.model.UitfFundDetails;
 import invaid.users.util.TokenUtil;
 import config.Configurations;
 
 @SuppressWarnings("serial")
-public class WebCrawlAction extends ActionSupport implements SessionAware, Runnable {
+public class UITFWebCrawlAction extends ActionSupport implements SessionAware, Runnable {
 	private Map<String, Object> sessionMap;
-	FundDetails fundList = new FundDetails();
-	private ArrayList<String> data;
+	UitfFundDetails fundList = new UitfFundDetails();
 	private String token;
 	final static int NO_OF_BANKS = 42;
 	final static int NO_OF_FUNDS = 386;
@@ -53,7 +51,7 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 			case "denied": return ERROR;
 		}
 		
-		fundList.setList(new ArrayList<FundDetail>());
+		fundList.setList(new ArrayList<UitfFundDetail>());
 		List<Bank> banko = Arrays.asList(Bank.values());
 		int bankNum = 0;
 		int fundCount = 0;
@@ -85,7 +83,7 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 							
 							while(rawData.hasNext()) {
 								fund = new HashMap<String, String>();
-								FundDetail fd = new FundDetail();
+								UitfFundDetail fd = new UitfFundDetail();
 								
 								fund.put("Bank", banko.get(bankNum).getAction());
 								fund.put("Fund Name", rawData.next().toString());
@@ -116,8 +114,8 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 			}
 		}
 		
-		List<FundDetail> fdList = fundList.getList();
-		fundList.setList(new ArrayList<FundDetail>());
+		List<UitfFundDetail> fdList = fundList.getList();
+		fundList.setList(new ArrayList<UitfFundDetail>());
 		boolean found = false;
 		
 		for(int ctr=1; ctr<NO_OF_FUNDS; ctr++) {
@@ -159,8 +157,8 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 			Document document = null;
 			Elements table = null;
 			String header = null;
-			FundDetail fd = null;
-			Iterator<FundDetail> temp = fdList.iterator();
+			UitfFundDetail fd = null;
+			Iterator<UitfFundDetail> temp = fdList.iterator();
 			Iterator<String> rawData = null;
 
 			try {
@@ -209,7 +207,7 @@ public class WebCrawlAction extends ActionSupport implements SessionAware, Runna
 		}
 		
 		try {
-			JAXBContext jaxb = JAXBContext.newInstance(FundDetail.class);
+			JAXBContext jaxb = JAXBContext.newInstance(UitfFundDetail.class);
 			
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
