@@ -69,7 +69,11 @@
 	</package>
 	
 	<package name="webcrawler" extends="struts-default">
-		<action name="webcrawl" class="invaid.users.action.WebCrawlAction">
+		<action name="webcrawlmf" class="invaid.users.action.MFWebCrawlAction">
+			<result name="success">monitoring.jsp</result>
+			<result name="error">/</result>
+		</action>
+		<action name="webcrawluitf" class="invaid.users.action.UITFWebCrawlAction">
 			<result name="success">monitoring.jsp</result>
 			<result name="error">/</result>
 		</action>
