@@ -67,7 +67,7 @@
                 <div class="card h-75 my-auto">
                     <div class="form-login-otp my-auto">
                         <div class="card-body">
-                            <h4 class="card-title text-uppercase pb-5">login</h4>
+                            <h4 class="card-title text-uppercase pb-3">login</h4>
                             <s:form action="loginaccount" method="post">
                                 <p class="text-center">Enter the OTP sent to</p>
                                 <p class="text-center font-weight-bold"><s:property value="#session.loginEmail"/></p>
@@ -79,7 +79,7 @@
                                 </div>
                             </s:form>
 							<div>
-                      			<h4 id="time" class="text-center">01:00</h4>
+                      			<h4 id="time" class="text-center" style="color: #19aa8d;">01:00</h4>
                       		</div>
                         </div>
                     </div>
