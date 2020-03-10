@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
 </head>
 <body>
-	<!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
+    <!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
+    <s:if test="%{#session.loginToken==null}">
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -61,9 +63,9 @@
                 </ul>
             </div>
         </nav>
-        
+    </s:if>  
         <!-- LOGGED IN/REGISTERED USER NAVBAR -->
-        <!-- 
+    <s:else> 
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
             <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -108,7 +110,7 @@
                 </ul>
             </div>
         </nav>
-		 -->
+	</s:else>   	 
 	
         <div class="h-75 d-flex justify-content-center">
             <div class="card my-auto">
@@ -141,7 +143,9 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
-		        <button type="button" class="btn btn-primary btnLogout">Logout</button>
+		        <s:form action="logoutuser" method="get">
+		        	<s:submit value="Logout" class="btn btn-primary btnLogout"/>
+		        </s:form>
 		      </div>
 		    </div>
 		  </div>
