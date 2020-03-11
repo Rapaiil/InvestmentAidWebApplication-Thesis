@@ -27,90 +27,90 @@
 	<!-- IF ELSE REGISTERED/UNREGISTERED USER NAVBAR -->
         <!-- NAVBAR -->
         <s:if test="%{#session.loginToken==null}">
-        <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
-            <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span><i class="fa fa-bars" aria-hidden="true"></i></span> 
-            </button>
-            <div class="collapse navbar-collapse main-menu" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.jsp#aboutSection">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Investment Guide</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="monitoring.jsp">Monitoring</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="feedback.jsp">Feedback</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="registerProfile.jsp">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.jsp">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+			<nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
+				<a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
+				<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span><i class="fa fa-bars" aria-hidden="true"></i></span> 
+				</button>
+				<div class="collapse navbar-collapse main-menu" id="collapsibleNavId">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="index.jsp#aboutSection">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Investment Guide</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="monitoring.jsp">Monitoring</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="feedback.jsp">Feedback</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
+						<li class="nav-item">
+							<a class="nav-link" href="registerProfile.jsp">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="login.jsp">Login</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
         </s:if>
         <!-- LOGGED IN/REGISTERED USER NAVBAR -->
         <s:else>
-        <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
-            <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span><i class="fa fa-bars" aria-hidden="true"></i></span> 
-            </button>
-            <div class="collapse navbar-collapse main-menu" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.jsp#aboutSection">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Investment Guide</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="monitoring.jsp">Monitoring</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="feedback.jsp">Feedback</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
-							Hi, <s:property value="#session.loginFirstName"/>
-						</a>
-	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
-	                    	<a class="dropdown-item" href="#">Account Settings</a>
-	                    	<a class="dropdown-item" href="#">My Investment Portfolio</a>
-	                    	<a class="dropdown-item" href="#">Risk Profile</a>
-	                    	<a class="dropdown-item" href="#">Reset Password</a>
-	                    	<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#logoutModal" data-toggle="modal">Logout</a>
-						</div>
-					</li>
-                </ul>
-            </div>
-        </nav>
+			<nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
+				<a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
+				<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span><i class="fa fa-bars" aria-hidden="true"></i></span> 
+				</button>
+				<div class="collapse navbar-collapse main-menu" id="collapsibleNavId">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="index.jsp#aboutSection">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Investment Guide</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="monitoring.jsp">Monitoring</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="feedback.jsp">Feedback</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
+								Hi, <s:property value="#session.loginFirstName"/>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right dropdown-default">
+								<a class="dropdown-item" href="#">Account Settings</a>
+								<a class="dropdown-item" href="#">My Investment Portfolio</a>
+								<a class="dropdown-item" href="#">Risk Profile</a>
+								<a class="dropdown-item" href="#">Reset Password</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#logoutModal" data-toggle="modal">Logout</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
 		</s:else>
 	
 		<!-- MONITORING CONTENT-->
@@ -373,7 +373,9 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
-		        <button type="button" class="btn btn-primary btnLogout">Logout</button>
+		        <s:form action="logoutuser" method="get">
+		        	<s:submit value="Logout" class="btn btn-primary btnLogout"/>
+		        </s:form>
 		      </div>
 		    </div>
 		  </div>
