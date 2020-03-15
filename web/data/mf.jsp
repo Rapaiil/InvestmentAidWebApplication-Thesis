@@ -27,42 +27,15 @@
 </head>
 <body>
 
-<%-- <s:iterator value="data"> --%>
-	<table class="table">
-	  <thead>
+	<s:iterator value="fundList">
 	    <tr>
-	      <th scope="col">Name</th>
-	      <th scope="col">Risk Classification</th>
-	      <th scope="col">Fund Classification</th>
-	      <th scope="col">Affiliation</th>
-	      <th scope="col"></th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
-	      <td>@mdo</td>
+	      <td><s:property value="fundName" /></td>
+	      <td><s:property value="fundNumber" /></td>
+	      <td><s:property value="fundClassification" /></td>
+	      <td><s:property value="companyName" /></td>
 	      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
 	    </tr>
-	    <tr>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
-	      <td>@mdo</td>
-	      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-	    </tr>
-	    <tr>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
-	      <td>@mdo</td>
-	      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
-	    </tr>
-	  </tbody>
-	</table>
-<%-- </s:iterator> --%>
+	</s:iterator>
 
 	<s:include value="modal.jsp"/>
 

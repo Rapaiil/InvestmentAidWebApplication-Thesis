@@ -29,10 +29,12 @@ public class MFXMLParseAction extends ActionSupport implements ModelDriven<MfFun
 			JAXBContext jaxb = JAXBContext.newInstance(MfFundDetails.class);
 			Unmarshaller um = jaxb.createUnmarshaller();
 			fundWrapper = (MfFundDetails) um.unmarshal(new FileReader(ServletActionContext.getServletContext().getRealPath(Configurations.getMfFile())));
-			setFundList(fundWrapper.getList());
-			if(getFundList().isEmpty())
-				throw new FileNotFoundException("List is empty!");
+			if(fundWrapper == null || fundWrapper.getList().isEmpty())
+				return ERROR;
 			else
+				System.out.println("May laman naman");
+			fundList = fundWrapper.getList();
+			if(fundList != null && !fundList.isEmpty())
 				return SUCCESS;
 		} catch(JAXBException jaxbe) {
 			jaxbe.getMessage();

@@ -81,8 +81,8 @@
 	
 	<package name="webparser" extends="struts-default">
 		<action name="parsemf" class="invaid.users.action.MFXMLParseAction">
-			<result name="success">mf.jsp</result>
-			<result name="error" type="redirect">/error/error404.jsp</result>
+			<result name="success">data/mf.jsp</result>
+			<result name="error">error/error404.jsp</result>
 		</action>
 	</package>
 </struts>
