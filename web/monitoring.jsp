@@ -142,6 +142,7 @@
 					<!-- MONITORING -->
 					<div class="tab-content" id="pills-tabContent">
 					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
+					  <s:action name="mfparse">
 							<%-- <s:iterator value="data"> --%>
 								<table class="table">
 								  <thead>
@@ -178,6 +179,7 @@
 								  </tbody>
 								</table>
 							<%-- </s:iterator> --%>
+							</s:action>
 							<nav aria-label="Page navigation example">
 							  <ul class="pagination justify-content-end">
 							    <li class="page-item">
