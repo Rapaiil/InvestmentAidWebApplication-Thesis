@@ -8,7 +8,7 @@ import java.util.Properties;
 public class Configurations {
 	private static Properties properties = new Properties();
 	private static InputStream inputStream;
-	private static String email, password, key, bankUitf, fundUitf, bankMf, fundMf, ext;
+	private static String email, password, key, bankUitf, fundUitf, bankMf, fundMf, ext, mfFile, uitfFile;
 	
 	private Configurations() {}
 	
@@ -36,7 +36,8 @@ public class Configurations {
 		bankMf = properties.getProperty("mf_bank_source");
 		fundMf = properties.getProperty("mf_fund_source");
 		ext = properties.getProperty("uitf_ext");
-		
+		mfFile = properties.getProperty("mf_xml");
+		uitfFile = properties.getProperty("uitf_xml");
 	}
 	
 	private static void configure() throws IOException {
@@ -113,5 +114,23 @@ public class Configurations {
 			System.err.println(ioe.getMessage());
 		}
 		return ext;
+	}
+	
+	public static String getMfFile() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return mfFile;
+	}
+	
+	public static String getUitfFile() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return uitfFile;
 	}
 }
