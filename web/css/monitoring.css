@@ -97,6 +97,14 @@ body, html {
 	width: 100px;
 }
 
+th {
+	font-weight: bolder;
+}
+
+.modal-body h1, .modal-body h3, .modal-header h4 {
+	color: #19a375;
+}
+
 /* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 1024px) {
     .search-bar {
