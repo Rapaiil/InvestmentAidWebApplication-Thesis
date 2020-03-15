@@ -1,11 +1,14 @@
 document.getElementById('editAccount').onclick = function() {
-    document.getElementById('firstName').removeAttribute('readonly');
-    document.getElementById('lastName').removeAttribute('readonly');
+    document.getElementById('name').removeAttribute('readonly');
     document.getElementById('telNum').removeAttribute('readonly');
     document.getElementById('mobileNum').removeAttribute('readonly');
     document.getElementById('emailAdd').removeAttribute('readonly');
+    document.getElementById('birthday').removeAttribute('readonly');
+    document.getElementById('occupation').removeAttribute('readonly');
+    document.getElementById('company').removeAttribute('readonly');
     
     document.getElementById('editAccount').style.visibility = "hidden";
+    document.getElementById('lastname').style.visibility = "visible";
     
     document.getElementById('actionbuttons').innerHTML = 
     	"<div class='text-center'>" +
@@ -15,37 +18,47 @@ document.getElementById('editAccount').onclick = function() {
 };
 
 function save(){
-	document.getElementById('firstName').readOnly = true;
-    document.getElementById('lastName').readOnly = true;
+	document.getElementById('name').readOnly = true;
     document.getElementById('telNum').readOnly = true;
     document.getElementById('mobileNum').readOnly = true;
     document.getElementById('emailAdd').readOnly = true;
+    document.getElementById('birthday').readOnly = true;
+    document.getElementById('occupation').readOnly = true;
+    document.getElementById('company').readOnly = true;
     
     document.getElementById('editAccount').style.visibility = "visible";
     
-    document.getElementById('fNameError').style.visibility = "hidden";
-    document.getElementById('lNameError').style.visibility = "hidden";
+    document.getElementById('nameError').style.visibility = "hidden";
     document.getElementById('telNumError').style.visibility = "hidden";
     document.getElementById('mobileNumError').style.visibility = "hidden";
     document.getElementById('emailAddError').style.visibility = "hidden";
+    document.getElementById('occupationError').style.visibility = "hidden";
+    document.getElementById('companyError').style.visibility = "hidden";
+    
+    document.getElementById('lastname').style.visibility = "hidden";
     
     document.getElementById('actionbuttons').innerHTML = "";
 }
 
 function cancel(){
-	document.getElementById('firstName').readOnly = true;
-    document.getElementById('lastName').readOnly = true;
+	document.getElementById('name').readOnly = true;
     document.getElementById('telNum').readOnly = true;
     document.getElementById('mobileNum').readOnly = true;
     document.getElementById('emailAdd').readOnly = true;
+    document.getElementById('birthday').readOnly = true;
+    document.getElementById('occupation').readOnly = true;
+    document.getElementById('company').readOnly = true;
     
     document.getElementById('editAccount').style.visibility = "visible";
     
-    document.getElementById('fNameError').style.visibility = "hidden";
-    document.getElementById('lNameError').style.visibility = "hidden";
+    document.getElementById('nameError').style.visibility = "hidden";
     document.getElementById('telNumError').style.visibility = "hidden";
     document.getElementById('mobileNumError').style.visibility = "hidden";
     document.getElementById('emailAddError').style.visibility = "hidden";
+    document.getElementById('occupationError').style.visibility = "hidden";
+    document.getElementById('companyError').style.visibility = "hidden";
+    
+    document.getElementById('lastname').style.visibility = "hidden";
     
     document.getElementById('actionbuttons').innerHTML = "";
 }

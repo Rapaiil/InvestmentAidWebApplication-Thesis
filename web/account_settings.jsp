@@ -110,7 +110,28 @@
 								<s:textfield id="emailAdd" cssClass="form-control mx-sm-3" onchange="validate()" value="[emailAdd]" readonly="true"></s:textfield>
 								<small id="emailAddError" class="form-text text-danger">Please enter E-mail Address</small>
 					  		</div>
-                        </div>
+						</div>
+						<div class="form-inline">
+							<div class="form-group">
+							  <label for="emailAdd">Birthday:</label>
+							  <s:textfield type="date" id="birthday" cssClass="form-control mx-sm-3" onchange="validate()" value="2020-03-14" readonly="true"></s:textfield>
+							  <%-- <small id="emailAddError" class="form-text text-danger">Please enter </small> --%>
+							</div>
+					  </div>
+					  <div class="form-inline">
+							<div class="form-group">
+							  <label for="emailAdd">Occupation:</label>
+							  <s:textfield id="occupation" cssClass="form-control mx-sm-3" onchange="validate()" value="[occupation]" readonly="true"></s:textfield>
+							  <small id="occupationError" class="form-text text-danger">Please enter Occupation</small>
+							</div>
+					  </div>
+					  <div class="form-inline">
+							<div class="form-group">
+							  <label for="company">Company:</label>
+							  <s:textfield id="company" cssClass="form-control mx-sm-3" onchange="validate()" value="[company]" readonly="true"></s:textfield>
+							  <small id="companyError" class="form-text text-danger">Please enter Company</small>
+							</div>
+					  </div>
                         <div id="buttons" class="buttons text-center mt-5">
                         	<a type="button" href="#" id="editAccount" onclick="editAccount()" class="btn btn-primary text-uppercase account-btn">Edit Account Details</a>
                         	<div id="actionbuttons"></div>
