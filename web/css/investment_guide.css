@@ -1,10 +1,10 @@
 /* --- GENERAL ---*/
-h1, h2, h3, h4, th {
+h1, h2, h3, h4 {
     font-family: "Roboto Condensed", sans-serif !important;
     font-weight: 500 !important;
 }
   
-p, span, a, td {
+p, span, a {
     font-family: "Titillium Web", sans-serif !important; 
 }
 
@@ -15,9 +15,8 @@ body, html {
     height: 100vh;
 }
 
-/* --- NAVBAR & HEADER ---*/
+/* --- NAVBAR ---*/
 
-/* navbar custom */
 .navbar-custom {
     background-color: #2D3047;
 }
@@ -65,50 +64,20 @@ body, html {
     padding-right: 20px;
 }
 
-.navbar .navbar-toggler i {
+.navbar i {
     color: #FBF5F3;
 }
 
-/* --- MONITORING --- */
-.nav-pills .nav-link{
-	border-radius: 2px;
-	color: #2d3047;
-	transition: color .2s ease-out, box-shadow .2s;
-}
-.nav-pills .nav-item {
-	margin: 0 5px;
-}
-.nav-pills.pills-dark .nav-link.active {
-	background-color: #19a375 !important;
-}
-.nav-pills.pills-dark .nav-link:not(.active):hover {
-	color: #1d1e22;
+/* --- CONTENT --- */
+
+body {
+    background: #F9F9F9;
 }
 
-.currency-converter {
-	width: 250px;
+.card-deck {
+	max-width: 100%;
 }
 
-.currencies-select {
-	width: 100px;
-}
-
-th {
-	font-weight: bolder;
-}
-
-.modal-body h1, .modal-body h3, .modal-header h4 {
+.content h1, .content .guide-menu .card-deck .card-body h5 {
 	color: #19a375;
-}
-
-/* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 1024px) {
-    .currency-converter {
-    	max-width: 100%;
-    }
-    
-    .currencies-select {
-    	max-width: 100px;
-    	margin-top: 10px;
-   	}
 }

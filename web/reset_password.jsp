@@ -31,7 +31,7 @@
 
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
-            <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
+            <a class="navbar-brand" href="index.jsp"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span><i class="fa fa-bars" aria-hidden="true"></i></span> 
@@ -39,13 +39,13 @@
             <div class="collapse navbar-collapse main-menu" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp#aboutSection">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Investment Guide</a>
+                        <a class="nav-link" href="investment_guide.jsp">Investment Guide</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
@@ -63,10 +63,10 @@
 							Hi, <s:property value="#session.loginFirstName"/>
 						</a>
 	                    <div class="dropdown-menu dropdown-menu-right dropdown-default">
-	                    	<a class="dropdown-item" href="#">Account Settings</a>
+	                    	<a class="dropdown-item" href="account_settings.jsp">Account Settings</a>
 	                    	<a class="dropdown-item" href="portfolio.jsp">My Investment Portfolio</a>
-	                    	<a class="dropdown-item" href="#">Risk Profile</a>
-	                    	<a class="dropdown-item" href="#">Reset Password</a>
+	                    	<a class="dropdown-item" href="riskprofile.jsp">Risk Profile</a>
+	                    	<a class="dropdown-item" href="reset_password.jsp">Reset Password</a>
 	                    	<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#logoutModal" data-toggle="modal">Logout</a>
 						</div>
