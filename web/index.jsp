@@ -186,7 +186,7 @@
                 <div class="col col-lg col-md col-sm col-centered">
                     <div class="card" style="width: 18rem">
                         <img src="assets/investment_guide.png" alt="investment_guide" width="50" height="50" class="mx-auto d-block img-fluid" />
-                        <h5 id="investment-guide-quick-link"><a href="#">Investment Guide</a></h5>
+                        <h5 id="investment-guide-quick-link"><a href="investment_guide.jsp">Investment Guide</a></h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lacus non mi venenatis cursus. </p>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                 <div class="col col-lg col-md col-sm col-centered">
                     <div class="card" style="width: 18rem">
                             <img src="assets/monitoring.png" alt="monitoring" width="50" height="50" class="mx-auto d-block img-fluid" />
-                        <h5 id="monitoring-quick-link"><a href="#">Monitoring</a></h5>
+                        <h5 id="monitoring-quick-link"><a href="monitoring.jsp">Monitoring</a></h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lacus non mi venenatis cursus. </p>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                 <div class="col col-lg col-md col-sm col-centered">
                     <div class="card" style="width: 18rem">
                             <img src="assets/feedback.png" alt="feedback" width="50" height="50" class="mx-auto d-block img-fluid" />
-                        <h5 id="feedback-quick-link"><a href="#">Feedback</a></h5>
+                        <h5 id="feedback-quick-link"><a href="feedback.jsp">Feedback</a></h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lacus non mi venenatis cursus. </p>
                     </div>
                 </div>
