@@ -117,10 +117,10 @@
                 <div class="questionnaire my-auto">
                     <div class="card-body mx-auto">
                         <h4 class="card-title text-uppercase pb-3">Risk Profile Questionnaire</h4>
-                        <p>This questionnaire is from <b>Charles Schwab</b> to help in evaluating the person's willingness to take financial risks.</p>
-                        <p>Your <b>Investor Profile</b> will be determined by your <b>Time Horizon</b> and <b>Risk Tolerance</b> scores.</p>
+                        <p class="text-center">This questionnaire is from <b>Charles Schwab</b> to help in evaluating the person's willingness to take financial risks. 
+                            <br> Your <b>Investor Profile</b> will be determined by your <b>Time Horizon</b> and <b>Risk Tolerance</b> scores.</p>
                         <div class="text-center">
-                        	<button id="questionnaire_button" class="btn btn-primary shadow-none text-uppercase">Take Questionnaire</button>
+                        	<button href="questionnaire_set.jsp" id="questionnaire_button" class="btn btn-primary shadow-none text-uppercase">Take Questionnaire</button>
                         </div>
                     </div>
                 </div>
