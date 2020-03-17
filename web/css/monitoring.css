@@ -85,10 +85,6 @@ body, html {
 	color: #1d1e22;
 }
 
-.search-bar {
-	width: 250px;
-}
-
 .currency-converter {
 	width: 250px;
 }
@@ -107,10 +103,6 @@ th {
 
 /* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 1024px) {
-    .search-bar {
-    	max-width: 100%;
-    }
-    
     .currency-converter {
     	max-width: 100%;
     }
