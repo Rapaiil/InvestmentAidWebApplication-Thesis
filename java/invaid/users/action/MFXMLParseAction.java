@@ -25,14 +25,13 @@ public class MFXMLParseAction extends ActionSupport implements ModelDriven<MfFun
 	
 	@Override
 	public String execute() {
+		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getMfFile().replaceAll("^\"|\"$", ""));
 		try {
 			JAXBContext jaxb = JAXBContext.newInstance(MfFundDetails.class);
 			Unmarshaller um = jaxb.createUnmarshaller();
-			fundWrapper = (MfFundDetails) um.unmarshal(new FileReader(ServletActionContext.getServletContext().getRealPath(Configurations.getMfFile())));
+			fundWrapper = (MfFundDetails) um.unmarshal(new FileReader(contextPath));
 			if(fundWrapper == null || fundWrapper.getList().isEmpty())
 				return ERROR;
-			else
-				System.out.println("May laman naman");
 			fundList = fundWrapper.getList();
 			if(fundList != null && !fundList.isEmpty())
 				return SUCCESS;
