@@ -81,3 +81,23 @@ body {
 .content h1, .content .guide-menu .card-deck .card-body h5 {
 	color: #19a375;
 }
+
+
+.card-img-top {
+	width: 362px;
+	height: 200px;
+}
+
+.card .card-img-top {
+	width: auto;
+}
+
+.card-footer {
+	background-color: white;
+	border-top: 0;
+}
+
+.card-footer a {
+	float: right;
+	color: #19a375;
+}

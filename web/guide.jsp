@@ -14,9 +14,9 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="css/investment_guide.css" type="text/css">
+	<link rel="stylesheet" href="css/guides.css" type="text/css">
 	<link rel="stylesheet" href="css/modal.css" type="text/css">
-	<title>InvAid - Investment Guide</title> 
+	<title>InvAid - Basic Investment Steps</title> 
 	
 	 <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -113,51 +113,28 @@
 	            </div>
 	        </nav>
 		</s:else>
-
-
-	<!-- INVESTMENT GUIDE -->
-	<section class="content mt-5">
-		<h1 class="text-center">Investment Guide</h1>
-		
-		<div class="d-flex guide-menu d-flex justify-content-center mt-5">
-			<div class="card-deck">
-			  <div class="card">
-			    <img class="card-img-top" src="assets/terms.svg" alt="definition_of_terms">
-			    <div class="card-body">
-			      <h5 class="card-title">Definition of Terms</h5>
-			      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-			      Pellentesque et consectetur lacus. Morbi nec ullamcorper ligula. Sed porta ut lorem ac pretium. </p>
-			    </div>
-			    <div class="card-footer">
-			      <a href="definition.jsp">Learn More >></a>
-			    </div>
-			  </div>
-			  <div class="card">
-			    <img class="card-img-top" src="assets/guide.svg" alt="investment_guide">
-			    <div class="card-body">
-			      <h5 class="card-title">Basic Investment Steps</h5>
-			      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-			      Pellentesque et consectetur lacus. Morbi nec ullamcorper ligula. Sed porta ut lorem ac pretium. </p>
-			    </div>
-			    <div class="card-footer">
-			      <a href="guide.jsp">Learn More >></a>
-			    </div>
-			  </div>
-			  <div class="card">
-			    <img class="card-img-top" src="assets/manual.svg" alt="system_manual">
-			    <div class="card-body">
-			      <h5 class="card-title">System Manual</h5>
-			      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-			      Pellentesque et consectetur lacus. Morbi nec ullamcorper ligula. Sed porta ut lorem ac pretium. </p>
-			    </div>
-			    <div class="card-footer">
-			      <a href="manual.jsp">Learn More >></a>
-			    </div>
-			  </div>
-			</div>
-		</div>
-	</section>
 	
+	<div class="container">
+		<h1>Basic Investment Steps</h1>
+		<ol type="I">
+			<li class="section">[SECTION]</li>
+			<!-- <hr class="section-divider"/> -->
+			<ul>
+				<li class="terms">[Term] - [Definition]</li>
+				<li class="terms">[Term] - [Definition]</li>
+				<li class="terms">[Term] - [Definition]</li>
+				<li class="terms">[Term] - [Definition]</li>
+			</ul>
+			<li class="section">[SECTION]</li>
+			<!-- <hr class="section-divider"/> -->
+			<ul>
+				<li class="terms">[Term] - [Definition]</li>
+				<li class="terms">[Term] - [Definition]</li>
+				<li class="terms">[Term] - [Definition]</li>
+				<li class="terms">[Term] - [Definition]</li>
+			</ul>
+		</ol>
+	</div>
 	
 	<!-- LOGOUT MODAL -->
 		<!-- Modal -->
@@ -180,6 +157,7 @@
 		    </div>
 		  </div>
 		</div>
+		
 		
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
