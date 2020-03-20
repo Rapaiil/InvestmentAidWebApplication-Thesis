@@ -85,4 +85,14 @@
 			<result name="error">error/error404.jsp</result>
 		</action>
 	</package>
+	
+	<package name="currencyconverter" extends="struts-default">
+		<action name="crawlrates" class="invaid.users.action.ForexWebCrawlAction">
+			<result>monitoring.jsp</result>
+			<result name="json" type="json">
+				<param name="root">ratestable</param>
+			</result>
+			<result name="error">error/error500.jsp</result>
+		</action>
+	</package>
 </struts>
