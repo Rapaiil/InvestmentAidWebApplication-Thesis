@@ -83,53 +83,27 @@ body {
 
 h2 {
 	color: #19A375;
-	text-align: center;
 	height: 50%;
 }
 
-.account label {
-	font-weight: bold;
+h4 {
+	color: #19A375;
 }
 
-.account .form-inline .form-group small {
-	/* visibility: hidden; */
-}
-
-.account .form-inline {
-	margin-bottom: 10px;
-}
-
-.account .btn {        
-    font-size: 16px;
-    font-weight: bold;
-    background: #19A375;
-    border-radius: 3px;
-    border: none;
-    min-width: 140px;
-    outline: none !important;
-    box-shadow: none;
-}
-
-.account .btn:hover, .account .account-btn:focus{
-    background: #19A375;
-    color: white;
-}
-
-.account .account-btn:active {
-    background-color: #19A375 !important;
-    outline: none;
-}
-
-.account .form-inline .form-group small {
-	visibility: hidden;
-}
-
-#lastname {
-	visibility: hidden;
+.btnSave {
+	background-color: #19A375;
+	border-color: white;
+	font-family: "Titillium Web", sans-serif !important; 
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-top: 20px;
 }
 
 @media only screen and (max-width: 425px) {
-  #lastname {
-    margin-top: 5px;
-  }
-}
+  	.form-row {
+		margin-top: 5px;
+	}
+	.btnSave {
+		margin-top: 15px;
+	}
+} 

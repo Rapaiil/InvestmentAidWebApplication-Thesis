@@ -71,75 +71,67 @@
 		</div>
 	</nav>
 	
-        <div class="h-75 d-flex justify-content-center">
-            <div class="card my-auto">
-                <div class="account my-auto">
-                    <div class="card-body mx-auto">
-                        <h2 class="card-title text-uppercase pb-3">Account Settings</h2>
-                        <div class="form-inline">
-                        	<div class="form-group">
-								<label for="firstName">First Name:</label>
-								<s:textfield id="firstName" cssClass="form-control mx-sm-3" onchange="validate()" value="[firstName]" readonly="true"></s:textfield>
-								<small id="fNameError" class="form-text text-danger">Please enter First Name</small>
-					  		</div>
-                        </div>
-                        <div class="form-inline">
-					  		<div class="form-group">
-								<label for="lastName">Last Name:</label>
-								<s:textfield id="lastName" cssClass="form-control mx-sm-3" onchange="validate()" value="[lastName]" readonly="true"></s:textfield>
-								<small id="lNameError" class="form-text text-danger">Please enter Last Name</small>
-					  		</div>
-                        </div>
-						<div class="form-inline">
-					  		<div class="form-group">
-								<label for="telNum">Telephone Number:</label>
-								<s:textfield id="telNum" cssClass="form-control mx-sm-3" onchange="validate()" value="[telNum]" readonly="true"></s:textfield>
-								<small id="telNumError" class="form-text text-danger">Please enter Telephone Number</small>
-					  		</div>
-                        </div>
-                        <div class="form-inline">
-					  		<div class="form-group">
-								<label for="mobileNum">Mobile Number:</label>
-								<s:textfield id="mobileNum" cssClass="form-control mx-sm-3" onchange="validate()" value="[mobileNum]" readonly="true"></s:textfield>
-								<small id="mobileNumError" class="form-text text-danger">Please enter Mobile Number</small>
-					  		</div>
-                        </div>
-                        <div class="form-inline">
-					  		<div class="form-group">
-								<label for="emailAdd">E-mail Address:</label>
-								<s:textfield id="emailAdd" cssClass="form-control mx-sm-3" onchange="validate()" value="[emailAdd]" readonly="true"></s:textfield>
-								<small id="emailAddError" class="form-text text-danger">Please enter E-mail Address</small>
-					  		</div>
+	<div class="h-75 d-flex justify-content-center">
+		<div class="card my-auto">
+			<div class="account my-auto">
+				<div class="card-body mx-auto">
+					<h2 class="card-title text-uppercase">Account Settings</h2>
+					<hr>
+					<h4>Personal Information</h4>
+					<div class="form-row">
+						<div class="col-md form-group">
+							<label>First Name:</label>
+							<s:textfield cssClass="form-control" value="[First Name]" required="required"/>
 						</div>
-						<div class="form-inline">
-							<div class="form-group">
-							  <label for="emailAdd">Birthday:</label>
-							  <s:textfield type="date" id="birthday" cssClass="form-control mx-sm-3" onchange="validate()" value="2020-03-14" readonly="true"></s:textfield>
-							  <%-- <small id="emailAddError" class="form-text text-danger">Please enter </small> --%>
-							</div>
-					  </div>
-					  <div class="form-inline">
-							<div class="form-group">
-							  <label for="emailAdd">Occupation:</label>
-							  <s:textfield id="occupation" cssClass="form-control mx-sm-3" onchange="validate()" value="[occupation]" readonly="true"></s:textfield>
-							  <small id="occupationError" class="form-text text-danger">Please enter Occupation</small>
-							</div>
-					  </div>
-					  <div class="form-inline">
-							<div class="form-group">
-							  <label for="company">Company:</label>
-							  <s:textfield id="company" cssClass="form-control mx-sm-3" onchange="validate()" value="[company]" readonly="true"></s:textfield>
-							  <small id="companyError" class="form-text text-danger">Please enter Company</small>
-							</div>
-					  </div>
-                        <div id="buttons" class="buttons text-center mt-5">
-                        	<a type="button" href="#" id="editAccount" onclick="editAccount()" class="btn btn-primary text-uppercase account-btn">Edit Account Details</a>
-                        	<div id="actionbuttons"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>   
-        </div>
+						<div class="col-md">
+							<label>Last Name:</label>
+							<s:textfield cssClass="form-control" value="[Last Name]" required="required"/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md form-group">
+							<label>Birthday:</label>
+							<s:textfield type="date" cssClass="form-control birthday" value="2020-03-14" required="required"/>
+						</div>
+						<div class="col-md"></div>
+					</div>
+					<div class="form-row">
+						<div class="col-md form-group">
+							<label>Telephone Number:</label>
+							<s:textfield cssClass="form-control" value="[Telephone]" required="required"/>
+						</div>
+						<div class="col-md">
+							<label>Mobile Number:</label>
+							<s:textfield cssClass="form-control" value="[Mobile]" required="required"/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md form-group">
+							<label>E-mail Address:</label>
+							<s:textfield cssClass="form-control" value="[E-mail]"  required="required"/>
+						</div>
+						<div class="col-md"></div>
+					</div>
+					<hr>
+					<h4>Occupation & Company Information</h4>
+					<div class="form-row">
+						<div class="col-md form-group">
+							<label>Occupation:</label>
+							<s:textfield cssClass="form-control" value="[Telephone]" required="required"/>
+						</div>
+						<div class="col-md">
+							<label>Company:</label>
+							<s:textfield cssClass="form-control" value="[Mobile]" required="required"/>
+						</div>
+					</div> 
+					
+					<div class="float-right">
+						<button type="button" class="btn btn-primary btnSave text-uppercase">Save</button>
+					</div>                       
+				</div>
+			</div>
+		</div>   
+	</div>
 		
 		<!-- LOGOUT MODAL -->
 		<!-- Modal -->
