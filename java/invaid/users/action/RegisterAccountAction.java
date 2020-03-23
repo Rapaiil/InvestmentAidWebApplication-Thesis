@@ -121,7 +121,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 				}
 			}
 		}
-
+		
 		/*
 		 * //Email Validation String emailRegex =
 		 * "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"; Pattern pattern =

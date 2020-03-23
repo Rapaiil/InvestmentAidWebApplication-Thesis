@@ -204,37 +204,7 @@
         		<!-- CURRENCY CONVERTER -->
         		<div class="col-md-4 mt-5">
         			<h3 class="text-muted text-center mb-3">Currency Converter</h3>
-					<div class="form-inline d-flex justify-content-center">
-	        			<div class="input-group currency-converter pr-3">
-							  <input type="text" class="form-control">
-							  <div class="input-group-append">
-							    <span class="input-group-text">0.00</span>
-							  </div>
-						</div>
-						<select class="custom-select currencies-select" id="inputGroupSelect01">
-						    <option selected>PHP</option>
-						    <option value="1">USD</option>
-						    <option value="2">JPY</option>
-						    <option value="3">EUR</option>
-					  	</select>
-					</div>
-					<div class="d-flex justify-content-center m-3">
-						<button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button>
-					</div>
-					<div class="form-inline d-flex justify-content-center">
-	        			<div class="input-group currency-converter pr-3">
-							  <input type="text" class="form-control" disabled>
-							  <div class="input-group-append">
-							    <span class="input-group-text">0.00</span>
-							  </div>
-						</div>
-						<select class="custom-select currencies-select" id="inputGroupSelect01">
-						    <option selected>PHP</option>
-						    <option value="1">USD</option>
-						    <option value="2">JPY</option>
-						    <option value="3">EUR</option>
-					  	</select>
-					</div>
+					<s:action name="crawlrates"></s:action>
         		</div>
         	</div>
        	</div>
