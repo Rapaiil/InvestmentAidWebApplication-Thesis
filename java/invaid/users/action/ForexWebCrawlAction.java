@@ -2,7 +2,9 @@ package invaid.users.action;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +21,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 import config.Configurations;
 import invaid.users.model.Forex;
@@ -50,11 +51,13 @@ public class ForexWebCrawlAction extends ActionSupport {
 				rateList.getRateList().add(rate);
 			}
 			
+			if(rateList == null || rateList.getRateList().isEmpty())
+				System.out.println("Empty");
 			JAXBContext jaxb = JAXBContext.newInstance(Forex.class);
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			marshaller.marshal(rateList, new File(Configurations.getForexFile()));
+			marshaller.marshal(rateList, new FileWriter(ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile())));
 			
 			Unmarshaller um = jaxb.createUnmarshaller();
 			rateList = (ForexWrapper) um.unmarshal(new FileReader(ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile())));
@@ -62,17 +65,21 @@ public class ForexWebCrawlAction extends ActionSupport {
 			if(rateList == null && rateList.getRateList().isEmpty())
 				return ERROR;
 			
-			setRatestable(rateList.getRateList());
-			return "json";
+			ratestable = rateList.getRateList();
+//			return "json";
+			if(ratestable != null && !ratestable.isEmpty())
+				return SUCCESS;
 		} catch(FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
+			return ERROR;
 		} catch(IOException io) {
 			io.printStackTrace();
+			return ERROR;
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
 		} 
 		
-		return SUCCESS;
+		return ERROR;
 	}
 	
 	private String getCurrencyCode(String currency) {
