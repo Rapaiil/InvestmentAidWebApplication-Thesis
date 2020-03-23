@@ -85,10 +85,12 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 				list = getRecords();
 				if(list != null) {
 					for(Object[] record: list) {
-						String sRecord = record.toString();
-						if(sRecord == userAccount.getUser_email().trim()) {
-							addFieldError("user_email", "Email already used");
-						}
+						
+						/*
+						 * String sRecord = record.toString(); if(sRecord ==
+						 * userAccount.getUser_email().trim()) { addFieldError("user_email",
+						 * "Email already used"); }
+						 */
 					}
 				}
 			}
@@ -113,7 +115,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 					addFieldError("user_password", "Password should contain at least 1 capital, 1 small and 1 numeric characters");
 				}
 				else {
-					if(userAccount.getUser_password().trim() != userAccount.getUser_repassword().trim()) {
+					if(!(userAccount.getUser_password().trim().equals(userAccount.getUser_repassword().trim()))) {
 						addFieldError("user_password", "Passwords do not match");
 					}
 				}
@@ -131,6 +133,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		 * 
 		 * //Password Validation
 		 */	}
+
 	
 	//Database Related
 	public List<Object[]> getRecords() {
