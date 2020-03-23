@@ -36,7 +36,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 
 	public String execute() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
-		
+
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
 		try {
@@ -46,7 +46,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			userAccount.encryptPassword();
 			session.save(userAccount);
 			session.save(userProfile);
-			
+
 			Mail.sendVerificationMail(userAccount);
 			t.commit();
 			return SUCCESS;
@@ -62,12 +62,12 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 //		else
 //			return ERROR;
 	}
-	
+
 	public void validate() {
 		//Database Related
 		List<Object[]> list = null;
-		
-		
+
+
 		//Email Validation
 		if(userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
 			addFieldError("user_email", "This field is required");
@@ -75,7 +75,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		else {
 			//Will be moved to configurations
 			String 	emailRegex 		= "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
-			Pattern emailPattern 	= Pattern.compile(emailRegex); 
+			Pattern emailPattern 	= Pattern.compile(emailRegex);
 			Matcher emailMatcher 	= emailPattern.matcher(userAccount.getUser_email().trim());
 			if(!emailMatcher.matches()) {
 				addFieldError("user_email","Please enter a valid email");
@@ -85,7 +85,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 				list = getRecords();
 				if(list != null) {
 					for(Object[] record: list) {
-						
+
 						/*
 						 * String sRecord = record.toString(); if(sRecord ==
 						 * userAccount.getUser_email().trim()) { addFieldError("user_email",
@@ -95,7 +95,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 				}
 			}
 		}
-		
+
 		//Password Validation
 		if(userAccount.getUser_password().trim() == null || userAccount.getUser_password().trim() == "") {
 			addFieldError("user_password", "This field is required");
@@ -121,20 +121,20 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 				}
 			}
 		}
-		
+
 		/*
 		 * //Email Validation String emailRegex =
 		 * "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"; Pattern pattern =
 		 * Pattern.compile(emailRegex); Matcher matcher =
 		 * pattern.matcher(userAccount.getUser_email());
-		 * 
+		 *
 		 * if(!matcher.matches()) { System.out.println("result:" + matcher.matches());
 		 * addFieldError("user_email", "Please enter a valid email"); }
-		 * 
+		 *
 		 * //Password Validation
 		 */	}
 
-	
+
 	//Database Related
 	public List<Object[]> getRecords() {
 		try {
@@ -142,26 +142,26 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
 			Root<UserAccountBean> root = cq.from(UserAccountBean.class);
 			cq.multiselect(root.get("user_email"));
-			
+
 			Query<Object[]> query = session.createQuery(cq);
 			return query.getResultList();
 		} catch(HibernateException he) {
 			session.getTransaction().rollback();
 		}
-		
+
 		return null;
 	}
-	
+
 	@Override
 	public void run() {
-		
+
 	}
-	
+
 	@Override
 	public UserAccountBean getModel() {
 		return userAccount;
 	}
-	
+
 	@Override
 	public void setSession(Map<String, Object> sessionMap) {
 		this.sessionMap = sessionMap;

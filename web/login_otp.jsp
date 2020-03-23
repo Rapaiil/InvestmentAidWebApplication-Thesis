@@ -25,21 +25,21 @@
 
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
-            <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
+            <a class="navbar-brand" href="index.jsp"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span><i class="fa fa-bars" aria-hidden="true"></i></span> 
             </button>
             <div class="collapse navbar-collapse main-menu" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp#aboutSection">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Investment Guide</a>
+                        <a class="nav-link" href="investment_guide.jsp">Investment Guide</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="registerProfile.jsp">Register</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="login.jsp">Login</a>
                     </li>
                 </ul>
@@ -67,7 +67,7 @@
                 <div class="card h-75 my-auto">
                     <div class="form-login-otp my-auto">
                         <div class="card-body">
-                            <h4 class="card-title text-uppercase pb-5">login</h4>
+                            <h4 class="card-title text-uppercase pb-3">login</h4>
                             <s:form action="loginaccount" method="post">
                                 <p class="text-center">Enter the OTP sent to</p>
                                 <p class="text-center font-weight-bold"><s:property value="#session.loginEmail"/></p>
@@ -79,7 +79,7 @@
                                 </div>
                             </s:form>
 							<div>
-                      			<h4 id="time" class="text-center">01:00</h4>
+                      			<h4 id="time" class="text-center" style="color: #19aa8d;">01:00</h4>
                       		</div>
                         </div>
                     </div>

@@ -31,7 +31,7 @@
 
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-custom hover-underline-menu navbar-fized-top" data-menu-underline-from-center>
-            <a class="navbar-brand" href="/"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
+            <a class="navbar-brand" href="index.jsp"><img src="assets/logo.png" alt="InvAid_logo" height="50" width="50"/> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span><i class="fa fa-bars" aria-hidden="true"></i></span> 
@@ -45,7 +45,7 @@
                         <a class="nav-link" href="index.jsp#aboutSection">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Investment Guide</a>
+                        <a class="nav-link" href="investment_guide.jsp">Investment Guide</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>

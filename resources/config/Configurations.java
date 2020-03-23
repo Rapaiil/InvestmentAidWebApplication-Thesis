@@ -8,7 +8,7 @@ import java.util.Properties;
 public class Configurations {
 	private static Properties properties = new Properties();
 	private static InputStream inputStream;
-	private static String email, password, key, bankUitf, fundUitf, ext;
+	private static String email, password, key, bankUitf, fundUitf, bankMf, fundMf, ext, mfFile, uitfFile, forex, forexFile;
 	
 	private Configurations() {}
 	
@@ -33,8 +33,13 @@ public class Configurations {
 		key = properties.getProperty("app_key");
 		bankUitf = properties.getProperty("uitf_bank_source");
 		fundUitf = properties.getProperty("uitf_fund_source");
+		bankMf = properties.getProperty("mf_bank_source");
+		fundMf = properties.getProperty("mf_fund_source");
 		ext = properties.getProperty("uitf_ext");
-		
+		mfFile = properties.getProperty("mf_xml");
+		uitfFile = properties.getProperty("uitf_xml");
+		forex = properties.getProperty("forex_source");
+		forexFile = properties.getProperty("forex_file");
 	}
 	
 	private static void configure() throws IOException {
@@ -86,6 +91,24 @@ public class Configurations {
 		return fundUitf;
 	}
 	
+	public static String getAppBankMf() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return bankMf;
+	}
+	
+	public static String getAppFundMf() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return fundMf;
+	}
+	
 	public static String getAppUitfExt() {
 		try {
 			configure();
@@ -93,5 +116,41 @@ public class Configurations {
 			System.err.println(ioe.getMessage());
 		}
 		return ext;
+	}
+	
+	public static String getMfFile() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return mfFile;
+	}
+	
+	public static String getUitfFile() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return uitfFile;
+	}
+	
+	public static String getForexSource() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return forex;
+	}
+	
+	public static String getForexFile() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return forexFile;
 	}
 }

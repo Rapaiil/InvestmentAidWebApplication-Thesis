@@ -4,12 +4,12 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name="fund")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlSeeAlso({FundDetails.class})
+@XmlSeeAlso({UitfFundDetails.class})
 @XmlType(propOrder= {"fundNumber", "bankName", "fundName", "fundClassification", "navpu", "roiyoy",
 		"roiytd", "riskClassification", "minInitParticipation", "minAddParticipation",
 		"minMaintainParticipation", "minHoldingDays", "cutOffTime", "settlementDate",
 		"trustFee", "exitFee", "benchmark"})
-public class FundDetail {
+public class UitfFundDetail {
 	private int fundNumber;
 	private String bankName;
 	private String fundName;

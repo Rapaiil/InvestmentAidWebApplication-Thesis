@@ -69,9 +69,30 @@
 	</package>
 	
 	<package name="webcrawler" extends="struts-default">
-		<action name="webcrawl" class="invaid.users.action.WebCrawlAction">
+		<action name="webcrawlmf" class="invaid.users.action.MFWebCrawlAction">
 			<result name="success">monitoring.jsp</result>
 			<result name="error">/</result>
+		</action>
+		<action name="webcrawluitf" class="invaid.users.action.UITFWebCrawlAction">
+			<result name="success">monitoring.jsp</result>
+			<result name="error">/</result>
+		</action>
+	</package>
+	
+	<package name="webparser" extends="struts-default">
+		<action name="parsemf" class="invaid.users.action.MFXMLParseAction">
+			<result name="success">data/mf.jsp</result>
+			<result name="error">error/error404.jsp</result>
+		</action>
+	</package>
+	
+	<package name="currencyconverter" extends="struts-default">
+		<action name="crawlrates" class="invaid.users.action.ForexWebCrawlAction">
+			<result>monitoring.jsp</result>
+			<result name="json" type="json">
+				<param name="root">ratestable</param>
+			</result>
+			<result name="error">error/error500.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -87,6 +87,11 @@ body, html {
 }
 
 /* REGISTER FORM */
+.form-control::-webkit-input-placeholder {
+	color: #4B5356;
+	font-style: italic;
+}
+
 body {
     background: #F9F9F9;
 }

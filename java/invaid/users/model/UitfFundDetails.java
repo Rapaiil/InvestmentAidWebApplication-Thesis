@@ -9,15 +9,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "uitf")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FundDetails {
+public class UitfFundDetails {
 	@XmlElement(name="fund")
-	private List<FundDetail> list = null;
+	private List<UitfFundDetail> list = null;
 	
-	public List<FundDetail> getList() {
+	public List<UitfFundDetail> getList() {
 		return this.list;
 	}
 	
-	public void setList(List<FundDetail> list) {
+	public void setList(List<UitfFundDetail> list) {
 		this.list = list;
 	}
 }
