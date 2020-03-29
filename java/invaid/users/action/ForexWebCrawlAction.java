@@ -2,9 +2,7 @@ package invaid.users.action;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -51,35 +49,52 @@ public class ForexWebCrawlAction extends ActionSupport {
 				rateList.getRateList().add(rate);
 			}
 			
-			if(rateList == null || rateList.getRateList().isEmpty())
-				System.out.println("Empty");
+			saveRatesToXml();
+			if(getRatesFromXml()) {
+				setRatestable(rateList.getRateList());
+				return SUCCESS;
+			}
+		} catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch(IOException io) {
+			io.printStackTrace();
+		}
+		
+		return ERROR;
+	}
+	
+	private void saveRatesToXml() {
+		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile());
+		
+		try {
 			JAXBContext jaxb = JAXBContext.newInstance(Forex.class);
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			marshaller.marshal(rateList, new FileWriter(ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile())));
-			
-			Unmarshaller um = jaxb.createUnmarshaller();
-			rateList = (ForexWrapper) um.unmarshal(new FileReader(ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile())));
-			
-			if(rateList == null && rateList.getRateList().isEmpty())
-				return ERROR;
-			
-			ratestable = rateList.getRateList();
-//			return "json";
-			if(ratestable != null && !ratestable.isEmpty())
-				return SUCCESS;
-		} catch(FileNotFoundException fnfe) {
-			fnfe.printStackTrace();
-			return ERROR;
-		} catch(IOException io) {
-			io.printStackTrace();
-			return ERROR;
+			marshaller.marshal(rateList, new File(contextPath));
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
-		} 
+		}
+	}
+	
+	private boolean getRatesFromXml() {
+		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile());
+		rateList = null;
 		
-		return ERROR;
+		try {
+			JAXBContext jaxb = JAXBContext.newInstance(ForexWrapper.class);
+			Unmarshaller um = jaxb.createUnmarshaller();
+			rateList = (ForexWrapper) um.unmarshal(new FileReader(contextPath));
+		} catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch(JAXBException jaxbe) {
+			jaxbe.printStackTrace();
+		}
+		
+		if(rateList == null || rateList.getRateList().isEmpty())
+			return false;
+		
+		return true;
 	}
 	
 	private String getCurrencyCode(String currency) {

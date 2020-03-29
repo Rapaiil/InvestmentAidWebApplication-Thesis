@@ -88,10 +88,7 @@
 	
 	<package name="currencyconverter" extends="struts-default">
 		<action name="crawlrates" class="invaid.users.action.ForexWebCrawlAction">
-			<result name="success">currencyconverter.jsp</result>
-			<!-- <result name="json" type="json">
-				<param name="root">ratestable</param>
-			</result> -->
+			<result name="success">data/currencyconverter.jsp</result>
 			<result name="error">error/error500.jsp</result>
 		</action>
 	</package>

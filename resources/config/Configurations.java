@@ -39,7 +39,7 @@ public class Configurations {
 		mfFile = properties.getProperty("mf_xml");
 		uitfFile = properties.getProperty("uitf_xml");
 		forex = properties.getProperty("forex_source");
-		forexFile = properties.getProperty("forex_file");
+		forexFile = properties.getProperty("forex_xml");
 	}
 	
 	private static void configure() throws IOException {
