@@ -86,7 +86,7 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 		boolean found = false;
 		try {
 			Document document = Jsoup.connect(FUNDSOURCE_URL).get();
-			Elements table = document.select("#table_1 tbody");
+			Elements table = document.select(".icap_BodySeparator tr.icap_DataText021");
 			Iterator<String> list = table.select("td").eachText().iterator();
 			
 			while(list.hasNext()) {
@@ -102,19 +102,20 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 				}
 				
 				if(!found) {
-					for(int i = 0; i < 7; i++)
+					for(int i = 0; i < 6; i++)
 						list.next();
 					System.err.println("Fund not found!");
 					continue;
 				}
 				
-				list.next();
-				list.next();
 				fund.setNavps(Double.valueOf(list.next()));
 				fund.setReturnY1(list.next().toString());
 				fund.setReturnY3(list.next().toString());
 				fund.setReturnY5(list.next().toString());
 				fund.setReturnYtd(list.next().toString());
+				fund.setRiskClassification(getRiskType(fund.getFundClassification()));
+				
+				list.next();
 				count++;
 				found = !found;
 			}
@@ -130,7 +131,7 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			marshaller.marshal(fundList, new File("./WEB-INF/uitf-data.xml"));
+			marshaller.marshal(fundList, new File("/WEB-INF/mf-data.xml"));
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
 		}
@@ -187,6 +188,16 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 		}
 		
 		return match;
+	}
+	
+	private static String getRiskType(String classification) {
+		switch(classification) {
+			case "Bond": return "Moderately Conservative";
+			case "Money Market": return "Conservative";
+			case "Balanced":
+			case "ETF":	return "Moderate";
+			default: return "Aggressive";
+		}
 	}
 	
 	public String getToken() {

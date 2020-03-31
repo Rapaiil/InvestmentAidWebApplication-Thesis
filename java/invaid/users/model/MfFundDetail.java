@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(MfFundDetails.class)
 @XmlType(propOrder={"fundNumber", "fundName", "fundClassification", "companyName", "navps", "returnY1",
-					"returnY3", "returnY5", "returnYtd"})
+					"returnY3", "returnY5", "returnYtd", "riskClassification"})
 public class MfFundDetail {
 	private int fundNumber;
 	private String fundName;
@@ -21,6 +21,7 @@ public class MfFundDetail {
 	private String returnY3;
 	private String returnY5;
 	private String returnYtd;
+	private String riskClassification;
 	
 	public int getFundNumber() {
 		return fundNumber;
@@ -94,5 +95,11 @@ public class MfFundDetail {
 		this.returnYtd = returnYtd;
 	}
 	
-	
+	public String getRiskClassification() {
+		return riskClassification;
+	}
+
+	public void setRiskClassification(String riskClassification) {
+		this.riskClassification = riskClassification;
+	}
 }

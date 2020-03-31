@@ -30,7 +30,7 @@
 	<s:iterator value="fundList">
 	    <tr>
 	      <td><s:property value="fundName" /></td>
-	      <td><s:property value="fundNumber" /></td>
+	      <td><s:property value="riskClassification" /></td>
 	      <td><s:property value="fundClassification" /></td>
 	      <td><s:property value="companyName" /></td>
 	      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
