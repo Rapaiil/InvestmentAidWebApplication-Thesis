@@ -139,10 +139,9 @@
         <div id="aboutSection" class="about-row content-wrapper col-md-12">
             <div class="content-section">
                 <h3>Watch your money grow</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Curabitur sit amet lacus non mi venenatis cursus. 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Curabitur sit amet lacus non mi venenatis cursus. </p>
+                <p>Start investing now and see your money's growth overtime and be ready for the future. <br/>
+                    <b>Investment Aid</b>, or <b>InvAid</b> for short, is a web application that will aid you in monitoring and tracking <b>Mutual Funds</b> and <b>Unit Investment Trust Funds</b>. <br/>
+                    Manage your portfolio by adding your funds and keep track of it's growth, as well as get Fund Recommendations based on your Risk Profile!</p>
                     <div class="features-row row">
                         <div class="col">
                             <img src="assets/recommendation.png" width="50" height="50" class="mx-auto d-block img-fluid"/>
@@ -167,10 +166,9 @@
             <div class="content-section row">
                 <div class="col-12 col-md-6">
                     <h3>Take the quiz. Know your Investor profile.</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Nam vehicula vitae nibh et dictum. Morbi hendrerit auctor erat eget consequat. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Nam vehicula vitae nibh et dictum. Morbi hendrerit auctor erat eget consequat.</p>
+                    <p>Want to know the type of investor you are? <br/> Are you willing to take on risk? <br/>
+                    	Find out your Investor Profile by taking the Risk Profile Questionnaire, and get the suitable funds based on the result.
+                    </p>
                 </div>
                 <div class="col-md-6 align-self-center">
                     <!-- <button type="button" id="questionnaire-quick-link-button" class="btn btn-primary float-right">TAKE QUESTIONNAIRE &nbsp; <i class="fa fa-chevron-right" aria-hidden="true"></i></button> -->
@@ -187,7 +185,7 @@
                     <div class="card" style="width: 18rem">
                         <img src="assets/investment_guide.png" alt="investment_guide" width="50" height="50" class="mx-auto d-block img-fluid" />
                         <h5 id="investment-guide-quick-link"><a href="investment_guide.jsp">Investment Guide</a></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lacus non mi venenatis cursus. </p>
+                        <p>Check our 'FAQ', where you will find some Investing Terms, a basic guide to Investing on Mutual Funds and UITF, as well as how to navigate InvAid</p>
                     </div>
                 </div>
                 <!-- Monitoring card-->
@@ -195,7 +193,7 @@
                     <div class="card" style="width: 18rem">
                             <img src="assets/monitoring.png" alt="monitoring" width="50" height="50" class="mx-auto d-block img-fluid" />
                         <h5 id="monitoring-quick-link"><a href="monitoring.jsp">Monitoring</a></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lacus non mi venenatis cursus. </p>
+                        <p>Monitor the Mutual Funds and UITF market, and see if you are interested in any of them.</p>
                     </div>
                 </div>
                <!-- Feedback card-->
@@ -203,7 +201,7 @@
                     <div class="card" style="width: 18rem">
                             <img src="assets/feedback.png" alt="feedback" width="50" height="50" class="mx-auto d-block img-fluid" />
                         <h5 id="feedback-quick-link"><a href="feedback.jsp">Feedback</a></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lacus non mi venenatis cursus. </p>
+                        <p>Got any inquiries or feedback? You can send them all here. </p>
                     </div>
                 </div>
             </div>

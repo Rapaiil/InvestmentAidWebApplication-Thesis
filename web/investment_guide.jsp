@@ -125,8 +125,7 @@
 			    <img class="card-img-top" src="assets/terms.svg" alt="definition_of_terms">
 			    <div class="card-body">
 			      <h5 class="card-title">Definition of Terms</h5>
-			      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-			      Pellentesque et consectetur lacus. Morbi nec ullamcorper ligula. Sed porta ut lorem ac pretium. </p>
+			      <p class="card-text">List of terms that you may need to know when investing </p>
 			    </div>
 			    <div class="card-footer">
 			      <a href="definition.jsp">Learn More >></a>
@@ -136,8 +135,7 @@
 			    <img class="card-img-top" src="assets/guide.svg" alt="investment_guide">
 			    <div class="card-body">
 			      <h5 class="card-title">Basic Investment Steps</h5>
-			      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-			      Pellentesque et consectetur lacus. Morbi nec ullamcorper ligula. Sed porta ut lorem ac pretium. </p>
+			      <p class="card-text">A basic guide to investing in Mutual Funds and UITF. </p>
 			    </div>
 			    <div class="card-footer">
 			      <a href="guide.jsp">Learn More >></a>
@@ -147,8 +145,7 @@
 			    <img class="card-img-top" src="assets/manual.svg" alt="system_manual">
 			    <div class="card-body">
 			      <h5 class="card-title">System Manual</h5>
-			      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-			      Pellentesque et consectetur lacus. Morbi nec ullamcorper ligula. Sed porta ut lorem ac pretium. </p>
+			      <p class="card-text">A guide to help you navigate around InvAid. </p>
 			    </div>
 			    <div class="card-footer">
 			      <a href="manual.jsp">Learn More >></a>
