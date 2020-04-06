@@ -116,23 +116,160 @@
 	
 	<div class="container">
 		<h1>System Manual</h1>
+		<p class="disclaimer">Disclaimer: InvAid is not affiliated with any of financial institutions or banks, data shown are all from financial websites that we gathered and are all based on what they have to offer.</p>
+		
 		<ol type="I">
-			<li class="section">[SECTION]</li>
-			<!-- <hr class="section-divider"/> -->
-			<ul>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-			</ul>
-			<li class="section">[SECTION]</li>
-			<!-- <hr class="section-divider"/> -->
-			<ul>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-			</ul>
+			<li class="section">Register</li>
+			
+			<ol>
+				<li class="terms">Go to Register page</li>
+				<li class="terms">Fill up the necessary details: <b>First Name, Last Name, Birthday, Gender, Nationality, Address, Company, Occupation</b></li>
+				<li class="terms">Click <b>Next</b></li>
+				<li class="terms">Enter your <b>Email Address</b> and <b>Password</b></li>
+					<ul>
+						<li>Password must have at least <b>1 small letter, 1 capital letter and 1 number</b></li>
+					</ul>
+				<li>Complete the <b>Captcha</b></li>
+				<li>Re-enter your password for confirmation</li>
+				<li>Click <b>Submit</b></li>
+				<li>Check your email for a verification email</li>
+				<li>Click on the link provided on the email to verify your account</li>
+			</ol>
+			<li class="section">Login</li>
+			
+			<ol>
+				<li class="terms">Go to <b>Login page</b></li>
+				<li class="terms">Enter your <b>Email Address</b> and <b>Password</b></li>
+				<li class="terms">Complete the <b>Captcha</b></li>
+				<li class="terms">Click <b>Login</b></li>
+				<li class="terms">Enter the <b>OTP</b> sent to your Email</li>
+					<ul>
+						<li>You have one(1) minute to enter the OTP, after a minute, you may have new OTP sent to your email</li>
+					</ul>
+				<li class="terms">Click <b>Submit</b></li>
+			</ol>
+				<ol type="A">
+					<li class="sub-section">Forgot Password</li>
+					
+					<ol>
+						<li class="terms">Go to <b>Login page</b></li>
+						<li class="terms">Click on the <b>Forgot Password link</b></li>
+						<li class="terms">Enter <b>Email Address</b></li>
+						<li class="terms">Check your email for the reset password link</li>
+						<li class="terms">Click on the link provided</li>
+						<li class="terms">Enter your <b>new password</b></li>
+						<li class="terms">Re-enter your password in <b>Confirm Password</b> for confirmation</li>
+						<li class="terms">Complete the <b>Captcha</b></li>
+						<li class="terms">Click <b>Submit</b></li>
+						<li class="terms"><b>Login</b></li>
+					</ol>
+				</ol>
+			<li class="section">Monitoring of Mutual Funds and Unit Investment Trust Funds (UITF)</li>
+			
+			<ol>
+				<li class="terms">Go to <b>Monitoring page</b> </li>
+				<li class="terms">For the list of <b>Mutual Funds</b>, click on the <b>Mutual Funds tab</b>. Click on the <b>Unit Investment Trust Funds tab</b> for the list of <b>UITF</b>.</li>
+			</ol>
+				<ol type="A">
+					<li class="sub-section">Currency Conversion</li>
+					
+					<ol>
+						<li class="terms">Enter your <b>desired amount</b>.</li>
+						<li class="terms">Choose the <b>currency of your amount</b>.</li>
+						<li class="terms">Choose the <b>currency of the money you want to convert it to</b>.</li>
+					</ol>
+				</ol>
+			<li class="section">Risk Profile Questionnaire</li>
+				<ol type="A">
+					<li class="sub-section">Risk Profile Result</li>
+					<ol>
+						<li class="terms">Go to <b>Risk Profile Questionnaire</b> in the navigation bar</li>
+						<li class="terms">Click <b>Take Questionnaire</b></li>
+						<li class="terms">Answer the Questionnaire</li>
+						<li class="terms">Click Submit when finished and your Risk Profile Result will be displayed.</li>
+						<li class="terms">You may <b>Save your result</b>, but you must either be <b>logged in</b> or <b>have an account</b>.</li>
+						<li class="terms"><b>Downloading it in PDF</b> format is also an option</li>
+					</ol>
+					<li class="sub-section">Recommendations</li>
+					<ol>
+						<li class="terms">Go to <b>Risk Profile Questionnaire</b> in the navigation bar</li>
+						<li class="terms">Click <b>Take Questionnaire</b></li>
+						<li class="terms">Answer the Questionnaire</li>
+						<li class="terms">Click Submit when finished and your Risk Profile Result will be displayed.</li>
+						<li class="terms">Click <b>View Recommendations</b> for the list of recommended funds based on your risk profile.</li>
+						<li class="terms">Click <b>See Details</b> to view further information on the individual funds</li>
+					</ol>
+				</ol>
+			<li class="section">Portfolio</li>
+				<p class="note">You must be logged in to your account access this page. <br/>
+				InvAid only estimates the calculations of the investments, other fees are not part of our computations.
+				</p>
+				<ol>
+					<li class="terms">Login to your account</li>
+					<li class="terms">Click the dropdown button beside your name, and click My Investment Portfolio</li>
+					<li class="terms">You may now view a summary of your funds and the top 3 funds that has performed best.</li>
+				</ol>
+				<ol type="A">
+					<li class="sub-section">Enroll/Add Funds</li>
+					<ol>
+						<li class="terms">Login to your account</li>
+						<li class="terms">Click the dropdown button beside your name, and click My Investment Portfolio</li>
+						<li class="terms">In the side, click on Enroll Fund</li>
+						<li class="terms">Fill up the necessary details of the fund</li>
+						<li class="terms">Click Submit when finished</li>
+					</ol>
+					<li class="sub-section">Edit Funds</li>
+					<ol>
+						<li class="terms">Login to your account</li>
+						<li class="terms">Click the dropdown button beside your name, and click My Investment Portfolio</li>
+						<li class="terms">In the side, click on either Mutual Funds/Unit Investment Trust Funds to view all your funds</li>
+						<li class="terms">Choose the fund you wish to edit/update and click on Edit</li>
+						<li class="terms">Fill up the necessary details</li>
+						<li class="terms">Click Submit when finished</li>
+					</ol>
+					<li class="sub-section">Delete Funds</li>
+					<ol>
+						<li class="terms">Login to your account</li>
+						<li class="terms">Click the dropdown button beside your name, and click My Investment Portfolio</li>
+						<li class="terms">In the side, click on either Mutual Funds/Unit Investment Trust Funds to view all your funds</li>
+						<li class="terms">Choose the fund you wish to delete and click on Delete</li>
+						<li class="terms">Click Confirm if you wish to continue to delete the fund, or Cancel if otherwise.</li>
+					</ol>
+				</ol>
+			<li class="section">Account Settings</li>
+				<p class="note">You must be logged in to your account access this page.</p>
+				<ol>
+					<li class="terms">Login to your account</li>
+					<li class="terms">Click the dropdown button beside your name, and click Account Settings</li>
+					<li class="terms">Fill in any of the information you wish to change</li>
+					<li class="terms">Click Save to update your current information</li>
+				</ol>
+			<li class="section">Risk Profile</li>
+				<p class="note">You must be logged in to your account access this page.</p>
+				<ol>
+					<li class="terms">Login to your account</li>
+					<li class="terms">Click the dropdown beside your name, and click Risk Profile to view your saved Risk Profile.</li>
+					<li class="terms">You may opt to update your profile by clicking Update Risk Profile</li>
+					<li class="terms">Take the questionnaire again, and will be given a new risk profile result and recommendations</li>
+				</ol>
+			<li class="section">Reset Password</li>
+				<p class="note">You must be logged in to your account access this page.</p>
+				<ol>
+					<li class="terms">Login to your account</li>
+					<li class="terms">Click the dropdown beside your name, and click Reset Password</li>
+					<li class="terms">Enter your new Password</li>
+					<li class="terms">Re-enter your password in Confirm Password for confirmation</li>
+					<li class="terms">Complete the Captcha</li>
+					<li class="terms">Click Submit</li>
+				</ol>
+			<li class="section">Feedback</li>
+				
+				<ol>
+					<li class="terms">Click on Feedback in the navigation bar</li>
+					<li class="terms">Fill in the necessary details</li>
+					<li class="terms">Enter your inquiry/comments/recommendations/feedback on the message box</li>
+					<li class="terms">Click on Submit when finished</li>
+				</ol>
 		</ol>
 	</div>
 	

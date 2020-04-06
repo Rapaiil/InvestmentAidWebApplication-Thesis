@@ -117,22 +117,26 @@
 	<div class="container">
 		<h1>Basic Investment Steps</h1>
 		<ol type="I">
-			<li class="section">[SECTION]</li>
+			<li class="section">Investing in Mutual Funds</li>
 			<!-- <hr class="section-divider"/> -->
-			<ul>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-			</ul>
-			<li class="section">[SECTION]</li>
+				<ol type="1">
+					<li class="terms">Go to the Mutual Fund company's website</li>
+					<li class="terms">Most sites require you to take a Risk Profile test to determine your risk appetite.</li>
+					<li class="terms">Download and complete all forms and requirements</li>
+					<li class="terms">Submit requirements via courier or by going to their office</li>
+					<li class="terms">Start investing once given the confirmation or statement of account arrives</li>
+				</ol>
+			<p><em>There are websites authorized by SEC like COL Financial and First Metro Sec where directly buying Mutual Funds, along with Individual Stocks and Bonds are possible.</em></p>
+			<li class="section">Investing in Unit Investment Trust Funds</li>
 			<!-- <hr class="section-divider"/> -->
-			<ul>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-			</ul>
+			<ol type="1">
+				<li class="terms">Visit your preferred bank</li>
+				<li class="terms">You may need to fill out a Client Suitability Form by the Bank Personnel, and may even suggest to you some products</li>
+				<li class="terms">Choose a product</li>
+				<li class="terms">Complete all requirements and forms required by the Bank Personnel</li>
+				<li class="terms">Start initial deposit</li>
+			</ol>
+			<p><em>Some banks allow you to apply online, where once completed, a representative will contact you of the product and other necessary information.</em></p>
 		</ol>
 	</div>
 	

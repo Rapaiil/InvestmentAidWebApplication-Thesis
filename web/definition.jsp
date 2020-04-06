@@ -116,24 +116,38 @@
 	
 	<div class="container">
 		<h1>Definition of Terms</h1>
-		<ol type="I">
-			<li class="section">[SECTION]</li>
-			<!-- <hr class="section-divider"/> -->
-			<ul>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-			</ul>
-			<li class="section">[SECTION]</li>
-			<!-- <hr class="section-divider"/> -->
-			<ul>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-				<li class="terms">[Term] - [Definition]</li>
-			</ul>
-		</ol>
+		<ul>
+			<li class="terms"><b>Investment</b> - purchasing of goods/assets that will provide more income over time.</li>
+			<li class="terms"><b>Investing</b> - the act of allocating funds to assets with the expectation of growing over time.</li>
+			<li class="terms"><b>Pooled Funds</b> - a portfolio of funds by several investors that are aggregated for the purpose of investing.</li>
+			<li class="terms"><b>Unit Investment Trust Funds (UITF)</b> - collection of fixed portfolios, with a definite timeline.</li>
+			<li class="terms"><b>Mutual Funds</b> - collection of stocks, bonds, and/or other securities</li>
+			<li class="terms"><b>Bangko Sentral ng Pilipinas (BSP)</b> - is the central bank of the Philippines, established on July 3, 1993. They are in charge of UITF.</li>
+			<li class="terms"><b>Securities and Exchange Commission (SEC)</b> - an agency of the Philippines responsible for regulating the securities in the Philippines as well as maintaining the country's company register. They are in charge of Mutual Funds.</li>
+			<li class="terms"><b>Stocks</b> - a type of security wherein the holder has proportionate ownership to the issuing company.</li>
+			<li class="terms"><b>Bonds</b> - a fixed income instrument and less riskier than Stocks, as it returns the face value of the security at maturity.</li>
+			<li class="terms"><b>Net Asset Value per unit (NAVPU)</b> - the price of an individual UITF unit.</li>
+			<li class="terms"><b>Net Asset Value per share (NAVPS)</b> - the price of an individual fund share.</li>
+			<li class="terms"><b>Fund Manager</b> - a professional who works in a bank/financial institution, in charge of managing the investments of the client investor</li>
+			<li class="terms"><b>Invsetment Risk</b> - the probability or likelihood of a loss relative to the expected return on an investment. These are the common risks in investing:</li>
+				<ul>
+					<li>Market Risk</li>
+					<li>Liquidity Risk</li>
+					<li>Credit Risk</li>
+					<li>Inflation Risk</li>
+				</ul>
+			<li class="terms"><b>Risk Profile</b> -is what determines the willingness of the investor to take on (or avoid) risk, to create a strategy in decision making and diversifying an investment portfolio. The different Risk Profiles are:</li>
+				<ul>
+					<li>Conservative</li>
+					<li>Moderately Conservative</li>
+					<li>Moderate</li>
+					<li>Moderately Aggressive</li>
+					<li>Aggressive</li>
+				</ul>
+			<li class="terms"><b>Liquidity</b> - it is where a security or asset can be easily turned into cash without affecting the market. </li>
+			<li class="terms"><b>Inflation</b> - an increase in general price level of goods or services of an economy over a period of time.</li>
+			<li class="terms"><b>Portfolio</b> - collection of investments.</li>
+		</ul>
 	</div>
 	
 	<!-- LOGOUT MODAL -->
