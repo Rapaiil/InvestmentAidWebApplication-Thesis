@@ -74,8 +74,9 @@
                                     We will send you an email that will allow you to reset your password.
                                 </p>
                                 <div class="form-group">
+                                	<p class="em" id="lea" for="ea"><small>Error Goes Here</small></p>
                                     <div class="w-75 mx-auto">
-                                        <s:textfield cssClass="form-control" name="user_email" placeholder="Email Address"/>
+                                        <s:textfield id="ea" cssClass="form-control" name="user_email" placeholder="Email Address"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -96,5 +97,7 @@
             
         <!-- JS -->
         <script src="js/navbar.js"></script>
+        <script src="js/forgotpasswordvalidation.js"></script>
+        
     </body>
 </html>

@@ -25,13 +25,14 @@ import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 
-@SuppressWarnings({"serial"})
-public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {
+@SuppressWarnings({ "serial" })
+public class RegisterAccountAction extends ActionSupport
+		implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {
 	private UserAccountBean userAccount = new UserAccountBean();
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
 	private boolean isSuccess = false;
-	//Database Related
+	// Database Related
 	Session session = HibernateUtil.getSession();
 
 	public String execute() {
@@ -42,7 +43,8 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		try {
 			userAccount.setUser_profileId(userProfile.getUser_profileId());
 			userAccount.setUser_status(00);
-			userAccount.setUser_token(TokenUtil.generateToken(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
+			userAccount.setUser_token(
+					TokenUtil.generateToken(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
 			userAccount.encryptPassword();
 			session.save(userAccount);
 			session.save(userProfile);
@@ -50,8 +52,8 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			Mail.sendVerificationMail(userAccount);
 			t.commit();
 			return SUCCESS;
-			//isSuccess = !isSuccess;
-		} catch(HibernateException he) {
+			// isSuccess = !isSuccess;
+		} catch (HibernateException he) {
 			t.rollback();
 		}
 		return ERROR;
@@ -64,64 +66,58 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 	}
 
 	public void validate() {
-		//Database Related
-		List<Object[]> list = null;
-
-
-		//Email Validation
-		if(userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
+		// Email Validation
+		if (userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
 			addFieldError("user_email", "This field is required");
-		}
-		else {
-			//Will be moved to configurations
-			String 	emailRegex 		= "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
-			Pattern emailPattern 	= Pattern.compile(emailRegex);
-			Matcher emailMatcher 	= emailPattern.matcher(userAccount.getUser_email().trim());
-			if(!emailMatcher.matches()) {
-				addFieldError("user_email","Please enter a valid email");
-			}
-			else {
-				//Compare the email to the database if it already exist
-				list = getRecords();
-				if(list != null) {
-					for(Object[] record: list) {
+		} else {
+			// Will be moved to configurations
+			String emailRegex = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+			Pattern emailPattern = Pattern.compile(emailRegex);
+			Matcher emailMatcher = emailPattern.matcher(userAccount.getUser_email().trim());
+			if (!emailMatcher.matches()) {
+				addFieldError("user_email", "Please enter a valid email");
+			} else {
+				// Compare the email to the database if it already exist
 
-						/*
-						 * String sRecord = record.toString(); if(sRecord ==
-						 * userAccount.getUser_email().trim()) { addFieldError("user_email",
-						 * "Email already used"); }
-						 */
-					}
-				}
+				 List<Object[]> list = getRecords();
+				 boolean isValid = true;
+				 if(list != null) {
+						for(Object record: list) {
+							if(userAccount.getUser_email().equals(record.toString())) { 
+								isValid = false; 
+							}
+						}
+						if(!isValid) {
+							addFieldError("user_email","Email already useds");
+						}
+				 }
 			}
 		}
 
-		//Password Validation
-		if(userAccount.getUser_password().trim() == null || userAccount.getUser_password().trim() == "") {
+		// Password Validation
+		if (userAccount.getUser_password().trim() == null || userAccount.getUser_password().trim() == "") {
 			addFieldError("user_password", "This field is required");
-			if(userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
+			if (userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
 				addFieldError("user_repassword", "This field is required");
 			}
-		}
-		else {
-			if(userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
+		} else {
+			if (userAccount.getUser_repassword() == null || userAccount.getUser_repassword().trim() == "") {
 				addFieldError("user_repassword", "This field is required");
-			}
-			else {
-				String 	passwordRegex 	= "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$";
+			} else {
+				String passwordRegex = "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$";
 				Pattern passwordPattern = Pattern.compile(passwordRegex);
 				Matcher passwordMatcher = passwordPattern.matcher(userAccount.getUser_password().trim());
-				if(!passwordMatcher.matches()) {
-					addFieldError("user_password", "Password should contain at least 1 capital, 1 small and 1 numeric characters");
-				}
-				else {
-					if(!(userAccount.getUser_password().trim().equals(userAccount.getUser_repassword().trim()))) {
+				if (!passwordMatcher.matches()) {
+					addFieldError("user_password",
+							"Password should contain at least 1 capital, 1 small and 1 numeric characters");
+				} else {
+					if (!(userAccount.getUser_password().trim().equals(userAccount.getUser_repassword().trim()))) {
 						addFieldError("user_password", "Passwords do not match");
 					}
 				}
 			}
 		}
-		
+
 		/*
 		 * //Email Validation String emailRegex =
 		 * "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"; Pattern pattern =
@@ -132,23 +128,18 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		 * addFieldError("user_email", "Please enter a valid email"); }
 		 *
 		 * //Password Validation
-		 */	}
+		 */ }
 
-
-	//Database Related
+	// Database Related
 	public List<Object[]> getRecords() {
 		try {
-			CriteriaBuilder cb = session.getCriteriaBuilder();
-			CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
-			Root<UserAccountBean> root = cq.from(UserAccountBean.class);
-			cq.multiselect(root.get("user_email"));
-
-			Query<Object[]> query = session.createQuery(cq);
+			String GET_LOGIN_RECORDSs = "SELECT user_email FROM UserAccountBean";
+			Query<Object[]> query = session.createQuery(GET_LOGIN_RECORDSs);
 			return query.getResultList();
 		} catch(HibernateException he) {
 			session.getTransaction().rollback();
 		}
-
+		
 		return null;
 	}
 

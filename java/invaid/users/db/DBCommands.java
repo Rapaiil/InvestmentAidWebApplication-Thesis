@@ -29,6 +29,8 @@ public interface DBCommands {
 			+ "set user_status = :status, "
 			+ "user_token = :newtok "
 			+ "WHERE user_token = :tok";
+	final static String SAVE_ACCOUNT = "UPDATE UserProfileBean "
+			+ "set user_firstname = :first_name";
 	
 	public List<Object[]> getRecords();
 }

@@ -37,6 +37,7 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 	
 	public String execute() {
 		token = (String) sessionMap.get("token");
+
 		List<Object[]> list = null;
 		session.getTransaction().begin();
 		

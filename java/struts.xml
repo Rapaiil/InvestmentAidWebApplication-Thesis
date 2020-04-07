@@ -61,6 +61,13 @@
 		</action>
 	</package>
 	
+	<package name="accountsettings" extends="struts-default">
+		<action name="saveaccount" class="invaid.users.action.SaveAccountSettingsAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/</result>
+		</action>
+	</package>
+	
 	<package name="verifyuser" extends="struts-default">
 		<action name="verifyuser" class="invaid.users.action.VerifyAccountAction">
 			<result name="success">accountVerified.jsp</result>
