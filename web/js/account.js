@@ -1,7 +1,7 @@
 $(function(){
 	$("#fn").change(function(){
 		var id 		= $(this).attr("id");
-		alert(id);
+		/*alert(id);*/
 		ValidateInput.validate(id);
 	});
 	$("#ln").change(function(){
@@ -64,8 +64,8 @@ ValidateInput = {
 		validate: function(input){
 			var data 		= $.trim($("#"+input).val());
 			var errmsg 	= $("#l"+input);
-			alert(data);
-			alert(errmsg);
+			/*alert(data);
+			alert(errmsg);*/
 			
 			if(data == ""){
 				errmsg.html("This field is required");
