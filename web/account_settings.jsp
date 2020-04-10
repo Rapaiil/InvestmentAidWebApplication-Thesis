@@ -78,56 +78,73 @@
 					<h2 class="card-title text-uppercase">Account Settings</h2>
 					<hr>
 					<h4>Personal Information</h4>
-					<div class="form-row">
-						<div class="col-md form-group">
-							<label>First Name:</label>
-							<s:textfield cssClass="form-control" value="[First Name]" required="required"/>
+					<s:form action="saveaccount" class="account-settings-form" method="post">
+						<div class="form-row">
+							<div class="col-md form-group">
+								<p class="em" id="lfn" for="fn"></p>
+								<label>First Name:</label>
+								<s:textfield id="fn" name="first_name" cssClass="form-control" value="[First Name]" required="required"/>
+							</div>
+							
+							<div class="col-md">
+								<p class="em" id="lln" for="ln"></p>
+								<label>Last Name:</label>
+								<s:textfield id="ln" name="last_name"  cssClass="form-control" value="[Last Name]" required="required"/>
+							</div>
 						</div>
-						<div class="col-md">
-							<label>Last Name:</label>
-							<s:textfield cssClass="form-control" value="[Last Name]" required="required"/>
+						<div class="form-row">
+							
+							<div class="col-md form-group">
+								<p class="em" id="lbd" for="bd"></p>
+								<label>Birthday:</label>
+								<s:textfield id="bd" name="birthday"  type="date" cssClass="form-control birthday" value="2020-03-14" required="required"/>
+							</div>
+							<div class="col-md"></div>
 						</div>
-					</div>
-					<div class="form-row">
-						<div class="col-md form-group">
-							<label>Birthday:</label>
-							<s:textfield type="date" cssClass="form-control birthday" value="2020-03-14" required="required"/>
+						<div class="form-row">
+							
+							<div class="col-md form-group">
+								<p class="em" id="ltn" for="tn"></p>
+								<label>Telephone Number:</label>
+								<s:textfield id="tn" name="telephone_no"  class="em" cssClass="form-control" value="[Telephone]" required="required"/>
+							</div>
+							
+							<div class="col-md">
+								<p class="em" id="lmn" for="mn"></p>
+								<label>Mobile Number:</label>
+								<s:textfield id="mn" name="cellphone_no"  class="em" cssClass="form-control" value="[Mobile]" required="required"/>
+							</div>
 						</div>
-						<div class="col-md"></div>
-					</div>
-					<div class="form-row">
-						<div class="col-md form-group">
-							<label>Telephone Number:</label>
-							<s:textfield cssClass="form-control" value="[Telephone]" required="required"/>
+						<div class="form-row">
+							
+							<div class="col-md form-group">
+								<p class="em" id="lea" for="ea"></p>
+								<label>E-mail Address:</label>
+								<s:textfield id="ea" name="email_address"  class="em" cssClass="form-control" value="[E-mail]"  required="required"/>
+							</div>
+							<div class="col-md"></div>
 						</div>
-						<div class="col-md">
-							<label>Mobile Number:</label>
-							<s:textfield cssClass="form-control" value="[Mobile]" required="required"/>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="col-md form-group">
-							<label>E-mail Address:</label>
-							<s:textfield cssClass="form-control" value="[E-mail]"  required="required"/>
-						</div>
-						<div class="col-md"></div>
-					</div>
-					<hr>
-					<h4>Occupation & Company Information</h4>
-					<div class="form-row">
-						<div class="col-md form-group">
-							<label>Occupation:</label>
-							<s:textfield cssClass="form-control" value="[Telephone]" required="required"/>
-						</div>
-						<div class="col-md">
-							<label>Company:</label>
-							<s:textfield cssClass="form-control" value="[Mobile]" required="required"/>
-						</div>
-					</div> 
-					
-					<div class="float-right">
-						<button type="button" class="btn btn-primary btnSave text-uppercase">Save</button>
-					</div>                       
+						<hr>
+						<h4>Occupation & Company Information</h4>
+						<div class="form-row">
+							
+							<div class="col-md form-group">
+								<p class="em" id="locc" for="occ"></p>
+								<label>Occupation:</label>
+								<s:textfield id="occ" name="occupation"  cssClass="form-control" value="[Telephone]" required="required"/>
+							</div>
+							
+							<div class="col-md">
+								<p class="em" id="lcom" for="com"></p>
+								<label>Company:</label>
+								<s:textfield id="com"  name="company"  cssClass="form-control" value="[Mobile]" required="required"/>
+							</div>
+						</div> 
+						
+						<div class="float-right">
+							<button type="submit" class="btn btn-primary btnSave text-uppercase">Save</button>
+						</div> 
+					</s:form>                      
 				</div>
 			</div>
 		</div>   

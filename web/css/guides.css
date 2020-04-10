@@ -96,11 +96,24 @@ li {
 	padding-bottom: 5px;
 }
 
-.section {
-	font-size: 30px;
-	color: #19a375;
+b {
+	color: #19A375;
 }
 
-.terms {
-	list-style-type: disc;
+.section {
+	font-size: 20px;
+	color: #19a375;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+li.sub-section {
+	font-size: 19px;
+	color: #19a375;
+	text-transform: uppercase;
+}
+
+.disclaimer, .note {
+	color: red;
+	font-style: italic;
 }
