@@ -6,12 +6,11 @@
     	<div class="input-group currency-converter pr-3">
 		  <input type="text" class="form-control">
 		</div>
-		<select class="custom-select currencies-select" id="inputGroupSelect01">
-			<option selected>Please select a currency</option>
-			<s:iterator value="ratestable">
-				<option value="%{#status.index}"><s:property value="currencyName"/></option>
-			</s:iterator>
-		</select>
+		<s:select class="custom-select currencies-select" id="inputGroupSelect01"
+				  list="ratestable"
+				  listKey="currencyCode"
+				  listValue="currencyName"
+				  headerKey="-1" headerValue="Please select a currency" />
 	</div>
 	<div class="d-flex justify-content-center m-3">
 		<button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button>
@@ -20,10 +19,9 @@
      			<div class="input-group currency-converter pr-3">
 			  <input type="text" class="form-control" disabled>
 		</div>
-		<select class="custom-select currencies-select" id="inputGroupSelect01">
-			<option selected>Please select a currency</option>
-			<s:iterator value="ratestable">
-				<option value="currencyCode"><s:property value="currencyName"/></option>
-			</s:iterator>
-  		</select>
+		<s:select class="custom-select currencies-select" id="inputGroupSelect01"
+				  list="ratestable"
+				  listKey="currencyCode"
+				  listValue="currencyName"
+				  value="defaultTargetCurrency" />
 	</div>

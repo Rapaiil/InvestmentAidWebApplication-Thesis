@@ -49,6 +49,14 @@ public class ForexWebCrawlAction extends ActionSupport {
 				rateList.getRateList().add(rate);
 			}
 			
+			rate = new Forex();
+			rate.setCurrencyName("Philippine Peso");
+			rate.setCurrencyCode(getCurrencyCode(rate.getCurrencyName()));
+			rate.setRatePhpFor(1.00);
+			rate.setRateForPhp(1.00);
+			
+			rateList.getRateList().add(rate);
+			
 			saveRatesToXml();
 			if(getRatesFromXml()) {
 				setRatestable(rateList.getRateList());
@@ -157,6 +165,10 @@ public class ForexWebCrawlAction extends ActionSupport {
 		}
 	}
 
+	public String getDefaultTargetCurrency() {
+		return "PHP";
+	}
+	
 	public List<Forex> getRatestable() {
 		return ratestable;
 	}

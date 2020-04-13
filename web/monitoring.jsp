@@ -240,5 +240,6 @@
     
     <!-- JS -->
     <script src="js/navbar.js"></script>
+    <script src="js/currency.js"></script>
 </body>
 </html>
