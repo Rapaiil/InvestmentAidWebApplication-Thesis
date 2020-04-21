@@ -129,21 +129,23 @@
 			<li class="terms"><b>Net Asset Value per unit (NAVPU)</b> - the price of an individual UITF unit.</li>
 			<li class="terms"><b>Net Asset Value per share (NAVPS)</b> - the price of an individual fund share.</li>
 			<li class="terms"><b>Fund Manager</b> - a professional who works in a bank/financial institution, in charge of managing the investments of the client investor</li>
-			<li class="terms"><b>Invsetment Risk</b> - the probability or likelihood of a loss relative to the expected return on an investment. These are the common risks in investing:</li>
+			<li class="terms"><b>Investment Risk</b> - the probability or likelihood of a loss relative to the expected return on an investment. These are the common risks in investing:</li>
 				<ul>
-					<li>Market Risk</li>
-					<li>Liquidity Risk</li>
-					<li>Credit Risk</li>
-					<li>Inflation Risk</li>
+					<li><b>Market Risk</b> - investments decline in values because of economic developments or anything that affects the market.</li>
+					<li><b>Liquidity Risk</b> - the lack of marketability to sell your investment quickly to minimize loss.</li>
+					<li><b>Credit Risk</b> - the risk where the government entity or financial institution runs into financial difficulties, failing to meet the payments.</li>
+					<li><b>Inflation Risk</b> - the risk in the purchasing power due to inflation.</li>
 				</ul>
-			<li class="terms"><b>Risk Profile</b> -is what determines the willingness of the investor to take on (or avoid) risk, to create a strategy in decision making and diversifying an investment portfolio. The different Risk Profiles are:</li>
+			<li class="terms"><b>Risk Profile</b> - is what determines the willingness of the investor to take on (or avoid) risk, to create a strategy in decision making and diversifying an investment portfolio. The different Risk Profiles are:</li>
 				<ul>
-					<li>Conservative</li>
-					<li>Moderately Conservative</li>
-					<li>Moderate</li>
-					<li>Moderately Aggressive</li>
-					<li>Aggressive</li>
+					<li><b>Conservative</b> - investors who prioritizes security and stability than the profitability of an investment.</li>
+					<li><b>Moderately Conservative</b> - investors who prioritizes security and stability but a bit concerned in the value of their investments.</li>
+					<li><b>Moderate</b> - investors who don't need the income right away, but still want some growth in their profits.</li>
+					<li><b>Moderately Aggressive</b> - investors who don't need the invome right away but are willing to take a bit more risk than moderate/conservative investors.</li>
+					<li><b>Aggressive</b> - investors who prioritizes profit growth over all else and has greater risk tolerance than the other profile types.</li>
 				</ul>
+			<li class="terms"><b>Risk Tolerance</b> - the investor's ability to endure the potential loss of money in an investment.</li>
+			<li class="terms"><b>Time Horizon</b> - the period of time where investments are held until they are needed back by the investors.</li>
 			<li class="terms"><b>Liquidity</b> - it is where a security or asset can be easily turned into cash without affecting the market. </li>
 			<li class="terms"><b>Inflation</b> - an increase in general price level of goods or services of an economy over a period of time.</li>
 			<li class="terms"><b>Portfolio</b> - collection of investments.</li>
