@@ -173,7 +173,7 @@
                 <div class="col-md-6 align-self-center">
                     <!-- <button type="button" id="questionnaire-quick-link-button" class="btn btn-primary float-right">TAKE QUESTIONNAIRE &nbsp; <i class="fa fa-chevron-right" aria-hidden="true"></i></button> -->
                     <!-- IMAGE/VECTOR/GRAPHIC OF INVESTMENT RISK PROFILE QUESTIONNAIRE -->
-                    <a href="#" class="custom-btn float-left mx-auto">TAKE QUESTIONNAIRE &nbsp;<i class="fa fa-chevron-right"></i></a>
+                    <a href="questionnaire_landing.jsp" class="custom-btn float-left mx-auto">TAKE QUESTIONNAIRE &nbsp;<i class="fa fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
