@@ -13,15 +13,13 @@
 				  headerKey="-1" headerValue="--Select Currency--" />
 	</div>
 	<div class="d-flex justify-content-center m-3">
-		<button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button>
+		<!-- <button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button> -->
 	</div>
 	<div class="form-inline d-flex justify-content-center">
-     			<div class="input-group currency-converter pr-3">
+     	<div class="input-group currency-converter pr-3">
 			  <input type="text" class="form-control" id="tg" disabled>
 		</div>
-		<s:select class="custom-select currencies-select" id="inputGroupSelect02"
-				  list="ratestable"
-				  listKey="currencyCode"
-				  listValue="currencyName"
-				  value="defaultTargetCurrency" />
+		<select class="custom-select currencies-select" id="inputGroupSelect02" style="width:auto">
+			<option value="PHP" selected>Philippine Peso</option>
+		</select>
 	</div>

@@ -164,10 +164,6 @@ public class ForexWebCrawlAction extends ActionSupport {
 			default: return null;
 		}
 	}
-
-	public String getDefaultTargetCurrency() {
-		return "PHP";
-	}
 	
 	public List<Forex> getRatestable() {
 		return ratestable;
