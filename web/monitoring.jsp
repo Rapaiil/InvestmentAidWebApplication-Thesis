@@ -178,7 +178,21 @@
 							</nav>
 						</div>
 					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<!-- UITF -->
+							<!-- UITF Table -->
+							<table class="table">
+							  <thead>
+							    <tr>
+							      <th scope="col">Name</th>
+							      <th scope="col">Risk Classification</th>
+							      <th scope="col">Fund Classification</th>
+							      <th scope="col">Affiliation</th>
+							      <th scope="col"></th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <s:action name="parseuitf" executeResult="true"></s:action>
+							  </tbody>
+							</table>
 							<nav aria-label="Page navigation example">
 							  <ul class="pagination justify-content-end">
 							    <li class="page-item">

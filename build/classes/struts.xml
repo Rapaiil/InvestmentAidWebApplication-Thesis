@@ -84,6 +84,10 @@
 			<result name="success">data/mf.jsp</result>
 			<result name="error">error/error404.jsp</result>
 		</action>
+		<action name="parseuitf" class="invaid.users.action.UITFXMLParseAction">
+			<result name="success">data/uitf.jsp</result>
+			<result name="error">error/error404.jsp</result>
+		</action>
 	</package>
 	
 	<package name="currencyconverter" extends="struts-default">

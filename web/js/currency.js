@@ -1,13 +1,13 @@
-$("og").inputFilter(function(value) {
-	/*var num = $(this).val();
-	var x = $("#inputGroupSelect01 option:selected").text();
-	$("tg").val(num);*/
+setInputFilter(document.getElementById("og"), function(value) {
+//	var num = this.value;
+//	var x = document.getElementById("#inputGroupSelect01").select("option:selected").value;
+//	document.getElementById("tg").value = x;
 	return /^-?\d*[.,]?\d{0,2}$/.test(value);
 });
 
-(function($) {
-	  $.fn.inputFilter = function(inputFilter) {
-	    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+function setInputFilter(textbox, inputFilter) {
+	  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+	    textbox.addEventListener(event, function() {
 	      if (inputFilter(this.value)) {
 	        this.oldValue = this.value;
 	        this.oldSelectionStart = this.selectionStart;
@@ -19,5 +19,5 @@ $("og").inputFilter(function(value) {
 	        this.value = "";
 	      }
 	    });
-	  };
-	}(jQuery));
+	  });
+	}
