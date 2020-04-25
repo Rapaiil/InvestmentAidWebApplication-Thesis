@@ -2,11 +2,26 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<body>
-	<select class="custom-select currencies-select" id="inputGroupSelect01">
-		<option selected>Please select a currency</option>
-		<s:iterator value="ratestable">
-			<option value="currencyCode"><s:property value="currencyName"/></option>
-		</s:iterator>
-	</select>
-</body>
+	<div class="form-inline d-flex justify-content-center">
+    	<div class="input-group currency-converter pr-3">
+		  <input type="text" class="form-control" id="og">
+		</div>
+		<s:select class="custom-select currencies-select" id="inputGroupSelect01"
+				  list="ratestable"
+				  listKey="currencyCode"
+				  listValue="currencyName"
+				  headerKey="-1" headerValue="--Select Currency--" />
+	</div>
+	<div class="d-flex justify-content-center m-3">
+		<button type="button" class="btn btn-outline-secondary"><i class="fa fa-exchange" aria-hidden="true"></i></button>
+	</div>
+	<div class="form-inline d-flex justify-content-center">
+     			<div class="input-group currency-converter pr-3">
+			  <input type="text" class="form-control" id="tg" disabled>
+		</div>
+		<s:select class="custom-select currencies-select" id="inputGroupSelect02"
+				  list="ratestable"
+				  listKey="currencyCode"
+				  listValue="currencyName"
+				  value="defaultTargetCurrency" />
+	</div>
