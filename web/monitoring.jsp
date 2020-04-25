@@ -217,7 +217,7 @@
         		</div>
         		<!-- CURRENCY CONVERTER -->
         		<div class="col-md-4 mt-5">
-        			<h3 class="text-muted text-center mb-3">Currency Converter</h3>
+        			<h3 class="text-muted text-center mb-3">Foreign-Peso Currency Converter</h3>
         			<s:action name="crawlrates" executeResult="true"></s:action>
         		</div>
         	</div>

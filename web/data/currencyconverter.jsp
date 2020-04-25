@@ -19,7 +19,7 @@
      	<div class="input-group currency-converter pr-3">
 			  <input type="text" class="form-control" id="tg" disabled>
 		</div>
-		<select class="custom-select currencies-select" id="inputGroupSelect02" style="width:auto">
+		<select class="custom-select philippine-convert" id="inputGroupSelect02" style="width: 208px;">
 			<option value="PHP" selected>Philippine Peso</option>
 		</select>
 	</div>

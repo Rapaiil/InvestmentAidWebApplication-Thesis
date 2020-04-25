@@ -107,8 +107,7 @@ th {
     	max-width: 100%;
     }
     
-    .currencies-select {
-    	max-width: 100px;
+    .currencies-select, .philippine-convert {
     	margin-top: 10px;
    	}
 }
