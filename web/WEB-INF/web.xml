@@ -32,4 +32,16 @@
   	<error-code>404</error-code>
   	<location>/error/error404.jsp</location>
   </error-page>
+  <error-page>
+  	<error-code>401</error-code>
+  	<location>/error/error401.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>400</error-code>
+  	<location>/error/error400.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>501</error-code>
+  	<location>/error/error501.jsp</location>
+  </error-page>
 </web-app>
