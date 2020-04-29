@@ -81,7 +81,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp#aboutSection">About</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="investment_guide.jsp">Investment Guide</a>
                     </li>
                     <li class="nav-item">
