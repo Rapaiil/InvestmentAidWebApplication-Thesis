@@ -18,8 +18,9 @@
 	<title>InvAid - Risk Profile Questionnaire</title> 
 	
 	<!-- Font Awesome CSS-->
-   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.css"/>
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
 </head>
@@ -114,8 +115,8 @@
 		</s:else>
 	
 		<!-- MONITORING CONTENT-->
-        <div class="container-fluid p-5">
-			<div class="row">
+        <!-- <div class="container-fluid p-5"> -->
+			<!-- <div class="row">
         		<div class="col-md-8">
         			<div class="input-group float-right search-bar">
 					  <input type="text" class="form-control" placeholder="Search fund" aria-describedby="basic-addon2">
@@ -124,10 +125,18 @@
 					  </div>
 					</div>
         		</div>
-        	</div>
-        	<div class="row">
+        	</div> -->
+        	<!-- <%-- <div class="row"> -->
         		<!-- MONITORING TABLE -->
-        		<div class="col-md-8 table-responsive-lg mt-5 justify-content-center">
+        		
+        		<!-- CURRENCY CONVERTER -->
+        		<!-- <div class="col-md-4 mt-5">
+        			<h3 class="text-muted text-center mb-3">Foreign-Peso Currency Converter</h3>
+        			<s:action name="crawlrates" executeResult="true"></s:action>
+        		</div>
+        	</div> --%> -->
+        	
+        	<div class="table-responsive-lg mt-5 justify-content-center">
         			<!-- TAB -->
         			<ul class="nav nav-pills pills-dark nav-justified" id="pills-tab" role="tablist">
 					  <li class="nav-item">
@@ -143,7 +152,7 @@
 					<div class="tab-content" id="pills-tabContent">
 					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
 					  	<!-- MF Table -->
-					  	<table class="table">
+					  	<table id="mf_table_monitoring" class="display table table-striped">
 						  <thead>
 						    <tr>
 						      <th scope="col">Name</th>
@@ -157,29 +166,10 @@
 						  	<s:action name="parsemf" executeResult="true"></s:action>
 						  </tbody>
 					  	</table>
-							<nav aria-label="Page navigation example">
-							  <ul class="pagination justify-content-end">
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							        <span class="sr-only">Previous</span>
-							      </a>
-							    </li>
-							    <li class="page-item"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Next">
-							        <span aria-hidden="true">&raquo;</span>
-							        <span class="sr-only">Next</span>
-							      </a>
-							    </li>
-							  </ul>
-							</nav>
 						</div>
 					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
 							<!-- UITF Table -->
-							<table class="table">
+							<table id="uitf_table_monitoring" class="display table table-striped">
 							  <thead>
 							    <tr>
 							      <th scope="col">Name</th>
@@ -193,34 +183,9 @@
 							    <s:action name="parseuitf" executeResult="true"></s:action>
 							  </tbody>
 							</table>
-							<nav aria-label="Page navigation example">
-							  <ul class="pagination justify-content-end">
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							        <span class="sr-only">Previous</span>
-							      </a>
-							    </li>
-							    <li class="page-item"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-							    <li class="page-item">
-							      <a class="page-link" href="#" aria-label="Next">
-							        <span aria-hidden="true">&raquo;</span>
-							        <span class="sr-only">Next</span>
-							      </a>
-							    </li>
-							  </ul>
-							</nav>
 						</div>
 					  </div>
         		</div>
-        		<!-- CURRENCY CONVERTER -->
-        		<div class="col-md-4 mt-5">
-        			<h3 class="text-muted text-center mb-3">Foreign-Peso Currency Converter</h3>
-        			<s:action name="crawlrates" executeResult="true"></s:action>
-        		</div>
-        	</div>
        	</div>
     
 	<!-- LOGOUT MODAL -->
@@ -251,9 +216,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+	
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script>
     <!-- JS -->
     <script src="js/navbar.js"></script>
-    <script src="js/currency.js"></script>
+	<script src="js/currency.js"></script>
+	<script src="js/datatables.js"></script>
 </body>
 </html>
