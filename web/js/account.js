@@ -1,7 +1,7 @@
 $(function(){
 	$("#fn").change(function(){
 		var id 		= $(this).attr("id");
-		alert(id);
+		//alert(id);
 		ValidateInput.validate(id);
 	});
 	$("#ln").change(function(){
@@ -40,12 +40,52 @@ $(function(){
 		}
 	});
 	$("#tn").change(function(){
-		var email 	= $.trim($("#tn").val());	
+		var tn 	= $.trim($("#tn").val());
+		tn = tn.split((/\s+/).join(''))
+		var isTelNoValid = ValidateTelNo.validate(tn);
 		var errmsg 	= $("#ltn");
+		if(tn == ""){
+			errmsg.html("This field is required");
+			errmsg.css("color", "red");
+			errmsg.css("visibility","visible");
+		}
+		else{
+			if(isTelNoValid){
+				errmsg.html("");
+				errmsg.css("color", "black");
+				errmsg.css("visibility","hidden");
+			}
+			else{
+				errmsg.html("Please enter a valid telephone number");
+				errmsg.css("color", "red");
+				errmsg.css("display","block");
+				errmsg.css("font-size","12px");
+			}
+		}
 	});
 	$("#mn").change(function(){
-		var email 	= $.trim($("#mn").val());	
+		var mn 	= $.trim($("#mn").val());
+		mn = mn.split((/\s+/).join(''))
+		var isCelNoValid = ValidateCelNo.validate(mn);
 		var errmsg 	= $("#lmn");
+		if(mn == ""){
+			errmsg.html("This field is required");
+			errmsg.css("color", "red");
+			errmsg.css("visibility","visible");
+		}
+		else{
+			if(isCelNoValid){
+				errmsg.html("");
+				errmsg.css("color", "black");
+				errmsg.css("visibility","hidden");
+			}
+			else{
+				errmsg.html("Please enter a valid cellphone number");
+				errmsg.css("color", "red");
+				errmsg.css("display","block");
+				errmsg.css("font-size","12px");
+			}
+		}
 	});
 });
 
@@ -60,12 +100,34 @@ ValidateEmail = {
 		}
 }
 
+ValidateTelNo = {
+		validate: function(input){
+			if(/^(02|\+632|632)(3|6|7|8)\d{7}$/.test(input.trim())){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+}
+
+ValidateCelNo = {
+		validate: function(input){
+			if(/^(09|\+639|639)\d{9}$/.test(input.trim())){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+}
+
 ValidateInput = {
 		validate: function(input){
 			var data 		= $.trim($("#"+input).val());
 			var errmsg 	= $("#l"+input);
-			alert(data);
-			alert(errmsg);
+			//alert(data);
+			//alert(errmsg);
 			
 			if(data == ""){
 				errmsg.html("This field is required");

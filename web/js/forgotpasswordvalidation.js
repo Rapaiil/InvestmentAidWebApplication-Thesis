@@ -4,8 +4,8 @@ $(function(){
 		var email 			= $.trim($("#ea").val());
 		var isEmailValid 	= ValidateEmail.validate(email);
 		var errmsg			= $("#lea");
-		alert("Email: " + email);
-		alert("Valid: " + isEmailValid);
+		//alert("Email: " + email);
+		//alert("Valid: " + isEmailValid);
 		
 		if(email == ""){
 			errmsg.html("This field is required");

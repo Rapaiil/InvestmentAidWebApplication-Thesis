@@ -29,8 +29,17 @@ public interface DBCommands {
 			+ "set user_status = :status, "
 			+ "user_token = :newtok "
 			+ "WHERE user_token = :tok";
-	final static String SAVE_ACCOUNT = "UPDATE UserProfileBean "
-			+ "set user_firstname = :first_name";
-	
+	final static String SAVE_ACCOUNT = "UPDATE UserAccountBean "
+			+ "set user_email = :email "
+			+ "WHERE user_profileId = :profid";
+	final static String SAVE_PROFILE = "UPDATE UserProfileBean "
+			+ "set user_firstname = :first_name,"
+			+ "user_lastname = :last_name,"
+			+ "user_cellphonenumber = :cellphone_no,"
+			+ "user_telephonenumber = :telephone_no,"
+			+ "user_birthday = :birthday,"
+			+ "user_occupation = :occupation,"
+			+ "user_company = :company "
+			+ "WHERE user_profileId = :profid";
 	public List<Object[]> getRecords();
 }

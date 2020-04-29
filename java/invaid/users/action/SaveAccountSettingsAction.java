@@ -3,10 +3,6 @@ package invaid.users.action;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -15,8 +11,6 @@ import org.hibernate.query.Query;
 import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.db.DBCommands;
-import invaid.users.model.UserAccountBean;
-import invaid.users.util.Encrypt;
 import invaid.users.util.HibernateUtil;
 
 @SuppressWarnings("serial")
@@ -25,24 +19,31 @@ public class SaveAccountSettingsAction extends ActionSupport implements DBComman
 	private String last_name;
 	private String birthday;
 	private String telephone_no;
-	private String mobile_no;
+	private String cellphone_no;
 	private String email_address;
 	private String occupation;
 	private String company;
 	private String profile_id;
+	
+	//
+	//
+	//Regex Reference
+	//^(09|\+639|639)\d{9}$
+	//
+	//
+
 	Session session = HibernateUtil.getSession();
 	private Map<String, Object> sessionMap;
 	private boolean isSuccess = false;
 	
 	public String execute() {
 		profile_id = (String) sessionMap.get("loginId");
-		session.getTransaction().begin();
-		boolean success = saveAccount();
+		boolean success = saveAccountSettings();
 		if(success) {
-			System.out.println("updated");
+			System.out.println("success");
 		}
 		else {
-			System.out.println("failed");
+			System.out.println("fail");
 		}
 		return SUCCESS;
 	}
@@ -65,11 +66,49 @@ public class SaveAccountSettingsAction extends ActionSupport implements DBComman
 		return null;
 	}
 	
+	private boolean saveAccountSettings() {
+		session.getTransaction().begin();
+		boolean isSaveAccountSuccess = saveAccount();
+		session.getTransaction().begin();
+		boolean isSaveProfileSuccess = saveProfile();
+		
+		if(isSaveAccountSuccess && isSaveProfileSuccess) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	private boolean saveAccount() {
 		try {
 			Query query = session.createQuery(SAVE_ACCOUNT);
+			query.setParameter("email", email_address);
+			query.setParameter("profid", profile_id);
+			
+			if(query.executeUpdate() > 0) {
+				session.getTransaction().commit();
+				return true;
+			}
+		}
+		catch(HibernateException he) {
+			session.getTransaction().rollback();
+		}
+		return false;
+	}
+	
+	private boolean saveProfile() {
+		try {
+			Query query = session.createQuery(SAVE_PROFILE);
 			query.setParameter("first_name", first_name);
-			System.out.println(first_name);
+			query.setParameter("last_name", last_name);
+			query.setParameter("birthday", birthday);
+			query.setParameter("cellphone_no", cellphone_no);
+			query.setParameter("telephone_no", telephone_no);
+			query.setParameter("occupation", occupation);
+			query.setParameter("company", company);
+			query.setParameter("profid", profile_id);
+
 			if(query.executeUpdate() > 0) {
 				session.getTransaction().commit();
 				return true;
@@ -112,12 +151,12 @@ public class SaveAccountSettingsAction extends ActionSupport implements DBComman
 		this.telephone_no = telephone_no;
 	}
 
-	public String getMobile_no() {
-		return mobile_no;
+	public String getCellphone_no() {
+		return cellphone_no;
 	}
 
-	public void setMobile_no(String mobile_no) {
-		this.mobile_no = mobile_no;
+	public void setCellphone_no(String cellphone_no) {
+		this.cellphone_no = cellphone_no;
 	}
 
 	public String getEmail_address() {
@@ -143,5 +182,12 @@ public class SaveAccountSettingsAction extends ActionSupport implements DBComman
 	public void setCompany(String company) {
 		this.company = company;
 	}
+	
+	public String getProfile_id() {
+		return profile_id;
+	}
 
+	public void setProfile_id(String profile_id) {
+		this.profile_id = profile_id;
+	}
 }

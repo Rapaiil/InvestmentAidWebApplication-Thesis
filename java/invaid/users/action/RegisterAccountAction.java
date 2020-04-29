@@ -83,7 +83,7 @@ public class RegisterAccountAction extends ActionSupport
 				 boolean isValid = true;
 				 if(list != null) {
 						for(Object record: list) {
-							if(userAccount.getUser_email().equals(record.toString())) { 
+							if(userAccount.getUser_email().equals(record)) { 
 								isValid = false; 
 							}
 						}
