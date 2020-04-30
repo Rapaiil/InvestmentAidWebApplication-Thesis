@@ -103,6 +103,10 @@ hr {
     color: #FFFD82;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #19A375;
+}
+
 .sidebar .btn-addFund {
     background-color: #19A375;
     font-weight: bold;

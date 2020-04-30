@@ -85,6 +85,15 @@ body, html {
 	color: #1d1e22;
 }
 
+thead {
+	background-color: #2D3047;
+	color: white;
+}
+
+#mf_table_monitoring a, #uitf_table_monitoring a {
+	color: #19a375;
+}
+
 .currency-converter {
 	width: 250px;
 }
