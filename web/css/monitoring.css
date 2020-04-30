@@ -85,6 +85,11 @@ body, html {
 	color: #1d1e22;
 }
 
+.currency-converter {
+	width: 250px;
+	padding-right: 1rem;
+}
+
 thead {
 	background-color: #2D3047;
 	color: white;
@@ -92,14 +97,6 @@ thead {
 
 #mf_table_monitoring a, #uitf_table_monitoring a {
 	color: #19a375;
-}
-
-.currency-converter {
-	width: 250px;
-}
-
-.currencies-select {
-	width: 100px;
 }
 
 th {
@@ -110,13 +107,49 @@ th {
 	color: #19a375;
 }
 
+.table-monitoring {
+	padding-top: 20px;
+}
+
+.mobile-tablet-visible {
+	visibility: hidden;
+}
+
+.convert {
+	margin-bottom: 30px;
+}
+
+.currencies-select{
+	text-transform: uppercase;
+}
+
 /* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 1024px) {
     .currency-converter {
     	max-width: 100%;
+    	padding-left: 1rem;
     }
     
     .currencies-select, .philippine-convert {
     	margin-top: 10px;
-   	}
+    }
+    
+    .container-fluid{
+    	margin-top: 35px;
+    }
+}
+
+/* @media (max-width: 768px) {
+    .currency-converter {
+    	padding-right: 0px;
+    }
+} */
+
+@media (max-width: 425px) {
+    .mobile-tablet-visible {
+		visibility: visible;
+	}
+	.desktop-visible {
+		visibility: hidden;
+	}
 }
