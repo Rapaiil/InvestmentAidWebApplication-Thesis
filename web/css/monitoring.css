@@ -95,6 +95,11 @@ thead {
 	color: white;
 }
 
+#mf_table_monitoring_wrapper, #uitf_table_monitoring_wrapper {
+	margin-top: 15px;
+}
+
+
 #mf_table_monitoring a, #uitf_table_monitoring a {
 	color: #19a375;
 }
