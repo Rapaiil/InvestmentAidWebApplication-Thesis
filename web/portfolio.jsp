@@ -113,7 +113,7 @@
 	                            <div class="net-summary">
 	                                <!-- CARD SUMMARY -->
 	                                <div class="card-deck card-summary">
-	                                    <div class="card">
+										<div class="card">
 	                                        <div class="card-body">
 	                                            <h3>&#8369; 2,100 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
 	                                            <small class="card-title">Overall Gain/Loss</small>
@@ -121,14 +121,46 @@
 	                                    </div>
 	                                    <div class="card">
 	                                        <div class="card-body">
-	                                            <h3>&#8369; 1,000 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Day Gain/Loss</small>
+	                                            <h3>1.4% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
+	                                            <small class="card-title">Overall Gain/Loss (%)</small>
 	                                        </div>
 	                                    </div>
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>1.4% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Day Gain/Loss (%)</small>
+									</div>
+									<!-- OVERALL GAIN/LOSS TABLE -->
+	                                <div class="card mt-3">
+	                                	<div class="card-body">
+	                                        <h3>Overall Gain/Loss</h3>
+	                                        <div class="table-responsive-md top-five-investments">
+	                                            <table class="table table-hover">
+	                                                <thead class="investment-performance-table">
+	                                                    <tr>
+	                                                        <th scope="col">Fund Name</th>
+	                                                        <th scope="col">Type</th>
+	                                                        <th scope="col">Current NAVPU/NAVPS</th>
+	                                                        <th scope="col">Daily (%)</th>
+	                                                    </tr>
+	                                                </thead>
+	                                                <tbody>
+	                                                    <tr>
+	                                                        <td>ALFM</td>
+	                                                        <td>Mutual Fund</td>
+	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
+	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
+	                                                    </tr>
+	                                                    <tr>
+	                                                        <td>Sun Life Financial</td>
+	                                                        <td>Mutual Fund</td>
+	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
+	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
+	                                                    </tr>
+	                                                    <tr>
+	                                                        <td>ATRAM</td>
+	                                                        <td>Mutual Fund</td>
+	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
+	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
+	                                                    </tr>
+	                                                </tbody>
+	                                            </table>
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -213,27 +245,6 @@
 	                        <div class="tab-pane fade" id="mutual_funds" role="tabpanel">
 	                            <h1>Mutual Funds</h1>
 	                            <div class="net-summary">
-	                                <!-- CARD SUMMARY -->
-	                                <div class="card-deck card-summary">
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>&#8369; 2,100 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Overall Gain/Loss</small>
-	                                        </div>
-	                                    </div>
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>&#8369; 1,000 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Day Gain/Loss</small>
-	                                        </div>
-	                                    </div>
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>1.4% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Day Gain/Loss (%)</small>
-	                                        </div>
-	                                    </div>
-	                                </div>
 	                                <!-- Mutual Funds -->
 	                                <div class="card mt-3">
 	                                    <div class="card-body">
@@ -300,27 +311,6 @@
 							<div class="tab-pane fade" id="uitf" role="tabpanel">
 	                            <h1>Unit Investment Trust Funds</h1>
 	                            <div class="net-summary">
-	                                <!-- CARD SUMMARY -->
-	                                <div class="card-deck card-summary">
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>&#8369; 2,100 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Overall Gain/Loss</small>
-	                                        </div>
-	                                    </div>
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>&#8369; 1,000 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Day Gain/Loss</small>
-	                                        </div>
-	                                    </div>
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>1.4% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Day Gain/Loss (%)</small>
-	                                        </div>
-	                                    </div>
-	                                </div>
 	                                <!-- UITF -->
 	                                <div class="card mt-3">
 	                                    <div class="card-body">

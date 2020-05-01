@@ -114,79 +114,66 @@
 	        </nav>
 		</s:else>
 	
+		<!-- CURRENCY CONVERTER -->
+		<div class="container-fluid p-5 ">
+			<div class="d-flex justify-content-center float-right convert">
+			 <!-- <h3 class="text-muted text-center mb-3">Foreign-Peso Currency Converter</h3> -->
+				<s:action name="crawlrates" executeResult="true"></s:action>
+			</div>
+		</div>
 		<!-- MONITORING CONTENT-->
-        <!-- <div class="container-fluid p-5"> -->
-			<!-- <div class="row">
-        		<div class="col-md-8">
-        			<div class="input-group float-right search-bar">
-					  <input type="text" class="form-control" placeholder="Search fund" aria-describedby="basic-addon2">
-					  <div class="input-group-append">
-					    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					  </div>
-					</div>
-        		</div>
-        	</div> -->
-        	<!-- <%-- <div class="row"> -->
-        		<!-- MONITORING TABLE -->
-        		
-        		<!-- CURRENCY CONVERTER -->
-        		<!-- <div class="col-md-4 mt-5">
-        			<h3 class="text-muted text-center mb-3">Foreign-Peso Currency Converter</h3>
-        			<s:action name="crawlrates" executeResult="true"></s:action>
-        		</div>
-        	</div> --%> -->
-        	
-        	<div class="table-responsive-lg mt-5 justify-content-center">
-        			<!-- TAB -->
-        			<ul class="nav nav-pills pills-dark nav-justified" id="pills-tab" role="tablist">
-					  <li class="nav-item">
-						 <a class="nav-link active" id="pills-mf-tab" data-toggle="pill" href="#pills-mf" role="tab" aria-controls="pills-mf" aria-selected="true">Mutual Funds</a>
-					  </li>
-					  <li class="nav-item  disabled">
-						 <a class="nav-link" id="pills-uitf-tab" data-toggle="pill" href="#pills-uitf" role="tab" aria-controls="pills-uitf" aria-selected="false">Unit Investment Trust Funds</a>
-					  </li>
-					  
-					</ul>
-					
-					<!-- MONITORING -->
-					<div class="tab-content" id="pills-tabContent">
-					  <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
-					  	<!-- MF Table -->
-					  	<table id="mf_table_monitoring" class="display table table-striped">
-						  <thead>
-						    <tr>
-						      <th scope="col">Name</th>
-						      <th scope="col">Risk Classification</th>
-						      <th scope="col">Fund Classification</th>
-						      <th scope="col">Affiliation</th>
-						      <th scope="col"></th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						  	<s:action name="parsemf" executeResult="true"></s:action>
-						  </tbody>
-					  	</table>
-						</div>
-					  	<div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
-							<!-- UITF Table -->
-							<table id="uitf_table_monitoring" class="display table table-striped">
-							  <thead>
-							    <tr>
-							      <th scope="col">Name</th>
-							      <th scope="col">Risk Classification</th>
-							      <th scope="col">Fund Classification</th>
-							      <th scope="col">Affiliation</th>
-							      <th scope="col"></th>
-							    </tr>
-							  </thead>
-							  <tbody>
-							    <s:action name="parseuitf" executeResult="true"></s:action>
-							  </tbody>
-							</table>
-						</div>
-					  </div>
-        		</div>
-       	</div>
+	 <div class="container-fluid monitoring p-5">
+		 <div class="table-responsive-lg justify-content-center">
+				 <!-- TAB -->
+				 <ul class="nav nav-pills pills-dark nav-justified" id="pills-tab" role="tablist">
+				   <li class="nav-item">
+					  <a class="nav-link active" id="pills-mf-tab" data-toggle="pill" href="#pills-mf" role="tab" aria-controls="pills-mf" aria-selected="true">Mutual Funds</a>
+				   </li>
+				   <li class="nav-item  disabled">
+					  <a class="nav-link" id="pills-uitf-tab" data-toggle="pill" href="#pills-uitf" role="tab" aria-controls="pills-uitf" aria-selected="false">Unit Investment Trust Funds</a>
+				   </li>
+				   
+				 </ul>
+				 
+				 <!-- MONITORING -->
+				 <div class="tab-content" id="pills-tabContent">
+				   <div class="tab-pane fade show active" id="pills-mf" role="tabpanel" aria-labelledby="pills-mf-tab">
+					   <!-- MF Table -->
+					   <table id="mf_table_monitoring" class="display table table-striped">
+					   <thead>
+						 <tr>
+						   <th scope="col">Name</th>
+						   <th scope="col">Risk Classification</th>
+						   <th scope="col">Fund Classification</th>
+						   <th scope="col">Affiliation</th>
+						   <th scope="col"></th>
+						 </tr>
+					   </thead>
+					   <tbody>
+						   <s:action name="parsemf" executeResult="true"></s:action>
+					   </tbody>
+					   </table>
+					 </div>
+					   <div class="tab-pane fade" id="pills-uitf" role="tabpanel" aria-labelledby="pills-uitf-tab">
+						 <!-- UITF Table -->
+						 <table id="uitf_table_monitoring" class="display table table-striped">
+						   <thead>
+							 <tr>
+							   <th scope="col">Name</th>
+							   <th scope="col">Risk Classification</th>
+							   <th scope="col">Fund Classification</th>
+							   <th scope="col">Affiliation</th>
+							   <th scope="col"></th>
+							 </tr>
+						   </thead>
+						   <tbody>
+							 <s:action name="parseuitf" executeResult="true"></s:action>
+						   </tbody>
+						 </table>
+					 </div>
+				   </div>
+			 </div>
+		</div>
     
 	<!-- LOGOUT MODAL -->
 		<!-- Modal -->
