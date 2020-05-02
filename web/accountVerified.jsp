@@ -16,7 +16,7 @@
 	
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="css/accountVerified.css" type="text/css">
-	<title>InvAid - Account Verified</title>
+	<title>InvAid - Register Account Verified</title>
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">

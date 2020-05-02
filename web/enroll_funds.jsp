@@ -23,7 +23,7 @@
     <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     
-	<title>InvAid</title> 
+	<title>InvAid - Portfolio Enroll Funds</title> 
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">

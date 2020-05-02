@@ -15,7 +15,7 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="css/questionnaire_landing.css" type="text/css">
 	<link rel="stylesheet" href="css/modal.css" type="text/css">
-	<title>InvAid - Risk Profile</title> 
+	<title>InvAid - Account Settings</title> 
 	
 	 <!-- Font Awesome CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
