@@ -23,7 +23,7 @@
     <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     
-	<title>InvAid</title> 
+	<title>InvAid- Portfolio Edit Funds</title> 
 	
 	<!-- Fonts to be used are imported here via Google Fonts, before being recognized by the css -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Titillium+Web&display=swap">
@@ -95,13 +95,59 @@
 	                            </select>
 	                        </div>
 	                        <div class="text-center">
-	                            <button type="submit" class="btn btn-primary text-uppercase btn-lg">Submit</button>
+	                            <button type="submit" class="btn btn-primary text-uppercase btn-lg" data-toggle="modal" data-target="#submitConfirm">Edit</button>
 	                        </div>
                     	</s:form>
 	                </div>
 	            </div>
 	        </div>
         </section>
+
+        <!-- CONFIRM EDIT MODAL -->
+		<div class="modal fade" id="submitConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-uppercase">Confirm Edit Fund</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Do you want to edit this fund?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
+                  <s:form action="#" method="get">
+                      <s:submit value="OK" class="btn btn-primary btnLogout" data-toggle="modal" data-target="#editFund"/>
+                  </s:form>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <!-- ENROLL MODAL -->
+		<div class="modal fade" id="editFund" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-uppercase">Edit Fund</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Fund has been edited!</p>
+                </div>
+                <div class="modal-footer">
+                  <a type="button" class="btn bg-danger btnCancel" href="portfolio.jsp">Return to Portfolio</a>
+                  <%-- <s:form action="#" method="get">
+                      <s:submit value="Add another fund" class="btn btn-primary btnLogout"/>
+                  </s:form> --%>
+                </div>
+              </div>
+            </div>
+        </div>
         
 
         <!-- LOGOUT MODAL -->
