@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary text-uppercase btn-lg">Submit</button>
+                            <button type="submit" class="btn btn-primary text-uppercase btn-lg" data-toggle="modal" data-target="#submitConfirm">Add</button>
                         </div>
                     </s:form>
                 </div>
@@ -136,7 +136,54 @@
         </div>
     </section>
 
-    <!-- LOGOUT MODAL -->
+        <!-- CONFIRM ENROLL MODAL -->
+		<div class="modal fade" id="submitConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-uppercase">Confirm Enroll Fund</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Do you want to add this fund?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
+                  <s:form action="#" method="get">
+                      <s:submit value="OK" class="btn btn-primary btnLogout" data-toggle="modal" data-target="#enrollFund"/>
+                  </s:form>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <!-- ENROLL MODAL -->
+		<div class="modal fade" id="enrollFund" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-uppercase">Enroll Fund</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Added new fund</p>
+                </div>
+                <div class="modal-footer">
+                  <a type="button" class="btn bg-danger btnCancel" href="portfolio.jsp">Return to Portfolio</a>
+                  <a type="button" class="btn btn-primary btnLogout" href="enroll_funds.jsp">Add another fund</a>
+                  <%-- <s:form action="#" method="get">
+                      <s:submit value="Add another fund" class="btn btn-primary btnLogout"/>
+                  </s:form> --%>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- LOGOUT MODAL -->
 		<!-- Modal -->
 		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
