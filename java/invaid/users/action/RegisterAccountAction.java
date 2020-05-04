@@ -71,28 +71,28 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		//Email Validation
 		if(userAccount.getUser_email().trim() == null || userAccount.getUser_email().trim() == "") {
 			addFieldError("user_email", "This field is required");
-		}
-		else {
-			//Will be moved to configurations
-			String 	emailRegex 		= "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
-			Pattern emailPattern 	= Pattern.compile(emailRegex); 
-			Matcher emailMatcher 	= emailPattern.matcher(userAccount.getUser_email().trim());
-			if(!emailMatcher.matches()) {
-				addFieldError("user_email","Please enter a valid email");
-			}
-			else {
-				//Compare the email to the database if it already exist
-				list = getRecords();
-				if(list != null) {
-					for(Object[] record: list) {
-						
-						/*
-						 * String sRecord = record.toString(); if(sRecord ==
-						 * userAccount.getUser_email().trim()) { addFieldError("user_email",
-						 * "Email already used"); }
-						 */
-					}
-				}
+		} else {
+			// Will be moved to configurations
+			String emailRegex = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+			Pattern emailPattern = Pattern.compile(emailRegex);
+			Matcher emailMatcher = emailPattern.matcher(userAccount.getUser_email().trim());
+			if (!emailMatcher.matches()) {
+				addFieldError("user_email", "Please enter a valid email");
+			} else {
+				// Compare the email to the database if it already exist
+
+				 List<Object[]> list = getRecords();
+				 boolean isValid = true;
+				 if(list != null) {
+						for(Object record: list) {
+							if(userAccount.getUser_email().equals(record)) { 
+								isValid = false; 
+							}
+						}
+						if(!isValid) {
+							addFieldError("user_email","Email already useds");
+						}
+				 }
 			}
 		}
 		
