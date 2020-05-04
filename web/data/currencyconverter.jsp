@@ -5,7 +5,7 @@
 <div class="d-md-inline-flex">
 	<div class="form-inline d-flex justify-content-center">
     	<div class="input-group currency-converter">
-		  <input type="text" class="form-control" id="og">
+		  <input type="text" class="form-control" id="currencyconv_textbox1" onkeypress="isFloating(event)" onkeyup="convertAmount()">
 		</div>
 		<s:select class="custom-select currencies-select" id="inputGroupSelect01"
 				  list="ratestable"
@@ -21,7 +21,7 @@
 	</div>
 	<div class="form-inline d-flex justify-content-center">
      	<div class="input-group currency-converter">
-			  <input type="text" class="form-control" id="tg" disabled>
+			  <input type="text" class="form-control" id="currencyconv_textbox2" disabled>
 		</div>
 		<select class="custom-select philippine-convert" id="inputGroupSelect02" style="width: 208px;">
 			<option value="PHP" selected>PHILIPPINE PESO</option>

@@ -90,10 +90,13 @@
 		</action>
 	</package>
 	
-	<package name="currencyconverter" extends="struts-default">
+	<package name="currencyconverter" extends="struts-default, json-default">
 		<action name="crawlrates" class="invaid.users.action.ForexWebCrawlAction">
 			<result name="success">data/currencyconverter.jsp</result>
 			<result name="error">error/error500.jsp</result>
+		</action>
+		<action name="retrieverates" class="invaid.users.action.ForexWebCrawlAction" method="getRates">
+			<result type="json">ratestable</result>
 		</action>
 	</package>
 </struts>
