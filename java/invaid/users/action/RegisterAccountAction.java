@@ -81,7 +81,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			} else {
 				// Compare the email to the database if it already exist
 
-				 List<Object[]> list = getRecords();
+				 list = getRecords();
 				 boolean isValid = true;
 				 if(list != null) {
 						for(Object record: list) {
