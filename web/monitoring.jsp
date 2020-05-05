@@ -213,5 +213,6 @@
     <script src="js/navbar.js"></script>
 	<script src="js/currency.js"></script>
 	<script src="js/datatables.js"></script>
+	<script src="js/monitoring_chart.js"></script>
 </body>
 </html>
