@@ -165,18 +165,11 @@ public class ForexWebCrawlAction extends ActionSupport {
 		}
 	}
 	
-	public String getRates() {
-		if(this.ratestable != null)
-			return SUCCESS;
-		return ERROR;
-	}
 	public List<Forex> getRatestable() {
-		return ratestable;
+		return this.ratestable;
 	}
 
 	public void setRatestable(List<Forex> ratestable) {
 		this.ratestable = ratestable;
 	}
-	
-	
 }

@@ -11,6 +11,7 @@
 				  list="ratestable"
 				  listKey="currencyCode"
 				  listValue="currencyName"
+				  onchange="convertAmount()"
 				  headerKey="-1" headerValue="-- SELECT CURRENCY --" />
 		
 	</div>

@@ -95,7 +95,7 @@
 			<result name="success">data/currencyconverter.jsp</result>
 			<result name="error">error/error500.jsp</result>
 		</action>
-		<action name="retrieverates" class="invaid.users.action.ForexWebCrawlAction" method="getRates">
+		<action name="retrieverates" class="invaid.users.action.ForexWebCrawlAction">
 			<result type="json">ratestable</result>
 		</action>
 	</package>
