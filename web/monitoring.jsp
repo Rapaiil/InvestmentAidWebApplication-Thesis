@@ -115,7 +115,7 @@
 		</s:else>
 	
 		<!-- CURRENCY CONVERTER -->
-		<div class="container-fluid p-5 ">
+		<div class="container-fluid pl-5 pt-5 pr-5 ">
 			<h3 class="text-center mb-3">Foreign-Peso Currency Converter</h3>
 			<div class="d-flex justify-content-center convert">
 				<s:action name="crawlrates" executeResult="true"></s:action>
