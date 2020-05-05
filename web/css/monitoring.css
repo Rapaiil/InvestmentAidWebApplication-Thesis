@@ -123,15 +123,20 @@ th {
 	text-transform: uppercase;
 }
 
+.currencies-select, .philippine-convert {
+	margin-right: 10px;
+}
+
 /* --- MOBILE RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .currency-converter {
     	max-width: 100%;
-    	padding-left: 1rem;
+    	/* padding-left: 1rem; */
     }
     
     .currencies-select, .philippine-convert {
-    	margin-top: 10px;
+    	margin-right: 0px;
+    	margin-bottom: 10px;
     }
     
     .container-fluid{
