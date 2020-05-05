@@ -116,13 +116,14 @@
 	
 		<!-- CURRENCY CONVERTER -->
 		<div class="container-fluid p-5 ">
-			<div class="d-flex justify-content-center float-right convert">
-			 <!-- <h3 class="text-muted text-center mb-3">Foreign-Peso Currency Converter</h3> -->
+			<h3 class="text-center mb-3">Foreign-Peso Currency Converter</h3>
+			<div class="d-flex justify-content-center convert">
 				<s:action name="crawlrates" executeResult="true"></s:action>
 			</div>
 		</div>
 		<!-- MONITORING CONTENT-->
 	 <div class="container-fluid monitoring p-5">
+		<h3 class="text-center mb-3">MF and UITF Monitoring Table</h3>
 		 <div class="table-responsive-lg justify-content-center">
 				 <!-- TAB -->
 				 <ul class="nav nav-pills pills-dark nav-justified" id="pills-tab" role="tablist">
