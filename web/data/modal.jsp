@@ -74,7 +74,7 @@
                                 <a class="nav-link" href="#">5Y</a>
                             </li>
                         </ul>
-                        <canvas id="lineGraphPerformance" width="400" height="400"></canvas>
+                        <canvas id="line-chart" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
@@ -88,36 +88,6 @@
         </div>
     </div>
 
-<!-- LINE GRAPH -->
-    <script>     
-        var ctx = document.getElementById('lineGraphPerformance').getContext('2d');
-        var lineGraphPerformance = new Chart(ctx, {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'ALFM',
-                    data: [250, 200, 350, 550],
-                    borderColor: ['#A2C7E5'],
-                    fill: false
-                }],
-                labels: ['2015', '2016', '2017', '2018']
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            suggestedMin: 100,
-                            suggestedMax: 600
-                        }
-                    }]
-                },
-                legend: {
-                    display: false
-                }
-            }
-        });
-    </script>
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
