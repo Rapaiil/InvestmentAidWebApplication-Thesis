@@ -74,7 +74,7 @@
                                 <a class="nav-link" href="#">5Y</a>
                             </li>
                         </ul>
-                        <canvas id="lineGraphPerformance" width="400" height="400"></canvas>
+                        <canvas id="line-chart" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
