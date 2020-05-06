@@ -27,17 +27,18 @@
 </head>
 <body>
 
-	<s:iterator value="fundList">
+	<s:iterator value="fundList" status="incr">
 	    <tr>
 	      <td><s:property value="fundName" /></td>
 	      <td><s:property value="riskClassification" /></td>
 	      <td><s:property value="fundClassification" /></td>
 	      <td><s:property value="companyName" /></td>
-	      <td><a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></a></td>
+	      <td><s:a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >> </s:a></td>
+	      <s:include value="modal-mf.jsp"><s:param name="fundId" value="fundNumber"/></s:include>
 	    </tr>
 	</s:iterator>
 
-	<s:include value="modal.jsp"/>
+	
 
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
