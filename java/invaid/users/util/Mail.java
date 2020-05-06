@@ -22,7 +22,7 @@ public class Mail {
 	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(user_email));  
 	         message.setSubject("InvAid Password Reset Request");  
 	         message.setText("Please click the link to reset your password:\n\n" 
-	        		 + "http://localhost:8080/www.invaid.com/renewpassword.action?token=" 
+	        		 + "http://thesis.iacademy.edu.ph:8080/InvAid/renewpassword.action?token=" 
 	        		 + user_token);  
 	         
 	         Transport.send(message);
@@ -43,7 +43,7 @@ public class Mail {
 	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(userAccount.getUser_email()));
 	         message.setSubject("Verify Your InvAid Account");
 	         message.setText("To verify your InvAid account, click the link below:\n\n" 
-	        		 + "http://localhost:8080/www.invaid.com/verifyuser.action?token=" 
+	        		 + "http://thesis.iacademy.edu.ph:8080/InvAid/verifyuser.action?token=" 
 	        		 + userAccount.getUser_token());  
 	         
 	         Transport.send(message);

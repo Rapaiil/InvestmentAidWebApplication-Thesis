@@ -35,6 +35,8 @@
 	      <td><s:property value="companyName" /></td>
 	      <td><s:a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >> </s:a></td>
 	      <s:include value="modal-mf.jsp"><s:param name="fundId" value="fundNumber"/></s:include>
+	      
+	      <s:property value="%{fundList.fundName}" />
 	    </tr>
 	</s:iterator>
 
