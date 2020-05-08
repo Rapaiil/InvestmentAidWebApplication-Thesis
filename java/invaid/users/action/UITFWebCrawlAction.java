@@ -43,6 +43,7 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 	final static int NO_OF_BANKS = 42;
 	final static int NO_OF_FUNDS = 386;
 	private boolean isSuccess = false;
+	private String contextPath = Configurations.getUitfFile();
 	
 	public String execute() {
 		token = (String) sessionMap.get("loginToken");
@@ -130,14 +131,15 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 			   (ctr > 159 && ctr < 175) ||
 			   (ctr > 179 && ctr < 182) ||
 			   (ctr > 198 && ctr < 201) ||
-			   (ctr > 222 && ctr < 227) ||
-			   (ctr > 231 && ctr < 237) ||
+			   (ctr > 219 && ctr < 227) ||
+			   (ctr > 231 && ctr < 238) ||
 			   (ctr > 241 && ctr < 246) ||
 			   (ctr > 259 && ctr < 263) ||
 			   (ctr > 298 && ctr < 305) ||
 			   (ctr > 318 && ctr < 327) ||
 			   (ctr > 327 && ctr < 330) ||
 			   (ctr > 333 && ctr < 340) ||
+			   (ctr > 340 && ctr < 344) ||
 			   (ctr > 349 && ctr < 353) ||
 			   (ctr > 357 && ctr < 360) ||
 			   (ctr > 366 && ctr < 369) ||
@@ -183,20 +185,70 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 				
 					rawData = table.eachText().iterator();
 					
-					while(rawData.hasNext()) {
-						rawData.next();
-						rawData.next();
-						fd.setRiskClassification(rawData.next().toString());
-						fd.setMinInitParticipation(convertValue(rawData.next().toString()));
-						fd.setMinAddParticipation(convertValue(rawData.next().toString()));
-						fd.setMinMaintainParticipation(convertValue(rawData.next().toString()));
-						fd.setMinHoldingDays(rawData.next().toString());
-						fd.setCutOffTime(rawData.next().toString());
-						fd.setSettlementDate(rawData.next().toString());
-						fd.setTrustFee(rawData.next().toString());
-						fd.setExitFee(rawData.next().toString());
-						fd.setBenchmark(rawData.next().toString());
-						fundList.getList().add(fd);
+					if(fd.getFundName().equals("AB CAPITAL BALANCED FUND")) {
+						fd.setBenchmark("50% - 1 Yr, T-Bill +50%, PSEi");
+						while(rawData.hasNext()) {
+							rawData.next();
+							rawData.next();
+							fd.setRiskClassification(rawData.next().toString());
+							fd.setMinInitParticipation(convertValue(rawData.next().toString()));
+							fd.setMinAddParticipation(convertValue(rawData.next().toString()));
+							fd.setMinMaintainParticipation(convertValue(rawData.next().toString()));
+							fd.setMinHoldingDays(rawData.next().toString());
+							fd.setCutOffTime(rawData.next().toString());
+							fd.setSettlementDate(rawData.next().toString());
+							fd.setTrustFee(rawData.next().toString());
+							fd.setExitFee(rawData.next().toString());
+							fundList.getList().add(fd);
+						}
+					} else if(fd.getFundName().equals("AB CAPITAL SHORT-TERM FUND")) {
+						fd.setBenchmark("91-Day T-Bill");
+						while(rawData.hasNext()) {
+							rawData.next();
+							rawData.next();
+							fd.setRiskClassification(rawData.next().toString());
+							fd.setMinInitParticipation(convertValue(rawData.next().toString()));
+							fd.setMinAddParticipation(convertValue(rawData.next().toString()));
+							fd.setMinMaintainParticipation(convertValue(rawData.next().toString()));
+							fd.setMinHoldingDays(rawData.next().toString());
+							fd.setCutOffTime(rawData.next().toString());
+							fd.setSettlementDate(rawData.next().toString());
+							fd.setTrustFee(rawData.next().toString());
+							fd.setExitFee(rawData.next().toString());
+							fundList.getList().add(fd);
+						}
+					} else if(fd.getFundName().equals("AB CAPITAL EQUITY FUND")) {
+						fd.setBenchmark("PSEi");
+						while(rawData.hasNext()) {
+							rawData.next();
+							rawData.next();
+							fd.setRiskClassification(rawData.next().toString());
+							fd.setMinInitParticipation(convertValue(rawData.next().toString()));
+							fd.setMinAddParticipation(convertValue(rawData.next().toString()));
+							fd.setMinMaintainParticipation(convertValue(rawData.next().toString()));
+							fd.setMinHoldingDays(rawData.next().toString());
+							fd.setCutOffTime(rawData.next().toString());
+							fd.setSettlementDate(rawData.next().toString());
+							fd.setTrustFee(rawData.next().toString());
+							fd.setExitFee(rawData.next().toString());
+							fundList.getList().add(fd);
+						}
+					} else {
+						while(rawData.hasNext()) {
+							rawData.next();
+							rawData.next();
+							fd.setRiskClassification(rawData.next().toString());
+							fd.setMinInitParticipation(convertValue(rawData.next().toString()));
+							fd.setMinAddParticipation(convertValue(rawData.next().toString()));
+							fd.setMinMaintainParticipation(convertValue(rawData.next().toString()));
+							fd.setMinHoldingDays(rawData.next().toString());
+							fd.setCutOffTime(rawData.next().toString());
+							fd.setSettlementDate(rawData.next().toString());
+							fd.setTrustFee(rawData.next().toString());
+							fd.setExitFee(rawData.next().toString());
+							fd.setBenchmark(rawData.next().toString());
+							fundList.getList().add(fd);
+						}
 					}
 				}
 			} catch(InterruptedException ie) {
@@ -212,7 +264,7 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			marshaller.marshal(fundList, new File("./WEB-INF/uitf-data.xml"));
+			marshaller.marshal(fundList, new File(contextPath));
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
 		}

@@ -16,7 +16,7 @@ function convertAmount() {
 		var code = $('#inputGroupSelect01').val();
 		var inputvalue = $('#currencyconv_textbox1').val();
 		var rate = 0.0;
-		var convertedvalue = 0;
+		var convertedvalue = 0.0;
 		
 		for(var i=0; i<54; i++) {
 			var currCode = jsonrates.ratestable[i].currencyCode;
@@ -26,7 +26,7 @@ function convertAmount() {
 			}
 		}
 		
-		convertedvalue = inputvalue * rate;
+		convertedvalue = (Math.round((inputvalue * rate) * 100) / 100).toFixed(2);
 		$('#currencyconv_textbox2').val(convertedvalue);
 	}
 }

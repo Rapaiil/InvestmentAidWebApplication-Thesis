@@ -37,6 +37,7 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 	final static int NO_OF_BANKS = 42;
 	final static int NO_OF_FUNDS = 386;
 	private boolean isSuccess = false;
+	private String contextPath = Configurations.getMfFile();
 	
 	public String execute() {
 		token = (String) sessionMap.get("loginToken");
@@ -131,7 +132,7 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			marshaller.marshal(fundList, new File("/WEB-INF/mf-data.xml"));
+			marshaller.marshal(fundList, new File(contextPath));
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
 		}

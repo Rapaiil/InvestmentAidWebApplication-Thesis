@@ -32,10 +32,10 @@
 	      <td><s:property value="riskClassification" /></td>
 	      <td><s:property value="fundClassification" /></td>
 	      <td><s:property value="bankName" /></td>
-	      <td><s:a href="#" data-toggle="modal" data-target="#fundDetailModal">See details >></s:a></td>
-	      <s:include value="modal-uitf.jsp"><s:param name="fundId" value="fundNumber"/></s:include>
+	      <td><s:a href="#" data-toggle="modal" data-target="#fundDetailModalUitf">See details >></s:a></td>
 	    </tr>
 	</s:iterator>
+	<s:include value="modal-uitf.jsp"><s:param name="fundId" value="fundNumber"/></s:include>
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

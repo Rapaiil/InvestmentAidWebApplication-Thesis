@@ -8,8 +8,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -22,10 +20,10 @@ public class UITFXMLParseAction extends ActionSupport implements ModelDriven<Uit
 	private UitfFundDetails fundWrapper = new UitfFundDetails();
 	private UitfFundDetail fund = new UitfFundDetail();
 	private List<UitfFundDetail> fundList = null;
+	private String contextPath = Configurations.getUitfFile();
 	
 	@Override
 	public String execute() {
-		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getUitfFile());
 		try {
 			JAXBContext jaxb = JAXBContext.newInstance(UitfFundDetails.class);
 			Unmarshaller um = jaxb.createUnmarshaller();

@@ -8,8 +8,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -22,10 +20,10 @@ public class MFXMLParseAction extends ActionSupport implements ModelDriven<MfFun
 	private MfFundDetails fundWrapper = new MfFundDetails();
 	private MfFundDetail fund = new MfFundDetail();
 	private List<MfFundDetail> fundList = null;
+	private String contextPath = Configurations.getMfFile();
 	
 	@Override
 	public String execute() {
-		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getMfFile());
 		try {
 			JAXBContext jaxb = JAXBContext.newInstance(MfFundDetails.class);
 			Unmarshaller um = jaxb.createUnmarshaller();

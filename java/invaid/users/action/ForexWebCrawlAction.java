@@ -13,7 +13,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import org.apache.struts2.ServletActionContext;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -29,6 +28,7 @@ public class ForexWebCrawlAction extends ActionSupport {
 	private ForexWrapper rateList = new ForexWrapper();
 	private Forex rate = null;
 	private List<Forex> ratestable = null;
+	private String contextPath = Configurations.getForexFile();
 	
 	@Override
 	public String execute() {
@@ -57,7 +57,17 @@ public class ForexWebCrawlAction extends ActionSupport {
 			
 			rateList.getRateList().add(rate);
 			
-			saveRatesToXml();
+			try {
+				JAXBContext jaxb = JAXBContext.newInstance(Forex.class);
+				Marshaller marshaller = jaxb.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				marshaller.marshal(rateList, new File(contextPath));
+			} catch(JAXBException jaxbe) {
+				jaxbe.printStackTrace();
+				return ERROR;
+			}
+			
 			if(getRatesFromXml()) {
 				setRatestable(rateList.getRateList());
 				return SUCCESS;
@@ -71,22 +81,7 @@ public class ForexWebCrawlAction extends ActionSupport {
 		return ERROR;
 	}
 	
-	private void saveRatesToXml() {
-		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile());
-		
-		try {
-			JAXBContext jaxb = JAXBContext.newInstance(Forex.class);
-			Marshaller marshaller = jaxb.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			marshaller.marshal(rateList, new File(contextPath));
-		} catch(JAXBException jaxbe) {
-			jaxbe.printStackTrace();
-		}
-	}
-	
 	private boolean getRatesFromXml() {
-		String contextPath = ServletActionContext.getServletContext().getRealPath(Configurations.getForexFile());
 		rateList = null;
 		
 		try {
