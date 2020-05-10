@@ -36,6 +36,7 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 			for(Object[] record: list) {
 				if(record[4].toString().equals(loginAccount.getLogin_email())
 					&& isPasswordMatch(loginAccount.getLogin_password(), record[5].toString())) {
+					
 					if(allowLogin(record[6].toString())) {
 						token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
 						loginAccount.setLogin_otp(OTPUtil.generateOTP());
@@ -56,10 +57,10 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 					//isDenied = !isDenied;
 					return "denied";
 				}
-				System.err.println("Email or password is not equal");
-				//isInvalid = !isInvalid;
-				return "invalid";
 			}
+			System.err.println("Email or password is not equal");
+			//isInvalid = !isInvalid;
+			return "invalid";
 		}
 		return ERROR;
 //		Thread t = new Thread(this);

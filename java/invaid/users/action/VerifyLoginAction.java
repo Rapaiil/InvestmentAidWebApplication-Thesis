@@ -48,6 +48,7 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 		
 		if(list != null) {
 			for(Object[] record: list) {
+				System.out.println("TEST: " + record[0].toString() + "\n" + record[1].toString() + "\n" + record[2] + "\n" + record[3].toString() + "\n");
 				if(record[1].toString().equals(token)
 					&& (record[2].toString().length() < 6 ? String.format("%02d", Integer.parseInt(record[2].toString())) : record[2].toString())
 					.equals((otp_login.length() < 6 ? String.format("%02d", Integer.parseInt(otp_login)) : otp_login))) {

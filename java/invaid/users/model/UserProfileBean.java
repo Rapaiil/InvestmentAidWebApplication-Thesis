@@ -14,8 +14,6 @@ public class UserProfileBean {
 	private String user_profileId;
 	@Column(nullable=false)
 	private String user_firstname;
-	@Column
-	private String user_middlename;
 	@Column(nullable=false)
 	private String user_lastname;
 	@Transient
@@ -47,14 +45,6 @@ public class UserProfileBean {
 
 	public void setUser_firstname(String user_firstname) {
 		this.user_firstname = user_firstname;
-	}
-
-	public String getUser_middlename() {
-		return user_middlename;
-	}
-
-	public void setUser_middlename(String user_middlename) {
-		this.user_middlename = user_middlename;
 	}
 
 	public String getUser_lastname() {
