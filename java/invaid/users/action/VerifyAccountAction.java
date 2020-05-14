@@ -57,7 +57,7 @@ public class VerifyAccountAction extends ActionSupport implements DBCommands, Ru
 		
 		if(list != null) {
 			for(Object[] record: list) {
-				if(record[0].toString().equals(token)) {
+				if(record[0] != null && record[0].toString().equals(token)) {
 					if(updateUserStatus(token)) {
 						//isSuccess = !isSuccess;
 						return SUCCESS;
