@@ -100,7 +100,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary btnLogout">Logout</button>
+                <s:form action="logoutuser" method="get">
+		        	<s:submit value="Logout" class="btn btn-primary btnLogout"/>
+		        </s:form>
             </div>
             </div>
         </div>
