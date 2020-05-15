@@ -11,7 +11,7 @@
 			com.mysql.cj.jdbc.Driver
 		</property>
 		<property name="connection.url">
-			jdbc:mysql://180.232.102.12:3306/invaidsystem?autoReconnect=true&amp;serverTimezone=UTC&amp;useSSL=False&amp;allowPublicKeyRetrieval=true
+			jdbc:mysql://localhost:3306/invaidsystem?autoReconnect=true&amp;serverTimezone=UTC&amp;useSSL=False&amp;allowPublicKeyRetrieval=true
 		</property>
 		<property name="connection.username">
 			invaid

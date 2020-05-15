@@ -36,9 +36,8 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 
 	public String execute() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
+		session.getTransaction().begin();
 		
-		Session session = HibernateUtil.getSession();
-		Transaction t = session.beginTransaction();
 		try {
 			userAccount.setUser_profileId(userProfile.getUser_profileId());
 			userAccount.setUser_status(00);
@@ -48,11 +47,11 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			session.save(userProfile);
 			
 			Mail.sendVerificationMail(userAccount);
-			t.commit();
+			session.getTransaction().commit();
 			return SUCCESS;
 			//isSuccess = !isSuccess;
 		} catch(HibernateException he) {
-			t.rollback();
+			session.getTransaction().rollback();
 		}
 		return ERROR;
 //		Thread t = new Thread(this);

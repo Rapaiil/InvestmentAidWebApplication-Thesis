@@ -83,13 +83,13 @@
 							<div class="col-md form-group">
 								<p class="em" id="lfn" for="fn"></p>
 								<label>First Name:</label>
-								<s:textfield id="fn" name="first_name" cssClass="form-control" value="[First Name]" required="required"/>
+								<s:textfield id="fn" name="first_name" cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="col-md">
 								<p class="em" id="lln" for="ln"></p>
 								<label>Last Name:</label>
-								<s:textfield id="ln" name="last_name"  cssClass="form-control" value="[Last Name]" required="required"/>
+								<s:textfield id="ln" name="last_name"  cssClass="form-control" required="required"/>
 							</div>
 						</div>
 						<div class="form-row">
@@ -97,7 +97,7 @@
 							<div class="col-md form-group">
 								<p class="em" id="lbd" for="bd"></p>
 								<label>Birthday:</label>
-								<s:textfield id="bd" name="birthday"  type="date" cssClass="form-control birthday" value="2020-03-14" required="required"/>
+								<input id="bd" name="birthday" type="date" class="form-control birthday" required/>
 							</div>
 							<div class="col-md"></div>
 						</div>
@@ -106,13 +106,13 @@
 							<div class="col-md form-group">
 								<p class="em" id="ltn" for="tn"></p>
 								<label>Telephone Number:</label>
-								<s:textfield id="tn" name="telephone_no"  class="em" cssClass="form-control" value="[Telephone]" required="required"/>
+								<s:textfield id="tn" name="telephone_no"  class="em" cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="col-md">
 								<p class="em" id="lmn" for="mn"></p>
-								<label>Mobile Number:</label>
-								<s:textfield id="mn" name="cellphone_no"  class="em" cssClass="form-control" value="[Mobile]" required="required"/>
+								<label>Cellphone Number:</label>
+								<s:textfield id="cn" name="cellphone_no"  class="em" cssClass="form-control" required="required"/>
 							</div>
 						</div>
 						<div class="form-row">
@@ -120,7 +120,7 @@
 							<div class="col-md form-group">
 								<p class="em" id="lea" for="ea"></p>
 								<label>E-mail Address:</label>
-								<s:textfield id="ea" name="email_address"  class="em" cssClass="form-control" value="[E-mail]"  required="required"/>
+								<s:textfield id="ea" name="email_address"  class="em" cssClass="form-control" required="required"/>
 							</div>
 							<div class="col-md"></div>
 						</div>
@@ -131,13 +131,13 @@
 							<div class="col-md form-group">
 								<p class="em" id="locc" for="occ"></p>
 								<label>Occupation:</label>
-								<s:textfield id="occ" name="occupation"  cssClass="form-control" value="[Telephone]" required="required"/>
+								<s:textfield id="occ" name="occupation"  cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="col-md">
 								<p class="em" id="lcom" for="com"></p>
 								<label>Company:</label>
-								<s:textfield id="com"  name="company"  cssClass="form-control" value="[Mobile]" required="required"/>
+								<s:textfield id="com"  name="company"  cssClass="form-control" required="required"/>
 							</div>
 						</div> 
 						
@@ -178,8 +178,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <!-- JS -->
     <script src="js/navbar.js"></script>
+    <script src="js/profileLoading.js"></script>
     <script src="js/account.js"></script>
+    
 </body>
 </html>

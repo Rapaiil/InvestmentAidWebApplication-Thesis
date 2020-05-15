@@ -11,6 +11,12 @@ public interface DBCommands {
 			+ " ab.user_token, ab.user_email, ab.user_password, ab.user_status"
 			+ " FROM UserAccountBean ab LEFT JOIN UserProfileBean pb"
 			+ " ON ab.user_profileId = pb.user_profileId";
+	final static String GET_ACCOUNT_RECORD = "SELECT ab.user_profileId, pb.user_firstname, pb.user_lastname,"
+			+ " pb.user_birthday, pb.user_telephonenumber, pb.user_cellphonenumber, pb.user_occupation,"
+			+ " pb.user_company, ab.user_email"
+			+ " FROM UserAccountBean ab LEFT JOIN UserProfileBean pb"
+			+ " ON ab.user_profileId = pb.user_profileId"
+			+ " WHERE pb.user_profileId = :id";
 	final static String UPDATE_OTP_TOKEN = "UPDATE UserAccountBean"
 			+ " set user_token = :tok,"
 			+ " user_status = :status,"

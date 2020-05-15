@@ -99,4 +99,20 @@
 			<result type="json">ratestable</result>
 		</action>
 	</package>
+	
+	<package name="accountsettings" extends="struts-default, json-default">
+		<action name="retrieveaccount" class="invaid.users.action.AccountSettingsAction">
+			<result type="json">
+				<param name="includeProperties">
+					account\..*
+				</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="errortester" extends="struts-default">
+		<action name="testerror" class="invaid.users.action.RedirectErrorAction">
+			<result name="error">error404.jsp</result>
+		</action>
+	</package>
 </struts>

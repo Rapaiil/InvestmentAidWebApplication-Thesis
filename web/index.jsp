@@ -42,7 +42,7 @@
                         <a class="nav-link" href="index.jsp#aboutSection">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="investment_guide.jsp">Investment Guide</a>
+                        <a class="nav-link" href="testredirecterror.jsp">Investment Guide</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="questionnaire_landing.jsp">Risk Profile Questionnaire</a>
