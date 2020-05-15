@@ -82,18 +82,18 @@
 	<package name="webparser" extends="struts-default">
 		<action name="parsemf" class="invaid.users.action.MFXMLParseAction">
 			<result name="success">data/mf.jsp</result>
-			<result name="error">error/error404.jsp</result>
+			<result name="error">/error/error404.html</result>
 		</action>
 		<action name="parseuitf" class="invaid.users.action.UITFXMLParseAction">
 			<result name="success">data/uitf.jsp</result>
-			<result name="error">error/error404.jsp</result>
+			<result name="error">/error/error404.html</result>
 		</action>
 	</package>
 	
 	<package name="currencyconverter" extends="struts-default, json-default">
 		<action name="crawlrates" class="invaid.users.action.ForexWebCrawlAction">
 			<result name="success">data/currencyconverter.jsp</result>
-			<result name="error">error/error500.jsp</result>
+			<result name="error">/error/error500.html</result>
 		</action>
 		<action name="retrieverates" class="invaid.users.action.ForexWebCrawlAction">
 			<result type="json">ratestable</result>
@@ -110,9 +110,5 @@
 		</action>
 	</package>
 	
-	<package name="errortester" extends="struts-default">
-		<action name="testerror" class="invaid.users.action.RedirectErrorAction">
-			<result name="error">error404.jsp</result>
-		</action>
-	</package>
+	
 </struts>
