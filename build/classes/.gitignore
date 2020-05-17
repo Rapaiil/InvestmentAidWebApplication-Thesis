@@ -1,2 +1,4 @@
-/invaid/
+/config.properties
 /config/
+/hibernate.cfg.xml
+/invaid/

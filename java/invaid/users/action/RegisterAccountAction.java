@@ -1,5 +1,6 @@
 package invaid.users.action;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -24,6 +25,7 @@ import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
+import invaid.users.util.VerifyreCAPTCHA;
 
 @SuppressWarnings({ "serial" })
 public class RegisterAccountAction extends ActionSupport
@@ -32,12 +34,14 @@ public class RegisterAccountAction extends ActionSupport
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
 	private boolean isSuccess = false;
+	String gRecaptchaResponse;
+
 	// Database Related
 	Session session = HibernateUtil.getSession();
 
 	public String execute() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
-
+		
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
 		try {
@@ -133,8 +137,8 @@ public class RegisterAccountAction extends ActionSupport
 	// Database Related
 	public List<Object[]> getRecords() {
 		try {
-			String GET_LOGIN_RECORDSs = "SELECT user_email FROM UserAccountBean";
-			Query<Object[]> query = session.createQuery(GET_LOGIN_RECORDSs);
+			//String GET_LOGIN_RECORDSs = "SELECT user_email FROM UserAccountBean";
+			Query<Object[]> query = session.createQuery(GET_EMAILS);
 			return query.getResultList();
 		} catch(HibernateException he) {
 			session.getTransaction().rollback();
@@ -158,4 +162,11 @@ public class RegisterAccountAction extends ActionSupport
 		this.sessionMap = sessionMap;
 	}
 
+	public String getgRecaptchaResponse() {
+		return gRecaptchaResponse;
+	}
+
+	public void setgRecaptchaResponse(String gRecaptchaResponse) {
+		this.gRecaptchaResponse = gRecaptchaResponse;
+	}
 }

@@ -41,5 +41,10 @@ public interface DBCommands {
 			+ "user_occupation = :occupation,"
 			+ "user_company = :company "
 			+ "WHERE user_profileId = :profid";
+	final static String GET_CURRENT_EMAIL = "SELECT user_email "
+			+ "FROM UserAccountBean"
+			+ "WHERE user_profileId = :profid";
+	final static String GET_EMAILS = "SELECT user_email "
+			+ "FROM UserAccountBean";
 	public List<Object[]> getRecords();
 }
