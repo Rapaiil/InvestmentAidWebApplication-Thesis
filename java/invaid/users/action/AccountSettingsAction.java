@@ -1,8 +1,8 @@
 package invaid.users.action;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -47,11 +47,11 @@ public class AccountSettingsAction extends ActionSupport implements SessionAware
 		try {
 			if(list != null) {
 				for(Object[] record: list) {
-					Date date = new SimpleDateFormat("yyyy/MM/dd").parse(record[3].toString());
+					LocalDate localDate = LocalDate.parse(record[3].toString(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 					account = new AccountSettingDetail();
 					account.setUser_firstName(record[1].toString());
 					account.setUser_lastName(record[2].toString());
-					account.setUser_birthday(new SimpleDateFormat("yyyy-MM-dd").format(date));
+					account.setUser_birthday(localDate.toString());
 					account.setUser_telno(record[4].toString());
 					account.setUser_cellno(record[5].toString());
 					account.setUser_occupation(record[6].toString());
@@ -61,8 +61,8 @@ public class AccountSettingsAction extends ActionSupport implements SessionAware
 					return SUCCESS;
 				}
 			}
-		} catch(ParseException pe) {
-			System.err.println(pe.getMessage());
+		} catch(DateTimeParseException dtpe) {
+			System.err.println(dtpe.getMessage());
 		}
 		return ERROR;
 	}
