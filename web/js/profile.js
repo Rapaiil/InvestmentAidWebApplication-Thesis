@@ -53,30 +53,8 @@ $(function(){
 		var id 		= $(this).attr("id");
 		ValidateInput.validate(id);
 	});
-	$("#ea").change(function(){
-		var email 	= $.trim($("#ea").val());
-		var isEmailValid 	= ValidateEmail.validate(email);
-		var errmsg 	= $("#lea");
-		if(email == ""){
-			errmsg.html("This field is required");
-			errmsg.css("color", "red");
-			errmsg.css("visibility","visible");
-		}
-		else{
-			if(isEmailValid){
-				errmsg.html("");
-				errmsg.css("color", "black");
-				errmsg.css("visibility","hidden");
-			}
-			else{
-				errmsg.html("Please enter a valid email");
-				errmsg.css("color", "red");
-				errmsg.css("display","block");
-				errmsg.css("font-size","12px");
-			}
-		}
-	});
 	$("#tn").change(function(){
+		alert("#tn");
 		var tn 	= $.trim($("#tn").val());
 		tn = tn.replace(/ +/g, "");
 		var isTelNoValid = ValidateTelNo.validate(tn);
@@ -130,17 +108,6 @@ ValidateName = {
 		validate: function(input){
 			if(/^[A-Za-z_-]*$/.test(input.trim())){
 					return true;
-			}
-			else{
-				return false;
-			}
-		}
-}
-
-ValidateEmail = {
-		validate: function(input){
-			if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input.trim())){
-				return true;
 			}
 			else{
 				return false;
