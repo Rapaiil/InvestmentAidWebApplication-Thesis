@@ -107,12 +107,15 @@
                         </div>
                         <div class="form-group">
                             <label for="date-purchased">Date Purchased: *</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="date-purchased">
                         </div>
                         <div class="form-group">
                             <label for="horizon">Investment Horizon: *</label>
                             <select class="custom-select" id="horizon" required>
-                                <option>...</option>
+                                <option>Immediate (&lt;3 years)</option>
+                                <option>Short-term (3-5 years)</option>
+                                <option>Medium-term (6-10 years)</option>
+                                <option>Long-term (&gt;11 years)</option>
                             </select>
                         </div>
                         <div class="form-group">
