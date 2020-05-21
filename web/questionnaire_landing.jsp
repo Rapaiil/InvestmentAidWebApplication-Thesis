@@ -120,7 +120,7 @@
                         <p class="text-center">This questionnaire is from <b>Charles Schwab</b> to help in evaluating the person's willingness to take financial risks. 
                             <br> Your <b>Investor Profile</b> will be determined by your <b>Time Horizon</b> and <b>Risk Tolerance</b> scores.</p>
                         <div class="text-center">
-                        	<button href="questionnaire_set.jsp" id="questionnaire_button" class="btn btn-primary shadow-none text-uppercase">Take Questionnaire</button>
+                        	<a type="button" href="questionnaire_set.jsp" id="questionnaire_button" class="btn btn-primary shadow-none text-uppercase">Take Questionnaire</a>
                         </div>
                     </div>
                 </div>
