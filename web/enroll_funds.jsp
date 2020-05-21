@@ -101,9 +101,7 @@
                         </div>
                         <div class="form-group">
                             <label for="units-bought">Number of Units bought: *</label>
-                            <select class="custom-select" id="units-bought" required>
-                                <option>...</option>
-                            </select>
+                            <input class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="date-purchased">Date Purchased: *</label>
@@ -122,9 +120,6 @@
                                     <div class="input-group-text">&#8369;</div>
                                 </div>
                                 <input type="text" class="form-control">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">.00</span>
-                                </div>
                             </div>
                         </div>
                         <div class="text-center">
