@@ -71,13 +71,15 @@
 						<s:form action="registerprofile" method="post" class="registration-profile-form">
 							<h4 class="card-title mb-5 text-uppercase">register</h4>
 							<div class="form-row mb-3">
-								<p class="em" id="lfn" for="fn"></p>
+								
 								<div class="col-xl col-lg col-md-12 col-12 form-group">
+									<p class="em" id="lfn" for="fn"></p>
 							    	<label>First Name: <span class="required">*</span></label>
 									<s:textfield id="fn" name="user_firstname" cssClass="form-control" placeholder="ex. Juan" required="required"/>
 								</div>
-								<p class="em" id="lln" for="ln"></p>
+								
 								<div class="col-xl col-lg col-md-12 col-12">
+									<p class="em" id="lln" for="ln"></p>
 									<label>Last Name: <span class="required">*</span></label>
 									<s:textfield id="ln" name="user_lastname" cssClass="form-control" placeholder="ex. dela Cruz" required="required"/>
 								</div>
@@ -343,25 +345,29 @@
 								</div>
 								
 								<div class="form-row mb-3">
-									<p class="em" id="lmn" for="mn"></p>
+									
 									<div class="col-lg-6 col-md-12 col-12">
+										<p class="em" id="lmn" for="mn"></p>
 										<label>Cellphone Number: <span class="required">*</span></label>
 										<s:textfield id="mn" name="user_cellphonenumber" cssClass="form-control" placeholder="ex. 0977 823892" required="required"/>
 									</div>
-									<p class="em" id="ltn" for="mn"></p>
+									
 									<div class="col-lg-6 col-md-12 col-12">
+										<p class="em" id="ltn" for="mn"></p>
 										<label>Telephone Number: <span class="required">*</span></label>
 										<s:textfield id="tn" name="user_telephonenumber" cssClass="form-control" placeholder="ex: 046 4897700, 8123 4567" required="required"/>
 									</div>
 								</div>
 								<div class="form-row mb-3">
-									<p class="em" id="locc" for="com"></p>
+									
 									<div class="col-xl col-md-12 col-12">
+										<p class="em" id="locc" for="com"></p>
 										<label>Occupation: <span class="required">*</span></label>
 										<s:textfield id="occ" name="user_occupation" cssClass="form-control" required="required"/>
 									</div>
-									<p class="em" id="lcom" for="com"></p>
+									
 									<div class="col-xl col-md-12 col-12">
+										<p class="em" id="lcom" for="com"></p>
 										<label>Company Name: <span class="required">*</span></label>
 										<s:textfield id="com" name="user_company" cssClass="form-control" required="required"/>
 									</div>

@@ -78,27 +78,30 @@
 					<div class="card-body">
 						<h4 class="card-title text-uppercase">register</h4>
 						<s:form action="registeraccount" method="post" class="registration-account-form">
-							<p class="em" id="lea" for="ea"><small>Error Goes Here</small></p>
+							
 
 							<div class="form-group">
+								<p class="em" id="lea" for="ea"><small>Error Goes Here</small></p>
 								<label>Email Address: <span class="required" style="color:red;">*</span></label>
 								<s:textfield id="ea" name="user_email" cssClass="form-control" />
 							</div>
-							<p class="em" id="lp" for="p"><small>Error Goes Here</small></p>
+							
 							<div class="form-group">
+								<p class="em" id="lp" for="p"><small>Error Goes Here</small></p>
 								<label>Password: <span class="required" style="color:red;">*</span></label>
 								<s:password id="p" name="user_password" cssClass="form-control" />
 								<div class="progress mt-1">
         							<div class="progress-bar"></div>
    								</div>
 							</div>
-							<small class="em" id="lcp" for="cp">Error Goes Here</small>
+							
 							<div class="form-group">
+								<small class="em" id="lcp" for="cp">Error Goes Here</small>
 								<label>Confirm Password: <span class="required" style="color:red;">*</span></label>
 								<s:password id="cp" name="user_repassword" cssClass="form-control"/>
 							</div>
 							
-							<s:textfield name="lgrn" type="hidden"/>
+							<s:textfield name="lgrn" type="hidden" class="recaptcha-error"/>
 							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
 							
 							<div class="form-group">

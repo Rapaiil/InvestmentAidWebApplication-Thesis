@@ -153,12 +153,19 @@ body {
     outline: none;
 }
 
+.errorMessage{
+	color:red;
+}
+
+.recaptcha-error {
+	color: red;
+	text-align: center;
+}
+
 /* MOBILE RESPONSIVE */
 @media (max-width: 991px) {
     .form-control {
 		margin-bottom: 10px;
 	}
 }
-.errorMessage{
-	color:red;
-}
+

@@ -168,6 +168,15 @@ body {
 }
 
 
+.recaptcha-error {
+	color: red;
+	text-align: center;
+}
+
+.errorMessage{
+	color:red;
+}
+
 /* ALERT */
 .alert {
 	width: 1100px;
@@ -179,7 +188,4 @@ body {
     .alert {
     	max-width: 100%;
     }
-}
-.errorMessage{
-	color:red;
 }
