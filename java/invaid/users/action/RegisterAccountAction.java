@@ -1,19 +1,13 @@
 package invaid.users.action;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,7 +19,6 @@ import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
-import invaid.users.util.VerifyreCAPTCHA;
 
 @SuppressWarnings({"serial"})
 public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {

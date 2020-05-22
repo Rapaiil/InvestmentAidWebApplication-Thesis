@@ -52,5 +52,15 @@ public interface DBCommands {
 			+ "WHERE user_profileId = :profid";
 	final static String GET_EMAILS = "SELECT user_email "
 			+ "FROM UserAccountBean";
+	final static String UPDATE_USER_FUND = "UPDATE UserFundBean"
+			+ " set user_fundName = :fundname,"
+			+ " user_fundType = :fundtype,"
+			+ " user_numOfUnitsShares = :numunits,"
+			+ " user_fundHorizon = :fundhor,"
+			+ " user_fundDatePurchased = :fundpurch,"
+			+ " user_fundInitAmount = :fundamt"
+			+ " WHERE user_fundId = :fundid AND user_profileId = :profid";
+	final static String GET_FUNDLIST = "FROM UserFundBean"
+			+ " WHERE user_profileId = :profid";
 	public List<Object[]> getRecords();
 }

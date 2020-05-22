@@ -47,7 +47,6 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 							sessionMap.put("loginId", record[0].toString());
 							sessionMap.put("loginFirstName", record[1].toString());
 							sessionMap.put("loginLastName", record[2].toString());
-							sessionMap.put("loginEmail", loginAccount.getLogin_email());
 							sessionMap.put("userStatus", getSessionStatus((int) record[6]));
 							//isSuccess = !isSuccess;
 							return SUCCESS;

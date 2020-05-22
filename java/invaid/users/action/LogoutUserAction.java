@@ -35,7 +35,6 @@ public class LogoutUserAction extends ActionSupport implements SessionAware, Run
 			sessionMap.remove("loginId");
 			sessionMap.remove("loginFirstName");
 			sessionMap.remove("loginLastName");
-			sessionMap.remove("loginEmail");
 			sessionMap.remove("userStatus");
 			sessionMap.clear();
 			if(sessionMap.isEmpty()) {
