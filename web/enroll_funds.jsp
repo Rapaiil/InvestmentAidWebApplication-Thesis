@@ -101,18 +101,19 @@
                         </div>
                         <div class="form-group">
                             <label for="units-bought">Number of Units bought: *</label>
-                            <select class="custom-select" id="units-bought" required>
-                                <option>...</option>
-                            </select>
+                            <input class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="date-purchased">Date Purchased: *</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="date-purchased">
                         </div>
                         <div class="form-group">
                             <label for="horizon">Investment Horizon: *</label>
                             <select class="custom-select" id="horizon" required>
-                                <option>...</option>
+                                <option>Immediate (&lt;3 years)</option>
+                                <option>Short-term (3-5 years)</option>
+                                <option>Medium-term (6-10 years)</option>
+                                <option>Long-term (&gt;11 years)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -122,9 +123,6 @@
                                     <div class="input-group-text">&#8369;</div>
                                 </div>
                                 <input type="text" class="form-control">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">.00</span>
-                                </div>
                             </div>
                         </div>
                         <div class="text-center">

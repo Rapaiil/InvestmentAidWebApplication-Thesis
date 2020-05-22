@@ -1,5 +1,7 @@
 package invaid.users.action;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -34,14 +36,17 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	private boolean isSuccess = false;
 	Session session = HibernateUtil.getSession();
 	
+	
 	public String execute() {
-		profile_id = (String) sessionMap.get("loginId");
+		System.out.println("Executing...");
+		
 		int cnLength = cellphone_no.length();
 		if(cnLength == 11) {
 			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
 		}
 		else if(cnLength == 12) {
 			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
+			
 		}
 		else if(cnLength == 13) {
 			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
@@ -51,90 +56,105 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 		
 		boolean success = saveAccountSettings();
 		
-		if(success) { System.out.println("success"); } else {
-		System.out.println("fail"); }
+		if(success) {
+			System.out.println("success");
+			sessionMap.replace("loginFirstName", first_name);
+		} else {
+			//System.out.println("fail"); 
+		}
 		
+		//System.out.println("SUCCESS");
 		return SUCCESS;
 	}
 	
 	public void validate() {
+		profile_id = (String) sessionMap.get("loginId");
+		System.out.println(profile_id);
+		System.out.println("Validating...");
+		System.out.println("FN");
 		boolean fnValid = ValidateEmpty(first_name);
+		System.out.println("LN");
 		boolean lnValid = ValidateEmpty(last_name);
+		System.out.println("TN");
 		boolean tnValid = ValidateEmpty(telephone_no);
+		System.out.println("CN");
 		boolean cnValid = ValidateEmpty(cellphone_no);
+		System.out.println("EA");
 		boolean eaValid = ValidateEmpty(email_address);
+		System.out.println("OCC");
 		boolean occValid = ValidateEmpty(occupation);
+		System.out.println("COM");
 		boolean cmpValid = ValidateEmpty(company);
 		
 		//First Name
 		if(!fnValid) {
-			addFieldError("first_name", "This field is required");
+			addFieldError("lfntf", "This field is required");
 		}
 		else {
 			fnValid = ValidateName(first_name);
 			if(!fnValid) {
-				addFieldError("first_name", "Please enter a valid name");
+				addFieldError("lfntf", "Please enter a valid name");
 			}
 		}
 		
 		//Last Name
 		if(!lnValid){
-			addFieldError("last_name", "This field is required");
+			addFieldError("llntf", "This field is required");
 		}
 		else {
 			lnValid = ValidateName(last_name);
 			if(!lnValid) {
-				addFieldError("last_name", "Please enter a valid name");
+				addFieldError("llntf", "Please enter a valid name");
 			}
 		}
 		
 		//Telephone Number
 		if(!tnValid){
-			addFieldError("occupation", "This field is required");
+			addFieldError("ltntf", "This field is required");
 		}
 		else {
 			tnValid = ValidateTel(telephone_no);
 			if(!cnValid) {
-				addFieldError("telephone_no", "Please enter a valid telephone no");
+				addFieldError("ltntf", "Please enter a valid telephone no");
 			}
 		}
 		
 		//Cellphone Number
 		if(!cnValid){
-			addFieldError("cellphone_no", "This field is required");
+			addFieldError("lcntf", "This field is required");
 		}
 		else {
 			cnValid = ValidateCell(cellphone_no);
 			if(!cnValid) {
-				addFieldError("cellphone_no", "Please enter a valid cellphone no");
+				addFieldError("lcntf", "Please enter a valid cellphone no");
 			}
 		}
 		
 		//Email Address
 		if(!eaValid){
-			addFieldError("email_address", "This field is required");
+			addFieldError("leatf", "This field is required");
 		}
 		else {
 			eaValid = ValidateEmail(email_address);
 			if(!eaValid) {
-				addFieldError("email_address", "Please enter a valid email address");
+				addFieldError("leatf", "Please enter a valid email address");
 			}
 			else {
 				eaValid = EmailExist(email_address);
 				if(!eaValid) {
-					addFieldError("email_address", "This email is already used");
+					addFieldError("leatf", "This email is already used");
 				}
 			}
 		}
 		
 		//Occupation
 		if(!occValid){
-			addFieldError("occupation", "This field is required");
+			addFieldError("locctf", "This field is required");
 		}
 		
 		//Company
 		if(!cmpValid){
-			addFieldError("company", "This field is required");
+			addFieldError("lcomtf", "This field is required");
 		}
 		
 	}
@@ -152,7 +172,8 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	public List<Object[]> getRecords() {
 		try {
 			//String GET_LOGIN_RECORDSs = "SELECT user_email FROM UserAccountBean";
-			Query<Object[]> query = session.createQuery(GET_EMAILS);
+			Query query = session.createQuery(GET_EMAILS);
+			query.setParameter("profid", profile_id);
 			return query.getResultList();
 		} catch(HibernateException he) {
 			session.getTransaction().rollback();
@@ -193,11 +214,16 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	}
 	
 	private boolean saveProfile() {
+		System.out.println(birthday);
+		LocalDate localDate = LocalDate.parse(birthday.toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		String formattedDate = localDate.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+		System.out.println(localDate.toString());
+		System.out.println(formattedDate);
 		try {
 			Query query = session.createQuery(SAVE_PROFILE);
 			query.setParameter("first_name", first_name);
 			query.setParameter("last_name", last_name);
-			query.setParameter("birthday", birthday);
+			query.setParameter("birthday", formattedDate);
 			query.setParameter("cellphone_no", cellphone_no);
 			query.setParameter("telephone_no", telephone_no);
 			query.setParameter("occupation", occupation);
@@ -265,37 +291,44 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	
 	private boolean EmailExist(String string) {
 		List<Object[]> list = getCurrentEmail();
-		 boolean isSame = false;
-		 if(list != null) {
-				for(Object record: list) {
-					if(string.equals(record)) { 
-						isSame = true; 
-					}
-				}
-				if(isSame) {
+		if(list!=null) {
+			System.out.println("not null");
+			for(Object record: list) {
+				//System.out.println(record.toString());
+				if(record.toString().equals(string)) {
 					return true;
 				}
 				else {
+					//Meaning iniba niya this calls for another validation
 					List<Object[]> list2 = getRecords();
-					 boolean isValid = true;
-					 if(list2 != null) {
-							for(Object record: list2) {
-								if(string.equals(record)) { 
-									isValid = false; 
-								}
+					boolean isExisting = false;
+					if(list2!=null) {
+						System.out.println("not null2");
+						for(Object record2:list2) {
+							//System.out.println(record2.toString());
+							if(string.equals(record2.toString())) {
+								isExisting = true;
 							}
-							if(!isValid) {
-								return false;
-							}
-					 }
+						}
+						if(isExisting) {
+							return false;
+						}
+						else {
+							return true;
+						}
+					}
+					else {
+						return true;
+					}
 				}
-		 }
-		 return true;
+			}
+		}
+		return false;
 	}
 	
-	private List<Object[]> getCurrentEmail() {
+	public List<Object[]> getCurrentEmail() {
 		try {
-			Query<Object[]> query = session.createQuery(GET_CURRENT_EMAIL);
+			Query query = session.createQuery(GET_CURRENT_EMAIL);
 			query.setParameter("profid", profile_id);
 			
 			return query.getResultList();

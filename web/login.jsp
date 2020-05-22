@@ -89,7 +89,8 @@
 								<s:password  cssClass="form-control" name="login_password" placeholder="Password" required="required"/>
 							</div>
 							
-							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+							<s:textfield name="lgrn" type="hidden"/>
+							<div id="gr" class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
 							
 							<div class="form-group">
 								<button id="login_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase">Login</button>

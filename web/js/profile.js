@@ -17,7 +17,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid name");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
@@ -40,7 +40,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid name");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
@@ -54,7 +54,6 @@ $(function(){
 		ValidateInput.validate(id);
 	});
 	$("#tn").change(function(){
-		alert("#tn");
 		var tn 	= $.trim($("#tn").val());
 		tn = tn.replace(/ +/g, "");
 		var isTelNoValid = ValidateTelNo.validate(tn);
@@ -73,7 +72,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid telephone number");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
@@ -97,7 +96,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid cellphone number");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}

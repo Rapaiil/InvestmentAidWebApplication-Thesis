@@ -17,7 +17,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid name");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
@@ -40,7 +40,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid name");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
@@ -71,7 +71,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid email");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
@@ -95,17 +95,17 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid telephone number");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
 	});
-	$("#mn").change(function(){
-		var mn 	= $.trim($("#mn").val());
-		mn = mn.replace(/ +/g, "");
-		var isCelNoValid = ValidateCelNo.validate(mn);
-		var errmsg 	= $("#lmn");
-		if(mn == ""){
+	$("#cn").change(function(){
+		var cn 	= $.trim($("#cn").val());
+		cn = cn.replace(/ +/g, "");
+		var isCelNoValid = ValidateCelNo.validate(cn);
+		var errmsg 	= $("#lcn");
+		if(cn == ""){
 			errmsg.html("This field is required");
 			errmsg.css("color", "red");
 			errmsg.css("visibility","visible");
@@ -119,7 +119,7 @@ $(function(){
 			else{
 				errmsg.html("Please enter a valid cellphone number");
 				errmsg.css("color", "red");
-				errmsg.css("display","block");
+				errmsg.css("visibility","visible");
 				errmsg.css("font-size","12px");
 			}
 		}
