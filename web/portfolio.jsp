@@ -18,8 +18,8 @@
     <!-- Custom CSS-->
     <link rel="stylesheet" type="text/css" href="css/portfolio.css">
     <link rel="stylesheet" type="text/css" href="css/modal.css">
-
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.css"/>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.css"/>
 
     <!-- Chart JS -->
     <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
@@ -86,8 +86,8 @@
 	                    <div class="col-lg-3">
 	                        <div class="sidebar">
 	                            <div class="net">
-	                                <h1>&#8369;1M &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h1>
-	                                <small>Portfolio Value</small>
+	                                <h1>&#8369;1M</h1>
+	                                <small>Total Portfolio Value</small>
 	                            </div>
 	                            <hr/>
 	                            <ul class="nav nav nav-pills flex-column" id="myTab" role="tablist">
@@ -110,137 +110,9 @@
 	                        <!-- CONTENT PORTFOLIO-->
 	                        <div class="portfolio-content tab-pane fade show active" id="portfolio" role="tabpanel">
 	                            <h1>My Portfolio</h1>
-	                            <div class="net-summary">
-	                                <!-- CARD SUMMARY -->
-	                                <div class="card-deck card-summary">
-										<div class="card">
-	                                        <div class="card-body">
-	                                            <h3>&#8369; 2,100 &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Overall Gain/Loss</small>
-	                                        </div>
-	                                    </div>
-	                                    <div class="card">
-	                                        <div class="card-body">
-	                                            <h3>1.4% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></h3>
-	                                            <small class="card-title">Overall Gain/Loss (%)</small>
-	                                        </div>
-	                                    </div>
-									</div>
-									<!-- OVERALL GAIN/LOSS TABLE -->
-	                                <div class="card mt-3">
-	                                	<div class="card-body">
-	                                        <h3>Overall Gain/Loss</h3>
-	                                        <div class="table-responsive-md top-five-investments">
-	                                            <table class="table table-hover">
-	                                                <thead class="investment-performance-table">
-	                                                    <tr>
-	                                                        <th scope="col">Fund Name</th>
-	                                                        <th scope="col">Type</th>
-	                                                        <th scope="col">Current NAVPU/NAVPS</th>
-	                                                        <th scope="col">Daily (%)</th>
-	                                                    </tr>
-	                                                </thead>
-	                                                <tbody>
-	                                                    <tr>
-	                                                        <td>ALFM</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>Sun Life Financial</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>ATRAM</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                    </tr>
-	                                                </tbody>
-	                                            </table>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <!-- GRAPHS -->
-	                                <div class="card-deck mt-3">
-	                                    <!-- LINE GRAPH/PORTFOLIO PERFORMANCE -->
-	                                    <div class="card p-3 text-center">
-	                                        <h4 class="card-title">Portfolio Performance</h4>
-	                                        <div class="card-body">
-	                                            <ul class="nav nav-pills pb-3">
-	                                                <li class="nav-item">
-	                                                    <a class="nav-link active" href="#">Today</a>
-	                                                </li>
-	                                                <li class="nav-item">
-	                                                    <a class="nav-link" href="#">Week</a>
-	                                                </li>
-	                                                <li class="nav-item">
-	                                                    <a class="nav-link" href="#">Month</a>
-	                                                </li>
-	                                                <li class="nav-item">
-	                                                    <a class="nav-link" href="#">1Y</a>
-	                                                </li>
-	                                                <li class="nav-item">
-	                                                    <a class="nav-link" href="#">3Y</a>
-	                                                </li>
-	                                                <li class="nav-item">
-	                                                    <a class="nav-link" href="#">5Y</a>
-	                                                </li>
-	                                            </ul>
-	                                            <canvas id="lineGraphPerformance" width="400" height="400"></canvas>
-	                                        </div>
-	                                    </div>
-	                                    <!-- ASSET ALLOCATION -->
-	                                    <div class="card p-3 text-center">
-	                                        <h4 class="card-title">Asset Allocation</h4>
-	                                        <div class="card-body">
-	                                            <canvas id="doughnutGraphAsset" width="400" height="400"></canvas>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <!-- TOP 5 PERFORMING INVESTMENTS -->
-	                                <div class="card mt-3">
-	                                    <div class="card-body">
-	                                        <h3>Top 3 Performing Investments</h3>
-	                                        <div class="table-responsive-md top-five-investments">
-	                                            <table class="table table-hover">
-	                                                <thead class="investment-performance-table">
-	                                                    <tr>
-	                                                        <th scope="col">Fund Name</th>
-	                                                        <th scope="col">Type</th>
-	                                                        <th scope="col">Current NAVPU/NAVPS</th>
-	                                                        <th scope="col">Daily (%)</th>
-	                                                    </tr>
-	                                                </thead>
-	                                                <tbody>
-	                                                    <tr>
-	                                                        <td>ALFM</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>Sun Life Financial</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>ATRAM</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                    </tr>
-	                                                </tbody>
-	                                            </table>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
+	                            <h2 class="text-muted text-center" style="margin-top: 100px;">Click 'Enroll Funds' to add new fund entry</h2>
+                           </div>	     
+	                        
 	                        <!-- MUTUAL FUNDS -->
 	                        <div class="tab-pane fade" id="mutual_funds" role="tabpanel">
 	                            <h1>Mutual Funds</h1>
@@ -253,55 +125,18 @@
 	                                                <thead>
 	                                                    <tr>
 	                                                        <th scope="col">Fund Name</th>
-	                                                        <th scope="col">Type</th>
+	                                                        <th scope="col">Fund Classification</th>
+	                                                        <th scope="col">Amount</th>
 	                                                        <th scope="col">Current NAVPU/NAVPS</th>
-	                                                        <th scope="col">Daily (%)</th>
-	                                                        <th scope="col"></th>
+	                                                        <th scope="col">No. Shares/Units</th>
+	                                                        <th scope="col">Current Market Price</th>
+	                                                        <th scope="col">Gain/Loss (%)</th>
 	                                                    </tr>
 	                                                </thead>
 	                                                <tbody>
-	                                                    <tr>
-	                                                        <td>ALFM</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td><a href="edit_funds.jsp">Edit</a>&nbsp;<a href="#" data-toggle="modal" data-target="#deleteFundModal">Delete</a></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>Sun Life Financial</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td><a href="edit_funds.jsp">Edit</a>&nbsp;<a href="#" data-toggle="modal" data-target="#deleteFundModal">Delete</a></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>ATRAM</td>
-	                                                        <td>Mutual Fund</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td><a href="edit_funds.jsp">Edit</a>&nbsp;<a href="#" data-toggle="modal" data-target="#deleteFundModal">Delete</a></td>
-	                                                    </tr>
+	                                                    
 	                                                </tbody>
 	                                            </table>
-	                                            <nav aria-label="Page navigation example">
-												  <ul class="pagination justify-content-end">
-												    <li class="page-item">
-												      <a class="page-link" href="#" aria-label="Previous">
-												        <span aria-hidden="true">&laquo;</span>
-												        <span class="sr-only">Previous</span>
-												      </a>
-												    </li>
-												    <li class="page-item"><a class="page-link" href="#">1</a></li>
-												    <li class="page-item"><a class="page-link" href="#">2</a></li>
-												    <li class="page-item"><a class="page-link" href="#">3</a></li>
-												    <li class="page-item">
-												      <a class="page-link" href="#" aria-label="Next">
-												        <span aria-hidden="true">&raquo;</span>
-												        <span class="sr-only">Next</span>
-												      </a>
-												    </li>
-												  </ul>
-												</nav>
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -319,55 +154,18 @@
 	                                                <thead>
 	                                                    <tr>
 	                                                        <th scope="col">Fund Name</th>
-	                                                        <th scope="col">Type</th>
+	                                                        <th scope="col">Fund Classification</th>
+	                                                        <th scope="col">Amount</th>
 	                                                        <th scope="col">Current NAVPU/NAVPS</th>
-	                                                        <th scope="col">Daily (%)</th>
-	                                                        <th scope="col"></th>
+	                                                        <th scope="col">No. Shares/Units</th>
+	                                                        <th scope="col">Current Market Price</th>
+	                                                        <th scope="col">Gain/Loss (%)</th>
 	                                                    </tr>
 	                                                </thead>
 	                                                <tbody>
-	                                                    <tr>
-	                                                        <td>BDO</td>
-	                                                        <td>UITF</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td><a href="edit_funds.jsp">Edit</a>&nbsp;<a href="#" data-toggle="modal" data-target="#deleteFundModal">Delete</a></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>BPI</td>
-	                                                        <td>UITF</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td><a href="edit_funds.jsp">Edit</a>&nbsp;<a href="#" data-toggle="modal" data-target="#deleteFundModal">Delete</a></td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <td>Maybank</td>
-	                                                        <td>UITF</td>
-	                                                        <td>&#8369; &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td>% &nbsp; <i class="fas fa-caret-up"></i> <i class="fas fa-caret-down"></i></td>
-	                                                        <td><a href="edit_funds.jsp">Edit</a>&nbsp;<a href="#" data-toggle="modal" data-target="#deleteFundModal">Delete</a></td>
-	                                                    </tr>
+	                                                    
 	                                                </tbody>
 	                                            </table>
-	                                            <nav aria-label="Page navigation example">
-												  <ul class="pagination justify-content-end">
-												    <li class="page-item">
-												      <a class="page-link" href="#" aria-label="Previous">
-												        <span aria-hidden="true">&laquo;</span>
-												        <span class="sr-only">Previous</span>
-												      </a>
-												    </li>
-												    <li class="page-item"><a class="page-link" href="#">1</a></li>
-												    <li class="page-item"><a class="page-link" href="#">2</a></li>
-												    <li class="page-item"><a class="page-link" href="#">3</a></li>
-												    <li class="page-item">
-												      <a class="page-link" href="#" aria-label="Next">
-												        <span aria-hidden="true">&raquo;</span>
-												        <span class="sr-only">Next</span>
-												      </a>
-												    </li>
-												  </ul>
-												</nav>
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -513,11 +311,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script>
     <!-- JS -->
-	<script src="js/navbar.js"></script>
-	<script src="js/datatables.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/datatables.js"></script>
 </body>
 </html>
