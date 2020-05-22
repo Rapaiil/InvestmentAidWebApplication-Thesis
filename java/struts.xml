@@ -30,6 +30,7 @@
 			<result name="denied"></result>
 			<result name="invalid">login.jsp</result>
 			<result name="error"></result>
+			<result name="input">login.jsp</result>
 		</action>
 		<action name="loginaccount" class="invaid.users.action.VerifyLoginAction">
 			<result name="success">index.jsp</result>
@@ -108,6 +109,11 @@
 					account\..*
 				</param>
 			</result>
+		</action>
+		<action name="saveaccount" class="invaid.users.action.SaveAccountSettingsAction">
+			<result name="success">account_settings.jsp</result>
+			<result name="input">account_settings.jsp</result>
+			<result name="error">account_settings.jsp</result>
 		</action>
 	</package>
 	

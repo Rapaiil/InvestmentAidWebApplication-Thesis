@@ -5,6 +5,11 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,7 +31,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
 	private boolean isSuccess = false;
-	String gRecaptchaResponse;
+	String gRecaptchaResponse = ServletActionContext.getRequest().getParameter("g-recaptcha-response");
 
 	// Database Related
 	Session session = HibernateUtil.getSession();
@@ -128,7 +133,21 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		 * addFieldError("user_email", "Please enter a valid email"); }
 		 * 
 		 * //Password Validation
-		 */	}
+		 */	
+		 //reCAPTCHA Validation
+		boolean recaptchaSuccess = false;
+		try {
+			recaptchaSuccess = VerifyreCAPTCHA.verify(gRecaptchaResponse);
+		}
+		catch(IOException ioe){
+			ioe.getMessage();
+		}
+		
+		if(!recaptchaSuccess) {
+			addFieldError("lgrn","Invalid reCAPTCHA");
+		}
+		
+	}
 
 	
 	//Database Related

@@ -98,7 +98,9 @@
 								<s:password id="cp" name="user_repassword" cssClass="form-control"/>
 							</div>
 							
+							<s:textfield name="lgrn" type="hidden"/>
 							<div class="g-recaptcha mb-3" data-sitekey="6LdivccUAAAAAIHbyNfHrXPqIxs7vb09-srsnbAD"></div>
+							
 							<div class="form-group">
 								<button id="regAccount_button" type="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mx-auto w-25">Register</button>
 							</div>

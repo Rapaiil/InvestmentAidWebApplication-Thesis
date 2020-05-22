@@ -172,3 +172,6 @@ body {
 		margin-bottom: 10px;
 	}
 }
+.errorMessage{
+	color:red;
+}

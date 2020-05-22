@@ -1,8 +1,10 @@
 package invaid.users.action;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,6 +20,7 @@ import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.OTPUtil;
 import invaid.users.util.TokenUtil;
+import invaid.users.util.VerifyreCAPTCHA;
 
 @SuppressWarnings({"serial", "rawtypes"})
 public class LoginAccountAction extends ActionSupport implements ModelDriven<LoginAccountModel>, SessionAware, DBCommands, Runnable {
@@ -26,21 +29,20 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 	private String token;
 	Session session = HibernateUtil.getSession();
 	private boolean isSuccess = false, isDenied = false, isInvalid = false;
+	String gRecaptchaResponse = ServletActionContext.getRequest().getParameter("g-recaptcha-response");
 	
 	public String execute() {
 		session.getTransaction().begin();
-
+		
 		List<Object[]> list = getRecords();
 		
 		if(list != null) {
 			for(Object[] record: list) {
 				if(record[4].toString().equals(loginAccount.getLogin_email())
 					&& isPasswordMatch(loginAccount.getLogin_password(), record[5].toString())) {
-					
 					if(allowLogin(record[6].toString())) {
 						token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
 						loginAccount.setLogin_otp(OTPUtil.generateOTP());
-						
 						if(updateUserToken(record[0].toString(), (int) record[6], token,
 								loginAccount.getLogin_otp()) && Mail.sendMultiFactorAuthentication(loginAccount)) {
 							sessionMap.put("loginToken", token);
@@ -72,6 +74,20 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 //			return "invalid";
 //		else
 //			return ERROR;
+	}
+	
+	public void validate() {
+		boolean recaptchaSuccess = false;
+		try {
+			recaptchaSuccess = VerifyreCAPTCHA.verify(gRecaptchaResponse);
+		}
+		catch(IOException ioe){
+			ioe.getMessage();
+		}
+		
+		if(!recaptchaSuccess) {
+			addFieldError("lgrn","Invalid reCAPTCHA");
+		}
 	}
 	
 	@Override
@@ -150,6 +166,14 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 		}
 		
 		return null;
+	}
+	
+	public String getgRecaptchaResponse() {
+		return gRecaptchaResponse;
+	}
+
+	public void setgRecaptchaResponse(String gRecaptchaResponse) {
+		this.gRecaptchaResponse = gRecaptchaResponse;
 	}
 
 }

@@ -180,3 +180,6 @@ body {
     	max-width: 100%;
     }
 }
+.errorMessage{
+	color:red;
+}

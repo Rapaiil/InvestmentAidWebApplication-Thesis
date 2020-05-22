@@ -82,12 +82,14 @@
 						<div class="form-row">
 							<div class="col-md form-group">
 								<p class="em" id="lfn" for="fn"></p>
-								<label>First Name:</label>
+								<s:textfield name="lfntf" type="hidden"/>
+								<label>First Name:</label>	
 								<s:textfield id="fn" name="first_name" cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="col-md">
 								<p class="em" id="lln" for="ln"></p>
+								<s:textfield name="llntf" type="hidden"/>
 								<label>Last Name:</label>
 								<s:textfield id="ln" name="last_name"  cssClass="form-control" required="required"/>
 							</div>
@@ -105,22 +107,25 @@
 							
 							<div class="col-md form-group">
 								<p class="em" id="ltn" for="tn"></p>
+								<s:textfield name="ltntf" type="hidden"/>
 								<label>Telephone Number:</label>
-								<s:textfield id="tn" name="telephone_no"  class="em" cssClass="form-control" required="required"/>
+								<s:textfield id="tn" name="telephone_no"  cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="col-md">
-								<p class="em" id="lmn" for="mn"></p>
+								<p class="em" id="lcn" for="cn"></p>
+								<s:textfield name="lcntf" type="hidden"/>
 								<label>Cellphone Number:</label>
-								<s:textfield id="cn" name="cellphone_no"  class="em" cssClass="form-control" required="required"/>
+								<s:textfield id="cn" name="cellphone_no"  cssClass="form-control" required="required"/>
 							</div>
 						</div>
 						<div class="form-row">
 							
 							<div class="col-md form-group">
 								<p class="em" id="lea" for="ea"></p>
+								<s:textfield name="leatf" type="hidden"/>
 								<label>E-mail Address:</label>
-								<s:textfield id="ea" name="email_address"  class="em" cssClass="form-control" required="required"/>
+								<s:textfield id="ea" name="email_address"  cssClass="form-control" required="required"/>
 							</div>
 							<div class="col-md"></div>
 						</div>
@@ -130,12 +135,14 @@
 							
 							<div class="col-md form-group">
 								<p class="em" id="locc" for="occ"></p>
+								<s:textfield name="locctf" type="hidden"/>
 								<label>Occupation:</label>
 								<s:textfield id="occ" name="occupation"  cssClass="form-control" required="required"/>
 							</div>
 							
 							<div class="col-md">
 								<p class="em" id="lcom" for="com"></p>
+								<s:textfield name="lcomtf" type="hidden"/>
 								<label>Company:</label>
 								<s:textfield id="com"  name="company"  cssClass="form-control" required="required"/>
 							</div>
