@@ -116,24 +116,37 @@
 			<div class="alert alert-success mx-auto" role="alert">
 			  Your feedback has been successfully sent!
 			</div>
+			<s:set var="feedbackmsg" value="feedback_success"/>
+			<s:if test="feedback_success==true">
+			 	<h2>Welcome</h2>
+			</s:if>
+			<s:else>
+				<h2>Welcomeeee</h2>
+			</s:else>
 		<%-- </s:if> --%>
         <div class="h-75 d-flex justify-content-center">
 			<div class="card pr-5 pl-5 my-auto mx-auto">
 				<div class="form-register">
 					<div class="card-body feedback_body">
 					  	<h3>Feedback</h3>
-					  	<s:form action="#" method="post" class="feedback_form">
+					  	<s:form action="sendfeedback" method="post" class="feedback_form">
 						    <div class="col-xl col-lg col-md-12 col-12 form-group">
+						    	<s:textfield name="emn" type="hidden"/>
+						    	<p class="em" id="lfbn" for="fbn"></p>
 						    	<label>Name: <span class="required">*</span></label>
-								<s:textfield name="feedback_name" cssClass="form-control"/>
+								<s:textfield id="fbn" name="feedback_name" cssClass="form-control"/>
 							</div>
 							<div class="col-xl col-lg col-md-12 col-12">
+								<s:textfield name="emea" type="hidden"/>
+								<p class="em" id="lfbe" for="fbe"></p>
 								<label>Email: <span class="required">*</span></label>
-								<s:textfield name="feedback_email" cssClass="form-control"/>
+								<s:textfield id="fbe" name="feedback_email" cssClass="form-control"/>
 							</div>
 							<div class="col-xl col-lg col-md-12 col-12">
+								<s:textfield name="emm" type="hidden"/>
+								<p class="em" id="lfbm" for="fbm"></p>
 								<label>Message: <span class="required">*</span></label>
-								<s:textarea name="address" cols="40" rows="10" cssClass="form-control"/>
+								<s:textarea id="fbm" name="feedback_message" cols="40" rows="10" cssClass="form-control"/>
 							</div>
 						    <s:submit label="Submit" value="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mt-5 w-25 mx-auto"/>
 					    </s:form>
@@ -174,5 +187,6 @@
     
     <!-- JS -->
     <script src="js/navbar.js"></script>
+    <script src="js/feedback.js"></script>
 </body>
 </html>
