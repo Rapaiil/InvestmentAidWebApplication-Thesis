@@ -52,7 +52,9 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
 		}
 		int tnLength = telephone_no.length();
-		telephone_no = telephone_no.substring(tnLength-8, tnLength);
+		if(tnLength == 10) {
+			telephone_no = telephone_no.substring(tnLength-8, tnLength);
+		}		
 		
 		boolean success = saveAccountSettings();
 		
@@ -273,7 +275,10 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 		String telRegex = "^(\\d{2})\\d{8}$/";
 		Pattern telPattern = Pattern.compile(telRegex);
 		Matcher telMatcher = telPattern.matcher(string.trim());
-		if (telMatcher.matches()) {
+		String telRegex2 = "^(\\d{8})$";
+		Pattern telPattern2 = Pattern.compile(telRegex2);
+		Matcher telMatcher2 = telPattern2.matcher(string.trim());
+		if (telMatcher.matches() || telMatcher2.matches()) {
 			return true;
 		}
 		return false;

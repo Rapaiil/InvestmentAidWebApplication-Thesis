@@ -118,8 +118,8 @@ ValidateTelNo = {
 		validate: function(input){
 			// /^(\d{2})\d{8}$/
 			// ^\d+$
-			// ^[0-9]+$
-			if((/^(\d{2})(\d{8})$/.test(input.trim()))){
+			// ^[0-9]+$			
+			if((/^(\d{2})(\d{8})$/.test(input.trim())) || (/^(\d{8})$/.test(input.trim()))){
 				return true;
 			}
 			else{
