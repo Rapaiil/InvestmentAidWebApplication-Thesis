@@ -16,7 +16,9 @@
 		<property name="connection.username">
 			root
 		</property>
-		<property name="connection.password"></property>
+		<property name="connection.password">
+			p@ssword
+		</property>
 		<property name="hbm2ddl.auto">
 			update
 		</property>

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -50,11 +50,11 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 	}
 	
 	private boolean addNewFund() {
-		try {
-			Query query = session.createQuery();
-		} catch() {
-			
-		}
+//		try {
+//			//Query query = session.createQuery();
+//		} catch() {
+//			
+//		}
 		return false;
 	}
 	
