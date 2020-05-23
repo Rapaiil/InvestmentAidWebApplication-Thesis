@@ -8,7 +8,7 @@ import java.util.Properties;
 public class Configurations {
 	private static Properties properties = new Properties();
 	private static InputStream inputStream;
-	private static String email, password, key, bankUitf, fundUitf, bankMf, fundMf, ext, mfFile, uitfFile, forex, forexFile;
+	private static String emailMain, emailFeedback, password, key, bankUitf, fundUitf, bankMf, fundMf, ext, mfFile, uitfFile, forex, forexFile;
 	
 	private Configurations() {}
 	
@@ -28,7 +28,8 @@ public class Configurations {
 		else
 			throw new FileNotFoundException("Property file \'config.properties\' not"
 					+ " found in the classpath.");
-		email = properties.getProperty("app_email");
+		emailMain = properties.getProperty("app_email_main");
+		emailFeedback = properties.getProperty("app_email_feedback");
 		password = properties.getProperty("app_password");
 		key = properties.getProperty("app_key");
 		bankUitf = properties.getProperty("uitf_bank_source");
@@ -52,7 +53,16 @@ public class Configurations {
 		} catch(IOException ioe) {
 			System.err.println(ioe.getMessage());
 		}
-		return email;
+		return emailMain;
+	}
+	
+	public static String getAppFeedback() {
+		try {
+			configure();
+		} catch(IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+		return emailFeedback;
 	}
 	
 	public static String getAppPass() {
