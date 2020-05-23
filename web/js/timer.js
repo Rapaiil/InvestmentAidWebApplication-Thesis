@@ -10,9 +10,19 @@ function startTimer(duration, display) {
         display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            document.getElementById("time").innerHTML = "<s:form action='resendotp' method='post'><s:submit value='RESEND OTP' class='btn btn-link btnResend'/></s:form>";
+        	$("#time").append("<a class='btn btn-link btnResend' href='#' onclick='resendOTP()'>RESEND OTP</a>");
         }
     }, 1000);
+}
+
+function resendOTP() {
+	$.ajax({
+		type: "post",
+		url: "resendotp",
+		success: function(response) {
+			console.log("OTP re-sent!");
+		}
+	});
 }
 
 window.onload = function () {
