@@ -50,11 +50,11 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 	}
 	
 	private boolean addNewFund() {
-//		try {
-//			//Query query = session.createQuery();
-//		} catch() {
-//			
-//		}
+		try {
+			Query query = session.createQuery();
+		} catch() {
+			
+		}
 		return false;
 	}
 	

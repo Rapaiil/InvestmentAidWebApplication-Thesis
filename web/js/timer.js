@@ -10,7 +10,7 @@ function startTimer(duration, display) {
         display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            document.getElementById("time").innerHTML = "<s:form action='resendotp' method='post'><s:submit value='RESEND OTP'/></s:form>";
+            document.getElementById("time").innerHTML = "<s:submit action='resendotp' value='RESEND OTP'/>";
         }
     }, 1000);
 }
