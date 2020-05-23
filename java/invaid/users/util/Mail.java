@@ -9,7 +9,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import config.Configurations;
 import invaid.users.mail.FeedbackMailUtil;
 import invaid.users.mail.MailUtil;
 import invaid.users.mail.MainMailUtil;
@@ -37,11 +36,12 @@ public class Mail {
 	}
 	
 	public static boolean sendPasswordResetMail(String user_email, String user_token) {
-		Session session = getMailUtility("MAIN").getSession();
+		MailUtil mailUtil = (MailUtil) getMailUtility("MAIN");
+		Session session = mailUtil.getSession();
 		
 		try {
 			MimeMessage message = new MimeMessage(session);
-			 message.setFrom(new InternetAddress(Configurations.getAppEmail()));  
+			 message.setFrom(new InternetAddress(mailUtil.getEmail()));  
 	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(user_email));  
 	         message.setSubject("InvAid Password Reset Request");  
 	         message.setText("Please click the link to reset your password:\n\n" 
@@ -58,11 +58,12 @@ public class Mail {
 	}
 	
 	public static boolean sendVerificationMail(UserAccountBean userAccount) {
-		Session session = getMailUtility("MAIN").getSession();
+		MailUtil mailUtil = (MailUtil) getMailUtility("MAIN");
+		Session session = mailUtil.getSession();
 		
 		try {
 			MimeMessage message = new MimeMessage(session);
-			 message.setFrom(new InternetAddress(Configurations.getAppEmail()));  
+			 message.setFrom(new InternetAddress(mailUtil.getEmail()));  
 	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(userAccount.getUser_email()));
 	         message.setSubject("Verify Your InvAid Account");
 	         message.setText("To verify your InvAid account, click the link below:\n\n" 
@@ -79,11 +80,12 @@ public class Mail {
 	}
 	
 	public static boolean sendMultiFactorAuthentication(LoginAccountModel loginAccount) {
-		Session session = getMailUtility("MAIN").getSession();
+		MailUtil mailUtil = (MailUtil) getMailUtility("MAIN");
+		Session session = mailUtil.getSession();
 		
 		try {
 			MimeMessage message = new MimeMessage(session);
-			 message.setFrom(new InternetAddress(Configurations.getAppEmail()));  
+			 message.setFrom(new InternetAddress(mailUtil.getEmail()));  
 	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(loginAccount.getLogin_email()));
 	         message.setSubject("InvAid Account Security Code");
 	         message.setText("Here you have your OTP to login to your InvAid account:\n"

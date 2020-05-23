@@ -7,6 +7,7 @@ import javax.mail.Session;
 
 public abstract class MailUtil implements Cloneable {
 	private String mailType;
+	protected String email;
 	protected Properties properties;
 	protected Authenticator auth;
 	
@@ -14,6 +15,11 @@ public abstract class MailUtil implements Cloneable {
 	 * returns the Session mail
 	 */
 	abstract public Session getSession();
+	
+	/*
+	 * gets email address to be used
+	 */
+	abstract public String getEmail();
 	
 	/*
 	 * configures properties for mail sending

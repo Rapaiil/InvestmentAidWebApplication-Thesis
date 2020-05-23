@@ -21,11 +21,18 @@ public class MainMailUtil extends MailUtil {
 	  		}
 		};
 		
+		email = Configurations.getAppEmail();
+		
 		setMailType("MAIN");
 	}	
 	
 	@Override
 	public Session getSession() {
 		return Session.getInstance(properties, auth);
+	}
+	
+	@Override
+	public String getEmail() {
+		return email;
 	}
 }

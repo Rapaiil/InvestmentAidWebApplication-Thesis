@@ -21,6 +21,8 @@ public class FeedbackMailUtil extends MailUtil {
 	  		}
 		};
 		
+		email = Configurations.getAppFeedback();
+		
 		setMailType("FEEDBACK");
 	}
 	
@@ -29,4 +31,8 @@ public class FeedbackMailUtil extends MailUtil {
 		return Session.getInstance(properties, auth);
 	}
 
+	@Override
+	public String getEmail() {
+		return email;
+	}
 }
