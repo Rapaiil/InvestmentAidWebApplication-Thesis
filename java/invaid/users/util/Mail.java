@@ -9,6 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import config.Configurations;
 import invaid.users.mail.FeedbackMailUtil;
 import invaid.users.mail.MailUtil;
 import invaid.users.mail.MainMailUtil;
@@ -17,6 +18,7 @@ import invaid.users.model.UserAccountBean;
 
 public class Mail {
 	private static Hashtable<String, MailUtil> mailUtilMap = new Hashtable<String, MailUtil>();
+	
 	
 	static {
 		loadCache();
@@ -102,4 +104,28 @@ public class Mail {
 		return false;
 	}
 
+	public static boolean sendFeedback(String name, String email, String messageContent) {
+		System.out.println("Sending feedback...");
+		MailUtil mailUtil 	= (MailUtil) getMailUtility("FEEDBACK");
+		Session session 	= mailUtil.getSession();
+		
+		try {
+			
+			 MimeMessage message = new MimeMessage(session);
+			 message.setFrom(new InternetAddress(mailUtil.getEmail()));  
+			 message.addRecipient(Message.RecipientType.TO,new InternetAddress(Configurations.getAppEmail()));
+	         message.setSubject("InvAid System Feedback");  
+	         message.setText("From: " + name + "\n\n"
+	        		 + message + "\n\n"
+	        		 + "Contact via this email address: " + email);  
+	         Transport.send(message);
+	         System.out.println("Mail was sent successfully!");
+	         return true;
+			
+		}
+		catch(MessagingException me) {
+			System.err.println(me.getMessage());
+		}
+		return false;
+	}
 }
