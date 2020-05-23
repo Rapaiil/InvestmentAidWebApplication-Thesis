@@ -1,6 +1,4 @@
-package invaid.users.util;
-
-import java.util.Properties;
+package invaid.users.mail;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -8,33 +6,33 @@ import javax.mail.Session;
 
 import config.Configurations;
 
-public class MailUtil {
-	private static Properties properties = new Properties();
-	private static Authenticator auth;
+public class MainMailUtil extends MailUtil {
 	
-	/*
-	 * configures properties for mail sending
-	 */
-	static {
+	public MainMailUtil() {
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.socketFactory.port", "465");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		properties.put("mail.smtp.port", "465");
-	    
-	    //create Authenticator object to pass in Session.getInstance argument
-	  	auth = new Authenticator() {
-	  		//override the getPasswordAuthentication method
+		
+		auth = new Authenticator() {
 	  		protected PasswordAuthentication getPasswordAuthentication() {
 	  			return new PasswordAuthentication(Configurations.getAppEmail(), Configurations.getAppPass());
 	  		}
-	  	};
+		};
+		
+		email = Configurations.getAppEmail();
+		
+		setMailType("MAIN");
+	}	
+	
+	@Override
+	public Session getSession() {
+		return Session.getInstance(properties, auth);
 	}
 	
-	/*
-	 * returns the Session mail
-	 */
-	public static Session getSession() {
-		return Session.getInstance(properties, auth);
+	@Override
+	public String getEmail() {
+		return email;
 	}
 }

@@ -1,5 +1,6 @@
 package invaid.users.action;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -24,6 +25,7 @@ import invaid.users.model.UserProfileBean;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
+import invaid.users.util.VerifyreCAPTCHA;
 
 @SuppressWarnings({"serial"})
 public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {

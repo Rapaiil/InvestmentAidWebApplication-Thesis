@@ -14,8 +14,6 @@ public class UserFundBean {
 	@Column(nullable=false)
 	private String user_fundId;
 	@Column(nullable=false)
-	private String user_profileId;
-	@Column(nullable=false)
 	private String user_fundName;
 	@Column(nullable=false, columnDefinition="TINYINT(1) ZEROFILL")
 	private int user_fundType;
@@ -45,14 +43,6 @@ public class UserFundBean {
 		 * (fund type-profile id-fund id)
 		 */
 		this.user_fundId = user_fundId;
-	}
-	
-	public String getUser_profileId() {
-		return user_profileId;
-	}
-	
-	public void setUser_profileId(String user_profileId) {
-		this.user_profileId = user_profileId;
 	}
 	
 	public String getUser_fundName() {
