@@ -113,16 +113,9 @@
 		</s:else>
 		<!-- FEEDBACK CONTENT-->
 		<%-- <s:if test=""> --%>
-			<div class="alert alert-success mx-auto" role="alert">
+			<div id="theBanner" class="alert alert-success mx-auto fade show" role="alert">
 			  Your feedback has been successfully sent!
 			</div>
-			<s:set var="feedbackmsg" value="feedback_success"/>
-			<s:if test="feedback_success==true">
-			 	<h2>Welcome</h2>
-			</s:if>
-			<s:else>
-				<h2>Welcomeeee</h2>
-			</s:else>
 		<%-- </s:if> --%>
         <div class="h-75 d-flex justify-content-center">
 			<div class="card pr-5 pl-5 my-auto mx-auto">
@@ -148,7 +141,7 @@
 								<label>Message: <span class="required">*</span></label>
 								<s:textarea id="fbm" name="feedback_message" cols="40" rows="10" cssClass="form-control"/>
 							</div>
-						    <s:submit label="Submit" value="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mt-5 w-25 mx-auto"/>
+						    <s:submit id="subfb" label="Submit" value="submit" class="btn btn-primary btn-block btn-lg shadow-none text-uppercase mt-5 w-25 mx-auto"/>
 					    </s:form>
 					  </div>
 				</div>
@@ -188,5 +181,9 @@
     <!-- JS -->
     <script src="js/navbar.js"></script>
     <script src="js/feedback.js"></script>
+    <s:set var="feedbackmsg" value="feedback_success"/>
+	<s:if test="feedback_success==true">
+		<s:textfield type="hidden" value="feedback_success" id="trig"/>
+	</s:if>
 </body>
 </html>
