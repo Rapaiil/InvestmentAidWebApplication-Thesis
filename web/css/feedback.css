@@ -147,3 +147,7 @@ h3 {
 .em {
 	visibility: hidden;
 }
+
+#theBanner{
+	display:none;
+}

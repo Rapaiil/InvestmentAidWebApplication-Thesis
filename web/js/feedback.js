@@ -1,4 +1,27 @@
 $(function(){
+	$("#fbn").val("");
+    $("#fbe").val("");
+    $("#fbm").val("");
+    var myVar;
+
+    function StartTimer() {
+      myVar = setInterval(ByeFunc, 4000);
+    }
+    function StopTimer() {
+      clearInterval(myVar);
+    }
+    function ByeFunc() {
+    	StopTimer();
+    	$("#theBanner").css("display","none");
+    }
+    
+	var trigger = $("#trig").val();
+	if(trigger){
+		/*$("#theBanner").show().delay(3000).hide();*/
+		$("#theBanner").css("display","block");
+		StartTimer();
+	}
+
 	$("#fbn").change(function(){
 		var val = $.trim($("#fbn").val());
 		var isValid = ValidateName.validate(val);

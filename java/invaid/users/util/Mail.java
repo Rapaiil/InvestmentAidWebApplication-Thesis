@@ -140,7 +140,7 @@ public class Mail {
 			 message.addRecipient(Message.RecipientType.TO,new InternetAddress(Configurations.getAppEmail()));
 	         message.setSubject("InvAid System Feedback");  
 	         message.setText("From: " + name + "\n\n"
-	        		 + message + "\n\n"
+	        		 + messageContent + "\n\n"
 	        		 + "Contact via this email address: " + email);  
 	         Transport.send(message);
 	         System.out.println("Mail was sent successfully!");

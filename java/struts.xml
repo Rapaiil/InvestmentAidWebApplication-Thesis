@@ -147,7 +147,7 @@
 				<param name="location">feedback.jsp</param>
 				<param name="feedback_success">${feedback_success}</param>
 			</result> -->
-			<result name="success">index.jsp</result>
+			<result name="success">feedback.jsp</result>
 			<result name="input">feedback.jsp</result>
 			<result name="error">error/error404.jsp</result>
 		</action>

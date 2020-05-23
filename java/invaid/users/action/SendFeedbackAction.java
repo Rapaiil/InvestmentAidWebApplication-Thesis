@@ -12,13 +12,15 @@ public class SendFeedbackAction extends ActionSupport{
 	private String feedback_name;
 	private String feedback_email;
 	private String feedback_message;
-	private String feedback_success;
+	private boolean feedback_success;
 
 	public String execute() {
 		System.out.println("Executing...");
 		boolean success = Mail.sendFeedback(getFeedback_name(), getFeedback_email(), getFeedback_message());
 		
 		if(success) {
+			setFeedback_success(success);
+			System.out.println(success);
 			return SUCCESS;
 		}
 		return ERROR;
@@ -110,11 +112,11 @@ public class SendFeedbackAction extends ActionSupport{
 	public void setFeedback_message(String feedback_message) {
 		this.feedback_message = feedback_message;
 	}
-	public String getFeedback_success() {
+	public boolean getFeedback_success() {
 		return feedback_success;
 	}
 
-	public void setFeedback_success(String feedback_success) {
+	public void setFeedback_success(boolean feedback_success) {
 		this.feedback_success = feedback_success;
 	}
 }
