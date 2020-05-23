@@ -56,7 +56,6 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 					
 					if(updateUserToken(token, loginId, (int)record[3])) {
 						sessionMap.replace("loginToken", token);
-						isSuccess = !isSuccess;
 						return SUCCESS;
 					}
 				}

@@ -39,6 +39,13 @@
 				<param name="token">${token}</param>
 			</result>
 		</action>
+		<action name="resendotp" class="invaid.users.action.ResendOTPAction">
+			<result name="success" type="redirect">
+				<param name="location">login_otp.jsp</param>
+				<param name="token">${token}</param>
+			</result>
+			<result name="error">/</result>
+		</action>
 		<action name="logoutuser" class="invaid.users.action.LogoutUserAction">
 			<result name="success">index.jsp</result>
 			<result name="error">/</result>

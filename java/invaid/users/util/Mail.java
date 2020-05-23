@@ -101,5 +101,29 @@ public class Mail {
 		}
 		return false;
 	}
+	
+	public static boolean resendMultiFactorAuthentication(String email, int otp) {
+		MailUtil mailUtil = (MailUtil) getMailUtility("MAIN");
+		Session session = mailUtil.getSession();
+		
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(mailUtil.getEmail()));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+			message.setSubject("InvAid Account Security Code");
+	        message.setText("Here you have your OTP to login to your InvAid account:\n"
+	         		+ otp + "\n\n"
+	         		+ "Please use the code above to verify the ownership of your account.\n" 
+	        		+ "As a security measure, the code will expire in 5 minutes.");
+	         
+	        Transport.send(message);
+	        System.out.println("Mail was sent successfully!");
+	        return true;
+		} catch(MessagingException me) {
+			System.err.println(me.getMessage());
+		}
+		
+		return false;
+	}
 
 }
