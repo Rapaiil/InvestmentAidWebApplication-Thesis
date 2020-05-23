@@ -121,7 +121,7 @@ body {
     padding-left: 5px;
     border-radius: 0;
 }
-.form-login-otp .btn {        
+.form-login-otp .btnLogin {        
     font-size: 16px;
     font-weight: bold;
     background: #19A375;
@@ -130,6 +130,11 @@ body {
     min-width: 140px;
     outline: none !important;
     box-shadow: none;
+}
+
+.form-login-otp .btnResend {
+    color: #19A375;
+    text-decoration: underline;
 }
 
 .form-login-otp .btn:hover, .form-login-otp .btn:focus{
