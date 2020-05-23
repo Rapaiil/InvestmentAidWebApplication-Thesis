@@ -62,6 +62,6 @@ public interface DBCommands {
 			+ " user_fundInitAmount = :fundamt"
 			+ " WHERE user_fundId = :fundid AND user_profileId = :profid";
 	final static String GET_FUNDLIST = "FROM UserFundBean"
-			+ " WHERE user_profileId = :profid";			
+			+ " WHERE user_profileId = :profid";
 	public List<Object[]> getRecords();
 }

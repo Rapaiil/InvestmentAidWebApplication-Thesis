@@ -1,16 +1,20 @@
 package invaid.users.action;
 
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.struts2.interceptor.SessionAware;
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import invaid.users.model.FundTransactionBean;
 import invaid.users.model.MfFundDetail;
 import invaid.users.model.UitfFundDetail;
 import invaid.users.model.UserFundBean;
@@ -19,6 +23,7 @@ import invaid.users.util.HibernateUtil;
 @SuppressWarnings({"serial"})
 public class AddFundAction extends ActionSupport implements ModelDriven<UserFundBean>, SessionAware {
 	private UserFundBean userFund = new UserFundBean();
+	private FundTransactionBean fundtrans;
 	private List<UserFundBean> fundList = new ArrayList<UserFundBean>();
 	Session session = HibernateUtil.getSession();
 	private Map<String, Object> sessionMap;
@@ -26,13 +31,17 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 	@Override
 	public String execute() {
 		session.getTransaction().begin();
+		fundtrans = new FundTransactionBean();
 		
 		doProcess();
 		
-		if(userFund != null)
+		if(userFund != null) {
 			session.save(userFund);
+			if(addFundTransaction())
+				return SUCCESS;
+		}
 		
-		return SUCCESS;
+		return ERROR;
 	}
 	
 	@Override
@@ -49,13 +58,23 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 		this.sessionMap = sessionMap;
 	}
 	
-	private boolean addNewFund() {
+	private boolean addFundTransaction() {
+		String profileId = (String) sessionMap.get("loginId");
+		
 		try {
-			Query query = session.createQuery();
-		} catch() {
+			fundtrans.setFund_transactionId(getTransactionId());
+			fundtrans.setUser_fundId(userFund.getUser_fundId());
+			fundtrans.setUser_profileId(profileId);
+			fundtrans.setFund_transactionType(getTransactionType());
+			fundtrans.setFund_transactionDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+			fundtrans.setFund_transactionTime(new SimpleDateFormat("HH:mm:ss").format(new Date()));
 			
+			session.save(fundtrans);
+			return true;
+		} catch(UnsupportedEncodingException uee) {
+			System.err.println(uee.getMessage());
+			return false;
 		}
-		return false;
 	}
 	
 	private void doProcess() {
@@ -101,5 +120,14 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 		}
 		
 		userFund.setUser_fundId(fundType+formattedProfileId+fundId);
+	}
+	
+	private int getTransactionType() {
+		return 1;
+	}
+	
+	private String getTransactionId() throws UnsupportedEncodingException {
+		String id = String.valueOf(System.currentTimeMillis());
+		return UUID.nameUUIDFromBytes(id.getBytes("UTF-8")).toString();
 	}
 }

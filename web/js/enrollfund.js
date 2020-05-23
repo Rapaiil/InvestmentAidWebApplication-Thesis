@@ -17,10 +17,10 @@ function getFundList() {
 				jsonfundobj = JSON.parse(jsonstr);
 				
 				deleteAll();
-				var len = Object.keys(jsonfundobj.mfFundList).length;
+				var len = Object.keys(jsonfundobj.fundList).length;
 				
 				for(var i=0; i<len; i++) {
-					$('#fund-name').append("<option value='" + jsonfundobj.mfFundList[i].fundNumber + "'>" + jsonfundobj.mfFundList[i].fundName + "</option> ");
+					$('#fund-name').append("<option value='" + jsonfundobj.fundList[i].fundNumber + "'>" + jsonfundobj.fundList[i].fundName + "</option> ");
 				}
 			}
 		});
@@ -33,10 +33,10 @@ function getFundList() {
 				jsonfundobj = JSON.parse(jsonstr);
 				
 				deleteAll();
-				var len = Object.keys(jsonfundobj.uitfFundList).length;
+				var len = Object.keys(jsonfundobj.fundList).length;
 				
 				for(var i=0; i<len; i++) {
-					$('#fund-name').append("<option value='" + jsonfundobj.uitfFundList[i].fundNumber + "'>" + jsonfundobj.uitfFundList[i].fundName + "</option> ");
+					$('#fund-name').append("<option value='" + jsonfundobj.fundList[i].fundNumber + "'>" + jsonfundobj.fundList[i].fundName + "</option> ");
 				}
 			}
 		});

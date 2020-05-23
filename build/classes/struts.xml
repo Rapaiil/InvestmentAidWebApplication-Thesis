@@ -125,6 +125,12 @@
 	</package>
 	
 	<package name="funds" extends="struts-default, json-default">
+		<action name="retrievemffunds" class="invaid.users.action.MFXMLParseAction">
+			<result type="json">fundList</result>
+		</action>
+		<action name="retrieveuitffunds" class="invaid.users.action.UITFXMLParseAction">
+			<result type="json">fundList</result>
+		</action>
 		<action name="addfundredirectback" class="invaid.users.action.AddFundAction">
 			<result name="success">/portfolio.jsp</result>
 			<result name="error">/</result>
