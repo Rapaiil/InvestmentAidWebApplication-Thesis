@@ -9,8 +9,9 @@ function startTimer(duration, display) {
 
         display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0) {
-        	$("#time").append("<a class='btn btn-link btnResend' href='#' onclick='resendOTP()'>RESEND OTP</a>");
+        if (--timer == 0) {
+        	document.getElementById("time").style.display = "none";
+        	$("#resendotp").append("<a class='btn btn-link btnResend' href='#' onclick='resendOTP()'>RESEND OTP</a>");
         }
     }, 1000);
 }

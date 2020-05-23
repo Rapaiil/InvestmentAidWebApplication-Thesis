@@ -79,7 +79,10 @@
                                 </div>
                             </s:form>
 							<div>
-                      			<h4 id="time" class="text-center" style="color: #19aa8d;">01:00</h4>
+                                <h4 id="time" class="text-center" style="color: #19aa8d;">01:00</h4>
+                                <div id="resendotp" class="text-center">
+
+                                </div>  
                       		</div>
                         </div>
                     </div>

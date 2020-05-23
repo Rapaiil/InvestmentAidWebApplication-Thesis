@@ -137,7 +137,7 @@ body {
     text-decoration: underline;
 }
 
-.form-login-otp .btn:hover, .form-login-otp .btn:focus{
+.form-login-otp .btnLogin:hover, .form-login-otp .btnLogin:focus{
     background: #19A375;
     outline: none;
 }
