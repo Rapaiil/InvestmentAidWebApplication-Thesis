@@ -33,9 +33,6 @@ public class MFXMLParseAction extends ActionSupport {
 			if(fundList == null || fundList.isEmpty())
 				throw new FileNotFoundException("List is empty!");
 			
-			for(MfFundDetail f: fundList) {
-				System.out.println(f.getFundNumber() + ": " + f.getFundName());
-			}
 			return SUCCESS;
 		} catch(JAXBException jaxbe) {
 			jaxbe.getMessage();

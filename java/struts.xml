@@ -133,13 +133,10 @@
 			<result type="json">fundList</result>
 			<result name="error">/error/general-error.html</result>
 		</action>
-		<action name="addfundredirectback" class="invaid.users.action.AddFundAction">
-			<result name="success">/portfolio.jsp</result>
+		<action name="newfund" class="invaid.users.action.AddFundAction">
+			<result name="success">portfolio.jsp</result>
 			<result name="error">/error/general-error.html</result>
-		</action>
-		<action name="addfund" class="invaid.users.action.AddFundAction">
-			<result name="success">enroll_funds.jsp</result>
-			<result name="error">/error/general-error.html</result>
+			<result name="input">enroll_fund.jsp</result>
 		</action>
 	</package>
 	

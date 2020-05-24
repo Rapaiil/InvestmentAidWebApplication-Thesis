@@ -79,7 +79,7 @@
         <div class="container">
             <div class="card mx-auto">
                 <div class="card-body">
-                    <s:form action="addfund" method="POST">
+                    <s:form action="newfund" method="post">
                         <h1>Enroll Investment</h1>
                         <div class="form-group">
                             <label for="investment-type">Investment Type: *</label>
@@ -95,21 +95,21 @@
                         </div>
                         <div class="form-group">
                             <label for="fund-name">Fund Name: *</label>
-                            <select class="custom-select" id="fund-name" name="fundName" required>
+                            <select class="custom-select" id="fund-name" name="fundName" required="required">
                                 <option value="-1">--Select Fund Type--</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="units-bought">Number of Units bought: *</label>
-                            <input class="form-control" name="user_numOfUnitsShares" required>
+                            <input class="form-control" name="user_numOfUnitsShares" required="required">
                         </div>
                         <div class="form-group">
                             <label for="date-purchased">Date Purchased: *</label>
-                            <input type="date" class="form-control" id="date-purchased" name="user_fundDatePurchased" required>
+                            <input type="date" class="form-control" id="date-purchased" name="user_fundDatePurchased" required="required">
                         </div>
                         <div class="form-group">
                             <label for="horizon">Investment Horizon: *</label>
-                            <select class="custom-select" id="horizon" name="user_fundHorizon" required>
+                            <select class="custom-select" id="horizon" name="user_fundHorizon" required="required">
                                 <option>Immediate (&lt; 3 years)</option>
                                 <option>Short-term (3-5 years)</option>
                                 <option>Medium-term (6-10 years)</option>
@@ -122,55 +122,12 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">&#8369;</div>
                                 </div>
-                                <input type="text" class="form-control" name="fundInitAmount" onkeypress="isFloating(event)">
+                                <input type="text" class="form-control" name="fundInitAmount" onkeypress="isFloating(event)" required="required">
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary text-uppercase btn-lg" data-toggle="modal" data-target="#submitConfirm">Add</button>
-                        </div>
-                        
-                        <!-- CONFIRM ENROLL MODAL -->
-						<div class="modal fade" id="submitConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				            <div class="modal-dialog modal-dialog-centered" role="document">
-				              <div class="modal-content">
-				                <div class="modal-header">
-				                  <h5 class="modal-title text-uppercase">Confirm Enroll Fund</h5>
-				                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				                    <span aria-hidden="true">&times;</span>
-				                  </button>
-				                </div>
-				                <div class="modal-body">
-				                  <p>Do you want to add this fund?</p>
-				                </div>
-				                <div class="modal-footer">
-				                  <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
-				                  <button type="button" class="btn class="btn btn-primary btnLogout" data-toggle="modal" data-target="#enrollFund">OK</button>
-				                </div>
-				              </div>
-				            </div>
-				        </div>
-				        
-				        <!-- ENROLL MODAL -->
-						<div class="modal fade" id="enrollFund" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				            <div class="modal-dialog modal-dialog-centered" role="document">
-				              <div class="modal-content">
-				                <div class="modal-header">
-				                  <h5 class="modal-title text-uppercase">Enroll Fund</h5>
-				                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				                    <span aria-hidden="true">&times;</span>
-				                  </button>
-				                </div>
-				                <div class="modal-body">
-				                  <p>Added new fund</p>
-				                </div>
-				                <div class="modal-footer">
-					                <s:submit class="btn bg-danger btnCancel" value="Return to Portfolio" action="addfundredirectback"/>
-					                <s:submit class="btn btn-primary btnLogout" value="Add another fund"/>
-				                </div>
-				              </div>
-				            </div>
-				        </div>
-				        
+                            <button type="submit" class="btn btn-primary text-uppercase btn-lg">Add</button>
+                        </div>				        
                     </s:form>
                 </div>
             </div>
