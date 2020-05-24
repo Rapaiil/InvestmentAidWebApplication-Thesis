@@ -6,7 +6,7 @@ function deleteAll() {
 }
 
 function getFundList() {
-	var fundtype = $('input[type="radio"][name="customRadioInline1"]:checked').val();
+	fundtype = $('input[type="radio"][name="fundType"]:checked').val();
 	
 	if(fundtype == "mfRadioValue") {
 		$.ajax({

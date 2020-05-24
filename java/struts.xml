@@ -12,12 +12,12 @@
 		<action name="registerprofile" class="invaid.users.action.RegisterProfileAction">
 			<result name="success">registerAccount.jsp</result>
 			<result name="input">registerProfile.jsp</result>
-			<result name="error">error/error404.jsp</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="registeraccount" class="invaid.users.action.RegisterAccountAction">
 			<result name="success">accountVerify.jsp</result>
 			<result name="input">registerAccount.jsp</result>
-			<result name="error">error/error404.jsp</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
@@ -27,9 +27,9 @@
 				<param name="location">login_otp.jsp</param>
 				<param name="token">${token}</param>
 			</result>
-			<result name="denied"></result>
+			<result name="denied">/error/error401.html</result>
 			<result name="invalid">login.jsp</result>
-			<result name="error"></result>
+			<result name="error">/error/general-error.html</result>
 			<result name="input">login.jsp</result>
 		</action>
 		<action name="loginaccount" class="invaid.users.action.VerifyLoginAction">
@@ -44,58 +44,58 @@
 				<param name="location">login_otp.jsp</param>
 				<param name="token">${token}</param>
 			</result>
-			<result name="error">/</result>
+			<result name="error">/error/error500.html</result>
 		</action>
 		<action name="logoutuser" class="invaid.users.action.LogoutUserAction">
 			<result name="success">index.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
 	<package name="forgotpassword" extends="struts-default">
 		<action name="forgotpassword" class="invaid.users.action.ForgotPasswordAction">
 			<result name="success">/forgot_password_email_sent.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
 	<package name="renewpassword" extends="struts-default">
 		<action name="renewpassword" class="invaid.users.action.RenewPasswordAction" method="givePermission">
 			<result name="granted">renew_password.jsp</result>
-			<result name="denied">/</result>
+			<result name="denied">/error/error401.html</result>
 		</action>
 		<action name="resetpassword" class="invaid.users.action.RenewPasswordAction">
 			<result name="success">/reset_password_success.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
 	<package name="verifyuser" extends="struts-default">
 		<action name="verifyuser" class="invaid.users.action.VerifyAccountAction">
 			<result name="success">accountVerified.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/error500.html</result>
 		</action>
 	</package>
 	
 	<package name="webcrawler" extends="struts-default">
 		<action name="webcrawlmf" class="invaid.users.action.MFWebCrawlAction">
 			<result name="success">monitoring.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="webcrawluitf" class="invaid.users.action.UITFWebCrawlAction">
 			<result name="success">monitoring.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
 	<package name="webparser" extends="struts-default">
 		<action name="parsemf" class="invaid.users.action.MFXMLParseAction">
 			<result name="success">data/mf.jsp</result>
-			<result name="error">/error/error404.html</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="parseuitf" class="invaid.users.action.UITFXMLParseAction">
 			<result name="success">data/uitf.jsp</result>
-			<result name="error">/error/error404.html</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
@@ -127,17 +127,19 @@
 	<package name="funds" extends="struts-default, json-default">
 		<action name="retrievemffunds" class="invaid.users.action.MFXMLParseAction">
 			<result type="json">fundList</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="retrieveuitffunds" class="invaid.users.action.UITFXMLParseAction">
 			<result type="json">fundList</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="addfundredirectback" class="invaid.users.action.AddFundAction">
 			<result name="success">/portfolio.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="addfund" class="invaid.users.action.AddFundAction">
 			<result name="success">enroll_funds.jsp</result>
-			<result name="error">/</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
@@ -149,7 +151,7 @@
 			</result> -->
 			<result name="success">feedback.jsp</result>
 			<result name="input">feedback.jsp</result>
-			<result name="error">error/error404.jsp</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	

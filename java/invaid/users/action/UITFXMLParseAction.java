@@ -2,6 +2,7 @@ package invaid.users.action;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -9,17 +10,15 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 import config.Configurations;
 import invaid.users.model.UitfFundDetail;
 import invaid.users.model.UitfFundDetails;
 
 @SuppressWarnings("serial")
-public class UITFXMLParseAction extends ActionSupport implements ModelDriven<UitfFundDetail> {
+public class UITFXMLParseAction extends ActionSupport  {
 	private UitfFundDetails fundWrapper = new UitfFundDetails();
-	private UitfFundDetail fund = new UitfFundDetail();
-	private List<UitfFundDetail> fundList = null;
+	private List<UitfFundDetail> fundList = new ArrayList<UitfFundDetail>();
 	private String contextPath = Configurations.getUitfFile();
 	
 	@Override
@@ -29,10 +28,12 @@ public class UITFXMLParseAction extends ActionSupport implements ModelDriven<Uit
 			Unmarshaller um = jaxb.createUnmarshaller();
 			fundWrapper = (UitfFundDetails) um.unmarshal(new FileReader(contextPath));
 			if(fundWrapper == null || fundWrapper.getList().isEmpty())
-				return ERROR;
+				throw new FileNotFoundException("List is empty!");
 			fundList = fundWrapper.getList();
-			if(fundList != null && !fundList.isEmpty())
-				return SUCCESS;
+			if(fundList == null || fundList.isEmpty())
+				throw new FileNotFoundException("List is empty!");
+			
+			return SUCCESS;
 		} catch(JAXBException jaxbe) {
 			jaxbe.getMessage();
 		} catch(FileNotFoundException fnfe) {
@@ -41,18 +42,8 @@ public class UITFXMLParseAction extends ActionSupport implements ModelDriven<Uit
 		
 		return ERROR;
 	}
-	
-	@Override
-	public UitfFundDetail getModel() {
-		return fund;
-	}
 
 	public List<UitfFundDetail> getFundList() {
 		return fundList;
 	}
-
-	public void setFundList(List<UitfFundDetail> list) {
-		this.fundList = list;
-	}
-
 }

@@ -85,11 +85,11 @@
                             <label for="investment-type">Investment Type: *</label>
                             <br/>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="mutual_fund" name="customRadioInline1" class="custom-control-input" value="mfRadioValue" onchange="getFundList()">
+                                <input type="radio" id="mutual_fund" name="fundType" class="custom-control-input" value="mfRadioValue" onchange="getFundList()">
                                 <label class="custom-control-label" for="mutual_fund">Mutual Fund</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="uitf" name="customRadioInline1" class="custom-control-input" value="uitfRadioValue" onchange="getFundList()">
+                                <input type="radio" id="uitf" name="fundType" class="custom-control-input" value="uitfRadioValue" onchange="getFundList()">
                                 <label class="custom-control-label" for="uitf">Unit Investment Trust Fund</label>
                             </div>
                         </div>

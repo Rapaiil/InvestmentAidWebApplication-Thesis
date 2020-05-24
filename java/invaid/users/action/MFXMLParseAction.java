@@ -2,6 +2,7 @@ package invaid.users.action;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -9,17 +10,15 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 import config.Configurations;
 import invaid.users.model.MfFundDetail;
 import invaid.users.model.MfFundDetails;
 
 @SuppressWarnings("serial")
-public class MFXMLParseAction extends ActionSupport implements ModelDriven<MfFundDetail> {
+public class MFXMLParseAction extends ActionSupport {
 	private MfFundDetails fundWrapper = new MfFundDetails();
-	private MfFundDetail fund = new MfFundDetail();
-	private List<MfFundDetail> fundList = null;
+	private List<MfFundDetail> fundList = new ArrayList<MfFundDetail>();
 	private String contextPath = Configurations.getMfFile();
 	
 	@Override
@@ -29,10 +28,15 @@ public class MFXMLParseAction extends ActionSupport implements ModelDriven<MfFun
 			Unmarshaller um = jaxb.createUnmarshaller();
 			fundWrapper = (MfFundDetails) um.unmarshal(new FileReader(contextPath));
 			if(fundWrapper == null || fundWrapper.getList().isEmpty())
-				return ERROR;
+				throw new FileNotFoundException("List is empty!");
 			fundList = fundWrapper.getList();
-			if(fundList != null && !fundList.isEmpty())
-				return SUCCESS;
+			if(fundList == null || fundList.isEmpty())
+				throw new FileNotFoundException("List is empty!");
+			
+			for(MfFundDetail f: fundList) {
+				System.out.println(f.getFundNumber() + ": " + f.getFundName());
+			}
+			return SUCCESS;
 		} catch(JAXBException jaxbe) {
 			jaxbe.getMessage();
 		} catch(FileNotFoundException fnfe) {
@@ -42,17 +46,8 @@ public class MFXMLParseAction extends ActionSupport implements ModelDriven<MfFun
 		return ERROR;
 	}
 	
-	@Override
-	public MfFundDetail getModel() {
-		return fund;
-	}
-
 	public List<MfFundDetail> getFundList() {
-		return fundList;
-	}
-
-	public void setFundList(List<MfFundDetail> list) {
-		this.fundList = list;
+		return this.fundList;
 	}
 
 }
