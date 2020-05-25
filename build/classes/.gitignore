@@ -1,4 +1,6 @@
 /config.properties
 /config/
 /invaid/
-/hibernate.cfg.xml~origin_kwek-suppdev
+/struts.xml
+/ZipCodeInterceptor.class
+/RegisterProfileAction.properties

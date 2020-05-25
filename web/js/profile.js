@@ -101,11 +101,35 @@ $(function(){
 			}
 		}
 	});
+	$("#zip").change(function(){
+		var zip 	= $.trim($("#zip").val());
+		zip = zip.replace(/ +/g, "");
+		var isZipValid = ValidateZip.validate(zip);
+		var errmsg 	= $("#lzip");
+		if(tn == ""){
+			errmsg.html("This field is required");
+			errmsg.css("color", "red");
+			errmsg.css("visibility","visible");
+		}
+		else{
+			if(isZipValid){
+				errmsg.html("");
+				errmsg.css("color", "black");
+				errmsg.css("visibility","hidden");
+			}
+			else{
+				errmsg.html("Please enter a valid zip/postal code");
+				errmsg.css("color", "red");
+				errmsg.css("visibility","visible");
+				errmsg.css("font-size","12px");
+			}
+		}
+	});
 });
 
 ValidateName = {
 		validate: function(input){
-			if(/^[A-Za-z_-]*$/.test(input.trim())){
+			if(/^[A-Za-z_-_ ]*$/.test(input.trim())){
 					return true;
 			}
 			else{
@@ -155,6 +179,20 @@ ValidateInput = {
 				errmsg.html("");
 				errmsg.css("color", "green");
 				errmsg.css("visibility","hidden");
+			}
+		}
+}
+
+ValidateZip = {
+		validate: function(input){
+			// /^(\d{2})\d{8}$/
+			// ^\d+$
+			// ^[0-9]+$			
+			if((/^\d{3}$/.test(input.trim())) || (/^\d{4}$/.test(input.trim()))){
+				return true;
+			}
+			else{
+				return false;
 			}
 		}
 }

@@ -71,21 +71,12 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	
 	public void validate() {
 		profile_id = (String) sessionMap.get("loginId");
-		System.out.println(profile_id);
-		System.out.println("Validating...");
-		System.out.println("FN");
 		boolean fnValid = ValidateEmpty(first_name);
-		System.out.println("LN");
 		boolean lnValid = ValidateEmpty(last_name);
-		System.out.println("TN");
 		boolean tnValid = ValidateEmpty(telephone_no);
-		System.out.println("CN");
 		boolean cnValid = ValidateEmpty(cellphone_no);
-		System.out.println("EA");
 		boolean eaValid = ValidateEmpty(email_address);
-		System.out.println("OCC");
 		boolean occValid = ValidateEmpty(occupation);
-		System.out.println("COM");
 		boolean cmpValid = ValidateEmpty(company);
 		
 		//First Name
@@ -252,7 +243,7 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	}
 	
 	private boolean ValidateName(String string) {
-		String nameRegex = "^[A-Za-z_-]*$";
+		String nameRegex = "^[A-Za-z_-_ ]*$";
 		Pattern namePattern = Pattern.compile(nameRegex);
 		Matcher nameMatcher = namePattern.matcher(string.trim());
 		if (nameMatcher.matches()) {
@@ -272,7 +263,8 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	}
 	
 	private boolean ValidateTel(String string) {
-		String telRegex = "^(\\d{2})\\d{8}$/";
+		string = string.replaceAll("\\s+","");
+		String telRegex = "^(\\d{2})(\\d{8})$";
 		Pattern telPattern = Pattern.compile(telRegex);
 		Matcher telMatcher = telPattern.matcher(string.trim());
 		String telRegex2 = "^(\\d{8})$";
@@ -285,6 +277,7 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	}
 	
 	private boolean ValidateCell(String string) {
+		string = string.replaceAll("\\s+","");
 		String cellRegex = "^(09|\\+639|639)\\d{9}$";
 		Pattern cellPattern = Pattern.compile(cellRegex);
 		Matcher cellMatcher = cellPattern.matcher(string.trim());
