@@ -74,12 +74,14 @@
 								
 								<div class="col-xl col-lg col-md-12 col-12 form-group">
 									<p class="em" id="lfn" for="fn"></p>
+									<s:textfield name="lfntf" type="hidden"/>
 							    	<label>First Name: <span class="required">*</span></label>
 									<s:textfield id="fn" name="user_firstname" cssClass="form-control" placeholder="ex. Juan" required="required"/>
 								</div>
 								
 								<div class="col-xl col-lg col-md-12 col-12">
 									<p class="em" id="lln" for="ln"></p>
+									<s:textfield name="llntf" type="hidden"/>
 									<label>Last Name: <span class="required">*</span></label>
 									<s:textfield id="ln" name="user_lastname" cssClass="form-control" placeholder="ex. dela Cruz" required="required"/>
 								</div>
@@ -305,6 +307,7 @@
 										<label>Address:</label>
 									</div>
 									<div class="col-md-5">
+										<s:textfield name="lstrttf" type="hidden"/>
 										<s:textfield name="user_street" cssClass="form-control" required="required"/>
 										<small class="form-text">Street<span class="required">*</span></small>
 
@@ -322,6 +325,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
+										<s:textfield name="lcitytf" type="hidden"/>
 										<s:textfield name="user_city" cssClass="form-control" required="required"/>
 										<small class="form-text">City<span class="required">*</span></small>
 									</div>
@@ -330,6 +334,7 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
+										<s:textfield name="lstatetf" type="hidden"/>
 										<s:textfield name="user_state" cssClass="form-control" required="required"/>
 										<small class="form-text">State/Province/Region<span class="required">*</span></small>
 									</div>
@@ -338,7 +343,9 @@
 									<div class="col-md-3">
 									</div>
 									<div class="col-md-5">
-										<s:textfield name="user_zip" cssClass="form-control" required="required"/>
+										<p class="em" id="lzip" for="zip"></p>
+										<s:textfield name="lziptf" type="hidden"/>
+										<s:textfield id="zip" name="user_zip" cssClass="form-control" required="required"/>
 										<small class="form-text">Zip/Postal Code<span class="required">*</span></small>
 
 									</div>
@@ -348,12 +355,14 @@
 									
 									<div class="col-lg-6 col-md-12 col-12">
 										<p class="em" id="lmn" for="mn"></p>
+										<s:textfield name="lcntf" type="hidden"/>
 										<label>Cellphone Number: <span class="required">*</span></label>
 										<s:textfield id="mn" name="user_cellphonenumber" cssClass="form-control" placeholder="ex. 0977 823892" required="required"/>
 									</div>
 									
 									<div class="col-lg-6 col-md-12 col-12">
 										<p class="em" id="ltn" for="mn"></p>
+										<s:textfield name="ltntf" type="hidden"/>
 										<label>Telephone Number: <span class="required">*</span></label>
 										<s:textfield id="tn" name="user_telephonenumber" cssClass="form-control" placeholder="ex: 046 4897700, 8123 4567" required="required"/>
 									</div>
@@ -362,12 +371,14 @@
 									
 									<div class="col-xl col-md-12 col-12">
 										<p class="em" id="locc" for="com"></p>
+										<s:textfield name="locctf" type="hidden"/>
 										<label>Occupation: <span class="required">*</span></label>
 										<s:textfield id="occ" name="user_occupation" cssClass="form-control" required="required"/>
 									</div>
 									
 									<div class="col-xl col-md-12 col-12">
 										<p class="em" id="lcom" for="com"></p>
+										<s:textfield name="lcomtf" type="hidden"/>
 										<label>Company Name: <span class="required">*</span></label>
 										<s:textfield id="com" name="user_company" cssClass="form-control" required="required"/>
 									</div>

@@ -128,7 +128,7 @@ $(function(){
 
 ValidateName = {
 		validate: function(input){
-			if(/^[A-Za-z_-]*$/.test(input.trim())){
+			if(/^[A-Za-z_-_ ]*$/.test(input.trim())){
 					return true;
 			}
 			else{

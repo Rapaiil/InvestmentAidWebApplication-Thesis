@@ -2,3 +2,5 @@
 /config/
 /invaid/
 /struts.xml
+/ZipCodeInterceptor.class
+/RegisterProfileAction.properties
