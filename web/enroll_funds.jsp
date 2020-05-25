@@ -110,10 +110,10 @@
                         <div class="form-group">
                             <label for="horizon">Investment Horizon: *</label>
                             <select class="custom-select" id="horizon" name="user_fundHorizon" required="required">
-                                <option>Immediate (&lt; 3 years)</option>
-                                <option>Short-term (3-5 years)</option>
-                                <option>Medium-term (6-10 years)</option>
-                                <option>Long-term (&gt; 11 years)</option>
+                                <option value="1">Immediate (&lt; 3 years)</option>
+                                <option value="2">Short-term (3-5 years)</option>
+                                <option value="3">Medium-term (6-10 years)</option>
+                                <option value="4">Long-term (&gt; 11 years)</option>
                             </select>
                         </div>
                         <div class="form-group">

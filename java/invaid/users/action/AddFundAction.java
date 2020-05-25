@@ -24,15 +24,15 @@ import invaid.users.util.HibernateUtil;
 @SuppressWarnings({"serial"})
 public class AddFundAction extends ActionSupport implements ModelDriven<UserFundBean>, SessionAware {
 	private UserFundBean userFund = new UserFundBean();
-	//private FundTransactionBean fundtrans;
-	//private List<UserFundBean> fundList = new ArrayList<UserFundBean>();
+	private FundTransactionBean fundtrans;
+	private List<UserFundBean> fundList = new ArrayList<UserFundBean>();
 	Session session = HibernateUtil.getSession();
 	private Map<String, Object> sessionMap;
 	
 	@Override
 	public String execute() {
 		session.getTransaction().begin();
-		//fundtrans = new FundTransactionBean();
+		fundtrans = new FundTransactionBean();
 		
 		try {
 			String profileId = (String) sessionMap.get("loginId");
@@ -79,7 +79,7 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 			userFund.setUser_fundId(fundType+formattedProfileId+fundId);
 			
 			session.save(userFund);
-			//addFundTransaction();
+			addFundTransaction();
 			
 			session.getTransaction().commit();
 			return SUCCESS;
@@ -95,34 +95,30 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 		return userFund;
 	}
 	
-//	public List<UserFundBean> getFundList() {
-//		return this.fundList;
-//	}
+	public List<UserFundBean> getFundList() {
+		return this.fundList;
+	}
 	
 	@Override
 	public void setSession(Map<String, Object> sessionMap) {
 		this.sessionMap = sessionMap;
 	}
 	
-//	private void addFundTransaction() {
-//		String profileId = (String) sessionMap.get("loginId");
-//		
-//		try {
-//			fundtrans.setFund_transactionId(getTransactionId());
-//			fundtrans.setUser_fundId(userFund.getUser_fundId());
-//			fundtrans.setUser_profileId(profileId);
-//			fundtrans.setFund_transactionType(getTransactionType());
-//			fundtrans.setFund_transactionDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
-//			fundtrans.setFund_transactionTime(new SimpleDateFormat("HH:mm:ss").format(new Date()));
-//			
-//			session.save(fundtrans);
-//		} catch(UnsupportedEncodingException uee) {
-//			System.err.println(uee.getMessage());
-//		}
-//	}
-	
-	private void doProcess() {
+	private void addFundTransaction() {
+		String profileId = (String) sessionMap.get("loginId");
 		
+		try {
+			fundtrans.setFund_transactionId(getTransactionId());
+			fundtrans.setUser_fundId(userFund.getUser_fundId());
+			fundtrans.setUser_profileId(profileId);
+			fundtrans.setFund_transactionType(getTransactionType());
+			fundtrans.setFund_transactionDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+			fundtrans.setFund_transactionTime(new SimpleDateFormat("HH:mm:ss").format(new Date()));
+			
+			session.save(fundtrans);
+		} catch(UnsupportedEncodingException uee) {
+			System.err.println(uee.getMessage());
+		}
 	}
 	
 	private int getTransactionType() {
