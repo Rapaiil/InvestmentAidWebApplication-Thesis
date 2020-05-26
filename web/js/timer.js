@@ -11,7 +11,7 @@ function startTimer(duration, display) {
 
         if (--timer == 0) {
         	document.getElementById("time").style.display = "none";
-        	$("#resendotp").append("<a class='btn btn-link btnResend' href='#' onclick='resendOTP()'>RESEND OTP</a>");
+        	$("#resendotp").append("<s:submit class='btn btn-link btnResend' onclick='resendOTP()' value='RESEND OTP' />");
         }
     }, 1000);
 }

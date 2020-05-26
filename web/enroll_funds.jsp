@@ -79,7 +79,7 @@
         <div class="container">
             <div class="card mx-auto">
                 <div class="card-body">
-                    <s:form action="newfund" method="post">
+                    <s:form action="addfund" method="post">
                         <h1>Enroll Investment</h1>
                         <div class="form-group">
                             <label for="investment-type">Investment Type: *</label>
@@ -95,13 +95,13 @@
                         </div>
                         <div class="form-group">
                             <label for="fund-name">Fund Name: *</label>
-                            <select class="custom-select" id="fund-name" name="fundName" required="required">
+                            <select class="custom-select" id="fund-name" name="fundNumber" required="required">
                                 <option value="-1">--Select Fund Type--</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="units-bought">Number of Units bought: *</label>
-                            <input class="form-control" name="user_numOfUnitsShares" required="required">
+                            <label for="units-bought">Number of units/shares bought: *</label>
+                            <input class="form-control" name="numOfUnitsShares" onkeypress="isFloating(event)" required="required">
                         </div>
                         <div class="form-group">
                             <label for="date-purchased">Date Purchased: *</label>

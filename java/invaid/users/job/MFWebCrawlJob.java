@@ -1,51 +1,42 @@
-package invaid.users.action;
+package invaid.users.job;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
-import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import org.apache.struts2.interceptor.SessionAware;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
-import com.auth0.jwt.exceptions.AlgorithmMismatchException;
-import com.auth0.jwt.exceptions.InvalidClaimException;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.SignatureVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.opensymphony.xwork2.ActionSupport;
+import org.quartz.Job;
+import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.JobKey;
 
 import invaid.users.model.MfFundDetail;
 import invaid.users.model.MfFundDetails;
-import invaid.users.util.TokenUtil;
+import invaid.users.model.MutualFundBean;
+import invaid.users.util.HibernateUtil;
 import config.Configurations;
 
-@SuppressWarnings("serial")
-public class MFWebCrawlAction extends ActionSupport implements SessionAware, Runnable {
-	private Map<String, Object> sessionMap;
+public class MFWebCrawlJob implements Job {
 	MfFundDetails fundList = new MfFundDetails();
 	MfFundDetail fund = null;
-	private String token;
-	final static int NO_OF_BANKS = 42;
-	final static int NO_OF_FUNDS = 386;
-	private boolean isSuccess = false;
 	private String contextPath = Configurations.getMfFile();
+	Session session = HibernateUtil.getSession();
 	
-	public String execute() {
-		token = (String) sessionMap.get("loginToken");
-		
-		switch(givePermission()) {
-			case "denied": return ERROR;
-		}
-		
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		System.out.println("Executing web crawl action for mutual fund...");
 		fundList.setList(new ArrayList<MfFundDetail>());
 		
 		String BANKSOURCE_URL = Configurations.getAppBankMf();
@@ -136,35 +127,36 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
 		}
-		return SUCCESS;
 		
-		/*
-		 * Thread t = new Thread(this); t.start(); if(isSuccess) return SUCCESS; else
-		 * return ERROR;
-		 */
-	}
-	
-	@Override
-	public void run() {
-		
-	}
-	
-	private String givePermission() {
 		try {
-			if(token == null)
-				throw new NullPointerException("Token is empty!");
-			TokenUtil.verifyUserToken().verify(token);
-			return "granted";
-		} catch(JWTDecodeException | AlgorithmMismatchException | SignatureVerificationException jwtve) {
-			System.err.println("Invalid token! Access is denied.");
-		} catch(InvalidClaimException jwtve) {
-			System.err.println("Access is denied.");
-		} catch(TokenExpiredException jwtve) {
-			System.err.println("Session has expired!");
-		} catch(JWTVerificationException jwtve) {
-			System.err.println(jwtve.getMessage());
-		} 
-		return "denied";
+			session.getTransaction().begin();
+			MutualFundBean mfb;
+			
+			for(MfFundDetail f: fundList.getList()) {
+				mfb = new MutualFundBean();
+				mfb.setFundNumber(f.getFundNumber());
+				mfb.setFundName(f.getFundName());
+				mfb.setCompanyName(f.getCompanyName());
+				mfb.setFundClassification(f.getFundClassification());
+				mfb.setNavps(f.getNavps());
+				mfb.setReturnY1(f.getReturnY1());
+				mfb.setReturnY3(f.getReturnY3());
+				mfb.setReturnY5(f.getReturnY5());
+				mfb.setReturnYtd(f.getReturnYtd());
+				mfb.setRiskClassification(f.getRiskClassification());
+				mfb.setMfCrawledDate(new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now())));
+				
+				session.save(mfb);
+			}
+			session.getTransaction().commit();
+		} catch(HibernateException he) {
+			System.err.println(he.getMessage());
+			session.getTransaction().rollback();
+		}
+		
+		JobDetail jobDetail = context.getJobDetail();
+		JobKey key = jobDetail.getKey();
+		System.out.println("Job " + key + " completed on " + new Date());
 	}
 	
 	private boolean searchMatch(String searchMe, String findMe) {
@@ -199,18 +191,5 @@ public class MFWebCrawlAction extends ActionSupport implements SessionAware, Run
 			case "ETF":	return "Moderate";
 			default: return "Aggressive";
 		}
-	}
-	
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-	
-	@Override
-	public void setSession(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
 	}
 }

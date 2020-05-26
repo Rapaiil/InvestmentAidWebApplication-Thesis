@@ -77,17 +77,6 @@
 		</action>
 	</package>
 	
-	<package name="webcrawler" extends="struts-default">
-		<action name="webcrawlmf" class="invaid.users.action.MFWebCrawlAction">
-			<result name="success">monitoring.jsp</result>
-			<result name="error">/error/general-error.html</result>
-		</action>
-		<action name="webcrawluitf" class="invaid.users.action.UITFWebCrawlAction">
-			<result name="success">monitoring.jsp</result>
-			<result name="error">/error/general-error.html</result>
-		</action>
-	</package>
-	
 	<package name="webparser" extends="struts-default">
 		<action name="parsemf" class="invaid.users.action.MFXMLParseAction">
 			<result name="success">data/mf.jsp</result>
@@ -133,10 +122,26 @@
 			<result type="json">fundList</result>
 			<result name="error">/error/general-error.html</result>
 		</action>
-		<action name="newfund" class="invaid.users.action.AddFundAction">
+		<action name="addfund" class="invaid.users.action.AddFundAction">
 			<result name="success">portfolio.jsp</result>
 			<result name="error">/error/general-error.html</result>
 			<result name="input">enroll_fund.jsp</result>
+		</action>
+		<action name="editfund" class="invaid.users.action.EditFundAction">
+			<result name="success">portfolio.jsp</result>
+			<result name="error">/error/error500.jsp</result>
+			<result name="input">edit_funds.jsp</result>
+		</action>
+	</package>
+	
+	<package name="portfolio" extends="struts-default, json-default">
+		<action name="getmffunds" class="invaid.users.action.MFPortfolioAction">
+			<result name="success">data/portfolio_mf.jsp</result>
+			<result name="error">/error/error500.html</result>
+		</action>
+		<action name="getuitffunds" class="invaid.users.action.UITFPortfolioAction">
+			<result name="success">data/portfolio_uitf.jsp</result>
+			<result name="error">/error/error500.html</result>
 		</action>
 	</package>
 	

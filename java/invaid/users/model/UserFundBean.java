@@ -14,23 +14,25 @@ public class UserFundBean {
 	@Column(nullable=false)
 	private String user_fundId;
 	@Column(nullable=false)
-	private String user_fundName;
+	private int fundNumber;
 	@Column(nullable=false, columnDefinition="TINYINT(1) ZEROFILL")
 	private int user_fundType;
-	@Column(nullable=false)
-	private int user_numOfUnitsShares;
+	@Column(nullable=false, columnDefinition="DECIMAL(30,2)")
+	private double user_numOfUnitsShares;
 	@Column(nullable=false, columnDefinition="TINYINT(1)")
 	private int user_fundHorizon;
 	@Column(nullable=false)
 	private String user_fundDatePurchased;
 	@Column(nullable=false, columnDefinition="DECIMAL(20,2)")
 	private double user_fundInitAmount;
+	@Column(nullable=false)
+	private String user_profileId;
+	@Transient
+	private String numOfUnitsShares;
 	@Transient
 	private String fundInitAmount;
 	@Transient
 	private String fundType;
-	@Transient
-	private String fundName;
 	
 	
 	public String getUser_fundId() {
@@ -45,12 +47,12 @@ public class UserFundBean {
 		this.user_fundId = user_fundId;
 	}
 	
-	public String getUser_fundName() {
-		return user_fundName;
+	public int getFundNumber() {
+		return fundNumber;
 	}
 	
-	public void setUser_fundName(String user_fundName) {
-		this.user_fundName = user_fundName;
+	public void setFundNumber(int fundNumber) {
+		this.fundNumber = fundNumber;
 	}
 	
 	public int getUser_fundType() {
@@ -61,11 +63,11 @@ public class UserFundBean {
 		this.user_fundType = user_fundType;
 	}
 	
-	public int getUser_numOfUnitsShares() {
+	public double getUser_numOfUnitsShares() {
 		return user_numOfUnitsShares;
 	}
 	
-	public void setUser_numOfUnitsShares(int user_numOfUnitsShares) {
+	public void setUser_numOfUnitsShares(double user_numOfUnitsShares) {
 		this.user_numOfUnitsShares = user_numOfUnitsShares;
 	}
 	
@@ -109,12 +111,20 @@ public class UserFundBean {
 		this.fundInitAmount = fundInitAmount;
 	}
 	
-	public String getFundName() {
-		return fundName;
+	public String getNumOfUnitsShares() {
+		return numOfUnitsShares;
 	}
 
-	public void setFundName(String fundName) {
-		this.fundName = fundName;
+	public void setNumOfUnitsShares(String numOfUnitsShares) {
+		this.numOfUnitsShares = numOfUnitsShares;
+	}
+
+	public String getUser_profileId() {
+		return user_profileId;
+	}
+
+	public void setUser_profileId(String user_profileId) {
+		this.user_profileId = user_profileId;
 	}
 
 	/*
@@ -130,5 +140,9 @@ public class UserFundBean {
 	
 	public void convertFundAmount() {
 		setUser_fundInitAmount(Double.parseDouble(getFundInitAmount()));
+	}
+	
+	public void convertUnitsShares() {
+		setUser_numOfUnitsShares(Double.parseDouble(getNumOfUnitsShares()));
 	}
 }

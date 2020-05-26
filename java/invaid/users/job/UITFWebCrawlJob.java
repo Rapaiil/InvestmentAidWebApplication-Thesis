@@ -1,56 +1,52 @@
-package invaid.users.action;
+package invaid.users.job;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import org.apache.struts2.interceptor.SessionAware;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
-import com.auth0.jwt.exceptions.AlgorithmMismatchException;
-import com.auth0.jwt.exceptions.InvalidClaimException;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.SignatureVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.opensymphony.xwork2.ActionSupport;
+import org.quartz.Job;
+import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.JobKey;
 
 import invaid.users.model.Bank;
+import invaid.users.model.TrustFundBean;
 import invaid.users.model.UitfFundDetail;
 import invaid.users.model.UitfFundDetails;
-import invaid.users.util.TokenUtil;
+import invaid.users.util.HibernateUtil;
 import config.Configurations;
 
-@SuppressWarnings("serial")
-public class UITFWebCrawlAction extends ActionSupport implements SessionAware, Runnable {
-	private Map<String, Object> sessionMap;
+public class UITFWebCrawlJob implements Job {
 	UitfFundDetails fundList = new UitfFundDetails();
-	private String token;
 	final static int NO_OF_BANKS = 42;
 	final static int NO_OF_FUNDS = 386;
-	private boolean isSuccess = false;
 	private String contextPath = Configurations.getUitfFile();
+	Session session = HibernateUtil.getSession();
 	
-	public String execute() {
-		token = (String) sessionMap.get("loginToken");
-		
-		switch(givePermission()) {
-			case "denied": return ERROR;
-		}
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		System.out.println("Executing web crawl action for unit investement trust fund...");
 		
 		fundList.setList(new ArrayList<UitfFundDetail>());
 		List<Bank> banko = Arrays.asList(Bank.values());
@@ -110,16 +106,18 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 						break;
 				}
 				bankNum++;
-			} catch (IOException ioe) {
-				ioe.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 		
 		List<UitfFundDetail> fdList = fundList.getList();
 		fundList.setList(new ArrayList<UitfFundDetail>());
 		boolean found = false;
+		int total = 0;
 		
 		for(int ctr=1; ctr<NO_OF_FUNDS; ctr++) {
+			total++;
 			if((ctr > 4 && ctr < 8) ||
 			   (ctr > 10 && ctr < 34) ||
 			   (ctr > 42 && ctr < 46) ||
@@ -164,7 +162,11 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 			Iterator<String> rawData = null;
 
 			try {
-				Thread.sleep(10000);
+				if(total % 90 == 0)
+					TimeUnit.MINUTES.sleep(10);
+				else
+					TimeUnit.MINUTES.sleep(1);
+				
 				document = Jsoup.connect(SOURCE_URL).get();
 				header = document.select("#inside-fundprofile h3").text().toString();
 				
@@ -268,35 +270,43 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 		} catch(JAXBException jaxbe) {
 			jaxbe.printStackTrace();
 		}
-		return SUCCESS;
 		
-		/*
-		 * Thread t = new Thread(this); t.start(); if(isSuccess) return SUCCESS; else
-		 * return ERROR;
-		 */
-	}
-	
-	@Override
-	public void run() {
-		
-	}
-	
-	private String givePermission() {
 		try {
-			if(token == null)
-				throw new NullPointerException("Token is empty!");
-			TokenUtil.verifyUserToken().verify(token);
-			return "granted";
-		} catch(JWTDecodeException | AlgorithmMismatchException | SignatureVerificationException jwtve) {
-			System.err.println("Invalid token! Access is denied.");
-		} catch(InvalidClaimException jwtve) {
-			System.err.println("Access is denied.");
-		} catch(TokenExpiredException jwtve) {
-			System.err.println("Session has expired!");
-		} catch(JWTVerificationException jwtve) {
-			System.err.println(jwtve.getMessage());
-		} 
-		return "denied";
+			session.getTransaction().begin();
+			TrustFundBean tfb;
+			
+			for(UitfFundDetail f: fundList.getList()) {
+				tfb = new TrustFundBean();
+				tfb.setFundNumber(f.getFundNumber());
+				tfb.setFundName(f.getFundName());
+				tfb.setBankName(f.getBankName());
+				tfb.setFundClassification(f.getFundClassification());
+				tfb.setNavpu(f.getNavpu());
+				tfb.setRoiyoy(f.getRoiyoy());
+				tfb.setRoiytd(f.getRoiytd());
+				tfb.setMinInitParticipation(String.valueOf(f.getMinInitParticipation()));
+				tfb.setMinAddParticipation(String.valueOf(f.getMinAddParticipation()));
+				tfb.setMinMainParticipation(String.valueOf(f.getMinMaintainParticipation()));
+				tfb.setMinHoldingDays(String.valueOf(f.getMinHoldingDays()));
+				tfb.setSettlementDate(f.getSettlementDate());
+				tfb.setTrustFee(f.getTrustFee());
+				tfb.setExitFee(f.getExitFee());
+				tfb.setCutOffTime(f.getCutOffTime());
+				tfb.setBenchmark(f.getBenchmark());
+				tfb.setRiskClassification(f.getRiskClassification());
+				tfb.setUitfCrawledDate(new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now())));
+				
+				session.save(tfb);
+			}
+			session.getTransaction().commit();
+		} catch(HibernateException he) {
+			System.err.println(he.getMessage());
+			session.getTransaction().rollback();
+		}
+		
+		JobDetail jobDetail = context.getJobDetail();
+		JobKey key = jobDetail.getKey();
+		System.out.println("Job " + key + " completed on " + new Date());
 	}
 	
 	private double convertValue(String text) {
@@ -308,18 +318,5 @@ public class UITFWebCrawlAction extends ActionSupport implements SessionAware, R
 			pe.getMessage();
 		}
 		return number.doubleValue();
-	}
-	
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-	
-	@Override
-	public void setSession(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
 	}
 }

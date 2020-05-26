@@ -2,6 +2,8 @@ package invaid.users.action;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,8 +18,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.model.FundTransactionBean;
-import invaid.users.model.MfFundDetail;
-import invaid.users.model.UitfFundDetail;
 import invaid.users.model.UserFundBean;
 import invaid.users.util.HibernateUtil;
 
@@ -35,48 +35,17 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 		fundtrans = new FundTransactionBean();
 		
 		try {
-			String profileId = (String) sessionMap.get("loginId");
-			String fundType = "", fundId = "";
-			String formattedProfileId = profileId.substring(profileId.length()-5);
+			String profileId = (String) sessionMap.get("loginId"),
+			       fundType = userFund.getUser_fundType() == 0 ? "MF" : "UF",
+				   fundId = (String.valueOf(userFund.getFundNumber()).length() == 1) ? "00".concat(String.valueOf(userFund.getFundNumber())) : (String.valueOf(userFund.getFundNumber()).length() == 2) ? "0".concat(String.valueOf(userFund.getFundNumber())) : (String.valueOf(userFund.getFundNumber()).length() == 3) ? String.valueOf(userFund.getFundNumber()) : null;
 			
+			userFund.setUser_profileId(profileId);			
+			userFund.setUser_fundId(fundType+(profileId.substring(profileId.length()-5))+fundId);
+			userFund.setUser_fundDatePurchased(LocalDate.parse(userFund.getUser_fundDatePurchased(), DateTimeFormatter.ofPattern("yyyy-MM-dd")).format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+			
+			userFund.convertUnitsShares();
 			userFund.convertFundAmount();
 			userFund.convertFundType();
-			
-			if(userFund.getUser_fundType() == 0) {
-				List<MfFundDetail> listahanMf;
-				MFXMLParseAction parser = new MFXMLParseAction();
-				
-				fundType = "MF";
-				
-				parser.execute();
-				listahanMf = parser.getFundList();
-				
-				for(int i=0; i<(listahanMf.size()-1); i++) {
-					if(listahanMf.get(i).getFundNumber() == Integer.parseInt(userFund.getFundName())) {
-						userFund.setUser_fundName(listahanMf.get(i).getFundName());
-						fundId = ((userFund.getFundName().length()) == 1) ? "00".concat(userFund.getFundName()) : ((userFund.getFundName().length()) == 2) ? "0".concat(userFund.getFundName()) : ((userFund.getFundName().length()) == 3) ? userFund.getFundName() : null;
-						break;
-					}
-				}
-			} else {
-				List<UitfFundDetail> listahanUitf;
-				UITFXMLParseAction parser = new UITFXMLParseAction();
-				
-				fundType = "UF";
-				
-				parser.execute();
-				listahanUitf = parser.getFundList();
-				
-				for(int i=0; i<(listahanUitf.size()-1); i++) {
-					if(listahanUitf.get(i).getFundNumber() == Integer.parseInt(userFund.getFundName())) {
-						userFund.setUser_fundName(listahanUitf.get(i).getFundName());
-						fundId = ((userFund.getFundName().length()) == 1) ? "00".concat(userFund.getFundName()) : ((userFund.getFundName().length()) == 2) ? "0".concat(userFund.getFundName()) : ((userFund.getFundName().length()) == 3) ? userFund.getFundName() : null;
-						break;
-					}
-				}
-			}
-			
-			userFund.setUser_fundId(fundType+formattedProfileId+fundId);
 			
 			session.save(userFund);
 			addFundTransaction();
@@ -84,9 +53,12 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 			session.getTransaction().commit();
 			return SUCCESS;
 		} catch(HibernateException he) {
-			System.err.println("Cannot save fund!");
-			session.getTransaction().rollback();
+			System.err.println("Cannot save fund!");	
+		} catch(UnsupportedEncodingException uee) {
+			System.err.println(uee.getMessage());
 		}
+		
+		session.getTransaction().rollback();
 		return ERROR;
 	}
 	
@@ -104,21 +76,17 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 		this.sessionMap = sessionMap;
 	}
 	
-	private void addFundTransaction() {
+	private void addFundTransaction() throws UnsupportedEncodingException {
 		String profileId = (String) sessionMap.get("loginId");
 		
-		try {
-			fundtrans.setFund_transactionId(getTransactionId());
-			fundtrans.setUser_fundId(userFund.getUser_fundId());
-			fundtrans.setUser_profileId(profileId);
-			fundtrans.setFund_transactionType(getTransactionType());
-			fundtrans.setFund_transactionDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
-			fundtrans.setFund_transactionTime(new SimpleDateFormat("HH:mm:ss").format(new Date()));
-			
-			session.save(fundtrans);
-		} catch(UnsupportedEncodingException uee) {
-			System.err.println(uee.getMessage());
-		}
+		fundtrans.setFund_transactionId(getTransactionId());
+		fundtrans.setUser_fundId(userFund.getUser_fundId());
+		fundtrans.setUser_profileId(profileId);
+		fundtrans.setFund_transactionType(getTransactionType());
+		fundtrans.setFund_transactionDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+		fundtrans.setFund_transactionTime(new SimpleDateFormat("HH:mm:ss").format(new Date()));
+		
+		session.save(fundtrans);
 	}
 	
 	private int getTransactionType() {

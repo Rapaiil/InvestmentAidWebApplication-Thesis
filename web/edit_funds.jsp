@@ -79,23 +79,24 @@
         	<div class="container">
 	            <div class="card mx-auto">
 	                <div class="card-body">
-	                    <s:form>
+	                    <s:form action="editfund" method="post">
 	                    	<h1>Edit Investment</h1>
 	                        <p>Fund Name:</p>
 	                        <div class="form-group">
-	                            <label for="units-bought">Number of Units bought: *</label>
-	                            <select class="custom-select" id="units-bought" required>
-	                                <option>...</option>
-	                            </select>
+	                            <label for="units-bought">Number of units/shares bought: *</label>
+	                            <input class="form-control" name="user_numOfUnitsShares" onkeypress="isFloating(event)" required="required">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="horizon">Investment Horizon: *</label>
-	                            <select class="custom-select" id="horizon" required>
-	                                <option>...</option>
-	                            </select>
+	                            <select class="custom-select" id="horizon" name="user_fundHorizon" required="required">
+                                <option value="1">Immediate (&lt; 3 years)</option>
+                                <option value="2">Short-term (3-5 years)</option>
+                                <option value="3">Medium-term (6-10 years)</option>
+                                <option value="4">Long-term (&gt; 11 years)</option>
+                            </select>
 	                        </div>
 	                        <div class="text-center">
-	                            <button type="submit" class="btn btn-primary text-uppercase btn-lg" data-toggle="modal" data-target="#submitConfirm">Edit</button>
+	                            <button type="submit" class="btn btn-primary text-uppercase btn-lg">Save</button>
 	                        </div>
                     	</s:form>
 	                </div>
@@ -103,53 +104,7 @@
 	        </div>
         </section>
 
-        <!-- CONFIRM EDIT MODAL -->
-		<div class="modal fade" id="submitConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-uppercase">Confirm Edit Fund</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Do you want to edit this fund?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn bg-danger btnCancel" data-dismiss="modal">Cancel</button>
-                  <s:form action="#" method="get">
-                      <s:submit value="OK" class="btn btn-primary btnLogout" data-toggle="modal" data-target="#editFund"/>
-                  </s:form>
-                </div>
-              </div>
-            </div>
-        </div>
         
-        <!-- ENROLL MODAL -->
-		<div class="modal fade" id="editFund" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-uppercase">Edit Fund</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Fund has been edited!</p>
-                </div>
-                <div class="modal-footer">
-                  <a type="button" class="btn bg-danger btnCancel" href="portfolio.jsp">Return to Portfolio</a>
-                  <%-- <s:form action="#" method="get">
-                      <s:submit value="Add another fund" class="btn btn-primary btnLogout"/>
-                  </s:form> --%>
-                </div>
-              </div>
-            </div>
-        </div>
-        
-
         <!-- LOGOUT MODAL -->
 		<!-- Modal -->
 		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -179,7 +134,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <!-- JS -->
     <script src="js/navbar.js"></script>
+    <script src="js/editfund.js"></script>
 </body>
 </html>
