@@ -130,7 +130,8 @@
 	                                                        <th scope="col">Current NAVPU/NAVPS</th>
 	                                                        <th scope="col">No. Shares/Units</th>
 	                                                        <th scope="col">Current Market Price</th>
-	                                                        <th scope="col">Gain/Loss (%)</th>
+															<th scope="col">Gain/Loss (%)</th>
+															<th scope="col"></th>
 	                                                    </tr>
 	                                                </thead>
 	                                                <tbody>
@@ -159,7 +160,8 @@
 	                                                        <th scope="col">Current NAVPU/NAVPS</th>
 	                                                        <th scope="col">No. Shares/Units</th>
 	                                                        <th scope="col">Current Market Price</th>
-	                                                        <th scope="col">Gain/Loss (%)</th>
+															<th scope="col">Gain/Loss (%)</th>
+															<th scope="col"></th>
 	                                                    </tr>
 	                                                </thead>
 	                                                <tbody>
