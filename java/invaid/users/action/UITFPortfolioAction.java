@@ -1,5 +1,7 @@
 package invaid.users.action;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -29,6 +31,8 @@ public class UITFPortfolioAction extends ActionSupport implements SessionAware, 
 	public String execute() {
 		session.getTransaction().begin();
 		UserPortfolioFundModel fund;
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.CEILING);
 		
 		List<Object[]> list = getRecords();
 		
@@ -43,8 +47,8 @@ public class UITFPortfolioAction extends ActionSupport implements SessionAware, 
 					fund.setFundNumOfUnitsShares(Double.parseDouble(record[3].toString()));
 					fund.setFundNav(Double.parseDouble(record[6].toString()));
 					fund.setFundAmount(Double.parseDouble(record[5].toString()));
-					fund.setFundPrice(fund.getFundNumOfUnitsShares() * fund.getFundNav());
-					fund.setPctGainLoss(String.valueOf(((fund.getFundPrice()/fund.getFundAmount())-1) / 100.0));
+					fund.setFundPrice(Double.parseDouble(df.format(fund.getFundNumOfUnitsShares() * fund.getFundNav())));
+					fund.setPctGainLoss(df.format(((fund.getFundPrice()/fund.getFundAmount())-1) * 100.00));
 					
 					uitfList.add(fund);
 				}
