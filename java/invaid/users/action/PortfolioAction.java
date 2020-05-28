@@ -55,7 +55,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 					fglm.setFundName(record[1].toString());
 					fglm.setFundClassification(record[2].toString());
 					fglm.setFundAmount(Double.parseDouble(record[3].toString()));
-					fglm.setFundNav(Double.parseDouble(record[3].toString()));
+					fglm.setFundNav(Double.parseDouble(record[5].toString()));
 					fglm.setFundShares(Double.parseDouble(record[4].toString()));
 					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
 					
@@ -86,7 +86,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 					fglm.setFundName(record[1].toString());
 					fglm.setFundClassification(record[2].toString());
 					fglm.setFundAmount(Double.parseDouble(record[3].toString()));
-					fglm.setFundNav(Double.parseDouble(record[3].toString()));
+					fglm.setFundNav(Double.parseDouble(record[5].toString()));
 					fglm.setFundShares(Double.parseDouble(record[4].toString()));
 					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
 					

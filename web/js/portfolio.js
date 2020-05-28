@@ -9,14 +9,15 @@ function getTPV() {
 		type: "post",
 		url: "gettpv",
 		success: function(response) {
-			if(jQuery.isEmpty(response) || (typeof response == undefined)) {
+			if(jQuery.isEmptyObject(response) || (typeof response == undefined)) {
 				$('.net').append("<h1>&#8369;0.00</h1>" +
 						"<small>Total Portfolio Value</small>");
 			} else {
 				var jsonstr = JSON.stringify(response);
 				jsonobj = JSON.parse(jsonstr);
 				
-				console.log(jsonobj);
+				$('.net').append("<h1>&#8369;"+ jsonobj.totalportfoliovalue + "</h1>" +
+				"<small>Total Portfolio Value</small>");
 			}
 			
 		}

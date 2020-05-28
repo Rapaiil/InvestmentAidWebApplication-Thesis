@@ -217,5 +217,6 @@
     <!-- JS -->
     <script src="js/navbar.js"></script>
     <script src="js/datatables.js"></script>
+    <script src="js/portfolio.js"></script>
 </body>
 </html>
