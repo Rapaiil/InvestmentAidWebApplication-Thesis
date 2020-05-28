@@ -90,7 +90,7 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 	}
 	
 	private int getTransactionType() {
-		return 1;
+		return 3;
 	}
 	
 	private String getTransactionId() throws UnsupportedEncodingException {

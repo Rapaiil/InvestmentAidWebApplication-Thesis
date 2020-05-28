@@ -81,7 +81,8 @@
 	                <div class="card-body">
 	                    <s:form action="editfund" method="post">
 	                    	<h1>Edit Investment</h1>
-	                        <p>Fund Name:</p>
+	                    	<s:hidden name="fundId" value="%{fundId}" />
+	                        <p>Fund Name: <s:property value="fundName" /></p>
 	                        <div class="form-group">
 	                            <label for="units-bought">Number of units/shares bought: *</label>
 	                            <input class="form-control" name="user_numOfUnitsShares" onkeypress="isFloating(event)" required="required">

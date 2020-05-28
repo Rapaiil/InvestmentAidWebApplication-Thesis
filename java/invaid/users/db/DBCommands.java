@@ -59,7 +59,7 @@ public interface DBCommands {
 			+ " WHERE user_fundId = :fundid";
 	final static String DELETE_USERFUND = "DELETE FROM UserFundBean"
 			+ " WHERE user_fundId = :fundid"; 
-	final static String GET_USERFUND = "SELECT user_fundId, user_fundNumber"
+	final static String GET_USERFUND = "SELECT user_fundId"
 			+ " FROM UserFundBean"
 			+ " WHERE user_profileId = :profid";
 	final static String GET_MF_USERFUND = "SELECT uf.user_fundId, mf.fundName, mf.fundClassification,"

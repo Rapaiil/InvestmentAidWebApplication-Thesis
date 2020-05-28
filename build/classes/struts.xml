@@ -132,6 +132,13 @@
 			<result name="error">/error/error500.jsp</result>
 			<result name="input">edit_funds.jsp</result>
 		</action>
+		<action name="promptedit" class="invaid.users.action.EditFundAction" method="promptEdit">
+			<result name="success">edit_funds.jsp</result>
+		</action>
+		<action name="deletefund" class="invaid.users.action.DeleteFundAction">
+			<result name="success">portfolio.jsp</result>
+			<result name="error">/error/error500.jsp</result>
+		</action>
 	</package>
 	
 	<package name="portfolio" extends="struts-default, json-default">

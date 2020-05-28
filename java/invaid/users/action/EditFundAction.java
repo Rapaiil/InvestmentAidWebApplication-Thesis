@@ -26,19 +26,20 @@ public class EditFundAction extends ActionSupport implements ModelDriven<EditFun
 	private FundTransactionBean fundtrans;
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
+	private String fundId, fundName;
 	
 	@Override
 	public String execute() {
 		session.getTransaction().begin();
-		
+		fundtrans = new FundTransactionBean();
 		List<Object[]> list = getRecords();
 		
 		try {
 			if(list != null) {
-				for(Object[] record: list) {
-					if(record[1].toString().equals(fundDetails.getFundNumber())) {
-						String fundId = record[0].toString();
-						
+				for(Object record: list) {
+					String fundId = record.toString();
+					
+					if(fundId.equals(fundDetails.getFundId())) {
 						saveFundChanges(fundId, Double.parseDouble(fundDetails.getUser_numOfUnitsShares()), Integer.parseInt(fundDetails.getUser_fundHorizon()));
 						addFundTransaction(fundId);
 						
@@ -57,11 +58,31 @@ public class EditFundAction extends ActionSupport implements ModelDriven<EditFun
 		return ERROR;
 	}
 	
+	public String promptEdit() {
+		return SUCCESS;
+	}
+	
 	@Override
 	public EditFundModel getModel() {
 		return fundDetails;
 	}
 	
+	public String getFundId() {
+		return fundId;
+	}
+
+	public void setFundId(String fundId) {
+		this.fundId = fundId;
+	}
+
+	public String getFundName() {
+		return fundName;
+	}
+
+	public void setFundName(String fundName) {
+		this.fundName = fundName;
+	}
+
 	@Override
 	public List<Object[]> getRecords() {
 		String profileId = (String) sessionMap.get("loginId");

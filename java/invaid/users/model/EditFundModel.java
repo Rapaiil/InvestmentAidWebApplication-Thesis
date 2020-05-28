@@ -1,16 +1,16 @@
 package invaid.users.model;
 
 public class EditFundModel {
-	private String fundNumber;
+	private String fundId;
 	private String user_numOfUnitsShares;
 	private String user_fundHorizon;
 	
-	public String getFundNumber() {
-		return fundNumber;
+	public String getFundId() {
+		return fundId;
 	}
 	
-	public void setFundNumber(String fundNumber) {
-		this.fundNumber = fundNumber;
+	public void setFundId(String fundId) {
+		this.fundId = fundId;
 	}
 	
 	public String getUser_numOfUnitsShares() {
