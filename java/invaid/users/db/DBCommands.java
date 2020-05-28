@@ -72,5 +72,13 @@ public interface DBCommands {
 			+ " FROM UserFundBean uf LEFT JOIN TrustFundBean tf"
 			+ " ON uf.fundNumber = tf.fundNumber"
 			+ " WHERE uf.user_profileId = :profid AND tf.uitfCrawledDate = :date AND uf.user_fundType = 1";
+	final static String GET_MF_PDATA = "SELECT uf.user_fundId, mf.fundName, mf.fundClassification, uf.user_fundInitAmount, uf.user_numOfUnitsShares, mf.navps"
+			+ " FROM UserFundBean uf LEFT JOIN MutualFundBean mf"
+			+ " ON uf.fundNumber = mf.fundNumber"
+			+ " WHERE uf.user_profileId = :profid AND mf.mfCrawledDate = :date AND uf.user_fundType = 0";
+	final static String GET_UITF_PDATA = "SELECT uf.user_fundId, tf.fundName, tf.fundClassification, uf.user_fundInitAmount, uf.user_numOfUnitsShares, tf.navpu"
+			+ " FROM UserFundBean uf LEFT JOIN TrustFundBean tf"
+			+ " ON uf.fundNumber = tf.fundNumber"
+			+ " WHERE uf.user_profileId = :profid AND tf.uitfCrawledDate = :date AND uf.user_fundType = 1";
 	public List<Object[]> getRecords();
 }

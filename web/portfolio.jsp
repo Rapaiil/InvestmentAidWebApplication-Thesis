@@ -86,8 +86,6 @@
 	                    <div class="col-lg-3">
 	                        <div class="sidebar">
 	                            <div class="net">
-	                                <h1>&#8369;1M</h1>
-	                                <small>Total Portfolio Value</small>
 	                            </div>
 	                            <hr/>
 	                            <ul class="nav nav nav-pills flex-column" id="myTab" role="tablist">
@@ -109,8 +107,8 @@
 	                    <div class="col-lg-9 tab-content">
 	                        <!-- CONTENT PORTFOLIO-->
 	                        <div class="portfolio-content tab-pane fade show active" id="portfolio" role="tabpanel">
-	                            <h1>My Portfolio</h1>
-	                            <h2 class="text-muted text-center" style="margin-top: 100px;">Click 'Enroll Funds' to add new fund entry</h2>
+	                        	<h1>My Portfolio</h1>
+	                        	<s:action name="retrieveportfoliodata" executeResult="true"></s:action>
                            </div>	     
 	                        
 	                        <!-- MUTUAL FUNDS -->
@@ -206,88 +204,6 @@
 		    </div>
 		  </div>
 		</div>
-    
-    <!-- LINE GRAPH -->
-    <script>     
-        var ctx = document.getElementById('lineGraphPerformance').getContext('2d');
-        var lineGraphPerformance = new Chart(ctx, {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'ALFM',
-                    data: [250, 200, 350, 550],
-                    borderColor: ['#A2C7E5'],
-                    fill: false
-                },
-                {
-                    label: 'Sun Life Financial',
-                    data: [111, 222, 200, 400],
-                    borderColor: ['#FF99C9'],
-                    fill: false
-                },
-                {
-                    label: 'ATRAM',
-                    data: [300, 330, 400, 600],
-                    borderColor: ['#C1BDDB'],
-                    fill: false
-                }],
-                labels: ['2015', '2016', '2017', '2018']
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            suggestedMin: 100,
-                            suggestedMax: 600
-                        }
-                    }]
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        });
-    </script>
-    <!-- DOUGHNUT CHART -->
-    <script>
-        var data = {
-            labels: [
-              "Money Market MFs",
-              "Fixed Income UITFs",
-              "Equity UITFs"
-            ],
-            datasets: [
-              {
-                data: [300, 50, 100],
-                backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-                ],
-                hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-                ]
-              }],
-              options:{
-                maintainAspectRatio: false
-              }
-          };
-          
-        var doughnutGraphAsset = new Chart(document.getElementById('doughnutGraphAsset'), {
-            type: 'doughnut',
-            data: data,
-            options: {
-                responsive: true,
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                },
-            }
-        });
-    </script>
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

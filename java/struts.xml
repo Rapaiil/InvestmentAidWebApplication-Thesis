@@ -150,6 +150,19 @@
 			<result name="success">data/portfolio_uitf.jsp</result>
 			<result name="error">/error/error500.html</result>
 		</action>
+		<action name="retrieveportfoliodata" class="invaid.users.action.PortfolioAction">
+			<result name="success">data/portfolio_data.jsp</result>
+		</action>
+		<action name="" class="invaid.users.action.ChartPortfolioAction">
+			<result type="json"></result>
+		</action>
+		<action name="gettpv" class="invaid.users.action.PortfolioAction">
+			<result type="json">
+				<param name="includeProperties">
+					totalportfoliovalue
+				</param>
+			</result>
+		</action>
 	</package>
 	
 	<package name="feedback" extends="struts-default">
