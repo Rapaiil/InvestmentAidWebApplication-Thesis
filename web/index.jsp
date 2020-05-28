@@ -215,9 +215,10 @@
                     <div class="col-lg-12 footer-links">
                         <h5>QUICK LINKS</h5>
                         <ul>
-                            <li><a href="#">Investment Guide</a></li>
-                            <li><a href="#">Monitoring</a></li>
-                            <li><a href="#">Feedback</a></li>
+                            <li><a href="investment_guide.jsp">Investment Guide</a></li>
+                            <li><a href="questionnaire_landing.jsp">Risk Profile Questionnaire</a></li>
+                            <li><a href="monitoring.jsp">Monitoring</a></li>
+                            <li><a href="feedback.jsp">Feedback</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-12 footer-copyright text-white-50 text-center">
