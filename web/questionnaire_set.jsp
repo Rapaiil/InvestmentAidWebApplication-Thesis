@@ -192,16 +192,16 @@
 				</div>
 				<label class="pt-3">5. Select the investments you currently own:</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_1" name="riskTolerance3" class="custom-control-input">
-					<label class="custom-control-label" for="risktolerance_5_1">Bonds and/or bond funds</label>
+					<input type="radio" id="risktolerance_5_1_1" name="riskTolerance3" class="custom-control-input">
+					<label class="custom-control-label" for="risktolerance_5_1_1">Bonds and/or bond funds</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_2" name="riskTolerance3" class="custom-control-input">
-					<label class="custom-control-label" for="risktolerance_5_2">Stocks and/or stock funds</label>
+					<input type="radio" id="risktolerance_5_2_2" name="riskTolerance3" class="custom-control-input">
+					<label class="custom-control-label" for="risktolerance_5_2_2">Stocks and/or stock funds</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_3" name="riskTolerance3" class="custom-control-input">
-					<label class="custom-control-label" for="risktolerance_5_3">International securities and/or international
+					<input type="radio" id="risktolerance_5_3_3" name="riskTolerance3" class="custom-control-input">
+					<label class="custom-control-label" for="risktolerance_5_3_3">International securities and/or international
 						funds</label>
 				</div>
 				<label class="pt-3">6. Consider this scenario: Imagine that in the past three months, the overall stock market lost 25%
