@@ -120,107 +120,107 @@
         
         <div class="container mx-auto p-5">
         	<h2 class="text-center mb-3">Risk Profile Questionnaire</h2>
-        	<s:form>
-				<h5 class="text-uppercase">time horizon</h5>
+        	<s:form action="getrpresult" method="post">
+				<h5 class="text-uppercase">Time horizon</h5>
 				<label class="pt-3">1. I plan to begin withdrawing money from my investments in:</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_1_1" name="timeHorizon1" class="custom-control-input">
+					<input type="radio" id="timehorizon_1_1" value="1" name="timeHorizon1" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_1_1">Less than 3 years</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_1_2" name="timeHorizon1" class="custom-control-input">
+					<input type="radio" id="timehorizon_1_2" value="3" name="timeHorizon1" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_1_2">3 - 5 years</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_1_3" name="timeHorizon1" class="custom-control-input">
+					<input type="radio" id="timehorizon_1_3" value="7" name="timeHorizon1" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_1_3">6 - 10 years</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_1_4" name="timeHorizon1" class="custom-control-input">
+					<input type="radio" id="timehorizon_1_4" value="10" name="timeHorizon1" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_1_4">11 years or more</label>
 				</div>
 				<label class="pt-3">2. Once I begin withdrawing funds from my investments, I plan to spend all of the funds in:</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_2_1" name="timeHorizon2" class="custom-control-input">
+					<input type="radio" id="timehorizon_2_1" value="0" name="timeHorizon2" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_2_1">Less than 2 years</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_2_2" name="timeHorizon2" class="custom-control-input">
+					<input type="radio" id="timehorizon_2_2" value="1" name="timeHorizon2" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_2_2">2 - 5 years</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_2_3" name="timeHorizon2" class="custom-control-input">
+					<input type="radio" id="timehorizon_2_3" value="4" name="timeHorizon2" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_2_3">6 - 10 years</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="timehorizon_2_4" name="timeHorizon2" class="custom-control-input">
+					<input type="radio" id="timehorizon_2_4" value="8" name="timeHorizon2" class="custom-control-input">
 					<label class="custom-control-label" for="timehorizon_2_4">11 years or more</label>
 				</div>
 				<hr />
 				<!-- RISK TOLERANCE SECTION -->
-				<h5 class="text-uppercase">risk tolerance</h5>
+				<h5 class="text-uppercase">Risk Tolerance</h5>
 				<label class="pt-3">3. I would describe my knowledge of investments as:</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_3_1" name="riskTolerance1" class="custom-control-input">
+					<input type="radio" id="risktolerance_3_1" value="1" name="riskTolerance1" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_3_1">None</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_3_2" name="riskTolerance1" class="custom-control-input">
+					<input type="radio" id="risktolerance_3_2" value="3" name="riskTolerance1" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_3_2">Limited</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_3_3" name="riskTolerance1" class="custom-control-input">
+					<input type="radio" id="risktolerance_3_3" value="7" name="riskTolerance1" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_3_3">Good</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_3_4" name="riskTolerance1" class="custom-control-input">
+					<input type="radio" id="risktolerance_3_4" value="10" name="riskTolerance1" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_3_4">Extensive</label>
 				</div>
 				<label class="pt-3">4. When I invest my money, I am:</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_1" name="riskTolerance2" class="custom-control-input">
+					<input type="radio" id="risktolerance_5_1" value="0" name="riskTolerance2" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_5_1">Most concerned about my investment losing value</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_2" name="riskTolerance2" class="custom-control-input">
+					<input type="radio" id="risktolerance_5_2" value="4" name="riskTolerance2" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_5_2">Equally concerned about my investment losing or gaining
 						value</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_4_3" name="riskTolerance2" class="custom-control-input">
+					<input type="radio" id="risktolerance_4_3" value="8" name="riskTolerance2" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_4_3">Most concerned about my investment gaining value</label>
 				</div>
 				<label class="pt-3">5. Select the investments you currently own:</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_1" name="riskTolerance3" class="custom-control-input">
-					<label class="custom-control-label" for="risktolerance_5_1">Bonds and/or bond funds</label>
+					<input type="radio" id="risktolerance_5_1_1" value="3" name="riskTolerance3" class="custom-control-input">
+					<label class="custom-control-label" for="risktolerance_5_1_1">Bonds and/or bond funds</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_2" name="riskTolerance3" class="custom-control-input">
-					<label class="custom-control-label" for="risktolerance_5_2">Stocks and/or stock funds</label>
+					<input type="radio" id="risktolerance_5_2_2" value="6" name="riskTolerance3" class="custom-control-input">
+					<label class="custom-control-label" for="risktolerance_5_2_2">Stocks and/or stock funds</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_5_3" name="riskTolerance3" class="custom-control-input">
-					<label class="custom-control-label" for="risktolerance_5_3">International securities and/or international
+					<input type="radio" id="risktolerance_5_3_3" value="8" name="riskTolerance3" class="custom-control-input">
+					<label class="custom-control-label" for="risktolerance_5_3_3">International securities and/or international
 						funds</label>
 				</div>
 				<label class="pt-3">6. Consider this scenario: Imagine that in the past three months, the overall stock market lost 25%
 					of its value.
 					An individual value. An individual stock investment you own also lost 25% of its value. What would you do?</label>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_6_1" name="riskTolerance4" class="custom-control-input">
+					<input type="radio" id="risktolerance_6_1" value="0" name="riskTolerance4" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_6_1">Sell all of my shares</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_6_2" name="riskTolerance4" class="custom-control-input">
+					<input type="radio" id="risktolerance_6_2" value="2" name="riskTolerance4" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_6_2">Sell some of my shares</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_6_3" name="riskTolerance4" class="custom-control-input">
+					<input type="radio" id="risktolerance_6_3" value="5" name="riskTolerance4" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_6_3">Do nothing</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_6_4" name="riskTolerance4" class="custom-control-input">
+					<input type="radio" id="risktolerance_6_4" value="8" name="riskTolerance4" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_6_4">Buy more shares</label>
 				</div>
 				<label class="pt-3">7. Review the chart below. We've outlined the most likely best-case and worst-case annual returns of
@@ -270,23 +270,23 @@
 					</tbody>
 				</table>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_7_1" name="riskTolerance5" class="custom-control-input">
+					<input type="radio" id="risktolerance_7_1" value="0" name="riskTolerance5" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_7_1">Plan A</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_7_2" name="riskTolerance5" class="custom-control-input">
+					<input type="radio" id="risktolerance_7_2" value="3" name="riskTolerance5" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_7_2">Plan B</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_7_3" name="riskTolerance5" class="custom-control-input">
+					<input type="radio" id="risktolerance_7_3" value="6" name="riskTolerance5" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_7_3">Plan C</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_7_4" name="riskTolerance5" class="custom-control-input">
+					<input type="radio" id="risktolerance_7_4" value="8" name="riskTolerance5" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_7_4">Plan D</label>
 				</div>
 				<div class="custom-control custom-radio pl-5">
-					<input type="radio" id="risktolerance_7_5" name="riskTolerance5" class="custom-control-input">
+					<input type="radio" id="risktolerance_7_5" value="10" name="riskTolerance5" class="custom-control-input">
 					<label class="custom-control-label" for="risktolerance_7_5">Plan E</label>
 				</div>
 				<div class="text-center mt-5">

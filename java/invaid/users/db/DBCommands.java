@@ -80,5 +80,11 @@ public interface DBCommands {
 			+ " FROM UserFundBean uf LEFT JOIN TrustFundBean tf"
 			+ " ON uf.fundNumber = tf.fundNumber"
 			+ " WHERE uf.user_profileId = :profid AND tf.uitfCrawledDate = :date AND uf.user_fundType = 1";
+	final static String GET_USER_RP = "SELECT user_profileId, user_riskprofile"
+			+ " FROM UserRiskProfileBean"
+			+ " WHERE user_profileId = :profid";
+	final static String UPDATE_RISKPROFILE = "UPDATE UserRiskProfileBean"
+			+ " set user_riskprofile = :rptype"
+			+ " WHERE user_profileId = :profid";
 	public List<Object[]> getRecords();
 }

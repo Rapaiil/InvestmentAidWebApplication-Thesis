@@ -163,7 +163,7 @@
 	                                                    </tr>
 	                                                </thead>
 	                                                <tbody>
-	                                                    
+	                                                    <s:action name="getuitffunds" executeResult="true"></s:action>
 	                                                </tbody>
 	                                            </table>
 	                                        </div>

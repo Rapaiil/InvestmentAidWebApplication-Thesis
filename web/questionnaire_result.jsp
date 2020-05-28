@@ -117,11 +117,16 @@
                 <div class="questionnaire my-auto">
                     <div class="card-body mx-auto">
                         <h4 class="card-title text-uppercase pb-3">Risk Profile Questionnaire</h4>
-                        <h5>You are a/an <b>[Risk Appetite]</b> Investor</h5>
+                        <h5>You are a/an <b><s:property value="riskProfileResult" /></b> Investor</h5>
                         <br/>
-                        <p><b>Investment Objective:</b></p>
-                        <p><b>Investment Horizon:</b></p>
-                        <p><b>Characteristics:</b></p>
+                        <p><b>Investment Objective: <s:property value="riskProfileObjectives" /></b></p>
+                        <p><b>Investment Horizon: <s:property value="riskProfileHorizon" /></b></p>
+                        <p><b>Characteristics: <s:property value="riskProfileDesc" /></b></p>
+                        <s:if test="%{#session.loginId != null}">
+                        	<div class="buttons text-center mt-5">
+                        		<a type="button" href="<s:url action="saveriskprofile"><s:param value="rpModel" name="rpModel"/></s:url>" class="btn btn-primary btn-lg text-uppercase recommendations-btn">Save Risk Profile</a>
+                        	</div>
+                        </s:if>
                     </div>
                 </div>
             </div>   
