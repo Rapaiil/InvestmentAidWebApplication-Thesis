@@ -60,7 +60,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
 					
 					fglm.setGainLossValue(df.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
 					
 					mfList.add(fglm);
 					totalportfoliovalue += fglm.getFundMarketPrice();
@@ -91,7 +91,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
 					
 					fglm.setGainLossValue(df.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
 					
 					uitfList.add(fglm);
 					totalportfoliovalue += fglm.getFundMarketPrice();
@@ -105,7 +105,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 				if(portfolioData.getOverallGainLossPct() == null)
 					oglp = 0;
 				else
-					ogl = Double.parseDouble(portfolioData.getOverallGainLossPct());
+					oglp = Double.parseDouble(portfolioData.getOverallGainLossPct());
 				
 				for(FundGainLossModel f: uitfList) {
 					ogl += Double.parseDouble(f.getGainLossValue());
