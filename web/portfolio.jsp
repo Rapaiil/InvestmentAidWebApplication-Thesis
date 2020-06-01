@@ -163,7 +163,7 @@
 	                                                    </tr>
 	                                                </thead>
 	                                                <tbody>
-	                                                    
+	                                                    <s:action name="getuitffunds" executeResult="true"></s:action>
 	                                                </tbody>
 	                                            </table>
 	                                        </div>
@@ -217,5 +217,6 @@
     <!-- JS -->
     <script src="js/navbar.js"></script>
     <script src="js/datatables.js"></script>
+    <script src="js/portfolio.js"></script>
 </body>
 </html>

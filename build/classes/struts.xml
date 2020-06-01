@@ -77,6 +77,19 @@
 		</action>
 	</package>
 	
+	<package name="riskprofile" extends="struts-default">
+		<action name="getrpresult" class="invaid.users.action.RiskProfileAction">
+			<result name="success">questionnaire_result.jsp</result>
+			<result name="error">/error/general-error.html</result>
+		</action>
+		<action name="saveriskprofile" class="invaid.users.action.ChangeRiskProfileAction">
+			<result>riskprofile.jsp</result>
+		</action>
+		<action name="checkrp" class="invaid.users.action.CheckRiskProfileAction">
+			<result name="success">data/riskprofile_data.jsp</result>
+		</action>
+	</package>
+	
 	<package name="webparser" extends="struts-default">
 		<action name="parsemf" class="invaid.users.action.MFXMLParseAction">
 			<result name="success">data/mf.jsp</result>

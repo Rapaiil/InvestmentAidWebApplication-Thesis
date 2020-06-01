@@ -18,6 +18,7 @@
 		    <td><s:property value="fundPrice"/></td>
 		    <s:set var="pct" value="pctGainLoss" />
 			<td><s:property value="pctGainLoss"/>% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
+			<s:set var="fundid" value="fundId" />
 			<td><a href="<s:url action="promptedit">
 				<s:param name="fundId" value="fundId" />
 				<s:param name="fundName" value="fundName" />

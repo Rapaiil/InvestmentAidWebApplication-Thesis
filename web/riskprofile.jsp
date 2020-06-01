@@ -74,11 +74,7 @@
                 <div class="questionnaire my-auto">
                     <div class="card-body mx-auto">
                         <h4 class="card-title text-uppercase pb-3">Risk Profile</h4>
-                        <h5>You are a/an <b>[Risk Appetite]</b> Investor</h5>
-                        <br/>
-                        <p><b>Investment Objective:</b></p>
-                        <p><b>Investment Horizon:</b></p>
-                        <p><b>Characteristics:</b></p>
+                        <s:action name="checkrp" executeResult="true"></s:action>
                         <div class="buttons text-center mt-5">
                         	<a type="button" href="questionnaire_landing.jsp" class="btn btn-primary btn-lg text-uppercase recommendations-btn">Update Risk Profile</a>
                         </div>

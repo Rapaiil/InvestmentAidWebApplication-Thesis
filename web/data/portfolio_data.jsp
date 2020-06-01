@@ -53,17 +53,17 @@
 										<th scope="col">Gain/Loss (%)</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<s:iterator value="mfList">
-											<s:if test="gainLossPctValue > 0">
+								<tbody>									
+									<s:iterator value="mfList">
+										<s:if test="gainLossPctValue > 0">
+											<tr>
 												<td><s:property value="fundName" /></td>
 												<td><s:property value="fundClassification" /></td>
 												<s:set var="pct" value="gainLossPctValue"></s:set>
 												<td><s:property value="gainLossPctValue" />% &nbsp; <i class="fas fa-caret-up"></i></td>
-											</s:if>
-										</s:iterator>
-									</tr>
+											</tr>
+										</s:if>
+									</s:iterator>
 								</tbody>
 							</table>
 						</div>
@@ -79,16 +79,18 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+									
 										<s:iterator value="uitfList">
 											<s:if test="gainLossPctValue > 0">
+											<tr>
 												<td><s:property value="fundName" /></td>
 												<td><s:property value="fundClassification" /></td>
 												<s:set var="pct" value="gainLossPctValue"></s:set>
 												<td><s:property value="gainLossPctValue" />% &nbsp; <i class="fas fa-caret-up"></i></td>
+												</tr>
 											</s:if>
 										</s:iterator>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -121,16 +123,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							
 								<s:iterator value="mfList">
-									<s:if test="gainLossPctValue < 1">
+									<s:if test="gainLossPctValue < 0">
+									<tr>
 										<td><s:property value="fundName" /></td>
 										<td><s:property value="fundClassification" /></td>
 										<s:set var="pct" value="gainLossPctValue"></s:set>
 										<td><s:property value="gainLossPctValue" />% &nbsp; <i class="fas fa-caret-down"></i></td>
+										</tr>
 									</s:if>
 								</s:iterator>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
@@ -146,16 +150,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							
 								<s:iterator value="uitfList">
-									<s:if test="gainLossPctValue < 1">
+									<s:if test="gainLossPctValue < 0">
+									<tr>
 										<td><s:property value="fundName" /></td>
 										<td><s:property value="fundClassification" /></td>
 										<s:set var="pct" value="gainLossPctValue"></s:set>
 										<td><s:property value="gainLossPctValue" />% &nbsp; <i class="fas fa-caret-down"></i></td>
+										</tr>
 									</s:if>
 								</s:iterator>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
@@ -184,8 +190,9 @@
 	                         </tr>
 	                     </thead>
 	                     <tbody>
-	                         <tr>
+	                         
 		                         <s:iterator value="mfList">
+		                         <tr>
 		                         	<td><s:property value="fundName" /></td>
 		                         	<td><s:property value="fundClassification" /></td>
 		                         	<td><s:property value="fundAmount" /></td>
@@ -194,8 +201,10 @@
 		                         	<td><s:property value="fundMarketPrice" /></td>
 		                         	<s:set var="pct" value="gainLossPctValue" />
 		                         	<td><s:property value="gainLossPctValue" />% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
+		                         </tr>
 		                         </s:iterator>
 		                         <s:iterator value="uitfList">
+		                         <tr>
 		                         	<td><s:property value="fundName" /></td>
 		                         	<td><s:property value="fundClassification" /></td>
 		                         	<td><s:property value="fundAmount" /></td>
@@ -204,8 +213,9 @@
 		                         	<td><s:property value="fundMarketPrice" /></td>
 		                         	<s:set var="pct" value="gainLossPctValue" />
 		                         	<td><s:property value="gainLossPctValue" />% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
+		                         </tr>
 		                         </s:iterator>
-	                         </tr>
+	                         
 	                     </tbody>
 	                 </table>
 	             </div>

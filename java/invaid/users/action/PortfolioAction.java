@@ -55,12 +55,12 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 					fglm.setFundName(record[1].toString());
 					fglm.setFundClassification(record[2].toString());
 					fglm.setFundAmount(Double.parseDouble(record[3].toString()));
-					fglm.setFundNav(Double.parseDouble(record[3].toString()));
+					fglm.setFundNav(Double.parseDouble(record[5].toString()));
 					fglm.setFundShares(Double.parseDouble(record[4].toString()));
 					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
 					
 					fglm.setGainLossValue(df.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
 					
 					mfList.add(fglm);
 					totalportfoliovalue += fglm.getFundMarketPrice();
@@ -86,12 +86,12 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 					fglm.setFundName(record[1].toString());
 					fglm.setFundClassification(record[2].toString());
 					fglm.setFundAmount(Double.parseDouble(record[3].toString()));
-					fglm.setFundNav(Double.parseDouble(record[3].toString()));
+					fglm.setFundNav(Double.parseDouble(record[5].toString()));
 					fglm.setFundShares(Double.parseDouble(record[4].toString()));
 					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
 					
 					fglm.setGainLossValue(df.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
 					
 					uitfList.add(fglm);
 					totalportfoliovalue += fglm.getFundMarketPrice();
@@ -105,7 +105,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 				if(portfolioData.getOverallGainLossPct() == null)
 					oglp = 0;
 				else
-					ogl = Double.parseDouble(portfolioData.getOverallGainLossPct());
+					oglp = Double.parseDouble(portfolioData.getOverallGainLossPct());
 				
 				for(FundGainLossModel f: uitfList) {
 					ogl += Double.parseDouble(f.getGainLossValue());
