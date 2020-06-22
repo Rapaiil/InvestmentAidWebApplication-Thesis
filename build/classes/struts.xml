@@ -87,6 +87,7 @@
 		</action>
 		<action name="checkrp" class="invaid.users.action.CheckRiskProfileAction">
 			<result name="success">data/riskprofile_data.jsp</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	
