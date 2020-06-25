@@ -30,6 +30,7 @@ public class CheckRiskProfileAction extends ActionSupport implements SessionAwar
 		if(list != null) {
 			for(Object[] record: list) {
 				if(record[0].toString() != null) {
+					rpModel = new RiskProfileModel();
 					switch(Integer.parseInt(record[1].toString())) {
 						case 1: rpModel.setRiskProfileResult(CONSERVATIVE);
 								rpModel.setRiskProfileObjectives(C_OBJ);
