@@ -10,14 +10,27 @@
 <s:else>
 	<s:iterator value="mfList">
 		<tr>
-		    <td><s:property value="fundName"/></td>
-		    <td><s:property value="fundClassification"/></td>
-		    <td><s:property value="fundAmount"/></td>
-		    <td><s:property value="fundNav"/></td>
-		    <td><s:property value="fundNumOfUnitsShares"/></td>
-		    <td><s:property value="fundPrice"/></td>
-		    <s:set var="pct" value="pctGainLoss" />
-			<td><s:property value="pctGainLoss"/>% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
+			<td>
+				<s:property value="fundName" />
+			</td>
+			<td>
+				<s:property value="fundClassification" />
+			</td>
+			<td>&#8369;
+				<s:property value="fundAmount" />
+			</td>
+			<td>
+				<s:property value="fundNav" />
+			</td>
+			<td>
+				<s:property value="fundNumOfUnitsShares" />
+			</td>
+			<td>&#8369;
+				<s:property value="fundPrice" />
+			</td>
+			<s:set var="pct" value="pctGainLoss" />
+			<td>
+				<s:property value="pctGainLoss" />% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
 			<s:set var="fundid" value="fundId" />
 			<td><a href="<s:url action="promptedit">
 				<s:param name="fundId" value="fundId" />
@@ -50,4 +63,3 @@
 	        </div>
 	    </div>
 </s:else>
-
