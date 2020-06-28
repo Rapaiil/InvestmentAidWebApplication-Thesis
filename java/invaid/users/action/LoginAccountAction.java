@@ -16,6 +16,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import invaid.users.db.DBCommands;
 import invaid.users.model.LoginAccountModel;
+import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.OTPUtil;
@@ -47,8 +48,8 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 								loginAccount.getLogin_otp()) && Mail.sendMultiFactorAuthentication(loginAccount)) {
 							sessionMap.put("loginToken", token);
 							sessionMap.put("loginId", record[0].toString());
-							sessionMap.put("loginFirstName", record[1].toString());
-							sessionMap.put("loginLastName", record[2].toString());
+							sessionMap.put("loginFirstName", AESEncryption.decrypt(record[1].toString()));
+							sessionMap.put("loginLastName", AESEncryption.decrypt(record[2].toString()));
 							sessionMap.put("userStatus", getSessionStatus((int) record[6]));
 							//isSuccess = !isSuccess;
 							return SUCCESS;

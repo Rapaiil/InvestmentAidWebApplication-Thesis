@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
+import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 
 @SuppressWarnings("serial")
@@ -214,13 +215,13 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 		System.out.println(formattedDate);
 		try {
 			Query query = session.createQuery(SAVE_PROFILE);
-			query.setParameter("first_name", first_name);
-			query.setParameter("last_name", last_name);
+			query.setParameter("first_name", AESEncryption.encrypt(first_name));
+			query.setParameter("last_name", AESEncryption.encrypt(last_name));
 			query.setParameter("birthday", formattedDate);
-			query.setParameter("cellphone_no", cellphone_no);
-			query.setParameter("telephone_no", telephone_no);
-			query.setParameter("occupation", occupation);
-			query.setParameter("company", company);
+			query.setParameter("cellphone_no", AESEncryption.encrypt(cellphone_no));
+			query.setParameter("telephone_no", AESEncryption.encrypt(telephone_no));
+			query.setParameter("occupation", AESEncryption.encrypt(occupation));
+			query.setParameter("company", AESEncryption.encrypt(company));
 			query.setParameter("profid", profile_id);
 
 			if(query.executeUpdate() > 0) {
