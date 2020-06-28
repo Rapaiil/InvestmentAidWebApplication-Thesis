@@ -195,10 +195,10 @@
 		                         <tr>
 		                         	<td><s:property value="fundName" /></td>
 		                         	<td><s:property value="fundClassification" /></td>
-		                         	<td>&#8369; <s:property value="fundAmount" /></td>
+		                         	<td>&#8369;<s:property value="fundAmount" /></td>
 		                         	<td><s:property value="fundNav" /></td>
 		                         	<td><s:property value="fundShares" /></td>
-		                         	<td>&#8369; <s:property value="fundMarketPrice" /></td>
+		                         	<td>&#8369;<s:property value="fundMarketPrice" /></td>
 		                         	<s:set var="pct" value="gainLossPctValue" />
 		                         	<td><s:property value="gainLossPctValue" />% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
 		                         </tr>
@@ -207,10 +207,10 @@
 		                         <tr>
 		                         	<td><s:property value="fundName" /></td>
 		                         	<td><s:property value="fundClassification" /></td>
-		                         	<td>&#8369; <s:property value="fundAmount" /></td>
+		                         	<td>&#8369;<s:property value="fundAmount" /></td>
 		                         	<td><s:property value="fundNav" /></td>
 		                         	<td><s:property value="fundShares" /></td>
-		                         	<td>&#8369; <s:property value="fundMarketPrice" /></td>
+		                         	<td>&#8369;<s:property value="fundMarketPrice" /></td>
 		                         	<s:set var="pct" value="gainLossPctValue" />
 		                         	<td><s:property value="gainLossPctValue" />% &nbsp; <s:if test="%{#pct>0}"><i class="fas fa-caret-up"></i></s:if> <s:else><i class="fas fa-caret-down"></i></s:else></td>
 		                         </tr>
