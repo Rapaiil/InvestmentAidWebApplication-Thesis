@@ -34,9 +34,6 @@ public class UserProfileBean {
 	private String user_company;
 
 	@Embedded
-	@AttributeOverrides(value = {
-			@AttributeOverride(name="user_zip", column=@Column(columnDefinition="INT(4) ZEROFILL"))
-	})
 	private AddressBean user_address;
 	
 	public String getUser_firstname() {

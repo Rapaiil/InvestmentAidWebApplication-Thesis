@@ -12,23 +12,31 @@ import com.opensymphony.xwork2.ModelDriven;
 import invaid.users.model.AddressBean;
 import invaid.users.model.UserProfileBean;
 import invaid.users.util.IdGeneratorUtil;
+import invaid.users.util.AESEncryption;
 
 @SuppressWarnings({"serial"})
 public class RegisterProfileAction extends ActionSupport implements ModelDriven<UserProfileBean>, SessionAware, Runnable {
 	private UserProfileBean userProfile = new UserProfileBean();
 	private AddressBean userAddress;
 	private String user_street, user_apt, user_city, user_state;
-	private int user_zip;
+	private String user_zip;
 	private Map<String, Object> sessionMap;
 	private boolean isSuccess = false;
 
 	public String execute() {
 		try {
 			userProfile.setUser_profileId(IdGeneratorUtil.generateId(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
+			userAddress = new AddressBean(AESEncryption.encrypt(user_street), AESEncryption.encrypt(user_apt), AESEncryption.encrypt(user_city), AESEncryption.encrypt(user_state), AESEncryption.encrypt(user_zip));
 			
-			userAddress = new AddressBean(user_street, user_apt, user_city, user_state, user_zip);
 			userProfile.setUser_address(userAddress);
 			
+			userProfile.setUser_firstname(AESEncryption.encrypt(userProfile.getUser_firstname()));
+			userProfile.setUser_lastname(AESEncryption.encrypt(userProfile.getUser_lastname()));
+			userProfile.setUser_cellphonenumber(AESEncryption.encrypt(userProfile.getUser_cellphonenumber()));
+			userProfile.setUser_telephonenumber(AESEncryption.encrypt(userProfile.getUser_telephonenumber()));
+			userProfile.setUser_company(AESEncryption.encrypt(userProfile.getUser_company()));
+			userProfile.setUser_occupation(AESEncryption.encrypt(userProfile.getUser_occupation()));
+
 			userProfile.genderConvert();
 		} catch(Exception e) {
 			 e.getMessage();
@@ -53,7 +61,7 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 		boolean strtValid = ValidateEmpty(getUser_street());
 		boolean cityValid = ValidateEmpty(getUser_city());
 		boolean stateValid = ValidateEmpty(getUser_state());
-		boolean zipValid = ValidateEmpty(Integer.toString(getUser_zip()));
+		boolean zipValid = ValidateEmpty(getUser_zip());
 		boolean cnValid = ValidateEmpty(userProfile.getUser_cellphonenumber());
 		boolean tnValid = ValidateEmpty(userProfile.getUser_telephonenumber());
 		boolean occValid = ValidateEmpty(userProfile.getUser_occupation());
@@ -101,7 +109,7 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 			addFieldError("user_zip", "This field is required");
 		}
 		else {
-			zipValid = ValidateZip(Integer.toString(getUser_zip()));
+			zipValid = ValidateZip(getUser_zip());
 			if(!zipValid) {
 				addFieldError("user_zip", "Please enter a valid zip/postal code");
 			}
@@ -255,11 +263,11 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 		this.user_state = user_state;
 	}
 
-	public int getUser_zip() {
+	public String getUser_zip() {
 		return user_zip;
 	}
 
-	public void setUser_zip(int user_zip) {
+	public void setUser_zip(String user_zip) {
 		this.user_zip = user_zip;
 	}	
 	
