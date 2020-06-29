@@ -32,6 +32,12 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 			userProfile.setUser_lastname(AESEncryption.encrypt(userProfile.getUser_lastname()));
 			userProfile.setUser_company(AESEncryption.encrypt(userProfile.getUser_company()));
 			userProfile.setUser_occupation(AESEncryption.encrypt(userProfile.getUser_occupation()));
+			
+			int cnLength = userProfile.getUser_cellphonenumber().length(), tnLength = userProfile.getUser_telephonenumber().length();
+			if(cnLength > 10)
+				userProfile.setUser_cellphonenumber(userProfile.getUser_cellphonenumber().substring(cnLength-10, cnLength));
+			if(tnLength > 8)
+				userProfile.setUser_telephonenumber(userProfile.getUser_telephonenumber().substring(tnLength-8, tnLength));
 
 			userProfile.genderConvert();
 		} catch(Exception e) {

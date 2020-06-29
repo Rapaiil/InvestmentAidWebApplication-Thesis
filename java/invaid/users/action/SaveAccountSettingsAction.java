@@ -41,18 +41,12 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 		System.out.println("Executing...");
 		
 		int cnLength = cellphone_no.length();
-		if(cnLength == 11) {
+		if(cnLength > 10) {
 			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
 		}
-		else if(cnLength == 12) {
-			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
-			
-		}
-		else if(cnLength == 13) {
-			cellphone_no = cellphone_no.substring(cnLength-10, cnLength);
-		}
+		
 		int tnLength = telephone_no.length();
-		if(tnLength == 10) {
+		if(tnLength > 8) {
 			telephone_no = telephone_no.substring(tnLength-8, tnLength);
 		}		
 		
