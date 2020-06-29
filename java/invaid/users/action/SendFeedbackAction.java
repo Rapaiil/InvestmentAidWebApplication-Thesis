@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.util.Mail;
 
+@SuppressWarnings("serial")
 public class SendFeedbackAction extends ActionSupport{
 	//Variables
 	private String feedback_name;

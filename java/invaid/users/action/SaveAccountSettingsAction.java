@@ -20,7 +20,7 @@ import invaid.users.model.UserAccountBean;
 import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 
-@SuppressWarnings({"serial", "rawtypes", "unchecked"})
+@SuppressWarnings({"serial", "rawtypes", "unchecked", "unused"})
 public class SaveAccountSettingsAction extends ActionSupport implements ModelDriven<UserAccountBean>, DBCommands, SessionAware, Runnable  {
 	private String first_name;
 	private String last_name;

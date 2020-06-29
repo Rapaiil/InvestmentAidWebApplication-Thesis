@@ -4,6 +4,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -143,7 +144,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 	
 	public List<Object[]> getMfRecords() {
 		String profileId = (String) sessionMap.get("loginId");
-		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now()));
+		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now().minus(1, ChronoUnit.DAYS)));
 		
 		try {
 			Query query = session.createQuery(GET_MF_PDATA);
@@ -161,7 +162,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 	
 	public List<Object[]> getUitfRecords() {
 		String profileId = (String) sessionMap.get("loginId");
-		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now()));
+		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now().minus(1, ChronoUnit.DAYS)));
 		
 		try {
 			Query query = session.createQuery(GET_UITF_PDATA);

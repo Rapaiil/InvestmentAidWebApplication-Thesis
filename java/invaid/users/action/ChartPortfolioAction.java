@@ -11,14 +11,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import invaid.users.db.DBCommands;
 import invaid.users.util.HibernateUtil;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "unused"})
 public class ChartPortfolioAction extends ActionSupport implements SessionAware, DBCommands {
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
 	
 	@Override
 	public String execute() {
-		
 		return SUCCESS;
 	}
 

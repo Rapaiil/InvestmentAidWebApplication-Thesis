@@ -12,6 +12,7 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.net.ssl.HttpsURLConnection;
 
+@SuppressWarnings({"unused"})
 public class VerifyreCAPTCHA {
 	public static final String url = "https://www.google.com/recaptcha/api/siteverify";
 	public static final String secret = "6LdivccUAAAAAAUwrzN25yQg_w0K-zmA87fuU4iT";

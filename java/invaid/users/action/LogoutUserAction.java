@@ -18,7 +18,6 @@ public class LogoutUserAction extends ActionSupport implements SessionAware, Run
 	private int status;
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
-	private boolean isSuccess = false;
 	
 	public String execute() {
 		token = (String) sessionMap.get("loginToken");
@@ -38,17 +37,10 @@ public class LogoutUserAction extends ActionSupport implements SessionAware, Run
 			sessionMap.remove("userStatus");
 			sessionMap.clear();
 			if(sessionMap.isEmpty()) {
-				//isSuccess = !isSuccess;
 				return SUCCESS;
 			}
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 	
 	@Override

@@ -73,7 +73,7 @@ public class UITFPortfolioAction extends ActionSupport implements SessionAware, 
 	@Override
 	public List<Object[]> getRecords() {
 		String profid = (String) sessionMap.get("loginId");
-		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now()));
+		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now().minus(1, ChronoUnit.DAYS)));
 		
 		try {
 			Query query = session.createQuery(GET_UITF_USERFUND);
