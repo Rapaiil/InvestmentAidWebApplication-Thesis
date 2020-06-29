@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
 import invaid.users.model.UserProfileBean;
+import invaid.users.model.UserRiskProfileBean;
 import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
@@ -27,6 +28,7 @@ import invaid.users.util.VerifyreCAPTCHA;
 @SuppressWarnings({"serial", "unchecked"})
 public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {
 	private UserAccountBean userAccount = new UserAccountBean();
+	private UserRiskProfileBean userRiskProfile;
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
 	String gRecaptchaResponse = ServletActionContext.getRequest().getParameter("g-recaptcha-response");
@@ -36,6 +38,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 
 	public String execute() {
 		userProfile = (UserProfileBean) sessionMap.get("sessionUser");
+		userRiskProfile = new UserRiskProfileBean();
 		session.getTransaction().begin();
 		
 		try {
@@ -47,8 +50,13 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 			Mail.sendVerificationMail(userAccount);
 			
 			userAccount.setUser_email(AESEncryption.encrypt(userAccount.getUser_email()));
+			
+			userRiskProfile.setUser_profileId(userAccount.getUser_profileId());
+			userRiskProfile.setUser_riskprofile(0);
+			
 			session.save(userAccount);
 			session.save(userProfile);
+			session.save(userRiskProfile);
 			
 			session.getTransaction().commit();
 			return SUCCESS;

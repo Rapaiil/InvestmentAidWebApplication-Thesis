@@ -25,5 +25,5 @@ public interface RPCharacteristics {
 	final String MA_DESC = "Liquidity may not be a concern to a Moderately Aggressive investor";
 	final String A_DESC = "Maximizing long-term returns is more important than protecting principal";
 	
-	final String NO_COMPATIBLE = "not-yet-ready";
+	final String NO_COMPATIBLE = "Indetermined";
 }

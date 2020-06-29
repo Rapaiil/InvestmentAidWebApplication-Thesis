@@ -24,14 +24,14 @@ public class CheckRiskProfileAction extends ActionSupport implements SessionAwar
 	@Override
 	public String execute() {
 		session.getTransaction().begin();
-		
+		String profileId = (String) sessionMap.get("loginId");
 		List<Object[]> list = getRecords();
 		
-		if(list != null) {
+		rpModel = new RiskProfileModel();
+		
+		if(list != null && !list.isEmpty()) {
 			for(Object[] record: list) {
-				if(record[0].toString() != null) {
-					System.out.println("not null record");
-					rpModel = new RiskProfileModel();
+				if(record[0].toString().equals(profileId)) {
 					switch(Integer.parseInt(record[1].toString())) {
 						case 1: rpModel.setRiskProfileResult(CONSERVATIVE);
 								rpModel.setRiskProfileObjectives(C_OBJ);

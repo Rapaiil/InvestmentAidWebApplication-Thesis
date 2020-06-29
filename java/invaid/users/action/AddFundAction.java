@@ -36,7 +36,7 @@ public class AddFundAction extends ActionSupport implements ModelDriven<UserFund
 		
 		try {
 			String profileId = (String) sessionMap.get("loginId"),
-			       fundType = userFund.getUser_fundType() == 0 ? "MF" : "UF",
+			       fundType = userFund.getFundType().equals("mfRadioValue") ? "MF" : "UF",
 				   fundId = (String.valueOf(userFund.getFundNumber()).length() == 1) ? "00".concat(String.valueOf(userFund.getFundNumber())) : (String.valueOf(userFund.getFundNumber()).length() == 2) ? "0".concat(String.valueOf(userFund.getFundNumber())) : (String.valueOf(userFund.getFundNumber()).length() == 3) ? String.valueOf(userFund.getFundNumber()) : null;
 			
 			userFund.setUser_profileId(profileId);			

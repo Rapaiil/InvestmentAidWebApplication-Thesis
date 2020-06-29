@@ -26,34 +26,18 @@ public class ChangeRiskProfileAction extends ActionSupport implements DBCommands
 	public String execute() {
 		session.getTransaction().begin();
 		String profileId = (String) sessionMap.get("loginId");
-		
+
 		List<Object[]> list = getRecords();
-		
+
 		if(list != null) {
-			System.out.println("meron list");
-//			for(Object[] record: list) {
-//				System.out.println("meron record");
-//				if(record[0].toString() != null && record[0].toString().equals(profileId)) {
-//					System.out.println("update na lang");
-//					if(updateRiskProfile())
-//						session.getTransaction().commit();
-//				} else {
-//					System.out.println("add na lang");
-//					int rpType = getRiskProfileType(riskProfileResult);
-//					
-//					urp = new UserRiskProfileBean();
-//					urp.setUser_profileId(profileId);
-//					urp.setUser_riskprofile(rpType);
-//					
-//					session.save(urp);
-//					session.getTransaction().commit();
-//				}
-//				System.out.println("unreachable");
-//				return SUCCESS;
-//			}
+			if(!list.isEmpty()) {
+				updateRiskProfile(profileId, riskProfileResult);
+			} else {
+				addRiskProfile(profileId, riskProfileResult);
+			}
+			return SUCCESS;
 		}
-		System.out.println("walang list");
-		session.getTransaction().rollback();
+		
 		return ERROR;
 	}
 	
@@ -87,22 +71,33 @@ public class ChangeRiskProfileAction extends ActionSupport implements DBCommands
 		return null;
 	}
 		
-	private boolean updateRiskProfile() {
-		String profileId = (String) sessionMap.get("loginId");
-		int rpType = getRiskProfileType(riskProfileResult);
-		
+	private void updateRiskProfile(String profileId, String rpType) {		
 		try {
 			Query query = session.createQuery(UPDATE_RISKPROFILE);
-			query.setParameter("rptype", rpType);
+			query.setParameter("rptype", getRiskProfileType(rpType));
 			query.setParameter("profid", profileId);
 			
 			if(query.executeUpdate() > 0)
-				return true;
+				session.getTransaction().commit();
 		} catch(HibernateException he) {
 			System.err.println(he.getMessage());
 			session.getTransaction().rollback();
 		}
-		return false;
+	}
+	
+	private void addRiskProfile(String profileId, String rpType) {
+		try {
+			urp = new UserRiskProfileBean();
+			
+			urp.setUser_profileId(profileId);
+			urp.setUser_riskprofile(getRiskProfileType(rpType));
+			
+			session.save(urp);
+			session.getTransaction().commit();
+		} catch(HibernateException he) {
+			System.err.println(he.getMessage());
+			session.getTransaction().rollback();
+		}
 	}
 	
 	private int getRiskProfileType(String type) {
