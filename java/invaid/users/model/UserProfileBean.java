@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import invaid.users.util.AESEncryption;
+
 @Entity
 @Table(name="registered_userprofiles")
 public class UserProfileBean {
@@ -136,6 +138,6 @@ public class UserProfileBean {
 	}
 
 	public void setUser_birthday(Date user_birthday) {
-		this.user_birthday = new SimpleDateFormat("MM/dd/yyyy").format(user_birthday);
+		this.user_birthday = AESEncryption.encrypt(new SimpleDateFormat("MM/dd/yyyy").format(user_birthday));
 	}
 }

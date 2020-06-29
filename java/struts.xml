@@ -60,11 +60,15 @@
 	</package>
 	
 	<package name="renewpassword" extends="struts-default">
-		<action name="renewpassword" class="invaid.users.action.RenewPasswordAction" method="givePermission">
+		<action name="checkrenewpassword" class="invaid.users.action.RenewPasswordAction" method="givePermission">
 			<result name="granted">renew_password.jsp</result>
 			<result name="denied">/error/error401.html</result>
 		</action>
-		<action name="resetpassword" class="invaid.users.action.RenewPasswordAction">
+		<action name="renewpassword" class="invaid.users.action.RenewPasswordAction">
+			<result name="success">reset_password_success.jsp</result>
+			<result name="error">/error/general-error.html</result>
+		</action>
+		<action name="resetpassword" class="invaid.users.action.ResetPasswordAction">
 			<result name="success">/reset_password_success.jsp</result>
 			<result name="error">/error/general-error.html</result>
 		</action>
@@ -83,11 +87,11 @@
 			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="saveriskprofile" class="invaid.users.action.ChangeRiskProfileAction">
-			<result>riskprofile.jsp</result>
+			<result name="success">riskprofile.jsp</result>
+			<result name="error">/error/general-error.html</result>
 		</action>
 		<action name="checkrp" class="invaid.users.action.CheckRiskProfileAction">
 			<result name="success">data/riskprofile_data.jsp</result>
-			<result name="error">/error/general-error.html</result>
 		</action>
 	</package>
 	

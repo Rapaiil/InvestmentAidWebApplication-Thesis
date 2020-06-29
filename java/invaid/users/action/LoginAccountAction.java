@@ -29,7 +29,6 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 	private Map<String, Object> sessionMap;
 	private String token;
 	Session session = HibernateUtil.getSession();
-	private boolean isSuccess = false, isDenied = false, isInvalid = false;
 	String gRecaptchaResponse = ServletActionContext.getRequest().getParameter("g-recaptcha-response");
 	
 	public String execute() {
@@ -39,11 +38,11 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 		
 		if(list != null) {
 			for(Object[] record: list) {
-				if(record[4].toString().equals(loginAccount.getLogin_email())
+				if(AESEncryption.decrypt(record[4].toString()).equals(loginAccount.getLogin_email())
 					&& isPasswordMatch(loginAccount.getLogin_password(), record[5].toString())) {
 					if(allowLogin(record[6].toString())) {
-						token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
-						loginAccount.setLogin_otp(OTPUtil.generateOTP());
+						token = TokenUtil.generateToken(AESEncryption.decrypt(record[1].toString()), AESEncryption.decrypt(record[2].toString()));
+						loginAccount.setLogin_otp(new OTPUtil().generateOTP());
 						if(updateUserToken(record[0].toString(), (int) record[6], token,
 								loginAccount.getLogin_otp()) && Mail.sendMultiFactorAuthentication(loginAccount)) {
 							sessionMap.put("loginToken", token);
@@ -51,30 +50,17 @@ public class LoginAccountAction extends ActionSupport implements ModelDriven<Log
 							sessionMap.put("loginFirstName", AESEncryption.decrypt(record[1].toString()));
 							sessionMap.put("loginLastName", AESEncryption.decrypt(record[2].toString()));
 							sessionMap.put("userStatus", getSessionStatus((int) record[6]));
-							//isSuccess = !isSuccess;
 							return SUCCESS;
 						}
 						return ERROR;
 					}
-					//isDenied = !isDenied;
 					return "denied";
 				}
 			}
 			System.err.println("Email or password is not equal");
-			//isInvalid = !isInvalid;
 			return "invalid";
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else if(isDenied)
-//			return "denied";
-//		else if(isInvalid)
-//			return "invalid";
-//		else
-//			return ERROR;
 	}
 	
 	public void validate() {

@@ -3,7 +3,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:if test="rpModel==null">
-	<h5>Know your risk profile below!</h5>
+	<h5 class="text-center">Know your risk profile below!</h5>
 </s:if>
 <s:else>
 	<h5>You are a/an <b><s:property value="riskProfileResult" /></b> Investor</h5>

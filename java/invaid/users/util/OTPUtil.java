@@ -12,11 +12,11 @@ import com.eatthepath.otp.TimeBasedOneTimePasswordGenerator;
 import config.Configurations;
 
 public class OTPUtil {
-	private final static Duration OTP_DURATION = Duration.ofMinutes(5);
+	private final static Duration OTP_DURATION = Duration.ofSeconds(30);
 	private final static int PASSCODE_LENGTH = 6;
 	private final static Instant NOW_TIME = Instant.now();
 	
-	public static int generateOTP() {
+	public int generateOTP() {
 		int passcode = 0;
 		try {
 			passcode = new TimeBasedOneTimePasswordGenerator(OTPUtil.OTP_DURATION,

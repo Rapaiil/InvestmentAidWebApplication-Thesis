@@ -57,14 +57,6 @@
                         <a class="nav-link" href="feedback.jsp">Feedback</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="registerProfile.jsp">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.jsp">Login</a>
-                    </li>
-                </ul>
             </div>
         </nav>
         
@@ -74,7 +66,7 @@
                     <div class="form-login my-auto">
                         <div class="card-body">
                             <h4 class="card-title text-uppercase pb-5">Password Reset</h4>
-                            <s:form action="resetpassword" method="post">
+                            <s:form action="renewpassword" method="post">
                                 <div class="form-group">
                                     <label>Password <span class="required" style="color:red;">*</span></label>
                                     <s:password  cssClass="form-control" name="reset_password" placeholder="Password"/>

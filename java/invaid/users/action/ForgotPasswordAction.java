@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
+import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
@@ -19,8 +20,7 @@ import invaid.users.util.TokenUtil;
 public class ForgotPasswordAction extends ActionSupport implements ModelDriven<UserAccountBean>, DBCommands, Runnable {
 	private UserAccountBean userAccount = new UserAccountBean();
 	Session session = HibernateUtil.getSession();
-	private boolean isSuccess = false;
-	
+
 	public String execute() {
 		session.getTransaction().begin();
 		List<Object[]> list = getRecords();
@@ -29,34 +29,27 @@ public class ForgotPasswordAction extends ActionSupport implements ModelDriven<U
 		
 		if(list != null) {
 			for(Object[] record: list) {
-				if(record[4].toString().equals(userAccount.getUser_email())) {
+				if(AESEncryption.decrypt(record[4].toString()).equals(userAccount.getUser_email())) {
 					switch(checkStatus(record[5].toString())) {
 						case 1: stats = 0;
-								token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
+								token = TokenUtil.generateToken(AESEncryption.decrypt(record[1].toString()), AESEncryption.decrypt(record[2].toString()));
 								if(!updateUserToken(record[0].toString(), token, stats))
 									return ERROR;
 								Mail.sendPasswordResetMail(userAccount.getUser_email(), token);
 								break;
 						case 2: stats = 1;
-								token = TokenUtil.generateToken(record[1].toString(), record[2].toString());
+								token = TokenUtil.generateToken(AESEncryption.decrypt(record[1].toString()), AESEncryption.decrypt(record[2].toString()));
 								if(!updateUserToken(record[0].toString(), token, stats))
 									return ERROR;
 								Mail.sendPasswordResetMail(userAccount.getUser_email(), token);
 								break;
 						case 3: return ERROR;
 					}
-					//isSuccess = !isSuccess;
 					return SUCCESS;
 				}
 			}
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 	
 	@Override

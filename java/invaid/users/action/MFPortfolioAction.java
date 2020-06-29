@@ -31,8 +31,9 @@ public class MFPortfolioAction extends ActionSupport implements SessionAware, DB
 	public String execute() {
 		session.getTransaction().begin();
 		UserPortfolioFundModel fund;
-		DecimalFormat df = new DecimalFormat("#.##");
-		df.setRoundingMode(RoundingMode.CEILING);
+		DecimalFormat dfMon = new DecimalFormat("#.####"), dfPct = new DecimalFormat("#.##");
+		dfMon.setRoundingMode(RoundingMode.CEILING);
+		dfPct.setRoundingMode(RoundingMode.CEILING);
 		
 		List<Object[]> list = getRecords();
 		
@@ -47,8 +48,8 @@ public class MFPortfolioAction extends ActionSupport implements SessionAware, DB
 					fund.setFundNumOfUnitsShares(Double.parseDouble(record[3].toString()));
 					fund.setFundNav(Double.parseDouble(record[6].toString()));
 					fund.setFundAmount(Double.parseDouble(record[5].toString()));
-					fund.setFundPrice(Double.parseDouble(df.format(fund.getFundNumOfUnitsShares() * fund.getFundNav())));
-					fund.setPctGainLoss(df.format(((fund.getFundPrice()/fund.getFundAmount())-1) * 100.00));
+					fund.setFundPrice(Double.parseDouble(dfMon.format(fund.getFundNumOfUnitsShares() * fund.getFundNav())));
+					fund.setPctGainLoss(dfPct.format(((fund.getFundPrice()/fund.getFundAmount())-1) * 100));
 					
 					mfList.add(fund);
 				}
@@ -72,7 +73,7 @@ public class MFPortfolioAction extends ActionSupport implements SessionAware, DB
 	@Override
 	public List<Object[]> getRecords() {
 		String profid = (String) sessionMap.get("loginId");
-		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now().minus(1, ChronoUnit.DAYS)));
+		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now()));
 		
 		try {
 			Query query = session.createQuery(GET_MF_USERFUND);

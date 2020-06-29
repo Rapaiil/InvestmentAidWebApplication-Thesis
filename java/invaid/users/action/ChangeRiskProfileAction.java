@@ -12,37 +12,42 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.db.DBCommands;
 import invaid.users.model.RPCharacteristics;
-import invaid.users.model.RiskProfileModel;
 import invaid.users.model.UserRiskProfileBean;
 import invaid.users.util.HibernateUtil;
 
 @SuppressWarnings({"serial", "rawtypes", "unchecked"})
 public class ChangeRiskProfileAction extends ActionSupport implements DBCommands, SessionAware {
 	private Map<String, Object> sessionMap;
-	private RiskProfileModel rpModel;
+	private String riskProfileResult;
+	private UserRiskProfileBean urp;
 	Session session = HibernateUtil.getSession();
 	
 	@Override
 	public String execute() {
 		session.getTransaction().begin();
+		String profileId = (String) sessionMap.get("loginId");
 		
 		List<Object[]> list = getRecords();
 		
 		if(list != null) {
 			for(Object[] record: list) {
-				if(record[0].toString() != null) {
-					if(updateRiskProfile()) {
+				if(record[0].toString() != null && record[0].toString().equals(profileId)) {
+					if(updateRiskProfile())
 						session.getTransaction().commit();
-						return SUCCESS;
-					}
 				} else {
-					addRiskProfile();
+					int rpType = getRiskProfileType(riskProfileResult);
 					
+					urp = new UserRiskProfileBean();
+					urp.setUser_profileId(profileId);
+					urp.setUser_riskprofile(rpType);
+					
+					session.save(urp);
 					session.getTransaction().commit();
-					return SUCCESS;
 				}
+				return SUCCESS;
 			}
 		}
+		session.getTransaction().rollback();
 		return ERROR;
 	}
 	
@@ -51,12 +56,12 @@ public class ChangeRiskProfileAction extends ActionSupport implements DBCommands
 		this.sessionMap = sessionMap;
 	}
 	
-	public RiskProfileModel getRpModel() {
-		return rpModel;
+	public String getRiskProfileResult() {
+		return riskProfileResult;
 	}
 
-	public void setRpModel(RiskProfileModel rpModel) {
-		this.rpModel = rpModel;
+	public void setRiskProfileResult(String riskProfileResult) {
+		this.riskProfileResult = riskProfileResult;
 	}
 
 	@Override
@@ -75,26 +80,15 @@ public class ChangeRiskProfileAction extends ActionSupport implements DBCommands
 		
 		return null;
 	}
-	
-	private void addRiskProfile() {
-		String profileId = (String) sessionMap.get("loginId");
-		int rpType = getRiskProfileType(rpModel.getRiskProfileResult());
 		
-		UserRiskProfileBean urp = new UserRiskProfileBean();
-		urp.setUser_profileId(profileId);
-		urp.setUser_riskprofile(rpType);
-		
-		session.save(urp);
-	}
-	
 	private boolean updateRiskProfile() {
 		String profileId = (String) sessionMap.get("loginId");
-		int rpType = getRiskProfileType(rpModel.getRiskProfileResult());
+		int rpType = getRiskProfileType(riskProfileResult);
 		
 		try {
 			Query query = session.createQuery(UPDATE_RISKPROFILE);
-			query.setParameter("profid", profileId);
 			query.setParameter("rptype", rpType);
+			query.setParameter("profid", profileId);
 			
 			if(query.executeUpdate() > 0)
 				return true;

@@ -33,7 +33,6 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 	private String reset_confirmpassword;
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
-	private boolean isSuccess = false;
 	
 	public String execute() {
 		token = (String) sessionMap.get("token");
@@ -53,20 +52,13 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 		if(list != null) {
 			for(Object[] record: list) {
 				if(record[0].toString().equals(token)) {
-					if(updateUserPassword(record[1].toString(), (int) record[2])) {
-						//isSuccess = !isSuccess;
+					if(updateForgottenUserPassword(record[1].toString(), (int) record[2])) {
 						return SUCCESS;
 					}
 				}
 			}
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 	
 	@Override
@@ -107,11 +99,11 @@ public class RenewPasswordAction extends ActionSupport implements DBCommands, Se
 		this.sessionMap = sessionMap;
 	}
 	
-	private boolean updateUserPassword(String id, int stats) {
+	private boolean updateForgottenUserPassword(String id, int stats) {
 		int stat = getConvertedStatus(stats);
 		
 		try {
-			Query query = session.createQuery(UPDATE_PASSWORD);
+			Query query = session.createQuery(UPDATE_FORGOTTEN_PASSWORD);
 			query.setParameter("pass", String.valueOf(Encrypt.bcrypt(reset_password.toCharArray())));
 			query.setParameter("tok", null);
 			query.setParameter("status", stat);

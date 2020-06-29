@@ -26,10 +26,13 @@ public interface DBCommands {
 			+ " set user_token = :tok,"
 			+ " user_status = :status"
 			+ " WHERE user_profileId = :id";
-	final static String UPDATE_PASSWORD = "UPDATE UserAccountBean"
+	final static String UPDATE_FORGOTTEN_PASSWORD = "UPDATE UserAccountBean"
 			+ " set user_password = :pass,"
 			+ " user_token = :tok,"
 			+ " user_status = :status"
+			+ " WHERE user_profileId = :id";
+	final static String UPDATE_NEW_PASSWORD = "UPDATE UserAccountBean"
+			+ " set user_password = :pass"
 			+ " WHERE user_profileId = :id";
 	final static String VERIFY_USER = "UPDATE UserAccountBean "
 			+ "set user_status = :status, "

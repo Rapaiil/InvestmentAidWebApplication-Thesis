@@ -33,90 +33,77 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 	@Override
 	public String execute() {
 		session.getTransaction().begin();
+		DecimalFormat dfMon = new DecimalFormat("#.####"), dfPct = new DecimalFormat("#.##");
+		dfMon.setRoundingMode(RoundingMode.CEILING);
+		dfPct.setRoundingMode(RoundingMode.CEILING);
+		
+		portfolioData = new PortfolioModel();
 		
 		List<Object[]> mList = getMfRecords();
-		List<Object[]> uList = getUitfRecords();
+		double mogl = 0, moglp = 0;
 		
-		if(mList != null || uList != null) {
-			portfolioData = new PortfolioModel();
-			double ogl = 0;
-			double oglp = 0;
+		if(mList != null) {
+			mfList = new ArrayList<FundGainLossModel>();
+			FundGainLossModel fglm;
 			
-			DecimalFormat df = new DecimalFormat("#.##");
-			df.setRoundingMode(RoundingMode.CEILING);
-			
-			if(mList != null) {
-				mfList = new ArrayList<FundGainLossModel>();
-				FundGainLossModel fglm;
+			for(Object[] record: mList) {
+				fglm = new FundGainLossModel();
+				fglm.setFundId(record[0].toString());
+				fglm.setFundName(record[1].toString());
+				fglm.setFundClassification(record[2].toString());
+				fglm.setFundAmount(Double.parseDouble(record[3].toString()));
+				fglm.setFundNav(Double.parseDouble(record[5].toString()));
+				fglm.setFundShares(Double.parseDouble(record[4].toString()));
+				fglm.setFundMarketPrice(Double.parseDouble(dfMon.format(fglm.getFundShares() * fglm.getFundNav())));
 				
-				for(Object[] record: mList) {
-					fglm = new FundGainLossModel();
-					fglm.setFundId(record[0].toString());
-					fglm.setFundName(record[1].toString());
-					fglm.setFundClassification(record[2].toString());
-					fglm.setFundAmount(Double.parseDouble(record[3].toString()));
-					fglm.setFundNav(Double.parseDouble(record[5].toString()));
-					fglm.setFundShares(Double.parseDouble(record[4].toString()));
-					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
-					
-					fglm.setGainLossValue(df.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
-					
-					mfList.add(fglm);
-					totalportfoliovalue += fglm.getFundMarketPrice();
-				}
+				fglm.setGainLossValue(dfMon.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
+				fglm.setGainLossPctValue(dfPct.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
 				
-				ogl = 0;
-				oglp = 0;
-				for(FundGainLossModel f: mfList) {
-					ogl += Double.parseDouble(f.getGainLossValue());
-					oglp += Double.parseDouble(f.getGainLossPctValue());
-				}
-				portfolioData.setOverallGainLoss(String.valueOf(ogl));
-				portfolioData.setOverallGainLossPct(String.valueOf(oglp));
+				mfList.add(fglm);
+				totalportfoliovalue += fglm.getFundMarketPrice();
 			}
-
-			if(uList != null) {
-				uitfList = new ArrayList<FundGainLossModel>();
-				FundGainLossModel fglm;
-				
-				for(Object[] record: uList) {
-					fglm = new FundGainLossModel();
-					fglm.setFundId(record[0].toString());
-					fglm.setFundName(record[1].toString());
-					fglm.setFundClassification(record[2].toString());
-					fglm.setFundAmount(Double.parseDouble(record[3].toString()));
-					fglm.setFundNav(Double.parseDouble(record[5].toString()));
-					fglm.setFundShares(Double.parseDouble(record[4].toString()));
-					fglm.setFundMarketPrice(Double.parseDouble(df.format(fglm.getFundShares() * fglm.getFundNav())));
-					
-					fglm.setGainLossValue(df.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-					fglm.setGainLossPctValue(df.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
-					
-					uitfList.add(fglm);
-					totalportfoliovalue += fglm.getFundMarketPrice();
-				}
-				
-				if(portfolioData.getOverallGainLoss() == null)
-					ogl = 0;
-				else
-					ogl = Double.parseDouble(portfolioData.getOverallGainLoss());
-				
-				if(portfolioData.getOverallGainLossPct() == null)
-					oglp = 0;
-				else
-					oglp = Double.parseDouble(portfolioData.getOverallGainLossPct());
-				
-				for(FundGainLossModel f: uitfList) {
-					ogl += Double.parseDouble(f.getGainLossValue());
-					oglp += Double.parseDouble(f.getGainLossPctValue());
-				}
-				
-				portfolioData.setOverallGainLoss(String.valueOf(ogl));
-				portfolioData.setOverallGainLossPct(String.valueOf(oglp));
+			
+			for(FundGainLossModel f: mfList) {
+				mogl += Double.parseDouble(f.getGainLossValue());
+				moglp += Double.parseDouble(f.getGainLossPctValue());
 			}
 		}
 		
+		List<Object[]> uList = getUitfRecords();
+		double uogl = 0, uoglp = 0;
+		
+		if(uList != null) {
+			uitfList = new ArrayList<FundGainLossModel>();
+			FundGainLossModel fglm;
+			
+			for(Object[] record: uList) {
+				fglm = new FundGainLossModel();
+				fglm.setFundId(record[0].toString());
+				fglm.setFundName(record[1].toString());
+				fglm.setFundClassification(record[2].toString());
+				fglm.setFundAmount(Double.parseDouble(record[3].toString()));
+				fglm.setFundNav(Double.parseDouble(record[5].toString()));
+				fglm.setFundShares(Double.parseDouble(record[4].toString()));
+				fglm.setFundMarketPrice(Double.parseDouble(dfMon.format(fglm.getFundShares() * fglm.getFundNav())));
+				
+				fglm.setGainLossValue(dfMon.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
+				fglm.setGainLossPctValue(dfPct.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+				
+				uitfList.add(fglm);
+				totalportfoliovalue += fglm.getFundMarketPrice();
+			}
+			
+			for(FundGainLossModel f: uitfList) {
+				uogl += Double.parseDouble(f.getGainLossValue());
+				uoglp += Double.parseDouble(f.getGainLossPctValue());
+			}
+			
+			
+		}
+		
+		portfolioData.setOverallGainLoss(dfMon.format(mogl + uogl));
+		portfolioData.setOverallGainLossPct(dfPct.format(moglp + uoglp));
+			
 		session.getTransaction().commit();
 		return SUCCESS;
 	}
@@ -157,7 +144,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 	
 	public List<Object[]> getMfRecords() {
 		String profileId = (String) sessionMap.get("loginId");
-		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now().minus(1, ChronoUnit.DAYS)));
+		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now()));
 		
 		try {
 			Query query = session.createQuery(GET_MF_PDATA);
@@ -175,7 +162,7 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 	
 	public List<Object[]> getUitfRecords() {
 		String profileId = (String) sessionMap.get("loginId");
-		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now().minus(1, ChronoUnit.DAYS)));
+		String date = new SimpleDateFormat("MM/dd/yyyy").format(Date.from(Instant.now()));
 		
 		try {
 			Query query = session.createQuery(GET_UITF_PDATA);

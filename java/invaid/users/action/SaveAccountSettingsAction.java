@@ -20,7 +20,7 @@ import invaid.users.model.UserAccountBean;
 import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "rawtypes", "unchecked"})
 public class SaveAccountSettingsAction extends ActionSupport implements ModelDriven<UserAccountBean>, DBCommands, SessionAware, Runnable  {
 	private String first_name;
 	private String last_name;
@@ -34,7 +34,6 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	
 	private UserAccountBean userAccount = new UserAccountBean();
 	private Map<String, Object> sessionMap;
-	private boolean isSuccess = false;
 	Session session = HibernateUtil.getSession();
 	
 	
@@ -193,7 +192,7 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	private boolean saveAccount() {
 		try {
 			Query query = session.createQuery(SAVE_ACCOUNT);
-			query.setParameter("email", email_address);
+			query.setParameter("email", AESEncryption.encrypt(email_address));
 			query.setParameter("profid", profile_id);
 			
 			if(query.executeUpdate() > 0) {
@@ -208,18 +207,15 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 	}
 	
 	private boolean saveProfile() {
-		System.out.println(birthday);
 		LocalDate localDate = LocalDate.parse(birthday.toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String formattedDate = localDate.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-		System.out.println(localDate.toString());
-		System.out.println(formattedDate);
 		try {
 			Query query = session.createQuery(SAVE_PROFILE);
 			query.setParameter("first_name", AESEncryption.encrypt(first_name));
 			query.setParameter("last_name", AESEncryption.encrypt(last_name));
-			query.setParameter("birthday", formattedDate);
-			query.setParameter("cellphone_no", AESEncryption.encrypt(cellphone_no));
-			query.setParameter("telephone_no", AESEncryption.encrypt(telephone_no));
+			query.setParameter("birthday", AESEncryption.encrypt(formattedDate));
+			query.setParameter("cellphone_no", cellphone_no);
+			query.setParameter("telephone_no", telephone_no);
 			query.setParameter("occupation", AESEncryption.encrypt(occupation));
 			query.setParameter("company", AESEncryption.encrypt(company));
 			query.setParameter("profid", profile_id);
@@ -293,8 +289,7 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 		if(list!=null) {
 			System.out.println("not null");
 			for(Object record: list) {
-				//System.out.println(record.toString());
-				if(record.toString().equals(string)) {
+				if(AESEncryption.decrypt(record.toString()).equals(string)) {
 					return true;
 				}
 				else {
@@ -305,7 +300,7 @@ public class SaveAccountSettingsAction extends ActionSupport implements ModelDri
 						System.out.println("not null2");
 						for(Object record2:list2) {
 							//System.out.println(record2.toString());
-							if(string.equals(record2.toString())) {
+							if(string.equals(AESEncryption.decrypt(record2.toString()))) {
 								isExisting = true;
 							}
 						}

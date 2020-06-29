@@ -30,7 +30,6 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 	private Map<String, Object> sessionMap;
 	private String otp_login, token;
 	Session session = HibernateUtil.getSession();
-	private boolean isSuccess = false;
 	
 	public String execute() {
 		String loginId;
@@ -62,12 +61,6 @@ public class VerifyLoginAction extends ActionSupport implements SessionAware, DB
 			}
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 	
 	@Override

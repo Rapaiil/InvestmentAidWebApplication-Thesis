@@ -16,6 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
+import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 
@@ -35,7 +36,7 @@ public class ResendOTPAction extends ActionSupport implements SessionAware, DBCo
 		if(otprecords != null) {
 			for(Object[] record: otprecords) {
 				if(record[0] != null && record[0].toString().equals(token)) {
-					if(Mail.resendMultiFactorAuthentication(record[2].toString(), Integer.parseInt(record[1].toString())))
+					if(Mail.resendMultiFactorAuthentication(AESEncryption.decrypt(record[2].toString()), Integer.parseInt(record[1].toString())))
 						return SUCCESS;
 					return ERROR;
 				}

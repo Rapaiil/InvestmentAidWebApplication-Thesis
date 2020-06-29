@@ -21,10 +21,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import invaid.users.db.DBCommands;
 import invaid.users.model.AccountSettingDetail;
+import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.TokenUtil;
 
-@SuppressWarnings({"serial", "rawtypes"})
+@SuppressWarnings({"serial", "rawtypes", "unchecked"})
 public class AccountSettingsAction extends ActionSupport implements SessionAware, DBCommands {
 	private Map<String, Object> sessionMap;
 	Session session = HibernateUtil.getSession();
@@ -47,16 +48,16 @@ public class AccountSettingsAction extends ActionSupport implements SessionAware
 		try {
 			if(list != null) {
 				for(Object[] record: list) {
-					LocalDate localDate = LocalDate.parse(record[3].toString(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+					LocalDate localDate = LocalDate.parse(AESEncryption.decrypt(record[3].toString()), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 					account = new AccountSettingDetail();
-					account.setUser_firstName(record[1].toString());
-					account.setUser_lastName(record[2].toString());
+					account.setUser_firstName(AESEncryption.decrypt(record[1].toString()));
+					account.setUser_lastName(AESEncryption.decrypt(record[2].toString()));
 					account.setUser_birthday(localDate.toString());
 					account.setUser_telno(record[4].toString());
 					account.setUser_cellno(record[5].toString());
-					account.setUser_occupation(record[6].toString());
-					account.setUser_company(record[7].toString());
-					account.setUser_email(record[8].toString());
+					account.setUser_occupation(AESEncryption.decrypt(record[6].toString()));
+					account.setUser_company(AESEncryption.decrypt(record[7].toString()));
+					account.setUser_email(AESEncryption.decrypt(record[8].toString()));
 					
 					return SUCCESS;
 				}

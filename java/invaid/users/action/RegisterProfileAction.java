@@ -18,10 +18,8 @@ import invaid.users.util.AESEncryption;
 public class RegisterProfileAction extends ActionSupport implements ModelDriven<UserProfileBean>, SessionAware, Runnable {
 	private UserProfileBean userProfile = new UserProfileBean();
 	private AddressBean userAddress;
-	private String user_street, user_apt, user_city, user_state;
-	private String user_zip;
+	private String user_street, user_apt, user_city, user_state, user_zip;
 	private Map<String, Object> sessionMap;
-	private boolean isSuccess = false;
 
 	public String execute() {
 		try {
@@ -32,8 +30,6 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 			
 			userProfile.setUser_firstname(AESEncryption.encrypt(userProfile.getUser_firstname()));
 			userProfile.setUser_lastname(AESEncryption.encrypt(userProfile.getUser_lastname()));
-			userProfile.setUser_cellphonenumber(AESEncryption.encrypt(userProfile.getUser_cellphonenumber()));
-			userProfile.setUser_telephonenumber(AESEncryption.encrypt(userProfile.getUser_telephonenumber()));
 			userProfile.setUser_company(AESEncryption.encrypt(userProfile.getUser_company()));
 			userProfile.setUser_occupation(AESEncryption.encrypt(userProfile.getUser_occupation()));
 
@@ -43,16 +39,8 @@ public class RegisterProfileAction extends ActionSupport implements ModelDriven<
 			 return ERROR;
 		}
 		
-		//validation here
 		sessionMap.put("sessionUser", userProfile);
 		return SUCCESS;
-		//isSuccess = !isSuccess;	
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 	
 	public void validate() {

@@ -30,6 +30,7 @@ public class CheckRiskProfileAction extends ActionSupport implements SessionAwar
 		if(list != null) {
 			for(Object[] record: list) {
 				if(record[0].toString() != null) {
+					System.out.println("not null record");
 					rpModel = new RiskProfileModel();
 					switch(Integer.parseInt(record[1].toString())) {
 						case 1: rpModel.setRiskProfileResult(CONSERVATIVE);
@@ -54,13 +55,11 @@ public class CheckRiskProfileAction extends ActionSupport implements SessionAwar
 								rpModel.setRiskProfileDesc(A_DESC); break;
 						default: rpModel.setRiskProfileResult(NO_COMPATIBLE); rpModel.setRiskProfileObjectives("NONE"); rpModel.setRiskProfileHorizon("NONE"); rpModel.setRiskProfileDesc("NONE");
 					}
-					
-					session.getTransaction().commit();
-					return SUCCESS;
 				}
 			}
 		}
-		return ERROR;
+		session.getTransaction().commit();
+		return SUCCESS;
 	}
 	
 	@Override

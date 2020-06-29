@@ -27,7 +27,6 @@ import invaid.users.util.TokenUtil;
 public class VerifyAccountAction extends ActionSupport implements DBCommands, Runnable {
 	private String token;
 	Session session = HibernateUtil.getSession();
-	private boolean isSuccess = false;
 	
 	public String execute() {
 		List<Object[]> list = null;
@@ -59,19 +58,12 @@ public class VerifyAccountAction extends ActionSupport implements DBCommands, Ru
 			for(Object[] record: list) {
 				if(record[0] != null && record[0].toString().equals(token)) {
 					if(updateUserStatus(token)) {
-						//isSuccess = !isSuccess;
 						return SUCCESS;
 					}
 				}
 			}
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 
 	@Override

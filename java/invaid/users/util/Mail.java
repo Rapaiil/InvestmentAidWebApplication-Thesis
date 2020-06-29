@@ -47,7 +47,7 @@ public class Mail {
 	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(user_email));  
 	         message.setSubject("InvAid Password Reset Request");  
 	         message.setText("Please click the link to reset your password:\n\n" 
-	        		 + "http://localhost:8080/www.invaid.com/renewpassword.action?token=" 
+	        		 + "http://localhost:8080/www.invaid.com/checkrenewpassword.action?token=" 
 	        		 + user_token);  
 	         
 	         Transport.send(message);

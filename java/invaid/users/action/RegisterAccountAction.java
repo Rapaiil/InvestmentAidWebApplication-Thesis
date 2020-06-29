@@ -6,10 +6,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.HibernateException;
@@ -22,17 +18,17 @@ import com.opensymphony.xwork2.ModelDriven;
 import invaid.users.db.DBCommands;
 import invaid.users.model.UserAccountBean;
 import invaid.users.model.UserProfileBean;
+import invaid.users.util.AESEncryption;
 import invaid.users.util.HibernateUtil;
 import invaid.users.util.Mail;
 import invaid.users.util.TokenUtil;
 import invaid.users.util.VerifyreCAPTCHA;
 
-@SuppressWarnings({"serial"})
+@SuppressWarnings({"serial", "unchecked"})
 public class RegisterAccountAction extends ActionSupport implements ModelDriven<UserAccountBean>, SessionAware, Runnable, DBCommands {
 	private UserAccountBean userAccount = new UserAccountBean();
 	private UserProfileBean userProfile;
 	private Map<String, Object> sessionMap;
-	private boolean isSuccess = false;
 	String gRecaptchaResponse = ServletActionContext.getRequest().getParameter("g-recaptcha-response");
 
 	// Database Related
@@ -45,25 +41,22 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 		try {
 			userAccount.setUser_profileId(userProfile.getUser_profileId());
 			userAccount.setUser_status(00);
-			userAccount.setUser_token(TokenUtil.generateToken(userProfile.getUser_firstname(), userProfile.getUser_lastname()));
+			userAccount.setUser_token(TokenUtil.generateToken(AESEncryption.decrypt(userProfile.getUser_firstname()), AESEncryption.decrypt(userProfile.getUser_lastname())));
 			userAccount.encryptPassword();
+			
+			Mail.sendVerificationMail(userAccount);
+			
+			userAccount.setUser_email(AESEncryption.encrypt(userAccount.getUser_email()));
 			session.save(userAccount);
 			session.save(userProfile);
 			
-			Mail.sendVerificationMail(userAccount);
 			session.getTransaction().commit();
 			return SUCCESS;
-			//isSuccess = !isSuccess;
+
 		} catch(HibernateException he) {
 			session.getTransaction().rollback();
 		}
 		return ERROR;
-//		Thread t = new Thread(this);
-//		t.start();
-//		if(isSuccess)
-//			return SUCCESS;
-//		else
-//			return ERROR;
 	}
 	
 	public void validate() {
@@ -88,7 +81,7 @@ public class RegisterAccountAction extends ActionSupport implements ModelDriven<
 				 boolean isValid = true;
 				 if(list != null) {
 						for(Object record: list) {
-							if(userAccount.getUser_email().equals(record)) { 
+							if(userAccount.getUser_email().equals(AESEncryption.decrypt(record.toString()))) { 
 								isValid = false; 
 							}
 						}
