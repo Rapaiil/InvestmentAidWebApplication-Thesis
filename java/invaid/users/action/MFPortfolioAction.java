@@ -49,7 +49,7 @@ public class MFPortfolioAction extends ActionSupport implements SessionAware, DB
 					fund.setFundNav(Double.parseDouble(record[6].toString()));
 					fund.setFundAmount(Double.parseDouble(record[5].toString()));
 					fund.setFundPrice(Double.parseDouble(dfMon.format(fund.getFundNumOfUnitsShares() * fund.getFundNav())));
-					fund.setPctGainLoss(dfPct.format(((fund.getFundPrice()/fund.getFundAmount())-1) * 100));
+					fund.setPctGainLoss(dfPct.format(((fund.getFundPrice()/fund.getFundAmount())-1) * 100.00));
 					
 					mfList.add(fund);
 				}

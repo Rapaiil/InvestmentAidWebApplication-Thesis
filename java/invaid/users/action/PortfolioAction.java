@@ -4,7 +4,6 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +23,7 @@ import invaid.users.util.HibernateUtil;
 
 @SuppressWarnings({"serial", "rawtypes", "unchecked"})
 public class PortfolioAction extends ActionSupport implements SessionAware, DBCommands{
-	private int totalportfoliovalue = 0;
+	private double totalportfoliovalue = 0.0;
 	private Map<String, Object> sessionMap;
 	private PortfolioModel portfolioData = null;
 	private List<FundGainLossModel> mfList = null, uitfList = null;
@@ -57,10 +56,10 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 				fglm.setFundMarketPrice(Double.parseDouble(dfMon.format(fglm.getFundShares() * fglm.getFundNav())));
 				
 				fglm.setGainLossValue(dfMon.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-				fglm.setGainLossPctValue(dfPct.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+				fglm.setGainLossPctValue(dfPct.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
 				
 				mfList.add(fglm);
-				totalportfoliovalue += fglm.getFundMarketPrice();
+				totalportfoliovalue += Double.parseDouble(dfMon.format(fglm.getFundMarketPrice()));
 			}
 			
 			for(FundGainLossModel f: mfList) {
@@ -87,10 +86,10 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 				fglm.setFundMarketPrice(Double.parseDouble(dfMon.format(fglm.getFundShares() * fglm.getFundNav())));
 				
 				fglm.setGainLossValue(dfMon.format(fglm.getFundMarketPrice() - fglm.getFundAmount()));
-				fglm.setGainLossPctValue(dfPct.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100));
+				fglm.setGainLossPctValue(dfPct.format(((fglm.getFundMarketPrice() / fglm.getFundAmount()) - 1) * 100.00));
 				
 				uitfList.add(fglm);
-				totalportfoliovalue += fglm.getFundMarketPrice();
+				totalportfoliovalue += Double.parseDouble(dfMon.format(fglm.getFundMarketPrice()));
 			}
 			
 			for(FundGainLossModel f: uitfList) {
@@ -124,11 +123,11 @@ public class PortfolioAction extends ActionSupport implements SessionAware, DBCo
 		return uitfList;
 	}
 	
-	public int getTotalportfoliovalue() {
+	public double getTotalportfoliovalue() {
 		return totalportfoliovalue;
 	}
 
-	public void setTotalportfoliovalue(int totalportfoliovalue) {
+	public void setTotalportfoliovalue(double totalportfoliovalue) {
 		this.totalportfoliovalue = totalportfoliovalue;
 	}
 

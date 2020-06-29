@@ -122,9 +122,11 @@
                         <p><b>Investment Objective: <s:property value="riskProfileObjectives" /></b></p>
                         <p><b>Investment Horizon: <s:property value="riskProfileHorizon" /></b></p>
                         <p><b>Characteristics: <s:property value="riskProfileDesc" /></b></p>
+                        <s:set var="riskProfileResult" value="riskProfileResult"/>
                         <s:if test="%{#session.loginId != null}">
                         	<div class="buttons text-center mt-5">
-                        		<a type="button" href="<s:url action="saveriskprofile"><s:param value="riskProfileResult" name="riskProfileResult"/></s:url>" class="btn btn-primary btn-lg text-uppercase recommendations-btn">Save Risk Profile</a>
+                        		<a type="button" href="<s:url action="saveriskprofile">
+                        		<s:param value="riskProfileResult" name="riskProfileResult"/></s:url>" class="btn btn-primary btn-lg text-uppercase recommendations-btn">Save Risk Profile</a>
                         	</div>
                         </s:if>
                     </div>

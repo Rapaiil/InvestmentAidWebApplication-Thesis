@@ -30,23 +30,29 @@ public class ChangeRiskProfileAction extends ActionSupport implements DBCommands
 		List<Object[]> list = getRecords();
 		
 		if(list != null) {
-			for(Object[] record: list) {
-				if(record[0].toString() != null && record[0].toString().equals(profileId)) {
-					if(updateRiskProfile())
-						session.getTransaction().commit();
-				} else {
-					int rpType = getRiskProfileType(riskProfileResult);
-					
-					urp = new UserRiskProfileBean();
-					urp.setUser_profileId(profileId);
-					urp.setUser_riskprofile(rpType);
-					
-					session.save(urp);
-					session.getTransaction().commit();
-				}
-				return SUCCESS;
-			}
+			System.out.println("meron list");
+//			for(Object[] record: list) {
+//				System.out.println("meron record");
+//				if(record[0].toString() != null && record[0].toString().equals(profileId)) {
+//					System.out.println("update na lang");
+//					if(updateRiskProfile())
+//						session.getTransaction().commit();
+//				} else {
+//					System.out.println("add na lang");
+//					int rpType = getRiskProfileType(riskProfileResult);
+//					
+//					urp = new UserRiskProfileBean();
+//					urp.setUser_profileId(profileId);
+//					urp.setUser_riskprofile(rpType);
+//					
+//					session.save(urp);
+//					session.getTransaction().commit();
+//				}
+//				System.out.println("unreachable");
+//				return SUCCESS;
+//			}
 		}
+		System.out.println("walang list");
 		session.getTransaction().rollback();
 		return ERROR;
 	}
